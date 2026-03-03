@@ -9,7 +9,7 @@ tags:
   - microservices
 series: OAuth
 id: 3305365
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rfc8693-token-exchange-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rfc8693-token-exchange-deep-dive/cover.png'
 ---
 
 # Introduction
