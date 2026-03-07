@@ -1,6 +1,6 @@
 ---
 title: 'OpenID Connect Discovery 1.0 Deep Dive: OP''s "Self-Introduction" and Dynamic Configuration Retrieval'
-published: false
+published: true
 description: 'Demystifying OpenID Connect Discovery 1.0: Deep diving into Issuer Discovery using WebFinger and metadata retrieval via /.well-known/openid-configuration.'
 tags:
   - oauth
@@ -9,6 +9,7 @@ tags:
   - oidc
 series: OIDC
 id: 3321766
+cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/oidc-discovery-1_0-deep-dive/cover.png"
 ---
 
 # Introduction
