@@ -1,13 +1,14 @@
 ---
-title: "brtc: A CLI Tool to Convert Password Strength into \"Time to Crack and a Real USD Invoice\""
+title: 'brtc: A CLI Tool to Convert Password Strength into "Time to Crack and a Real USD Invoice"'
 published: false
-description: "More than just entropy calculation—I built a Go CLI tool to visualize how much it would cost if an offline attack were launched using modern hardware like an RTX 4090 or AWS clusters. Includes diagrams explaining the difference between online and offline attacks."
+description: More than just entropy calculation—I built a Go CLI tool to visualize how much it would cost if an offline attack were launched using modern hardware like an RTX 4090 or AWS clusters. Includes diagrams explaining the difference between online and offline attacks.
 tags:
   - security
   - go
   - cli
   - showdev
 series: ShowDev
+id: 3325941
 ---
 
 ## Introduction
