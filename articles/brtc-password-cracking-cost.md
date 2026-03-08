@@ -9,7 +9,8 @@ tags:
   - showdev
 series: ShowDev
 id: 3325941
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/brtc/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/brtc/cover.png'
+date: '2026-03-08T06:20:50Z'
 ---
 
 ## Introduction
