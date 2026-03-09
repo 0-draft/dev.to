@@ -1,13 +1,14 @@
 ---
 title: 'OpenID Connect Dynamic Client Registration 1.0 Deep Dive: Dynamic Client Registration for Automation and Scale'
 published: false
-description: 'A comprehensive guide to OpenID Connect Dynamic Client Registration 1.0 (based on RFC 7591/7592). Why do we need dynamic registration? We explain its use cases and sequences with easy-to-understand diagrams.'
+description: A comprehensive guide to OpenID Connect Dynamic Client Registration 1.0 (based on RFC 7591/7592). Why do we need dynamic registration? We explain its use cases and sequences with easy-to-understand diagrams.
 tags:
   - oauth
   - oidc
   - security
   - authentication
 series: OIDC
+id: 3330432
 ---
 
 # Introduction
