@@ -9,7 +9,8 @@ tags:
   - authentication
 series: OIDC
 id: 3330432
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/oidc-registration-1_0-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/oidc-registration-1_0-deep-dive/cover.png'
+date: '2026-03-09T11:04:07Z'
 ---
 
 # Introduction
