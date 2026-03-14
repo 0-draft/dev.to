@@ -1,14 +1,15 @@
 ---
-title: "Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth"
+title: 'Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth'
 published: false
-description: "A comprehensive guide to Identity Chaining (draft-ietf-oauth-identity-chaining-08). Learn how to safely propagate identity and authorization information across domains in multi-cloud and microservices architectures, combining RFC 8693 and RFC 7523."
+description: 'A comprehensive guide to Identity Chaining (draft-ietf-oauth-identity-chaining-08). Learn how to safely propagate identity and authorization information across domains in multi-cloud and microservices architectures, combining RFC 8693 and RFC 7523.'
 tags:
   - oauth
   - security
   - identity
   - microservices
-series: "OAuth"
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/identity-chaining-deep-dive/cover.png"
+series: OAuth
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/identity-chaining-deep-dive/cover.png'
+id: 3351989
 ---
 
 # Introduction
