@@ -10,6 +10,7 @@ tags:
 series: OAuth
 cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/identity-chaining-deep-dive/cover.png'
 id: 3351989
+date: '2026-03-14T15:58:39Z'
 ---
 
 # Introduction
