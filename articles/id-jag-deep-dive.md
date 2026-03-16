@@ -1,9 +1,14 @@
 ---
-title: "ID-JAG Deep Dive: OAuth for the AI Agent Era — How SSO Trust Relationships Enable API Integration"
+title: 'ID-JAG Deep Dive: OAuth for the AI Agent Era — How SSO Trust Relationships Enable API Integration'
 published: false
-description: "No more OAuth redirect hell for SaaS-to-SaaS integration or LLM agent API calls. Identity Assertion JWT Authorization Grant (ID-JAG) is a new IETF spec that uses existing SSO trust relationships to obtain cross-domain access tokens without user interaction."
-tags: ["oauth", "security", "identity", "ai"]
-series: "OAuth"
+description: No more OAuth redirect hell for SaaS-to-SaaS integration or LLM agent API calls. Identity Assertion JWT Authorization Grant (ID-JAG) is a new IETF spec that uses existing SSO trust relationships to obtain cross-domain access tokens without user interaction.
+tags:
+  - oauth
+  - security
+  - identity
+  - ai
+series: OAuth
+id: 3358662
 ---
 
 # Introduction
