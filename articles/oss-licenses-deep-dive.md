@@ -9,7 +9,8 @@ tags:
   - programming
 series: OSS
 id: 3386852
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/oss-licenses-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/oss-licenses-deep-dive/cover.png'
+date: '2026-03-23T03:56:02Z'
 ---
 
 # Introduction
