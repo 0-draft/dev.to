@@ -1,5 +1,5 @@
 ---
-title: 'ID-JAG Deep Dive'
+title: ID-JAG Deep Dive
 published: true
 description: No more OAuth redirect hell for SaaS-to-SaaS integration or LLM agent API calls. Identity Assertion JWT Authorization Grant (ID-JAG) is a new IETF spec that uses existing SSO trust relationships to obtain cross-domain access tokens without user interaction.
 tags:
@@ -10,6 +10,7 @@ tags:
 series: OAuth
 id: 3358662
 cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/id-jag-deep-dive/cover.png'
+date: '2026-03-16T11:54:11Z'
 ---
 
 # Introduction
