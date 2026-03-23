@@ -1,6 +1,6 @@
 ---
 title: OSS License Deep Dive
-published: false
+published: true
 description: Graduate from "just slap MIT on it"
 tags:
   - opensource
@@ -9,6 +9,7 @@ tags:
   - programming
 series: OSS
 id: 3386852
+cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/oss-licenses-deep-dive/cover.png"
 ---
 
 # Introduction
