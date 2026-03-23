@@ -1,13 +1,14 @@
 ---
-title: 'OSS License Deep Dive'
+title: OSS License Deep Dive
 published: false
-description: 'Graduate from "just slap MIT on it"'
+description: Graduate from "just slap MIT on it"
 tags:
   - opensource
   - license
   - github
   - programming
 series: OSS
+id: 3386852
 ---
 
 # Introduction
