@@ -35,22 +35,6 @@ I wanted to create a "compass" for developers like us—the ones who have the pa
 
 ---
 
-## Tech Stack
-
-I chose a modern, lightweight stack to ensure a great developer experience and high performance without the overhead of complex backend infrastructure. The application follows a **Zero-Server Architecture**:
-
-- **Framework**: **Next.js 15** (App Router, Static Export)
-- **Language**: **TypeScript** & **React 19**
-- **Styling**: **Material UI v7** & **Tailwind CSS v4** (Industrial Dark / Technical Noir)
-- **Data Fetching**: **React Query** (TanStack Query v5)
-- **API Integration**: **Octokit** (GitHub Public API)
-- **Deployment**: **GitHub Pages** (via GitHub Actions)
-- **Testing**: **Playwright** (E2E Testing)
-
-By leveraging Next.js Static Exports and the GitHub API directly from the client, IssueHub runs entirely in the browser. No databases to maintain, no servers to crash—just pure, fast static content.
-
----
-
 ## Conclusion
 
 IssueHub is more than just a tool; it's a "compass" for beginners navigating the vast ocean of open source. My goal is to use this platform to achieve my first contribution and help thousands of others do the same.
