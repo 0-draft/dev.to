@@ -8,7 +8,9 @@ tags:
   - oauth
   - identity
 series: Workload Identity
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/wimse-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/wimse-deep-dive/cover.png'
+id: 3396056
+date: '2026-03-24T16:57:16Z'
 ---
 
 # Introduction
