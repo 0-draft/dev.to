@@ -1,6 +1,6 @@
 ---
 title: 'RBAC vs ABAC vs ReBAC: How to Choose and Implement Access Control Models'
-published: false
+published: true
 description: 'Starting with the RBAC role explosion problem, comparing it with ABAC and ReBAC, and exploring practical policy examples from products like Cedar, OpenFGA, and SpiceDB. A systematic guide to access control model selection criteria.'
 tags:
   - authorization
@@ -9,6 +9,7 @@ tags:
   - iam
 series: Authorization
 id: 3424991
+cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rbac-abac-rebac-access-control-deep-dive/cover.png"
 ---
 
 # Introduction
