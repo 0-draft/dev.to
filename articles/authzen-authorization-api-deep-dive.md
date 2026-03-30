@@ -7,7 +7,7 @@ tags:
   - security
   - authorization
   - api
-series: OAuth
+series: Authorization
 id: 3430620
 cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/authzen-authorization-api-deep-dive/cover.png"
 ---
