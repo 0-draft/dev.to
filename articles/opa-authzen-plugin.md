@@ -1,6 +1,6 @@
 ---
 title: I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP
-published: false
+published: true
 description: 'Building an OPA plugin that implements the AuthZEN Authorization API 1.0. How the OPA community discussion led to a plugin approach, and the design decisions behind it.'
 tags:
   - showdev
@@ -9,6 +9,7 @@ tags:
   - go
 series: Authorization
 id: 3441756
+cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/opa-authzen-plugin/cover.png"
 ---
 
 # Introduction
