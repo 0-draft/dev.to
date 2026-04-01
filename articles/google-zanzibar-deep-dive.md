@@ -396,7 +396,7 @@ It's not just OSS. **Airbnb built an internal system called "Himeji"** directly 
 
 ---
 
-## Wrap-up
+## Conclusion
 
 The key ideas from Zanzibar:
 
