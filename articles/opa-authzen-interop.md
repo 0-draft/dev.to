@@ -8,6 +8,7 @@ tags:
   - authorization
   - rego
 series: Authorization
+id: 3456592
 ---
 
 # Introduction
