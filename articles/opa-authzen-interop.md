@@ -9,7 +9,8 @@ tags:
   - rego
 series: Authorization
 id: 3456592
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/opa-authzen-interop/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/opa-authzen-interop/cover.png'
+date: '2026-04-05T13:14:55Z'
 ---
 
 # Introduction
