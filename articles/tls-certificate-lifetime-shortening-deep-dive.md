@@ -10,6 +10,7 @@ tags:
 series: PKI
 id: 3485336
 cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/tls-certificate-lifetime-shortening-deep-dive/cover.png'
+date: '2026-04-11T05:16:18Z'
 ---
 
 # Introduction
