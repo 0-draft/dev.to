@@ -9,7 +9,8 @@ tags:
   - pkce
 series: OAuth
 id: 3489309
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rfc7636-pkce-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rfc7636-pkce-deep-dive/cover.png'
+date: '2026-04-12T05:31:58Z'
 ---
 
 # Introduction
