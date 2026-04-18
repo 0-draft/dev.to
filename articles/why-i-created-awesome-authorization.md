@@ -1,6 +1,6 @@
 ---
 title: 'Why I Built awesome-authorization: Mapping the World of Auth Engines onto a Single Page'
-published: false
+published: true
 description: 'The year is 2026 and authorization engines are everywhere. OPA, Cedar, OpenFGA, SpiceDB, Casbin, Cerbos... There are too many choices and it is hard to see the big picture. The arrival of the standard AuthZEN API is stirring things up even more. Here is the story of why I built awesome-authorization to organize the entire authorization landscape onto one page, and a visual guide to where these engines stand today.'
 tags:
   - authorization
