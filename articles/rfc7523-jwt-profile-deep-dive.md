@@ -8,7 +8,9 @@ tags:
   - security
   - authentication
 series: OAuth
-cover_image: "https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rfc7523-jwt-profile-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/kanywst/dev.to.kanywst/refs/heads/main/articles/assets/rfc7523-jwt-profile-deep-dive/cover.png'
+id: 3494284
+date: '2026-04-13T11:20:54Z'
 ---
 
 # Introduction
