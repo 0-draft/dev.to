@@ -1,6 +1,6 @@
 ---
 title: 'xDS Deep Dive: Dissecting the "Nervous System" of the Service Mesh'
-published: false
+published: true
 description: 'xDS is the dynamic configuration protocol powering Istio and Envoy. How on earth does it stream configurations to thousands of proxies without restarts? From ACK/NACK and ADS to SotW vs Delta, we dive deep into the actual implementation.'
 tags:
   - envoy
