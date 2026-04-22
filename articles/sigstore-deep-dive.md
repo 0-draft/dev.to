@@ -1,9 +1,14 @@
 ---
-title: "Sigstore Deep Dive: Unmasking the Magic Behind Keyless Verification"
+title: 'Sigstore Deep Dive: Unmasking the Magic Behind Keyless Verification'
 published: false
-description: "A complete teardown of Fulcio, Rekor, and TUF powering `cosign sign`. Short-lived certificates, Merkle tree inclusion proofs, and trust bootstrapping—explained with diagrams and code."
-tags: ["security", "sigstore", "kubernetes", "devops"]
-series: "Supply Chain Attack"
+description: 'A complete teardown of Fulcio, Rekor, and TUF powering `cosign sign`. Short-lived certificates, Merkle tree inclusion proofs, and trust bootstrapping—explained with diagrams and code.'
+tags:
+  - security
+  - sigstore
+  - kubernetes
+  - devops
+series: Supply Chain Attack
+id: 3537114
 ---
 
 # Introduction
