@@ -1,4 +1,4 @@
-# dev.to.kanywst: Dev.to Articles Management
+# Dev.to Articles Management
 
 This repository is set up to manage and automatically publish articles to [dev.to](https://dev.to).
 
