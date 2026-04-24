@@ -10,7 +10,7 @@ tags:
 series: Rust
 id: 3255512
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/rust-zero-cost-abstractions/cover.png'
-date: '2026-02-15T06:02:56Z'
+date: '2026-02-14T15:02:56Z'
 ---
 
 # Introduction
