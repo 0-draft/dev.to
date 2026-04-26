@@ -9,8 +9,6 @@ cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 
 # Introduction
 
-When I first investigated the SolarWinds incident, one technical detail absolutely floored me.
-
 The attackers planted malware called **SUNSPOT** on SolarWinds' build servers. SUNSPOT monitored the build process every single second, and the moment the Orion platform build kicked off, it swapped the `InventoryManager.cs` source code with a backdoored version. Once the build finished, it swapped it back. Zero traces were left in the source code repository. The resulting binary was signed with a perfectly legitimate SolarWinds certificate and shipped to over 18,000 organizations.
 
 The most terrifying part of this attack? **The signature was 100% valid.** Code signing only guarantees "this signer signed this file." It completely fails to guarantee "this binary was built from the correct source code via an untampered build process."
