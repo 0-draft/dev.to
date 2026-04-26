@@ -45,7 +45,7 @@ jobs:
             if [ -f "$file" ]; then
               echo "------------------------------------------------------"
               echo "Publishing $file..."
-              devto push "$file" --key $DEVTO_API_KEY
+              dev push "$file" -t $DEVTO_API_KEY
               
               # Wait to avoid 429 Too Many Requests
               # dev.to API rate limit is around 3 requests per second, 
