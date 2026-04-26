@@ -1,6 +1,6 @@
 ---
 title: 'SLSA Deep Dive: Securing the Supply Chain Using Verifiable Levels'
-published: false
+published: true
 description: 'A complete teardown of the SLSA specification. We dissect the threat model, Build and Source track requirements, Provenance structure, and the verification flow with diagrams.'
 tags:
   - security
