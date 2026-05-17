@@ -1,0 +1,65 @@
+direction: down
+
+classes: {
+  data: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  s3: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  kms: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  cust: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  cse: {
+    style: {
+      fill: "#fce7f3"
+      stroke: "#be185d"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Data: "Uploaded\nobject" {class: data}
+
+SSE: "Server-Side Encryption (S3 encrypts)" {
+  style.fill: "#eff6ff"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+  S3M: "SSE-S3\nS3 manages the keys entirely\n= default" {class: s3}
+  KMS: "SSE-KMS\nUses AWS KMS keys\n= auditable, separation of duties" {class: kms}
+  Cust: "SSE-C\nCustomer sends key on every request\n= deprecated on new buckets from 2026/4" {class: cust}
+}
+
+CSE: "Client-Side Encryption (client side)" {
+  style.fill: "#fdf2f8"
+  style.stroke: "#be185d"
+  style.font-color: "#0a0f25"
+  Cli: "CSE\nEncrypted by the SDK before upload\n= AWS never holds the key" {class: cse}
+}
+
+Data -> SSE
+Data -> CSE

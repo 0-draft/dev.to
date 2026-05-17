@@ -1,0 +1,36 @@
+shape: sequence_diagram
+
+Cli: "Client\n(IAM Role or SSO temporary credentials)" {
+  style: {
+    fill: "#fef3c7"
+    stroke: "#b45309"
+    stroke-width: 2
+    font-color: "#0a0f25"
+  }
+}
+SDK: "AWS CLI / SDK" {
+  style: {
+    fill: "#dbeafe"
+    stroke: "#1d4ed8"
+    stroke-width: 2
+    font-color: "#0a0f25"
+  }
+}
+S3: "S3 API\nmy-app-uploads.s3.ap-northeast-1.amazonaws.com" {
+  style: {
+    fill: "#dcfce7"
+    stroke: "#16a34a"
+    stroke-width: 2
+    font-color: "#0a0f25"
+  }
+}
+
+Cli -> SDK: "1. aws s3 cp ./image.png s3://my-app-uploads/users/alice/avatar.png"
+SDK -> SDK: "2. Sign the request with SigV4"
+SDK -> S3: "3. PUT /users/alice/avatar.png\nHost: my-app-uploads.s3.ap-northeast-1.amazonaws.com\nAuthorization: AWS4-HMAC-SHA256 ..."
+S3 -> S3: "4. Verify SigV4 signature (authentication)"
+S3 -> S3: "5. Check Block Public Access"
+S3 -> S3: "6. Evaluate Bucket Policy / IAM Policy / ACL (authorization)"
+S3 -> S3: "7. Apply default encryption and write to disk"
+S3 -> SDK: "8. 200 OK\nETag, VersionId" {style.stroke-dash: 3}
+SDK -> Cli: "9. upload: ./image.png to s3://..." {style.stroke-dash: 3}

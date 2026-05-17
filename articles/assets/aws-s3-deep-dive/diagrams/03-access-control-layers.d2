@@ -1,0 +1,81 @@
+direction: down
+
+classes: {
+  bpa: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+  iam: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  bp: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  acl: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  deny: {
+    style: {
+      fill: "#fecaca"
+      stroke: "#991b1b"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Layer1: "(1) Block Public Access (BPA)" {
+  style.fill: "#fff1f2"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+  BPA: "Physically disables public ACL/Policy\naccount level + bucket level" {class: bpa}
+}
+
+Layer2: "(2) IAM Identity Policy" {
+  style.fill: "#fffbeb"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+  IAM: "Attached to a user/role\n'what this principal can do'" {class: iam}
+}
+
+Layer3: "(3) Bucket Policy" {
+  style.fill: "#eff6ff"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+  BP: "Resource Policy attached to the bucket\n'who can access this bucket'" {class: bp}
+}
+
+Layer4: "(4) ACL (Access Control List)" {
+  style.fill: "#eef2ff"
+  style.stroke: "#4338ca"
+  style.font-color: "#0a0f25"
+  ACL: "Legacy per-object control\neffectively deprecated since 2023" {class: acl}
+}
+
+Req: "Access request" {class: bpa}
+Deny: "Reject immediately" {class: deny}
+
+Req -> Layer1.BPA
+Layer1.BPA -> Layer2.IAM: "Let through if not public"
+Layer1.BPA -> Deny: "Public detected"
+Layer2.IAM -> Layer3.BP
+Layer3.BP -> Layer4.ACL

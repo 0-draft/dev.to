@@ -1,0 +1,62 @@
+direction: down
+
+classes: {
+  start: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  check: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  allow: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+  deny: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Start: "S3 request arrives" {shape: oval; class: start}
+
+BPA: "Is it blocked by\nBlock Public Access?" {shape: diamond; class: check}
+DenyEx: "Is there an explicit Deny\nin IAM/Bucket Policy/SCP?" {shape: diamond; class: check}
+SameAcc: "Same account?" {shape: diamond; class: check}
+IAMAllow: "Does IAM Policy Allow?" {shape: diamond; class: check}
+BPAllow: "Does Bucket Policy Allow?" {shape: diamond; class: check}
+BothAllow: "Do IAM Policy\nand\nBucket Policy\nboth Allow?" {shape: diamond; class: check}
+
+Allow: "Allow" {shape: oval; class: allow}
+Deny: "Deny" {shape: oval; class: deny}
+
+Start -> BPA
+BPA -> Deny: "Yes, treated as public"
+BPA -> DenyEx: "No"
+DenyEx -> Deny: "Yes"
+DenyEx -> SameAcc: "No"
+SameAcc -> IAMAllow: "Yes, same account"
+SameAcc -> BothAllow: "No, cross-account"
+IAMAllow -> Allow: "Yes"
+IAMAllow -> BPAllow: "No"
+BPAllow -> Allow: "Yes"
+BPAllow -> Deny: "No"
+BothAllow -> Allow: "Yes"
+BothAllow -> Deny: "No"

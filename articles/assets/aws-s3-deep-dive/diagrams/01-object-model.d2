@@ -1,0 +1,47 @@
+direction: down
+
+classes: {
+  acc: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  bucket: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  obj: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Acc: "AWS Account" {class: acc}
+
+B1: "Bucket: my-app-logs\nRegion: ap-northeast-1" {class: bucket}
+B2: "Bucket: my-app-uploads\nRegion: ap-northeast-1" {class: bucket}
+
+O1: "Object: 2026/05/14/app.log\n= 1 key + data + metadata" {class: obj}
+O2: "Object: 2026/05/14/access.log" {class: obj}
+O3: "Object: 2026/05/13/app.log" {class: obj}
+O4: "Object: users/alice/avatar.png" {class: obj}
+O5: "Object: users/bob/avatar.png" {class: obj}
+
+Acc -> B1
+Acc -> B2
+B1 -> O1
+B1 -> O2
+B1 -> O3
+B2 -> O4
+B2 -> O5

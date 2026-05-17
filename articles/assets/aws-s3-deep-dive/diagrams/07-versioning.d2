@@ -1,0 +1,29 @@
+direction: right
+
+classes: {
+  obj: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  del: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+O1: "Object key: report.csv\nVersionId: v1" {class: obj}
+O2: "Object key: report.csv\nVersionId: v2 (latest)" {class: obj}
+O3: "Object key: report.csv\nVersionId: v3 (overwrote latest)" {class: obj}
+
+Del: "Delete Marker\n= delete does not remove,\nit places a delete flag" {class: del}
+
+O1 -> O2 -> O3
+O3 -> Del

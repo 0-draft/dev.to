@@ -1,0 +1,35 @@
+direction: down
+
+classes: {
+  q: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ans: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Q1: "Do you need an audit log\n(who used the key, when)?" {shape: diamond; class: q}
+Q2: "Want IAM-level granular\nkey-use permissions?" {shape: diamond; class: q}
+Q3: "Don't want to hand\nthe key to AWS?" {shape: diamond; class: q}
+
+A1: "SSE-S3\n= simple" {class: ans}
+A2: "SSE-KMS\n= audit and separation" {class: ans}
+A3: "CSE\n= key stays local" {class: ans}
+
+Q1 -> Q3: "No"
+Q1 -> A2: "Yes"
+Q2 -> A2: "Yes"
+Q3 -> A1: "No"
+Q3 -> A3: "Yes"
+A1 -> Q2
