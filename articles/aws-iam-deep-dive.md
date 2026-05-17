@@ -295,7 +295,7 @@ Three of these are worth calling out:
 
 ---
 
-## 9. Conclusion
+## Conclusion
 
 - IAM handles both authentication (who?) and authorization (allowed to?).
 - Principals come in four kinds: Root, User, Role, Federated. Groups are containers, not principals.
