@@ -1,5 +1,5 @@
 ---
-title: 'AWS IAM Deep Dive'
+title: AWS IAM Deep Dive
 published: false
 description: 'A full breakdown of AWS IAM: principal types, the SigV4 signing math, the six policy kinds, the evaluation order (Deny beats Allow), and Identity Center, all visualized with Mermaid.'
 tags:
@@ -8,6 +8,7 @@ tags:
   - security
   - authentication
 series: Amazon Web Services
+id: 3686617
 ---
 
 ## Introduction
