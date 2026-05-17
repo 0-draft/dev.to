@@ -36,7 +36,7 @@ This article takes IAM apart in the order auth happens: authentication, then aut
 
 Start by separating authentication (AuthN) from authorization (AuthZ).
 
-![AuthN and AuthZ overview](./assets/aws-iam-deep-dive/diagrams/01-authn-authz-overview.png)
+![AuthN and AuthZ overview](./assets/aws-iam-deep-dive/diagrams/01-authn-authz-overview.png?v=2)
 
 - **Authentication (AuthN)**: pins down "who are you". On AWS, the caller is **whoever owns the credentials that produced this SigV4 signature**.
 - **Authorization (AuthZ)**: decides "can they do this". AWS answers it by **combining multiple policies** and evaluating them together.
@@ -83,7 +83,7 @@ Three pieces to know before reading the diagram:
 - **Trust Policy**: a policy attached to a Role that says **"who is allowed to assume this role"** (e.g. "only this specific IAM User", "only this GitHub Actions repo").
 - **Temporary credentials**: a triple of `AccessKeyId`, `SecretAccessKey`, and `SessionToken`, with an expiry.
 
-![AssumeRole sequence](./assets/aws-iam-deep-dive/diagrams/02-assume-role-sequence.png)
+![AssumeRole sequence](./assets/aws-iam-deep-dive/diagrams/02-assume-role-sequence.png?v=2)
 
 ---
 
@@ -95,11 +95,11 @@ A typical REST API sends something like `Authorization: Bearer <token>` on every
 
 ### The Big Picture
 
-![SigV4 signing sequence](./assets/aws-iam-deep-dive/diagrams/03-sigv4-sequence.png)
+![SigV4 signing sequence](./assets/aws-iam-deep-dive/diagrams/03-sigv4-sequence.png?v=2)
 
 ### What the 4 Steps Actually Do
 
-![SigV4 four steps](./assets/aws-iam-deep-dive/diagrams/04-sigv4-four-steps.png)
+![SigV4 four steps](./assets/aws-iam-deep-dive/diagrams/04-sigv4-four-steps.png?v=2)
 
 Three things to internalize:
 
@@ -184,7 +184,7 @@ Once you start writing IAM seriously, you live inside `Condition`. The ones I re
 
 AWS evaluates the six policy types **in this order** to reach a final decision.
 
-![Policy evaluation flow](./assets/aws-iam-deep-dive/diagrams/05-policy-evaluation.png)
+![Policy evaluation flow](./assets/aws-iam-deep-dive/diagrams/05-policy-evaluation.png?v=2)
 
 (Note: this is the simplified, same-account version. Cross-account access has extra rules, e.g. the Resource Policy Allow is required, but the picture above is enough to grasp the principle.)
 
@@ -237,7 +237,7 @@ Even if an IAM policy inside the account allows RunInstances in every region, **
 
 The era of humans logging in as IAM Users is over. The standard now is **IAM Identity Center** (formerly AWS SSO).
 
-![IAM Identity Center topology](./assets/aws-iam-deep-dive/diagrams/06-identity-center.png)
+![IAM Identity Center topology](./assets/aws-iam-deep-dive/diagrams/06-identity-center.png?v=2)
 
 The points:
 
