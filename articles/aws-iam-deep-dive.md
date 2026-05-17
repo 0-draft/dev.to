@@ -9,7 +9,8 @@ tags:
   - authentication
 series: Amazon Web Services
 id: 3686617
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-iam-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-iam-deep-dive/cover.png'
+date: '2026-05-17T07:10:19Z'
 ---
 
 ## Introduction
