@@ -1,21 +1,24 @@
 shape: sequence_diagram
 
 App: "App / EC2 / Lambda" {
-  shape: person
   style.fill: "#fef3c7"
   style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
 }
 STS: "AWS STS\n(Security Token Service)" {
   style.fill: "#dbeafe"
   style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
 }
 Role: "IAM Role\n(has a Trust Policy)" {
   style.fill: "#dbeafe"
   style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
 }
 Svc: "AWS service\n(e.g. S3)" {
   style.fill: "#dcfce7"
   style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
 }
 
 App -> STS: "1. AssumeRole (RoleArn)"
