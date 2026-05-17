@@ -1,0 +1,59 @@
+direction: down
+
+classes: {
+  authn: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+    }
+  }
+  authz: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+    }
+  }
+  ok: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+    }
+  }
+  ng: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+    }
+  }
+}
+
+req: "Incoming API request"
+
+AuthN: "Authentication" {
+  style.fill: "#fef9c3"
+  style.stroke: "#b45309"
+  Q1: "Who sent this request?" {class: authn}
+  M1: "Verify SigV4 signature\n+ credential lookup" {class: authn}
+  Q1 -> M1
+}
+
+AuthZ: "Authorization" {
+  style.fill: "#eff6ff"
+  style.stroke: "#1d4ed8"
+  Q2: "Are they allowed to do this?" {class: authz}
+  M2: "Identity Policy\nResource Policy\nSCP\nPermissions Boundary\nSession Policy\nevaluated together" {class: authz}
+  Q2 -> M2
+}
+
+OK: "API runs" {class: ok}
+NG: "AccessDenied / InvalidSignature" {class: ng}
+
+req -> AuthN
+AuthN -> AuthZ: "Caller identified"
+AuthZ -> OK
+AuthN -> NG: "fail" {style.stroke-dash: 3}
+AuthZ -> NG: "fail" {style.stroke-dash: 3}

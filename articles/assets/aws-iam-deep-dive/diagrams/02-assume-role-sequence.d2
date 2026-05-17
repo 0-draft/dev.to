@@ -1,0 +1,27 @@
+shape: sequence_diagram
+
+App: "App / EC2 / Lambda" {
+  shape: person
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+}
+STS: "AWS STS\n(Security Token Service)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+}
+Role: "IAM Role\n(has a Trust Policy)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+}
+Svc: "AWS service\n(e.g. S3)" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+}
+
+App -> STS: "1. AssumeRole (RoleArn)"
+STS -> Role: "2. Check Trust Policy\n(is this principal allowed?)"
+Role -> STS: "3. OK" {style.stroke-dash: 3}
+STS -> App: "4. Temp credentials\n(AccessKey + SecretKey + SessionToken)\n+ expiry" {style.stroke-dash: 3}
+App -> Svc: "5. SigV4-signed API call"
+Svc -> Svc: "6. Evaluate policies"
+Svc -> App: "7. Result" {style.stroke-dash: 3}

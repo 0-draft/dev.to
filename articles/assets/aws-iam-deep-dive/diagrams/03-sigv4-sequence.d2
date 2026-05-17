@@ -1,0 +1,33 @@
+shape: sequence_diagram
+
+Client: "Client" {
+  shape: person
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+}
+SDK: "AWS SDK" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+}
+API: "AWS API" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+}
+
+Client -> SDK: "1. Operation request"
+SDK -> SDK: "2. Build Canonical Request"
+SDK -> SDK: "3. Build StringToSign"
+SDK -> SDK: "4. Derive signing key in stages"
+SDK -> SDK: "5. HMAC-SHA256 to produce signature"
+SDK -> API: "6. HTTPS + Authorization header"
+API -> API: "7. Recompute using the same steps"
+API -> API: "8. Compare signatures"
+
+result: "Result" {
+  match: "Match" {
+    API -> SDK: "200 OK" {style.stroke-dash: 3}
+  }
+  mismatch: "Mismatch / clock skew > 15 min" {
+    API -> SDK: "403 SignatureDoesNotMatch / RequestTimeTooSkewed" {style.stroke-dash: 3}
+  }
+}

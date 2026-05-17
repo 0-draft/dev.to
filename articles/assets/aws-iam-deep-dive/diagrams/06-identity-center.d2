@@ -1,0 +1,70 @@
+direction: right
+
+classes: {
+  user: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+    }
+  }
+  idc: {
+    style: {
+      fill: "#fce7f3"
+      stroke: "#be185d"
+      stroke-width: 2
+    }
+  }
+  idp: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+    }
+  }
+  pset: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+    }
+  }
+  acc: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+    }
+  }
+}
+
+User: "Employee" {class: user; shape: person}
+
+IdC: "IAM Identity Center\nlogin portal" {class: idc}
+
+IdP1: "Google Workspace" {class: idp}
+IdP2: "Microsoft Entra ID" {class: idp}
+IdP3: "Okta" {class: idp}
+Internal: "Built-in directory" {class: idp}
+
+PSet1: "Permission Set: ReadOnly" {class: pset}
+PSet2: "Permission Set: PowerUser" {class: pset}
+PSet3: "Permission Set: BillingViewer" {class: pset}
+
+Acc1: "Account A" {class: acc}
+Acc2: "Account B" {class: acc}
+Acc3: "Account C" {class: acc}
+
+User -> IdC: "SSO login\nSAML / OIDC"
+IdP1 -> IdC: "SCIM provisioning" {style.stroke-dash: 3}
+IdP2 -> IdC {style.stroke-dash: 3}
+IdP3 -> IdC {style.stroke-dash: 3}
+Internal -> IdC {style.stroke-dash: 3}
+
+IdC -> PSet1
+IdC -> PSet2
+IdC -> PSet3
+
+PSet1 -> Acc1: "AssumeRole\ntemp credentials"
+PSet2 -> Acc2
+PSet3 -> Acc3

@@ -1,0 +1,34 @@
+direction: down
+
+classes: {
+  req: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+    }
+  }
+  step: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+    }
+  }
+  auth: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+    }
+  }
+}
+
+R: "Original request\nHTTP method + URI + headers + body" {class: req}
+S1: "1. Canonical Request\n= request normalized into a deterministic string" {class: step}
+S2: "2. StringToSign\n= algorithm + timestamp + Credential Scope + hash of Canonical Request" {class: step}
+S3: "3. Signing Key\n= kSecret -> kDate -> kRegion -> kService -> kSigning\nderived in stages via HMAC" {class: step}
+S4: "4. Signature\n= HMAC-SHA256 over StringToSign with Signing Key" {class: step}
+Auth: "Sent in the Authorization header\nAWS4-HMAC-SHA256 Credential=..., SignedHeaders=..., Signature=..." {class: auth}
+
+R -> S1 -> S2 -> S3 -> S4 -> Auth

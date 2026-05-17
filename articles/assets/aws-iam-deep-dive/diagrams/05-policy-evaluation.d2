@@ -1,0 +1,58 @@
+direction: down
+
+classes: {
+  start: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+    }
+  }
+  check: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+    }
+  }
+  allow: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 3
+    }
+  }
+  deny: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 3
+    }
+  }
+}
+
+Start: "Request arrives" {class: start; shape: oval}
+
+D1: "Any explicit Deny\nanywhere?" {class: check; shape: diamond}
+SCP1: "Do SCP / RCP\nallow it?" {class: check; shape: diamond}
+RP1: "What does the\nResource Policy say?" {class: check; shape: diamond}
+IPB1: "Does the Permissions Boundary\nallow it?" {class: check; shape: diamond}
+SES1: "Does the Session Policy\nallow it?" {class: check; shape: diamond}
+IDP1: "Does the Identity Policy\nor Resource Policy\nallow it?" {class: check; shape: diamond}
+
+Deny: "Deny" {class: deny; shape: oval}
+Allow: "Allow" {class: allow; shape: oval}
+
+Start -> D1
+D1 -> Deny: "Yes, Deny found"
+D1 -> SCP1: "No"
+SCP1 -> Deny: "No, org blocked it"
+SCP1 -> RP1: "Yes"
+RP1 -> Allow: "Explicit Allow in\nResource Policy"
+RP1 -> IPB1: "None or rejected"
+IPB1 -> Deny: "No, outside ceiling"
+IPB1 -> SES1: "Yes"
+SES1 -> Deny: "No"
+SES1 -> IDP1: "Yes or absent"
+IDP1 -> Deny: "Neither allows"
+IDP1 -> Allow: "Either allows"
