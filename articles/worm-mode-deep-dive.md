@@ -1,5 +1,5 @@
 ---
-title: 'WORM (Write Once Read Many) Deep Dive'
+title: WORM (Write Once Read Many) Deep Dive
 published: true
 description: 'A complete tour of WORM (Write Once Read Many) storage, from 1980s optical disc days to modern S3 Object Lock / Azure Immutable Blob / GCS Bucket Lock. Visualizes SEC 17a-4, FINRA fine cases, NetApp SnapLock ComplianceClock, and real-world bank / hospital / data center deployments for ransomware defense with Mermaid diagrams.'
 tags:
@@ -7,8 +7,10 @@ tags:
   - security
   - compliance
   - aws
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/worm-mode-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/worm-mode-deep-dive/cover.png'
 series: Amazon Web Services
+id: 3694609
+date: '2026-05-18T15:49:44Z'
 ---
 
 ## Introduction
