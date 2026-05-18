@@ -1,5 +1,5 @@
 ---
-title: 'AWS S3 Deep Dive'
+title: AWS S3 Deep Dive
 published: true
 description: 'A hands-on, example-driven dissection of AWS S3: the object model visualized with diagrams, the 4 layers of access control (IAM/Bucket Policy/ACL/Block Public Access), and the 4 forms of encryption (SSE-S3/SSE-KMS/SSE-C/CSE).'
 tags:
@@ -8,7 +8,9 @@ tags:
   - security
   - storage
 series: Amazon Web Services
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-s3-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-s3-deep-dive/cover.png'
+id: 3692843
+date: '2026-05-18T10:45:59Z'
 ---
 
 ## Introduction
