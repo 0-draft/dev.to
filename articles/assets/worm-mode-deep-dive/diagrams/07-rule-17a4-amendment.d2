@@ -1,0 +1,48 @@
+direction: right
+
+classes: {
+  rule: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  worm: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  audit: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ex: {
+    style: {
+      fill: "#f5f5f4"
+      stroke: "#78716c"
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Rule17a4: "SEC Rule 17a-4" {class: rule}
+
+WORM: "1. WORM method\nstored as non-rewriteable" {class: worm}
+Audit: "2. Audit Trail method (2022)\nfull change history kept" {class: audit}
+
+WORMex: "S3 Object Lock Compliance\nNetApp SnapLock Compliance\noptical disc" {class: ex}
+Auditex: "record before/after for all changes\nirreversible log of who/when" {class: ex}
+
+Rule17a4 -> WORM
+Rule17a4 -> Audit
+WORM -> WORMex
+Audit -> Auditex

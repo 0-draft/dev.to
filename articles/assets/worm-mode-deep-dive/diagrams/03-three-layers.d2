@@ -1,0 +1,62 @@
+direction: down
+
+classes: {
+  layer1: {
+    style: {
+      fill: "#fde68a"
+      stroke: "#a16207"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  layer2: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  layer3: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ex: {
+    style: {
+      fill: "#f5f5f4"
+      stroke: "#78716c"
+      font-color: "#0a0f25"
+    }
+  }
+  use: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Layer1: "1. physical media\nWORM" {class: layer1}
+Layer2: "2. on-prem software\nWORM" {class: layer2}
+Layer3: "3. cloud\nWORM" {class: layer3}
+
+L1Ex: "optical disc, WORM tape\ne.g. Sony Optical Disc Archive" {class: ex}
+L2Ex: "NetApp SnapLock\nDell EMC Centera (EOL)\nHPE StoreOnce" {class: ex}
+L3Ex: "AWS S3 Object Lock\nAzure Immutable Blob\nGCS Bucket Lock" {class: ex}
+
+Use1: "movie masters, public records" {class: use}
+Use2: "bank mainframe integration" {class: use}
+Use3: "all new systems" {class: use}
+
+Layer1 -> L1Ex
+Layer2 -> L2Ex
+Layer3 -> L3Ex
+
+L1Ex -> Use1: "strong long-term\ndoes not scale"
+L2Ex -> Use2: "fits existing NAS ops\nhigh initial cost"
+L3Ex -> Use3: "one API, scales\nmainstream"

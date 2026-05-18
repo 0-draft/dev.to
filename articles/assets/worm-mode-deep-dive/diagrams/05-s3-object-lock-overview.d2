@@ -1,0 +1,95 @@
+direction: down
+
+classes: {
+  bucket: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ver: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  obj: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  gov: {
+    style: {
+      fill: "#fde68a"
+      stroke: "#a16207"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  comp: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  lh: {
+    style: {
+      fill: "#fce7f3"
+      stroke: "#be185d"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ok: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  no: {
+    style: {
+      fill: "#fecaca"
+      stroke: "#991b1b"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Bucket: "S3 Bucket\nObject Lock = ON" {class: bucket}
+Ver: "Versioning\nautomatically ON" {class: ver}
+Obj: "object Put" {class: obj}
+
+R: "Retention Mode" {class: obj}
+LH: "Legal Hold" {class: lh}
+
+Gov: "Governance Mode\nremovable with privilege" {class: gov}
+Comp: "Compliance Mode\nnot removable even by root" {class: comp}
+LHmode: "Legal Hold\nforever until released" {class: lh}
+
+GovOK: "deletable via\ns3:BypassGovernanceRetention" {class: ok}
+CompNo: "not deletable until retention ends" {class: no}
+LHOK: "release with\ns3:PutObjectLegalHold" {class: ok}
+
+Bucket -> Ver
+Bucket -> Obj
+Obj -> R
+Obj -> LH
+R -> Gov
+R -> Comp
+LH -> LHmode
+
+Gov -> GovOK: "privileged user" {style.stroke-dash: 3}
+Comp -> CompNo: "nobody" {style.stroke-dash: 3}
+LHmode -> LHOK: "explicit release" {style.stroke-dash: 3}

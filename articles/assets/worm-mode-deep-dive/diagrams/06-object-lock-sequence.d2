@@ -1,0 +1,49 @@
+shape: sequence_diagram
+
+App: "app" {
+  style: {
+    fill: "#dbeafe"
+    stroke: "#2563eb"
+    font-color: "#0a0f25"
+  }
+}
+Admin: "admin" {
+  style: {
+    fill: "#fef3c7"
+    stroke: "#b45309"
+    font-color: "#0a0f25"
+  }
+}
+S3: "S3" {
+  style: {
+    fill: "#fde68a"
+    stroke: "#a16207"
+    font-color: "#0a0f25"
+  }
+}
+Storage: "physical storage" {
+  style: {
+    fill: "#e5e7eb"
+    stroke: "#4b5563"
+    font-color: "#0a0f25"
+  }
+}
+
+App -> S3: "1. PutObject + Compliance 7 years"
+S3 -> Storage: "2. write version v1 with WORM attribute"
+Storage -> S3: "3. write complete" {style.stroke-dash: 3}
+S3 -> App: "4. 200 OK" {style.stroke-dash: 3}
+
+a_few_days: "a few days later" {
+  Admin -> S3: "5. DeleteObject (v1)"
+  S3 -> S3: "6. retention check\nretain-until > now ?"
+  S3 -> Admin: "7. 403 AccessDenied\nObject is WORM protected" {style.stroke-dash: 3}
+}
+
+seven_years: "7 years later" {
+  Admin -> S3: "8. DeleteObject (v1)"
+  S3 -> S3: "9. retention has passed"
+  S3 -> Storage: "10. delete version v1"
+  Storage -> S3: "11. delete complete" {style.stroke-dash: 3}
+  S3 -> Admin: "12. 204 No Content" {style.stroke-dash: 3}
+}

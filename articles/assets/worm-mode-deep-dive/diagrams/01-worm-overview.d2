@@ -1,0 +1,55 @@
+direction: right
+
+classes: {
+  write: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  lock: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  read: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  wait: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  expire: {
+    style: {
+      fill: "#e5e7eb"
+      stroke: "#4b5563"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Write: "Write\nwrite once" {class: write}
+Lock: "Lock\nset retention" {class: lock}
+Read: "Read\nread any number of times" {class: read}
+Wait: "no delete/overwrite\nduring retention" {class: wait}
+Expire: "retention expired\nnow deletable" {class: expire}
+
+Write -> Lock
+Lock -> Read
+Lock -> Wait
+Wait -> Expire

@@ -1,0 +1,51 @@
+direction: down
+title: "History of WORM technology" {
+  near: top-center
+  shape: text
+  style: {
+    font-size: 24
+    bold: true
+    font-color: "#0a0f25"
+  }
+}
+
+classes: {
+  era1: {
+    style: {
+      fill: "#fde68a"
+      stroke: "#a16207"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  era2: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  era3: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+y1984: "1984\n12 inch optical disc WORM\ncommercialized (IBM 3363)" {class: era1}
+y1985: "1985\n5.25 inch Magneto-Optical\nWORM only at first" {class: era1}
+y1991: "1991\nCD-R commercialized\nburning = physical WORM" {class: era1}
+y1995: "1995\nDVD-R standard finalized" {class: era1}
+y2002: "2002\nEMC Centera appears\nlogical WORM on hard disk" {class: era2}
+y2003: "2003\nNetApp SnapLock\nadopts ComplianceClock" {class: era2}
+y2018: "2018\nAWS S3 Object Lock GA" {class: era3}
+y2020: "2020\nAzure Immutable Blob GA" {class: era3}
+y2022: "2022\nSEC 17a-4 amended\nAudit Trail allowed too" {class: era3}
+y2023: "2023\nS3 Object Lock retrofittable\nGCS Object Retention Lock GA" {class: era3}
+y2025: "2025\nSnowflake WORM Backup GA" {class: era3}
+
+y1984 -> y1985 -> y1991 -> y1995 -> y2002 -> y2003 -> y2018 -> y2020 -> y2022 -> y2023 -> y2025

@@ -1,0 +1,45 @@
+direction: right
+
+classes: {
+  cust: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  linux: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  dc: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  b2: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Cust: "customer environment" {class: cust}
+Linux: "hardened Linux appliance\nat customer site\n1st line immutable" {class: linux}
+DC: "Continuity Centers DC\nhigh-speed SAN\nImmutable Performance Tier" {class: dc}
+B2: "Backblaze B2\nObject Lock\n3rd line immutable" {class: b2}
+
+Cust -> Linux: "backup"
+Linux -> DC: "replicate"
+DC -> B2: "offsite replicate\nObject Lock flag"

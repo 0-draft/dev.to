@@ -1,0 +1,46 @@
+shape: sequence_diagram
+
+User: "user" {
+  style: {
+    fill: "#dbeafe"
+    stroke: "#2563eb"
+    font-color: "#0a0f25"
+  }
+}
+App: "app" {
+  style: {
+    fill: "#fef3c7"
+    stroke: "#b45309"
+    font-color: "#0a0f25"
+  }
+}
+KMS: "KMS (deletable)" {
+  style: {
+    fill: "#e0e7ff"
+    stroke: "#4338ca"
+    font-color: "#0a0f25"
+  }
+}
+S3: "S3 (WORM, not deletable)" {
+  style: {
+    fill: "#fee2e2"
+    stroke: "#dc2626"
+    font-color: "#0a0f25"
+  }
+}
+
+write: "on normal write" {
+  User -> App: "1. enter personal data"
+  App -> KMS: "2. generate per-user key"
+  KMS -> App: "3. key K_user" {style.stroke-dash: 3}
+  App -> App: "4. encrypt with K_user"
+  App -> S3: "5. PUT encrypted data (WORM lock)"
+}
+
+delete_req: "years later: GDPR delete request" {
+  User -> App: "6. delete my data"
+  App -> KMS: "7. delete K_user"
+  KMS -> App: "8. key destroyed" {style.stroke-dash: 3}
+  App -> S3: "9. ciphertext stays, no key = effectively deleted"
+  App -> User: "10. deletion confirmed" {style.stroke-dash: 3}
+}

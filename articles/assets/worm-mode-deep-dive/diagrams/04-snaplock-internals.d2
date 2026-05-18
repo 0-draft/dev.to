@@ -1,0 +1,85 @@
+direction: down
+
+classes: {
+  file: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  commit: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  worm: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  cc: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  reject: {
+    style: {
+      fill: "#fecaca"
+      stroke: "#991b1b"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ok: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  action: {
+    style: {
+      fill: "#f5f5f4"
+      stroke: "#78716c"
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+File: "normal file\nwritten over NFS/CIFS" {class: file}
+Commit: "set read-only attribute\n= WORM commit" {class: commit}
+WORM: "WORM file\nretention applied" {class: worm}
+CC: "ComplianceClock\nindependent clock" {class: cc}
+
+Del: "user DELETE" {class: action}
+Bypass: "admin DELETE" {class: action}
+Past: "turn back OS clock" {class: action}
+
+Reject1: "rejected" {class: reject}
+OK1: "deletable" {class: ok}
+Reject2: "even root rejected" {class: reject}
+OK2: "deletable / logged" {class: ok}
+
+File -> Commit -> WORM
+
+Del -> Reject1: "within retention"
+Del -> OK1: "past retention"
+
+Bypass -> Reject2: "Compliance mode"
+Bypass -> OK2: "Enterprise + privileged"
+
+Past -> CC: "ComplianceClock\ncannot go back"
+
+WORM -> CC: "reference clock" {style.stroke-dash: 3}
