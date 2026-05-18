@@ -1,5 +1,5 @@
 ---
-title: 'AWS Deep Dive'
+title: AWS Deep Dive
 published: true
 description: 'A first-principles tour of AWS for people who keep saying they "get it" but want to actually get it: the physical hierarchy of Regions and AZs, the logical hierarchy of accounts and Organizations, the single HTTPS API entry point, and SigV4 plus the basics of authn/authz.'
 tags:
