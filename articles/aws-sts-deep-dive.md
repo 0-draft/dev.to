@@ -1,5 +1,5 @@
 ---
-title: 'AWS STS Deep Dive'
+title: AWS STS Deep Dive
 published: true
 description: 'I treated AssumeRole as a single API while writing the IAM piece. STS is actually 6 separate APIs (SAML / WebIdentity / Root / SessionToken / FederationToken), and Source Identity, External ID, and Session Policy change its shape entirely. This article opens every box.'
 tags:
@@ -8,7 +8,9 @@ tags:
   - iam
   - security
 series: Amazon Web Services
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-sts-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-sts-deep-dive/cover.png'
+id: 3739889
+date: '2026-05-24T11:34:59Z'
 ---
 
 ## Introduction
