@@ -1,0 +1,31 @@
+shape: sequence_diagram
+
+Job: "GitHub Actions Job" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+GH: "token.actions.\ngithubusercontent.com" {
+  style.fill: "#e0e7ff"
+  style.stroke: "#4338ca"
+  style.font-color: "#0a0f25"
+}
+STS: "STS (Regional)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+AWS: "AWS Service" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+
+Job -> GH: "1. request OIDC id_token\n(JWT, short lifetime)"
+GH -> Job: "2. id_token\n(sub=repo:my-org/my-repo:ref:refs/heads/main)" {style.stroke-dash: 3}
+Job -> STS: "3. AssumeRoleWithWebIdentity\n(RoleArn, WebIdentityToken=id_token)"
+STS -> STS: "4. verify JWT signature\n(using the OIDC Provider's public key)"
+STS -> STS: "5. evaluate Role's Trust Policy\n(sub StringLike condition)"
+STS -> Job: "6. temporary credential (ASIA...)" {style.stroke-dash: 3}
+Job -> AWS: "7. regular API call"
+AWS -> Job: "8. 200 OK" {style.stroke-dash: 3}

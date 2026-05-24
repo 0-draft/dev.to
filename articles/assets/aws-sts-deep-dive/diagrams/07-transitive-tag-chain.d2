@@ -1,0 +1,29 @@
+direction: right
+
+classes: {
+  src: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  chain: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Init: "Alice + IdP attributes\nTeam=ml, Project=recsys" {class: src}
+A: "AssumeRole into Role A\nSession Tag: Team=ml, Project=recsys\nTransitive: Team" {class: chain}
+B: "AssumeRole into Role B\nonly Transitive survives\nTag: Team=ml" {class: chain}
+C: "AssumeRole into Role C\nTag: Team=ml\n(Transitive cannot be peeled off)" {class: chain}
+
+Init -> A
+A -> B
+B -> C

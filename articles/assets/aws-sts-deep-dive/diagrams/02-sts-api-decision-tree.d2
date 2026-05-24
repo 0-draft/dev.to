@@ -1,0 +1,72 @@
+direction: down
+
+classes: {
+  q: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  inside: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  external: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  root: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Start: "I need a temporary credential" {class: q}
+Q1: "Is the caller a Principal\ninside AWS? Or outside?" {
+  class: q
+  shape: diamond
+}
+Q2: "What kind of source Principal?" {
+  class: q
+  shape: diamond
+}
+Q3: "What protocol does\nthe external IdP speak?" {
+  class: q
+  shape: diamond
+}
+Q4: "From Management Account,\nact as Member Account root?" {
+  class: q
+  shape: diamond
+}
+
+A_AssumeRole: "AssumeRole\nswitch into a Role\nsame or cross-account" {class: inside}
+A_GetSession: "GetSessionToken\nIAM User MFA upgrade etc" {class: inside}
+A_GetFed: "GetFederationToken\nIAM User mints credentials\non behalf of someone else" {class: inside}
+A_SAML: "AssumeRoleWithSAML\nSAML 2.0 IdP" {class: external}
+A_OIDC: "AssumeRoleWithWebIdentity\nOIDC IdP\nGitHub Actions / Cognito / Google" {class: external}
+A_Root: "AssumeRoot\n2024 re:Invent\nRoot powers for 15 min" {class: root}
+
+Start -> Q1
+Q1 -> Q2: "inside"
+Q1 -> Q3: "outside"
+Q1 -> Q4: "root delegation"
+Q2 -> A_AssumeRole: "IAM Role / Role"
+Q2 -> A_GetSession: "IAM User + MFA"
+Q2 -> A_GetFed: "IAM User minting on behalf"
+Q3 -> A_SAML: "SAML 2.0"
+Q3 -> A_OIDC: "OIDC"
+Q4 -> A_Root

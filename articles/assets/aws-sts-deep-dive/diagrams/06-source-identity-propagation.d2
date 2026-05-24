@@ -1,0 +1,34 @@
+shape: sequence_diagram
+
+Alice: "Alice\n(IAM Identity Center)" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+RoleA: "Role A\n(first hop)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+RoleB: "Role B\n(second hop)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+Service: "S3 / DynamoDB" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+CT: "CloudTrail" {
+  style.fill: "#e0e7ff"
+  style.stroke: "#4338ca"
+  style.font-color: "#0a0f25"
+}
+
+Alice -> RoleA: "1. AssumeRole\nsource-identity alice@example.com"
+RoleA -> Alice: "2. temporary credential\nsourceIdentity=alice@example.com" {style.stroke-dash: 3}
+Alice -> RoleB: "3. AssumeRole (from Role A)\n(no source-identity flag)"
+RoleB -> Alice: "4. temporary credential\nsourceIdentity=alice@example.com\n(propagated automatically)" {style.stroke-dash: 3}
+Alice -> Service: "5. GetObject"
+Service -> CT: "6. log entry\nsourceIdentity: alice@example.com\nuserArn: .../Role B/..."

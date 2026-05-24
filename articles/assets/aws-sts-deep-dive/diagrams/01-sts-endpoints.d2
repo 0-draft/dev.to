@@ -1,0 +1,61 @@
+direction: right
+
+classes: {
+  sdk: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  global: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  regional: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ng: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  ok: {
+    style: {
+      fill: "#bbf7d0"
+      stroke: "#15803d"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+SDK: "AWS SDK / CLI" {class: sdk}
+Global: "Global Endpoint\nsts.amazonaws.com\nhosted only in us-east-1" {class: global}
+Tokyo: "Regional\nsts.ap-northeast-1.amazonaws.com" {class: regional}
+Frankfurt: "Regional\nsts.eu-central-1.amazonaws.com" {class: regional}
+Bahrain: "Regional Opt-in\nsts.me-south-1.amazonaws.com" {class: regional}
+OptInNG: "unusable in Opt-in Regions" {class: ng}
+AnyRegion: "works in every Region" {class: ok}
+
+SDK -> Global: "legacy config" {style.stroke-dash: 3}
+SDK -> Tokyo: "recommended default"
+SDK -> Frankfurt: "recommended default"
+SDK -> Bahrain: "recommended default"
+Global -> OptInNG: "issued token" {style.stroke-dash: 3}
+Tokyo -> AnyRegion
+Frankfurt -> AnyRegion
+Bahrain -> AnyRegion

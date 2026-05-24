@@ -1,0 +1,36 @@
+shape: sequence_diagram
+
+Caller: "Caller\n(IAM User / Role / Federated)" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+STS: "STS" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+Trust: "Role's\nTrust Policy" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+Identity: "Role's\nIdentity Policy" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+Service: "AWS Service\n(e.g. S3)" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+
+Caller -> STS: "1. AssumeRole(RoleArn, SessionName)"
+STS -> Trust: "2. Is this Caller Allow-ed?"
+Trust -> STS: "3. Allow" {style.stroke-dash: 3}
+STS -> Caller: "4. temporary credential\n(ASIA + Secret + SessionToken)" {style.stroke-dash: 3}
+Caller -> Service: "5. GetObject (SigV4)"
+Service -> Identity: "6. Is the assumed Role Allow-ed this Action?"
+Identity -> Service: "7. Allow" {style.stroke-dash: 3}
+Service -> Caller: "8. content" {style.stroke-dash: 3}

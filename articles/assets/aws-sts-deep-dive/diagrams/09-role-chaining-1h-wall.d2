@@ -1,0 +1,31 @@
+shape: sequence_diagram
+
+User: "IAM User\nor Federated" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+RoleA: "RoleA" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+RoleB: "RoleB" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+RoleC: "RoleC" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+
+User -> RoleA: "1. AssumeRole\nDurationSeconds=43200 (12h)\ngranted"
+RoleA -> User: "2. valid for 12 h" {style.stroke-dash: 3}
+User -> RoleB: "3. AssumeRole (via Role A credentials)\nrequests DurationSeconds=43200"
+RoleB -> User: "4. ValidationError\nafter chaining, max is 1 h" {style.stroke-dash: 3}
+User -> RoleB: "5. AssumeRole (via Role A credentials)\nDurationSeconds=3600 (1h)"
+RoleB -> User: "6. valid for 1 h" {style.stroke-dash: 3}
+User -> RoleC: "7. chain again\nDurationSeconds=3600"
+RoleC -> User: "8. valid for 1 h" {style.stroke-dash: 3}

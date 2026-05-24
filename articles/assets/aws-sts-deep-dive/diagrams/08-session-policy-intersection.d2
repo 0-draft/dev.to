@@ -1,0 +1,45 @@
+direction: down
+
+classes: {
+  role: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  session: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  inter: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+  final: {
+    style: {
+      fill: "#bbf7d0"
+      stroke: "#15803d"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Role: "Role's Identity Policy\n= original permission set" {class: role}
+Session: "Session Policy\n= AssumeRole argument" {class: session}
+Inter: "AND intersection of both\n= effective session permissions" {class: inter}
+Final: "what is actually doable\n= what both Role and Session\njointly Allow" {class: final}
+
+Role -> Inter
+Session -> Inter
+Inter -> Final

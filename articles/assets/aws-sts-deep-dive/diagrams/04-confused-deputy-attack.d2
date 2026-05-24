@@ -1,0 +1,22 @@
+shape: sequence_diagram
+
+Attacker: "Attacker's\nAWS account" {
+  style.fill: "#fee2e2"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+Vendor: "SaaS Vendor\n(AWS account XYZ)" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+VictimRole: "Victim's AWS Role\n(Victim's account)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+
+Attacker -> Vendor: "1. my tenant config Role ARN is\n(Victim's Role ARN)\nfalsely registered"
+Vendor -> VictimRole: "2. AssumeRole\n(triggered by the Attacker)"
+VictimRole -> Vendor: "3. temporary credential issued" {style.stroke-dash: 3}
+Vendor -> Vendor: "4. reads or writes Victim resources\nfor the Attacker"

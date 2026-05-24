@@ -1,0 +1,21 @@
+shape: sequence_diagram
+
+Attacker: "Attacker" {
+  style.fill: "#fee2e2"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+Vendor: "SaaS Vendor" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+VictimRole: "Victim Role\n(Trust Policy requires\nExternalId=XYZ)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+
+Attacker -> Vendor: "1. my Role is (Victim ARN),\nExternalId is something random"
+Vendor -> VictimRole: "2. AssumeRole(ExternalId=random)"
+VictimRole -> Vendor: "3. Deny: ExternalId mismatch" {style.stroke-dash: 3}

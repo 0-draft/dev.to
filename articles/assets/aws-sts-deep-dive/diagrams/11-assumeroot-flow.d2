@@ -1,0 +1,35 @@
+shape: sequence_diagram
+
+Admin: "Org admin\n(Management Account Principal)" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+Mgmt: "Management Account" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+STS: "STS" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+Member: "Member Account\n(target account)" {
+  style.fill: "#fee2e2"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+Service: "S3 (example)" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+
+Admin -> STS: "1. AssumeRoot\nTargetPrincipal=Member account ID\nTaskPolicyArn=AWSRoot/S3UnlockBucketPolicy\nDurationSeconds=900"
+STS -> Mgmt: "2. does caller hold sts:AssumeRoot?"
+Mgmt -> STS: "3. Allow" {style.stroke-dash: 3}
+STS -> Member: "4. mint a Root-equivalent session\nscoped by TaskPolicy"
+STS -> Admin: "5. temporary credential\n(valid 15 min)" {style.stroke-dash: 3}
+Admin -> Service: "6. DeleteBucketPolicy\n(against Member Account's bucket)"
+Service -> Admin: "7. success" {style.stroke-dash: 3}
