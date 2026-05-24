@@ -69,7 +69,7 @@ Why.
 
 Around July 31, 2025, the SDK defaults for boto3 v1.40.0, PHP, C++, .NET, and Tools for PowerShell flipped to Regional (Global used to be the default). Go, Node, and Java were already Regional by default. Whatever SDK you are using without thinking about it is basically already Regional.
 
-![STS endpoints: Global vs Regional](./assets/aws-sts-deep-dive/diagrams/01-sts-endpoints.png)
+![STS endpoints: Global vs Regional](./assets/aws-sts-deep-dive/diagrams/01-sts-endpoints.png?v=2)
 
 For the CLI, set `AWS_STS_REGIONAL_ENDPOINTS=regional` (or `sts_regional_endpoints = regional` in `~/.aws/config`) to make the choice explicit. New projects should standardize on Regional without thinking.
 
@@ -116,7 +116,7 @@ SDKs handle all of this automatically, so you rarely write it by hand. But when 
 
 STS has multiple similarly named APIs and people mix them up every time. Picture first.
 
-![STS API decision tree](./assets/aws-sts-deep-dive/diagrams/02-sts-api-decision-tree.png)
+![STS API decision tree](./assets/aws-sts-deep-dive/diagrams/02-sts-api-decision-tree.png?v=2)
 
 One line per API.
 
@@ -169,7 +169,7 @@ That era is over. The same outcome ships via **Identity Center + Permission Set 
 | **Trust Policy**    | The Role's `AssumeRolePolicyDocument`   | When `AssumeRole` is called             | "Who is allowed to assume this Role?"   |
 | **Identity Policy** | Policies attached to the Role           | On each API call after assuming         | "What can the assumed Role do?"         |
 
-![Trust Policy and Identity Policy evaluation flow](./assets/aws-sts-deep-dive/diagrams/03-trust-identity-policy-flow.png)
+![Trust Policy and Identity Policy evaluation flow](./assets/aws-sts-deep-dive/diagrams/03-trust-identity-policy-flow.png?v=2)
 
 Both are JSON policy documents with nearly identical syntax. The one difference: **whether you write `Principal`**.
 
@@ -211,7 +211,7 @@ If a SaaS vendor has ever asked you to "add this ExternalId to your AWS Role's T
 
 An attack where "a third party (the Deputy) who legitimately holds permissions on your behalf" is tricked by a different attacker into exercising those permissions for someone other than you.
 
-![Confused Deputy attack via SaaS Vendor](./assets/aws-sts-deep-dive/diagrams/04-confused-deputy-attack.png)
+![Confused Deputy attack via SaaS Vendor](./assets/aws-sts-deep-dive/diagrams/04-confused-deputy-attack.png?v=2)
 
 The Victim's Trust Policy only says "the Vendor's AWS account may assume this Role." The SaaS vendor's system mints AssumeRole calls on behalf of many customers. If the Vendor's tenant isolation is sloppy, the attacker registers "my tenant's Role ARN is (actually the Victim's Role ARN)" and the Vendor unwittingly assumes the Victim's Role.
 
@@ -219,7 +219,7 @@ The Victim's Trust Policy only says "the Vendor's AWS account may assume this Ro
 
 ExternalId is **"a value only the Victim knows, that the SaaS vendor must include when assuming the Victim's Role for that tenant."** The Victim writes it into the Trust Policy, the Vendor passes it via `--external-id`.
 
-![ExternalId blocks the Confused Deputy attack](./assets/aws-sts-deep-dive/diagrams/05-externalid-blocks-attack.png)
+![ExternalId blocks the Confused Deputy attack](./assets/aws-sts-deep-dive/diagrams/05-externalid-blocks-attack.png?v=2)
 
 The Victim's Trust Policy looks like this.
 
@@ -271,7 +271,7 @@ Source Identity solves this.
 
 So stamping the "original human ID" at the first AssumeRole locks it in for the whole chain.
 
-![Source Identity propagation across Role Chain](./assets/aws-sts-deep-dive/diagrams/06-source-identity-propagation.png)
+![Source Identity propagation across Role Chain](./assets/aws-sts-deep-dive/diagrams/06-source-identity-propagation.png?v=2)
 
 ### Enforce it in the Trust Policy
 
@@ -362,7 +362,7 @@ aws sts assume-role \
 
 Now `aws:PrincipalTag/Team=ml` stays alive across Role A to Role B to Role C. `Project` drops at the first hop.
 
-![Transitive Tag survives Role Chain](./assets/aws-sts-deep-dive/diagrams/07-transitive-tag-chain.png)
+![Transitive Tag survives Role Chain](./assets/aws-sts-deep-dive/diagrams/07-transitive-tag-chain.png?v=2)
 
 Transitive Tag also gives you a guarantee: **an attribute stamped upstream cannot be overwritten downstream**. Even if a downstream call to AssumeRole sets `--tags Team=admin` with the same key, the upstream Transitive Tag wins.
 
@@ -394,7 +394,7 @@ Important rules.
 - Even if the Role allows all of `s3:*`, a Session Policy restricted to `s3:GetObject` ends up at just `s3:GetObject`.
 - Writing `ec2:*` in a Session Policy when the Role does not allow it grants nothing.
 
-![Session Policy as intersection with Role Identity Policy](./assets/aws-sts-deep-dive/diagrams/08-session-policy-intersection.png)
+![Session Policy as intersection with Role Identity Policy](./assets/aws-sts-deep-dive/diagrams/08-session-policy-intersection.png?v=2)
 
 Use cases.
 
@@ -410,7 +410,7 @@ You can pass up to 10 managed policy ARNs plus 1 inline policy (the inline one h
 
 Role Chaining means "use Role A's temporary credential to AssumeRole into Role B."
 
-![Role Chaining capped at 1 hour after first hop](./assets/aws-sts-deep-dive/diagrams/09-role-chaining-1h-wall.png)
+![Role Chaining capped at 1 hour after first hop](./assets/aws-sts-deep-dive/diagrams/09-role-chaining-1h-wall.png?v=2)
 
 The trap: **once you chain, DurationSeconds is hard-capped at 1 hour (3600 s) for every hop after the first**. Even if the Role's MaxSessionDuration is 12 hours, a request beyond 1 hour is rejected.
 
@@ -447,7 +447,7 @@ Check with `aws iam get-role --role-name MyRole` to see `MaxSessionDuration`.
 
 The most popular use of `AssumeRoleWithWebIdentity` is GitHub Actions OIDC. It ends the era of putting long-lived keys (`AKIA...`) into GitHub Secrets.
 
-![GitHub Actions OIDC into AWS STS](./assets/aws-sts-deep-dive/diagrams/10-github-actions-oidc.png)
+![GitHub Actions OIDC into AWS STS](./assets/aws-sts-deep-dive/diagrams/10-github-actions-oidc.png?v=2)
 
 Just the points.
 
@@ -542,7 +542,7 @@ Doing these required logging into the Member Account's Root, and maintaining MFA
 
 ### Flow
 
-![AssumeRoot flow for Member Account root tasks](./assets/aws-sts-deep-dive/diagrams/11-assumeroot-flow.png)
+![AssumeRoot flow for Member Account root tasks](./assets/aws-sts-deep-dive/diagrams/11-assumeroot-flow.png?v=2)
 
 ### Scoping via TaskPolicy
 
