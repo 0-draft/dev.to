@@ -1,6 +1,6 @@
 ---
-title: 'IAM Roles Anywhere Hands-On: Hit AWS from On-Prem or Your Laptop Without AKIA Keys'
-published: false
+title: 'IAM Roles Anywhere Hands-On'
+published: true
 description: 'When you''re outside EC2/Lambda (home laptop, on-prem server, Raspberry Pi, Kubernetes) and you don''t want long-lived keys (AKIA...) sitting around, IAM Roles Anywhere solves it by using an X.509 certificate as your AWS identity. I built a self-signed CA from scratch, registered it with Roles Anywhere, and pulled temporary credentials end-to-end in 60 minutes. Cost: $0.'
 tags:
   - aws
@@ -9,6 +9,7 @@ tags:
   - security
 series: Amazon Web Services
 id: 3757892
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-roles-anywhere-hands-on/cover.png"
 ---
 
 ## Introduction
