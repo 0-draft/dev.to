@@ -1,0 +1,39 @@
+direction: down
+
+classes: {
+  pki: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  aws: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  result: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Cert: "client.crt + client.key\nEnd-entity certificate" {class: pki}
+TA: "AWS Trust Anchor\n(Root CA registered with AWS)" {class: aws}
+Profile: "AWS Profile\n(bridges Trust Anchor and Role)" {class: aws}
+Role: "IAM Role\nhandson-rolesanywhere-role" {class: aws}
+Cred: "Temporary credentials\nASIA + Secret + SessionToken" {class: result}
+
+Cert -> TA: "Cert chain validation"
+TA -> Profile
+Profile -> Role
+Role -> Cred

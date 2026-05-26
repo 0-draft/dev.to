@@ -1,0 +1,44 @@
+direction: right
+
+classes: {
+  old: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  new: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  problem: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  sol: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Old: "Before\nLong-lived key AKIA...\n~/.aws/credentials" {class: old}
+New: "After\nX.509 cert + private key\n+ Roles Anywhere" {class: new}
+Problem: "Forever-valid if leaked\nRotation is painful\nNo traceability" {class: problem}
+Sol: "1-hour temporary credentials\nInstant revocation via cert\nCN appears in CloudTrail" {class: sol}
+
+Old -> Problem: "Problem"
+New -> Sol: "Solution"

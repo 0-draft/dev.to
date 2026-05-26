@@ -1,0 +1,18 @@
+direction: right
+
+classes: {
+  step: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+EKey: "1. End-entity private key\nclient.key" {class: step}
+CSR: "2. Create CSR\nclient.csr" {class: step}
+Sign: "3. Sign with CA\nclient.crt" {class: step}
+
+EKey -> CSR -> Sign

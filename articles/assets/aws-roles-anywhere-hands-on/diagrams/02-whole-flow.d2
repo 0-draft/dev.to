@@ -1,0 +1,57 @@
+direction: down
+
+classes: {
+  setup: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  pki: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  aws: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  test: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  clean: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+S0: "Step 0\nEnvironment setup" {class: setup}
+S1: "Step 1\nCreate self-signed Root CA" {class: pki}
+S2: "Step 2\nIssue end-entity certificate" {class: pki}
+S3: "Step 3\nCreate AWS Trust Anchor\n(register Root CA cert with AWS)" {class: aws}
+S4: "Step 4\nCreate IAM Role\n(Trust Policy trusts Roles Anywhere)" {class: aws}
+S5: "Step 5\nCreate Roles Anywhere Profile\n(bind Role to Trust Anchor)" {class: aws}
+S6: "Step 6\nInstall aws_signing_helper" {class: test}
+S7: "Step 7\nPull temporary credentials and use them" {class: test}
+S8: "Step 8\nRestrict by CN in Trust Policy" {class: test}
+Clean: "Step 9\nCleanup" {class: clean}
+
+S0 -> S1 -> S2 -> S3 -> S4 -> S5 -> S6 -> S7 -> S8 -> Clean
