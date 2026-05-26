@@ -1,19 +1,64 @@
+<!-- markdownlint-disable MD033 MD001 -->
+
+<div align="center">
+
+<img alt="dev.to" src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" width="96">
+
 # dev.to articles
 
-Source for the articles published under [github.com/0-draft/dev.to](https://github.com/0-draft/dev.to). Pushing to `main` triggers `.github/workflows/publish.yml`, which syncs changed `articles/*.md` files to dev.to via `@sinedied/devto-cli`.
+Source for the articles auto-published under [`0-draft/dev.to`](https://github.com/0-draft/dev.to).
 
-To start a new article, copy the template:
+<p>
+  <a href="https://github.com/0-draft/dev.to/actions/workflows/publish.yml"><img alt="publish workflow" src="https://img.shields.io/github/actions/workflow/status/0-draft/dev.to/publish.yml?branch=main&label=publish&style=for-the-badge&logo=github&logoColor=white&labelColor=0A0A0A&color=10B981"></a>
+  <a href="https://github.com/0-draft/dev.to/actions/workflows/schedule.yml"><img alt="schedule workflow" src="https://img.shields.io/github/actions/workflow/status/0-draft/dev.to/schedule.yml?branch=main&label=schedule&style=for-the-badge&logo=githubactions&logoColor=white&labelColor=0A0A0A&color=10B981"></a>
+  <a href="https://dev.to/kanywst"><img alt="dev.to profile" src="https://img.shields.io/badge/dev.to-kanywst-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white"></a>
+</p>
+
+</div>
+
+---
+
+Pushing to `main` triggers `.github/workflows/publish.yml`, which syncs changed `articles/*.md` to dev.to through `@sinedied/devto-cli`. Set `published: true` in the frontmatter when an article is ready, or leave `published: false` with a future `date:` (UTC) and let the hourly `schedule.yml` cron flip it once the scheduled time arrives.
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Writing
 
 ```bash
 cp templates/article-template.md articles/<slug>.md
 ```
 
-The slug becomes part of the dev.to URL (with a random suffix dev.to appends on first publish). Local-only drafts and Japanese versions live under `articles/DRAFT/` and `articles/JA/`, both gitignored, so anything in those directories never reaches dev.to.
+The slug becomes part of the dev.to URL (dev.to appends a random suffix on first publish). Local-only drafts and Japanese versions live under `articles/DRAFT/` and `articles/JA/`, both gitignored, so nothing in those directories ever reaches dev.to.
 
-Set `published: true` in the frontmatter when an article is ready. For time-released posts, leave `published: false` and add a future `date:` (UTC). The hourly `schedule.yml` cron runs `scripts/publish_scheduler.py`, which flips matching articles to `published: true` once the date has passed and pushes the commit, which in turn triggers the publish workflow.
+</td>
+<td width="50%" valign="top">
 
-Images and hands-on assets go under `articles/assets/<slug>/`. The publish step runs `dev push -r ${{ github.repository }}`, so relative asset paths in the source are rewritten to `raw.githubusercontent.com` URLs before being sent to dev.to. Cover images at the dev.to canonical size (1000x420) can be generated with `scripts/gen_cover_image.py`.
+### Assets
 
-After publishing, `devto-cli` writes the dev.to `id` and `date` back into the frontmatter, and the bot commits the change as `chore: update article metadata from dev.to [skip ci]`. Pull before the next edit so your local copy doesn't diverge.
+Images and hands-on resources go under `articles/assets/<slug>/`. The publish step runs `dev push -r ${{ github.repository }}`, which rewrites relative asset paths to `raw.githubusercontent.com` URLs before sending to dev.to. Cover images at the canonical size (1000x420) can be generated with `scripts/gen_cover_image.py`.
 
-A repo secret `DEVTO_API_KEY` is required; generate it from your dev.to account settings.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Frontmatter writeback
+
+After publishing, `devto-cli` writes the dev.to `id` and `date` back into the frontmatter, and the bot commits the change as `chore: update article metadata from dev.to [skip ci]`. Pull before the next edit so the local copy doesn't diverge.
+
+</td>
+<td width="50%" valign="top">
+
+### API key
+
+A repo secret `DEVTO_API_KEY` is required; generate it from your dev.to account settings and add it under repo Settings → Secrets and variables → Actions.
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+  <sub>Built on <a href="https://github.com/sinedied/devto-cli"><code>@sinedied/devto-cli</code></a></sub>
+</div>
