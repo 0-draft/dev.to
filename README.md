@@ -1,37 +1,19 @@
-# Dev.to Articles Management
+# dev.to articles
 
-This repository is set up to manage and automatically publish articles to [dev.to](https://dev.to).
+Source for the articles published under [github.com/0-draft/dev.to](https://github.com/0-draft/dev.to). Pushing to `main` triggers `.github/workflows/publish.yml`, which syncs changed `articles/*.md` files to dev.to via `@sinedied/devto-cli`.
 
-## Directory Structure
+To start a new article, copy the template:
 
-- `articles/`: Place your markdown article files here.
-- `articles/assets/`: Store images and static assets here.
-- `templates/`: Contains `article-template.md` to start new posts.
-- `.github/workflows/`: Contains the automation script to publish to dev.to.
+```bash
+cp templates/article-template.md articles/<slug>.md
+```
 
-## How to use
+The slug becomes part of the dev.to URL (with a random suffix dev.to appends on first publish). Local-only drafts and Japanese versions live under `articles/DRAFT/` and `articles/JA/`, both gitignored, so anything in those directories never reaches dev.to.
 
-The source code for this setup is hosted here: [0-draft/dev.to](https://github.com/0-draft/dev.to)
+Set `published: true` in the frontmatter when an article is ready. For time-released posts, leave `published: false` and add a future `date:` (UTC). The hourly `schedule.yml` cron runs `scripts/publish_scheduler.py`, which flips matching articles to `published: true` once the date has passed and pushes the commit, which in turn triggers the publish workflow.
 
-1. **Create a new article**:
-   Copy `templates/article-template.md` to `articles/my-new-post.md`.
+Images and hands-on assets go under `articles/assets/<slug>/`. The publish step runs `dev push -r ${{ github.repository }}`, so relative asset paths in the source are rewritten to `raw.githubusercontent.com` URLs before being sent to dev.to. Cover images at the dev.to canonical size (1000x420) can be generated with `scripts/gen_cover_image.py`.
 
-   ```bash
-   cp templates/article-template.md articles/my-new-topic.md
-   ```
+After publishing, `devto-cli` writes the dev.to `id` and `date` back into the frontmatter, and the bot commits the change as `chore: update article metadata from dev.to [skip ci]`. Pull before the next edit so your local copy doesn't diverge.
 
-2. **Write your content**:
-   Edit the file using standard Markdown.
-   - Keep `published: false` while drafting.
-   - Set `published: true` when ready to publish.
-
-3. **Publishing**:
-   - Get your API Key from Dev.to (Settings > Extensions).
-   - Add it to this GitHub repository's Secrets as `DEVTO_API_KEY`.
-   - Push your changes to the `main` branch.
-   - The GitHub Action will automatically publish (or update) the article.
-   - **Note**: The Action will modify your local file to add an `id` and `date`. Pull these changes back to your local machine.
-
-## Images
-
-You can place images in `articles/assets/`. Note that for Dev.to to see them, they usually need to be hosted publicly (like on this repo's `raw.githubusercontent.com` URL) or uploaded to an external host.
+A repo secret `DEVTO_API_KEY` is required; generate it from your dev.to account settings.
