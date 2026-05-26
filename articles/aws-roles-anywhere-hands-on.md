@@ -9,7 +9,8 @@ tags:
   - security
 series: Amazon Web Services
 id: 3757892
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-roles-anywhere-hands-on/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-roles-anywhere-hands-on/cover.png'
+date: '2026-05-26T15:22:04Z'
 ---
 
 ## Introduction
