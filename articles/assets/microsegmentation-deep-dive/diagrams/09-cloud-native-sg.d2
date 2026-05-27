@@ -1,0 +1,74 @@
+direction: down
+
+VPC: "AWS VPC" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#388e3c"
+  style.font-color: "#0a0f25"
+  direction: right
+
+  SG1: "SG: web" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  SG2: "SG: app" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  SG3: "SG: db" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+
+  EC2A: "EC2 web-1" {
+    style.fill: "#bbdefb"
+    style.stroke: "#1976d2"
+    style.font-color: "#0a0f25"
+  }
+  EC2B: "EC2 web-2" {
+    style.fill: "#bbdefb"
+    style.stroke: "#1976d2"
+    style.font-color: "#0a0f25"
+  }
+  EC2C: "EC2 app-1" {
+    style.fill: "#c8e6c9"
+    style.stroke: "#388e3c"
+    style.font-color: "#0a0f25"
+  }
+  EC2D: "EC2 app-2" {
+    style.fill: "#c8e6c9"
+    style.stroke: "#388e3c"
+    style.font-color: "#0a0f25"
+  }
+  RDS: "RDS" {
+    shape: cylinder
+    style.fill: "#d1c4e9"
+    style.stroke: "#5e35b1"
+    style.font-color: "#0a0f25"
+  }
+
+  SG1 -> EC2A
+  SG1 -> EC2B
+  SG2 -> EC2C
+  SG2 -> EC2D
+  SG3 -> RDS
+
+  SG1 -> SG2: "allow: web to app:8080"
+  SG2 -> SG3: "allow: app to db:5432"
+  SG1 -> SG3: "deny" { style.stroke-dash: 3 }
+}
+
+FM: "AWS Firewall Manager\n(org-wide policy)" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+}
+
+FM -> VPC.SG1: "central push" { style.stroke-dash: 3 }
+FM -> VPC.SG2: "central push" { style.stroke-dash: 3 }
+FM -> VPC.SG3: "central push" { style.stroke-dash: 3 }

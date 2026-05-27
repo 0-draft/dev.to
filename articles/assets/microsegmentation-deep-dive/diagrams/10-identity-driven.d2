@@ -1,0 +1,58 @@
+direction: down
+
+Node1: "Node 1" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#1565c0"
+  style.font-color: "#0a0f25"
+  PodA: "Pod A\nSPIFFE: spiffe://prod/web" {
+    style.fill: "#bbdefb"
+    style.stroke: "#1976d2"
+    style.font-color: "#0a0f25"
+  }
+  eBPF1: "eBPF\nIdentity Map" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  PodA -> eBPF1
+}
+
+Node2: "Node 2" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#2e7d32"
+  style.font-color: "#0a0f25"
+  PodB: "Pod B\nSPIFFE: spiffe://prod/cart" {
+    style.fill: "#c8e6c9"
+    style.stroke: "#388e3c"
+    style.font-color: "#0a0f25"
+  }
+  eBPF2: "eBPF\nIdentity Map" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  PodB -> eBPF2
+}
+
+SPIRE: "SPIRE Server\n(CA)" {
+  shape: cylinder
+  style.fill: "#d1c4e9"
+  style.stroke: "#5e35b1"
+  style.font-color: "#0a0f25"
+}
+
+Policy: "CiliumNetworkPolicy\nfromEndpoints: role=web\ntoEndpoints: role=cart" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+}
+
+Node1.eBPF1 -> Node2.eBPF2: "mTLS\n(mutual SVID auth)"
+
+SPIRE -> Node1.PodA: "issue SVID" { style.stroke-dash: 3 }
+SPIRE -> Node2.PodB: "issue SVID" { style.stroke-dash: 3 }
+
+Policy -> Node1.eBPF1: "resolve ID" { style.stroke-dash: 3 }
+Policy -> Node2.eBPF2: "resolve ID" { style.stroke-dash: 3 }

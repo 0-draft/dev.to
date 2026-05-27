@@ -1,0 +1,56 @@
+direction: down
+
+Internet: "Internet" {
+  shape: cylinder
+  style.fill: "#bbdefb"
+  style.stroke: "#1976d2"
+  style.font-color: "#0a0f25"
+}
+
+Edge: "Edge FW" {
+  style.fill: "#ffcdd2"
+  style.stroke: "#c62828"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+Core: "Core Switch" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+}
+
+ZWeb: "VLAN 10\nDMZ Web tier" {
+  style.fill: "#bbdefb"
+  style.stroke: "#1976d2"
+  style.font-color: "#0a0f25"
+}
+
+ZApp: "VLAN 20\nApp tier" {
+  style.fill: "#c8e6c9"
+  style.stroke: "#388e3c"
+  style.font-color: "#0a0f25"
+}
+
+ZDB: "VLAN 30\nDB tier" {
+  style.fill: "#d1c4e9"
+  style.stroke: "#5e35b1"
+  style.font-color: "#0a0f25"
+}
+
+ZOffice: "VLAN 40\nOffice" {
+  style.fill: "#ffe0b2"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+
+Internet -> Edge
+Edge -> Core
+Core -> ZWeb
+Core -> ZApp
+Core -> ZDB
+Core -> ZOffice
+
+ZWeb -> ZApp: "ACL" { style.stroke-dash: 3 }
+ZApp -> ZDB: "ACL" { style.stroke-dash: 3 }
+ZOffice -> ZWeb: "ACL" { style.stroke-dash: 3 }

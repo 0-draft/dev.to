@@ -1,0 +1,55 @@
+direction: right
+
+ESXi: "ESXi host" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#1976d2"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+  direction: right
+
+  VM1: "VM Web"
+  VM2: "VM App"
+  VM3: "VM DB"
+
+  vNIC1: "vNIC + DFW" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  vNIC2: "vNIC + DFW" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  vNIC3: "vNIC + DFW" {
+    shape: parallelogram
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+
+  vSwitch: "Distributed vSwitch" {
+    style.fill: "#fff9c4"
+    style.stroke: "#f57f17"
+    style.font-color: "#0a0f25"
+  }
+
+  VM1 -> vNIC1
+  VM2 -> vNIC2
+  VM3 -> vNIC3
+  vNIC1 -> vSwitch
+  vNIC2 -> vSwitch
+  vNIC3 -> vSwitch
+}
+
+NSX: "NSX Manager\n(central control)" {
+  style.fill: "#c8e6c9"
+  style.stroke: "#388e3c"
+  style.font-color: "#0a0f25"
+}
+
+NSX -> ESXi.vNIC1: "policy push" { style.stroke-dash: 3 }
+NSX -> ESXi.vNIC2: "policy push" { style.stroke-dash: 3 }
+NSX -> ESXi.vNIC3: "policy push" { style.stroke-dash: 3 }

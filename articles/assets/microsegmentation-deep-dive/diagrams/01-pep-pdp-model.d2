@@ -1,0 +1,57 @@
+direction: down
+
+User: "Subject\n(user/workload)" {
+  style.fill: "#c8e6c9"
+  style.stroke: "#388e3c"
+  style.font-color: "#0a0f25"
+}
+
+PEP: "PEP" {
+  style.fill: "#ffccbc"
+  style.stroke: "#bf360c"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+PDP: "PDP (Policy Decision Point)" {
+  style.fill: "#bbdefb"
+  style.stroke: "#1976d2"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+
+  PE: "Policy Engine" {
+    style.fill: "#90caf9"
+    style.stroke: "#1565c0"
+    style.font-color: "#0a0f25"
+  }
+  PA: "Policy Administrator" {
+    style.fill: "#90caf9"
+    style.stroke: "#1565c0"
+    style.font-color: "#0a0f25"
+  }
+  PE <-> PA
+}
+
+Inputs: "Evaluation inputs" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+
+  ID: "Identity (SPIFFE/IAM)"
+  Posture: "Device posture"
+  Threat: "Threat intel"
+  Behavior: "Behavioral baseline"
+}
+
+Resource: "Resource" {
+  shape: cylinder
+  style.fill: "#d1c4e9"
+  style.stroke: "#5e35b1"
+  style.font-color: "#0a0f25"
+}
+
+User -> PEP: "1. request"
+PEP -> PDP: "2. context"
+PDP -> PEP: "3. allow/deny"
+PEP -> Resource: "4. pass or drop"
+Inputs -> PDP.PE: "evaluation" { style.stroke-dash: 3 }

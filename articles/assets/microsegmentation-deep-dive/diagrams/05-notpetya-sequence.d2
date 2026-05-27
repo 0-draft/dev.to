@@ -1,0 +1,29 @@
+shape: sequence_diagram
+
+U: "Ukrainian\naccounting\n(M.E.Doc)" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+H1: "Infected\nhost 1"
+SMB: "SMB v1\n(EternalBlue)"
+H2: "Same-segment\nhosts"
+DC: "Domain\nController"
+World: "Maersk and\nglobal sites"
+
+intrusion: Initial intrusion {
+  U -> H1: "1. Tampered update pushed"
+  H1 -> H1: "2. Runs with admin privileges"
+}
+
+lateral: Lateral movement (under 7 min) {
+  H1 -> SMB: "3. EternalBlue exploit"
+  SMB -> H2: "4. Spreads across the segment"
+  H1 -> DC: "5. Mimikatz steals credentials"
+  DC -> H2: "6. Re-spreads via legit admin paths"
+}
+
+wipeout: Global wipeout {
+  H2 -> World: "7. Propagates over VPN/WAN"
+  World -> World: "8. MBR trashed, boot fails"
+}

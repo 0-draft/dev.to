@@ -1,0 +1,55 @@
+direction: right
+
+Root: "Microsegmentation\nimplementation styles" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+A: "A. Hypervisor\n(filter at the vNIC)" {
+  style.fill: "#bbdefb"
+  style.stroke: "#1976d2"
+  style.font-color: "#0a0f25"
+}
+B: "B. Agent\n(filter at the host OS)" {
+  style.fill: "#c8e6c9"
+  style.stroke: "#388e3c"
+  style.font-color: "#0a0f25"
+}
+C: "C. Cloud-native\n(SG / NetworkPolicy)" {
+  style.fill: "#ffe0b2"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+D: "D. Identity-driven\n(service mesh / eBPF)" {
+  style.fill: "#d1c4e9"
+  style.stroke: "#5e35b1"
+  style.font-color: "#0a0f25"
+}
+
+A1: "VMware NSX-T\nDistributed Firewall"
+B1: "Illumio Core"
+B2: "Akamai Guardicore"
+B3: "Cisco Secure Workload"
+C1: "AWS Security Group"
+C2: "Azure NSG"
+C3: "Kubernetes NetworkPolicy"
+D1: "Cilium (eBPF)"
+D2node: "Istio + SPIFFE"
+D3: "Calico"
+
+Root -> A
+Root -> B
+Root -> C
+Root -> D
+A -> A1
+B -> B1
+B -> B2
+B -> B3
+C -> C1
+C -> C2
+C -> C3
+D -> D1
+D -> D2node
+D -> D3

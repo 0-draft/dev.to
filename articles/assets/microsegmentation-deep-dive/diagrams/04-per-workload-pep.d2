@@ -1,0 +1,65 @@
+direction: down
+
+Cluster: "Cluster / data center" {
+  style.fill: "#fafafa"
+  style.stroke: "#616161"
+  style.font-color: "#0a0f25"
+
+  A: "Web Pod" {
+    style.fill: "#bbdefb"
+    style.stroke: "#1976d2"
+    style.font-color: "#0a0f25"
+    FwA: "PEP" {
+      shape: parallelogram
+      style.fill: "#ffccbc"
+      style.stroke: "#bf360c"
+      style.font-color: "#0a0f25"
+    }
+    WebSvc: "Web"
+    FwA -> WebSvc
+  }
+  B: "Cart Pod" {
+    style.fill: "#c8e6c9"
+    style.stroke: "#388e3c"
+    style.font-color: "#0a0f25"
+    FwB: "PEP" {
+      shape: parallelogram
+      style.fill: "#ffccbc"
+      style.stroke: "#bf360c"
+      style.font-color: "#0a0f25"
+    }
+    CartSvc: "Cart"
+    FwB -> CartSvc
+  }
+  C: "Payment Pod" {
+    style.fill: "#fff9c4"
+    style.stroke: "#f57f17"
+    style.font-color: "#0a0f25"
+    FwC: "PEP" {
+      shape: parallelogram
+      style.fill: "#ffccbc"
+      style.stroke: "#bf360c"
+      style.font-color: "#0a0f25"
+    }
+    PaySvc: "Payment"
+    FwC -> PaySvc
+  }
+  D: "DB Pod" {
+    style.fill: "#d1c4e9"
+    style.stroke: "#5e35b1"
+    style.font-color: "#0a0f25"
+    FwD: "PEP" {
+      shape: parallelogram
+      style.fill: "#ffccbc"
+      style.stroke: "#bf360c"
+      style.font-color: "#0a0f25"
+    }
+    DBSvc: "DB" { shape: cylinder }
+    FwD -> DBSvc
+  }
+
+  A.WebSvc -> B.FwB: "allow: Web to Cart"
+  B.CartSvc -> C.FwC: "allow: Cart to Payment"
+  C.PaySvc -> D.FwD: "allow: Payment to DB"
+  A.WebSvc -> D.FwD: "deny" { style.stroke-dash: 3 }
+}

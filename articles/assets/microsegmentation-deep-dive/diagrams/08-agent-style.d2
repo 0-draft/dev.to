@@ -1,0 +1,72 @@
+direction: down
+
+Host1: "Host 1 (on-prem)" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+  Agent1: "Agent" {
+    style.fill: "#a5d6a7"
+    style.stroke: "#2e7d32"
+    style.font-color: "#0a0f25"
+  }
+  OSFW1: "nftables / WFP" {
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  App1: "App"
+  Agent1 -> OSFW1
+  OSFW1 -> App1
+}
+
+Host2: "Host 2 (AWS EC2)" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+  Agent2: "Agent" {
+    style.fill: "#a5d6a7"
+    style.stroke: "#2e7d32"
+    style.font-color: "#0a0f25"
+  }
+  OSFW2: "nftables" {
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  App2: "App"
+  Agent2 -> OSFW2
+  OSFW2 -> App2
+}
+
+Host3: "Host 3 (Azure VM)" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f57f17"
+  style.font-color: "#0a0f25"
+  Agent3: "Agent" {
+    style.fill: "#a5d6a7"
+    style.stroke: "#2e7d32"
+    style.font-color: "#0a0f25"
+  }
+  OSFW3: "WFP" {
+    style.fill: "#ffccbc"
+    style.stroke: "#bf360c"
+    style.font-color: "#0a0f25"
+  }
+  App3: "App"
+  Agent3 -> OSFW3
+  OSFW3 -> App3
+}
+
+PCE: "PCE / Manager\n(central policy)" {
+  style.fill: "#bbdefb"
+  style.stroke: "#1976d2"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+Host1.Agent1 <-> PCE: "telemetry + policy" { style.stroke-dash: 3 }
+Host2.Agent2 <-> PCE: "telemetry + policy" { style.stroke-dash: 3 }
+Host3.Agent3 <-> PCE: "telemetry + policy" { style.stroke-dash: 3 }
+
+Host1 <-> Host2: "allowed only"
+Host2 <-> Host3: "allowed only"

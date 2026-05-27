@@ -1,0 +1,17 @@
+shape: sequence_diagram
+
+Dev: "Developer\nlaptop" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+AP: "Access Proxy"
+AE: "Access Engine\n(PDP)"
+App: "Internal app"
+
+Dev -> AP: "1. HTTPS request + device cert"
+AP -> AE: "2. context (user/device/posture)"
+AE -> AE: "3. evaluate policy"
+AE -> AP: "4. allow + short-lived token" { style.stroke-dash: 3 }
+AP -> App: "5. TLS forward (allowed only)"
+App -> Dev: "6. response" { style.stroke-dash: 3 }
