@@ -1,5 +1,5 @@
 ---
-title: 'Microsegmentation Deep Dive: From the Crumbling Castle Wall to Identity-Driven East-West Control'
+title: 'Microsegmentation Deep Dive'
 published: true
 description: 'Perimeter defense no longer stops ransomware spreading sideways. One article on why VLAN/Firewall hit a wall, the four implementation patterns (hypervisor / agent / cloud-native / Identity), and how VMware NSX, Illumio, Akamai Guardicore, Cilium, and Google BeyondCorp each solved it, all at the resolution of implementation and ops.'
 tags:
