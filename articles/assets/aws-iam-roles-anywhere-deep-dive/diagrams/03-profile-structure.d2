@@ -1,0 +1,49 @@
+direction: down
+
+classes: {
+  anchor: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  profile: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+  role: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  constraint: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Anchor: "Trust Anchor\n= trusted CA" {class: anchor}
+Profile: "Profile\nmy-app-profile" {class: profile}
+Role1: "IAM Role: app-readonly" {class: role}
+Role2: "IAM Role: app-writer" {class: role}
+SessionPolicy: "Session Policy\n= further narrows the session" {class: constraint}
+Duration: "Session Duration\ne.g. 1 hour" {class: constraint}
+
+Anchor -> Profile: "the Profile does not directly\nknow which CA authenticated" {style.stroke-dash: 3}
+Profile -> Role1: "can assume"
+Profile -> Role2: "can assume"
+Profile -> SessionPolicy
+Profile -> Duration

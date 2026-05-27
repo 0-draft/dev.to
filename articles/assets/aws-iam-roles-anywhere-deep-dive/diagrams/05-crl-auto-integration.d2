@@ -1,0 +1,34 @@
+shape: sequence_diagram
+
+Op: "Operator" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+PCA: "AWS Private CA" {
+  style.fill: "#dbeafe"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+}
+S3: "S3 (CRL bucket)" {
+  style.fill: "#bbf7d0"
+  style.stroke: "#15803d"
+  style.font-color: "#0a0f25"
+}
+Lambda: "Lambda" {
+  style.fill: "#fed7aa"
+  style.stroke: "#c2410c"
+  style.font-color: "#0a0f25"
+}
+RA: "IAM Roles Anywhere" {
+  style.fill: "#fce7f3"
+  style.stroke: "#be185d"
+  style.font-color: "#0a0f25"
+}
+
+Op -> PCA: "1. revoke-certificate\n(compromised cert)"
+PCA -> PCA: "2. CRL produced ~30 minutes later"
+PCA -> S3: "3. PUT the new CRL"
+S3 -> Lambda: "4. ObjectCreated event"
+Lambda -> RA: "5. ImportCrl"
+RA -> RA: "6. subsequent CreateSession\nrejects that certificate"

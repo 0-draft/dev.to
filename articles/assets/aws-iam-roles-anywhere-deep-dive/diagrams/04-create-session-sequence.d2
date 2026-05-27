@@ -1,0 +1,42 @@
+shape: sequence_diagram
+
+App: "Workload\n(on-prem server etc.)" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+Helper: "aws_signing_helper" {
+  style.fill: "#fce7f3"
+  style.stroke: "#be185d"
+  style.font-color: "#0a0f25"
+}
+Key: "Private key\n(file / TPM / PKCS#11)" {
+  style.fill: "#fce7f3"
+  style.stroke: "#be185d"
+  style.font-color: "#0a0f25"
+}
+RA: "IAM Roles\nAnywhere" {
+  style.fill: "#fed7aa"
+  style.stroke: "#c2410c"
+  style.font-color: "#0a0f25"
+}
+STS: "STS" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+
+App -> Helper: "1. called at startup / on expiration"
+Helper -> Helper: "2. load certificate,\nbuild Canonical Request"
+Helper -> Key: "3. ask for a signature with the private key"
+Key -> Helper: "4. digital signature" {style.stroke-dash: 3}
+Helper -> RA: "5. POST /sessions\n(ARNs + cert + signature)"
+RA -> RA: "6. cert chain verification\n(walks up to the Trust Anchor)"
+RA -> RA: "7. signature verification\n(cert public key vs. signature)"
+RA -> RA: "8. CRL check\n(certificate not revoked)"
+RA -> RA: "9. Profile + Role compatibility check"
+RA -> STS: "10. equivalent of AssumeRole"
+STS -> RA: "11. temp credentials\n+ cert attributes as session tags" {style.stroke-dash: 3}
+RA -> Helper: "12. credentials as JSON" {style.stroke-dash: 3}
+Helper -> App: "13. standard-format JSON\n(credential_process compatible)" {style.stroke-dash: 3}
+App -> App: "14. later AWS API calls\nuse these for SigV4 signing"

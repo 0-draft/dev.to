@@ -1,0 +1,91 @@
+direction: down
+
+classes: {
+  ext: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  cert: {
+    style: {
+      fill: "#fce7f3"
+      stroke: "#be185d"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  anchor: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#1d4ed8"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  profile: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  role: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  api: {
+    style: {
+      fill: "#fed7aa"
+      stroke: "#c2410c"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  svc: {
+    style: {
+      fill: "#bbf7d0"
+      stroke: "#15803d"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Outside: "Outside AWS (on-prem / other clouds)" {
+  style.fill: "#fffbeb"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+  Workload: "Workload\nphysical server, not EC2\nK8s Pod / VM, etc." {class: ext}
+  Cert: "X.509 certificate\n+ private key" {class: cert}
+  Helper: "aws_signing_helper\ncredential helper" {class: cert}
+}
+
+AWS: "AWS side" {
+  style.fill: "#eff6ff"
+  style.stroke: "#1d4ed8"
+  style.font-color: "#0a0f25"
+  TA: "Trust Anchor\n= reference to a trusted CA" {class: anchor}
+  Profile: "Profile\n= which Role can be used" {class: profile}
+  Role: "IAM Role\n= actual permission" {class: role}
+  RolesAPI: "IAM Roles Anywhere API\nCreateSession" {class: api}
+  STS: "STS\nissuer of temp credentials" {class: role}
+  Service: "AWS service\nS3, DynamoDB ..." {class: svc}
+}
+
+Outside.Workload -> Outside.Helper
+Outside.Helper -> AWS.RolesAPI: "cert + signature"
+AWS.RolesAPI -> AWS.TA: "1. verify CA"
+AWS.RolesAPI -> AWS.Profile: "2. look up Profile"
+AWS.Profile -> AWS.Role
+AWS.RolesAPI -> AWS.STS: "3. AssumeRole"
+AWS.STS -> Outside.Helper: "temp credentials\nAccessKey + Secret + SessionToken"
+Outside.Helper -> Outside.Workload
+Outside.Workload -> AWS.Service: "4. normal SigV4 API call"
