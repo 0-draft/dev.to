@@ -7,8 +7,10 @@ tags:
   - zerotrust
   - networking
   - kubernetes
-series: "Zero Trust"
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/microsegmentation-deep-dive/cover.png"
+series: Zero Trust
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/microsegmentation-deep-dive/cover.png'
+id: 3765234
+date: '2026-05-27T15:03:02Z'
 ---
 
 ## Introduction
