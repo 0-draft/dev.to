@@ -1,5 +1,5 @@
 ---
-title: 'AWS IAM Roles Anywhere Deep Dive'
+title: AWS IAM Roles Anywhere Deep Dive
 published: true
 description: 'IAM Roles Anywhere hands out IAM Role temporary credentials to workloads outside AWS, using X.509 certificates instead of long-lived access keys. This article walks through the Trust Anchor / Profile / Role triangle, the CreateSession signing flow, what the credential helper actually does, CRL-based revocation, and pricing, with diagrams the whole way.'
 tags:
@@ -8,7 +8,9 @@ tags:
   - security
   - authentication
 series: Amazon Web Services
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-iam-roles-anywhere-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-iam-roles-anywhere-deep-dive/cover.png'
+id: 3772286
+date: '2026-05-28T15:46:19Z'
 ---
 
 ## Introduction
