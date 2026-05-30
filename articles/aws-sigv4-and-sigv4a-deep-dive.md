@@ -9,7 +9,8 @@ tags:
   - signing
 series: Amazon Web Services
 id: 3783645
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-sigv4-and-sigv4a-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-sigv4-and-sigv4a-deep-dive/cover.png'
+date: '2026-05-30T11:19:22Z'
 ---
 
 ## Introduction
