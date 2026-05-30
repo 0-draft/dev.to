@@ -1,0 +1,30 @@
+direction: down
+
+classes: {
+  seed: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  chain: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Seed: "Seed Signature\ncomputed from headers" {class: seed}
+C1: "Chunk 1 sig" {class: chain}
+C2: "Chunk 2 sig" {class: chain}
+C3: "Chunk N-1 sig" {class: chain}
+CF: "Final 0-byte chunk sig" {class: chain}
+
+Seed -> C1
+C1 -> C2
+C2 -> C3
+C3 -> CF

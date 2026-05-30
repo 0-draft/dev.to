@@ -1,0 +1,42 @@
+direction: down
+
+classes: {
+  info: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  warn: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      font-color: "#0a0f25"
+    }
+  }
+  secret: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Req: "HTTP Request\nmethod + uri + headers + body" {class: info}
+S1: "Step 1: Canonical Request\nnormalized string" {class: warn}
+S2: "Step 2: StringToSign\nAlgorithm + Date + Scope + Hash" {class: warn}
+S3: "Step 3: SigningKey derivation\n4-stage HMAC chain" {class: warn}
+S4: "Step 4: Signature\nHMAC-HEX(kSigning, StringToSign)" {class: warn}
+SK: "SecretAccessKey" {class: secret}
+Auth: "Authorization Header\nAWS4-HMAC-SHA256 ..." {class: info}
+
+Req -> S1
+S1 -> S2
+S2 -> S4
+SK -> S3
+S3 -> S4
+S4 -> Auth

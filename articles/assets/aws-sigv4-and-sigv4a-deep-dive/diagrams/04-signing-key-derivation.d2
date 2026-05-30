@@ -1,0 +1,47 @@
+direction: down
+
+classes: {
+  secret: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  key: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  input: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+SK: "AWS4 + SecretAccessKey" {class: secret}
+Date: "Date\n20260517" {class: input}
+Region: "Region\nus-east-1" {class: input}
+Service: "Service\ns3" {class: input}
+Aws4: "aws4_request" {class: input}
+
+kDate: "kDate" {class: key}
+kRegion: "kRegion" {class: key}
+kService: "kService" {class: key}
+kSigning: "kSigning" {class: key}
+
+SK -> kDate: "HMAC"
+Date -> kDate
+kDate -> kRegion: "HMAC"
+Region -> kRegion
+kRegion -> kService: "HMAC"
+Service -> kService
+kService -> kSigning: "HMAC"
+Aws4 -> kSigning

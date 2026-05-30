@@ -1,0 +1,21 @@
+shape: sequence_diagram
+
+C: "Client"
+A: "AWS API Endpoint"
+
+C -> C: "1. Build Authorization header through steps 1-4"
+C -> A: "2. HTTP Request (Authorization + x-amz-date + body)"
+A -> A: "3. Extract AccessKeyId from Credential"
+A -> A: "4. Look up SecretKey internally via IAM"
+A -> A: "5. Rebuild Canonical Request from received headers and body"
+A -> A: "6. Recompute Signature with the same procedure"
+A -> A: "7. Compare with the signature the client sent"
+
+result: {
+  match: {
+    A -> C: "8a. 200 OK" {style.stroke-dash: 3}
+  }
+  mismatch: {
+    A -> C: "8b. 403 SignatureDoesNotMatch" {style.stroke-dash: 3}
+  }
+}

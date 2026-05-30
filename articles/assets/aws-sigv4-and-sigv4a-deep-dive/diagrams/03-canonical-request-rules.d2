@@ -1,0 +1,37 @@
+direction: right
+
+classes: {
+  rule: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      font-color: "#0a0f25"
+    }
+  }
+  out: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Method: "HTTPMethod\nGET / PUT / POST uppercase" {class: rule}
+URI: "CanonicalURI\nRFC3986 URI encode\nEncode twice for non-S3" {class: rule}
+Query: "CanonicalQueryString\nkey=value sorted by key\nRFC3986 encode values too" {class: rule}
+Headers: "CanonicalHeaders\nlowercase header names\nsorted by name\ncollapse runs of whitespace" {class: rule}
+Signed: "SignedHeaders\nsigned header names\nlowercase + ';' separated" {class: rule}
+Payload: "HashedPayload\nhex of SHA256(body)" {class: rule}
+
+Concat: "Join with newlines" {class: out}
+CR: "Canonical Request" {class: out}
+
+Method -> Concat
+URI -> Concat
+Query -> Concat
+Headers -> Concat
+Signed -> Concat
+Payload -> Concat
+Concat -> CR

@@ -1,0 +1,54 @@
+direction: down
+
+classes: {
+  sym: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  asym: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+V4: "SigV4 world" {
+  style.fill: "#f1f5f9"
+  style.stroke: "#2563eb"
+  S4Req: "SigV4 Request" {class: sym}
+  S4Scope: "Scope: us-east-1 fixed" {class: sym}
+  S4Endpoint: "us-east-1 endpoint" {class: sym}
+  S4Secret: "HMAC verifier\nin us-east-1 only" {class: sym}
+
+  S4Req -> S4Scope
+  S4Scope -> S4Endpoint
+  S4Endpoint -> S4Secret
+}
+
+V4A: "SigV4A world" {
+  style.fill: "#eef2ff"
+  style.stroke: "#4338ca"
+  SARet: "SigV4A Request" {class: asym}
+  SAScope: "Scope: region segment removed\nX-Amz-Region-Set: us-east-1, us-west-2, eu-west-1" {class: asym}
+  MRAP: "MRAP routes the request" {class: asym}
+  E1: "us-east-1" {class: asym}
+  E2: "us-west-2" {class: asym}
+  E3: "eu-west-1" {class: asym}
+  Pub: "Each region verifies independently\nwith the shared public key" {class: asym}
+
+  SARet -> SAScope
+  SAScope -> MRAP
+  MRAP -> E1
+  MRAP -> E2
+  MRAP -> E3
+  E1 -> Pub
+  E2 -> Pub
+  E3 -> Pub
+}

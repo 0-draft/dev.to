@@ -1,0 +1,38 @@
+direction: right
+
+classes: {
+  danger: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  safe: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+Bearer: "Bearer Token model" {class: danger}
+SigV4: "AWS SigV4 model" {class: safe}
+
+B1: "Token sent on every call" {class: danger}
+B2: "Stolen token = full impersonation" {class: danger}
+B3: "Cannot detect request tampering" {class: danger}
+
+S1: "Secret Key never on the wire" {class: safe}
+S2: "Timestamp + Scope block replay" {class: safe}
+S3: "Body hash is signed too" {class: safe}
+
+Bearer -> B1
+Bearer -> B2
+Bearer -> B3
+SigV4 -> S1
+SigV4 -> S2
+SigV4 -> S3

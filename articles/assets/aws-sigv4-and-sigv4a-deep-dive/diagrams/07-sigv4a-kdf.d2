@@ -1,0 +1,44 @@
+direction: down
+
+classes: {
+  secret: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  pub: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  asym: {
+    style: {
+      fill: "#e0e7ff"
+      stroke: "#4338ca"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+SK: "SecretAccessKey\ninput_key = 'AWS4A' + sk" {class: secret}
+KDF: "KDF (counter loop)\nlabel: AWS4-ECDSA-P256-SHA256\niterate with akid + counter" {class: asym}
+Priv: "Private Key k\nP-256 scalar = c + 1" {class: secret}
+Pub: "Public Key Q\n= k * G" {class: pub}
+Req: "Request" {class: asym}
+Sig: "Signature (r, s)" {class: asym}
+AWS: "AWS Verification" {class: pub}
+
+SK -> KDF
+KDF -> Priv
+Priv -> Pub: "derive public" {style.stroke-dash: 3}
+Req -> Sig
+Priv -> Sig
+Pub -> AWS: "held internally" {style.stroke-dash: 3}
+Sig -> AWS
