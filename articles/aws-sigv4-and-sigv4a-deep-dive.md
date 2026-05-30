@@ -1,5 +1,5 @@
 ---
-title: 'AWS SigV4 and SigV4A Deep Dive'
+title: AWS SigV4 and SigV4A Deep Dive
 published: false
 description: 'A four-step breakdown of AWS SigV4 with an 80-line Python implementation, the asymmetric SigV4A (ECDSA P-256) that Multi-Region Access Point forced into existence, plus Chunked Upload, Presigned URL, and the Clock Skew traps that bite in production.'
 tags:
@@ -8,6 +8,7 @@ tags:
   - security
   - signing
 series: Amazon Web Services
+id: 3783645
 ---
 
 ## Introduction
