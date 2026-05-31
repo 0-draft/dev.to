@@ -1,0 +1,38 @@
+direction: down
+
+Okta: "Okta (human layer)" {
+  style.fill: "#0288d1"
+  style.stroke: "#01579b"
+  style.font-color: "#ffffff"
+
+  UserX: "User X\n(Service A)"
+  GroupA: "okta-aws-dev-serviceA"
+  UserY: "User Y\n(Service B)"
+  GroupB: "okta-aws-dev-serviceB"
+
+  UserX -> GroupA
+  UserY -> GroupB
+}
+
+IdC: "IAM Identity Center" {
+  style.fill: "#f57c00"
+  style.stroke: "#e65100"
+  style.font-color: "#ffffff"
+
+  AssignA: "Assignment 1"
+  AssignB: "Assignment 2"
+}
+
+Acc: "Account-Dev" {
+  style.fill: "#5d4037"
+  style.stroke: "#3e2723"
+  style.font-color: "#ffffff"
+
+  RoleA: "AWSReservedSSO_ServiceA_xxx"
+  RoleB: "AWSReservedSSO_ServiceB_xxx"
+}
+
+Okta.GroupA -> IdC.AssignA
+Okta.GroupB -> IdC.AssignB
+IdC.AssignA -> Acc.RoleA
+IdC.AssignB -> Acc.RoleB
