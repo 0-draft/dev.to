@@ -448,7 +448,7 @@ The "what compliance means" I described here tracks the `main` branch as of May 
 
 Walking sections 3 to 7 by hand gets old after the second time someone hands you an SVID and asks "is this compliant?". I packaged the static slice of the checklist as a single-binary CLI: [`scc`](https://github.com/0-draft/spiffe-compliance-checker) (spiffe-compliance-checker).
 
-<img src="./assets/spiffe-compliance-deep-dive/logo.png" align="right" width="120" alt="scc logo" />
+<img src="https://raw.githubusercontent.com/0-draft/spiffe-compliance-checker/main/assets/logo.png" align="right" width="120" alt="scc logo" />
 
 Each subcommand reads one artifact and emits one line per MUST / SHOULD clause, with the spec file and section cited inline. Exit code is `1` on any MUST failure, `0` otherwise. SHOULD violations surface as `WARN` and do not change the exit code.
 
