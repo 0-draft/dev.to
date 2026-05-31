@@ -1,6 +1,6 @@
 ---
 title: 'SPIFFE Compliance Deep Dive'
-published: true
+published: false
 description: 'If you run SPIRE, are you SPIFFE compliant? How far do you have to go with a custom implementation? I read the spiffe/spiffe spec end to end and pulled out the MUST requirements for SPIFFE-ID, X.509-SVID, JWT-SVID, Workload API, and Trust Bundle.'
 tags:
   - spiffe
