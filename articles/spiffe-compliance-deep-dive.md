@@ -10,6 +10,7 @@ tags:
 series: Workload Identity
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/spiffe-compliance-deep-dive/cover.png'
 id: 3787416
+date: '2026-05-31T06:05:03Z'
 ---
 
 # Introduction
