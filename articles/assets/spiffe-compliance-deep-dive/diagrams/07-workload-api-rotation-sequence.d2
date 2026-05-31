@@ -1,0 +1,33 @@
+shape: sequence_diagram
+
+W: "Workload" {
+  style.font-color: "#0a0f25"
+}
+A: "Workload API" {
+  style.font-color: "#0a0f25"
+}
+CA: "SPIRE Server" {
+  style.font-color: "#0a0f25"
+}
+
+W -> A: "FetchX509SVID() opens stream"
+A -> W: "Response #1 (current SVID, exp=+1h)" {
+  style.stroke-dash: 3
+}
+
+A -> A: "Note: connection held open"
+CA -> CA: "Note: 30 min later, CA rotation starts"
+
+CA -> A: "distributes new signing key"
+A -> A: "issues new SVID"
+A -> W: "Response #2 (new SVID, exp=+1h)" {
+  style.stroke-dash: 3
+}
+
+W -> W: "Note: drop old SVID, continue with new one"
+A -> A: "Note: revocation event"
+
+A -> W: "Response #3 (PermissionDenied)" {
+  style.stroke-dash: 3
+}
+W -> W: "discard all SVIDs"

@@ -1,0 +1,72 @@
+direction: down
+
+Bad: "Bad: shared key" {
+  style.fill: "#ffebee"
+  style.stroke: "#c62828"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+
+  K1: "shared CA key" {
+    style.fill: "#ef9a9a"
+    style.stroke: "#c62828"
+    style.font-color: "#0a0f25"
+  }
+  SVID1: "spiffe://prod/web-fe" {
+    style.font-color: "#0a0f25"
+  }
+  SVID2: "spiffe://staging/admin" {
+    style.font-color: "#0a0f25"
+  }
+  V1: "verifier" {
+    style.font-color: "#0a0f25"
+  }
+
+  K1 -> SVID1
+  K1 -> SVID2
+  V1 -> SVID1: "both valid\n(dangerous)" {
+    style.stroke-dash: 3
+  }
+  V1 -> SVID2: "both valid\n(dangerous)" {
+    style.stroke-dash: 3
+  }
+}
+
+Good: "Good: separated keys" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#2e7d32"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+
+  K2: "prod CA key" {
+    style.fill: "#a5d6a7"
+    style.stroke: "#2e7d32"
+    style.font-color: "#0a0f25"
+  }
+  K3: "staging CA key" {
+    style.fill: "#a5d6a7"
+    style.stroke: "#2e7d32"
+    style.font-color: "#0a0f25"
+  }
+  SVID3: "spiffe://prod/web-fe" {
+    style.font-color: "#0a0f25"
+  }
+  SVID4: "spiffe://staging/admin" {
+    style.font-color: "#0a0f25"
+  }
+  V2: "verifier (prod)" {
+    style.font-color: "#0a0f25"
+  }
+
+  K2 -> SVID3
+  K3 -> SVID4
+  V2 -> SVID3: "validate" {
+    style.stroke-dash: 3
+  }
+  V2 -> SVID4: "reject\n(different bundle)" {
+    style.stroke-dash: 3
+  }
+}
+
+Bad -> Good: "" {
+  style.opacity: 0
+}

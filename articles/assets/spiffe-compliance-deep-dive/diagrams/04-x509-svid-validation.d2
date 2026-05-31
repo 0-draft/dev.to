@@ -1,0 +1,73 @@
+direction: down
+
+Start: "SVID received" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#1565c0"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+X509Validate: "standard X.509\npath validation" {
+  shape: diamond
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+Check1: "exactly one\nURI SAN?" {
+  shape: diamond
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+Check2: "scheme == 'spiffe'?" {
+  shape: diamond
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+Check3: "non-root path?" {
+  shape: diamond
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+Check4: "cA == false?" {
+  shape: diamond
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+Check5: "keyCertSign and\ncRLSign not set?" {
+  shape: diamond
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+
+Accept: "authenticated" {
+  style.fill: "#c8e6c9"
+  style.stroke: "#2e7d32"
+  style.stroke-width: 3
+  style.font-color: "#0a0f25"
+}
+
+Reject: "reject" {
+  style.fill: "#ffcdd2"
+  style.stroke: "#c62828"
+  style.stroke-width: 3
+  style.font-color: "#0a0f25"
+}
+
+Start -> X509Validate
+X509Validate -> Reject: "fail"
+X509Validate -> Check1: "pass"
+Check1 -> Reject: "no"
+Check1 -> Check2: "yes"
+Check2 -> Reject: "no"
+Check2 -> Check3: "yes"
+Check3 -> Reject: "no"
+Check3 -> Check4: "yes"
+Check4 -> Reject: "no"
+Check4 -> Check5: "yes"
+Check5 -> Reject: "no"
+Check5 -> Accept: "yes"
