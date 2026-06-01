@@ -1,0 +1,36 @@
+direction: down
+
+att: attestationObject (CBOR map) {
+  shape: rectangle
+  style.fill: "#fef3c7"
+}
+
+fmt: "fmt: text\n(\"none\" / \"packed\" / \"fido-u2f\")" {
+  style.fill: "#dbeafe"
+}
+
+auth: "authData: byte string\n(37 bytes + variable)" {
+  style.fill: "#dcfce7"
+}
+
+stmt: "attStmt: map\n(format-specific)" {
+  style.fill: "#fce7f3"
+}
+
+att -> fmt
+att -> auth
+att -> stmt
+
+stmt_none: "{} (empty)" {
+  style.fill: "#f3f4f6"
+}
+stmt_packed: "{alg, sig, [x5c?]}" {
+  style.fill: "#f3f4f6"
+}
+stmt_u2f: "{x5c: [cert], sig}" {
+  style.fill: "#f3f4f6"
+}
+
+stmt -> stmt_none: "fmt = none"
+stmt -> stmt_packed: "fmt = packed"
+stmt -> stmt_u2f: "fmt = fido-u2f"

@@ -1,0 +1,25 @@
+title: "Signature base by attestation format\n(this is what the signature actually covers)" {
+  shape: text
+  style.font-size: 18
+}
+
+packed: "fmt = packed (self / x5c)\n\nauthData || SHA-256(clientDataJSON)" {
+  style.fill: "#dbeafe"
+}
+
+u2f: "fmt = fido-u2f\n\n0x00\n || rpIdHash (32)\n || clientDataHash (32)\n || credentialId\n || pubKey (uncompressed P-256: 0x04 || x || y)" {
+  style.fill: "#fce7f3"
+}
+
+none: "fmt = none\n\n(no signature; attStmt is empty)" {
+  style.fill: "#f3f4f6"
+}
+
+assertion: "Assertion (every login)\n\nauthData || SHA-256(clientDataJSON)\n\n(signed by the credential's own private key)" {
+  style.fill: "#dcfce7"
+}
+
+title -- packed
+title -- u2f
+title -- none
+title -- assertion
