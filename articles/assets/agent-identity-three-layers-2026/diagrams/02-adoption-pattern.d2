@@ -1,0 +1,33 @@
+direction: down
+
+classes: {
+  stage: {style: {fill: "#f1f5f9"; stroke: "#475569"; stroke-width: 2; font-color: "#0a0f25"}}
+  incident: {style: {fill: "#fee2e2"; stroke: "#b91c1c"; stroke-width: 2; font-color: "#0a0f25"}}
+  reg: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"}}
+  ok: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"}}
+  predicted: {style: {fill: "#f3f4f6"; stroke: "#16a34a"; stroke-width: 2; stroke-dash: 5; font-color: "#0a0f25"; italic: true}}
+}
+
+mfa: "MFA" {
+  s1: "Tech exists\n(2005-2012)" {class: stage}
+  s2: "Big incident\nLinkedIn / Yahoo / Equifax\n(2012-2017)" {class: incident}
+  s3: "Regulation\nNIST 800-63-3 (2017) /\nPCI-DSS v4 MFA 拡大 (2022)" {class: reg}
+  s4: "Adoption\n(2019-2023)" {class: ok}
+  s1 -> s2 -> s3 -> s4
+}
+
+aws: "Short-lived AWS creds" {
+  a1: "Tech exists\nSTS AssumeRole (2011)" {class: stage}
+  a2: "Big incident\nCode Spaces / Uber / Capital One\n(2014-2019)" {class: incident}
+  a3: "Industry mandate\nIRSA (2019) / Pod Identity (2023)" {class: reg}
+  a4: "Adoption\n(2021+)" {class: ok}
+  a1 -> a2 -> a3 -> a4
+}
+
+agent: "Agent Identity (now)" {
+  g1: "Tech exists\nID-JAG / Tx Tokens / WIF\n(2024-2026)" {class: stage}
+  g2: "Big incidents starting\nReplit / EchoLeak / Comet / Moltbook\n(2025-2026)" {class: incident}
+  g3: "Regulation forming\nEU AI Act / NIST AI RMF\n(2026-?)" {class: reg}
+  g4: "Adoption?\n(2028-2030 予想)" {class: predicted}
+  g1 -> g2 -> g3 -> g4
+}

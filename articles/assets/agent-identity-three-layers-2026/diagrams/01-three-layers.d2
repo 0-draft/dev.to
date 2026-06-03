@@ -1,0 +1,46 @@
+direction: down
+
+classes: {
+  human: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"}}
+  idp: {style: {fill: "#fde68a"; stroke: "#92400e"; stroke-width: 2; font-color: "#0a0f25"}}
+  agent: {style: {fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25"}}
+  resource: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"}}
+  llm: {style: {fill: "#fce7f3"; stroke: "#be185d"; stroke-width: 2; font-color: "#0a0f25"}}
+  service: {style: {fill: "#e0e7ff"; stroke: "#4338ca"; stroke-width: 2; font-color: "#0a0f25"}}
+  layerbox: {style: {fill: "transparent"; stroke: "#94a3b8"; stroke-width: 2; stroke-dash: 5; font-color: "#0f172a"; font-size: 22; bold: true}}
+}
+
+layerC: "Layer C: Agent (workload) → LLM\nRFC 7523 jwt-bearer + 各社 WIF" {
+  class: layerbox
+
+  agentC: "AI Agent" {class: agent}
+  llm: "LLM Provider\n(Anthropic / OpenAI / Google)" {class: llm}
+
+  agentC -> llm: "k8s SA / SPIFFE / GHA の JWT を\nshort-lived sk-ant-oat01-... に交換" {style.stroke: "#be185d"; style.stroke-width: 3}
+}
+
+layerA: "Layer A: Human → Agent → External Resource\nID-JAG / XAA / OAuth Identity Chaining" {
+  class: layerbox
+
+  human: "Human (Alice)" {class: human; shape: person}
+  idp: "IdP\n(Okta / Entra ID / Google Workspace)" {class: idp}
+  agentA: "AI Agent" {class: agent}
+  resource: "External Resource\n(GitHub / Slack / DB)" {class: resource}
+
+  human -> idp: "1. SSO" {style.stroke: "#b45309"; style.stroke-width: 2}
+  idp -> agentA: "2. identity assertion JWT" {style.stroke: "#b45309"; style.stroke-width: 2}
+  agentA -> resource: "3. RFC 8693 Token Exchange で\nAlice 用 scope-narrow token に交換\n→ API 呼び出し" {style.stroke: "#b45309"; style.stroke-width: 3}
+}
+
+layerB: "Layer B: Agent → Internal Service Chain\nTransaction Tokens for Agents (act + sub)" {
+  class: layerbox
+
+  agentB: "AI Agent" {class: agent}
+  s1: "Order Service" {class: service}
+  s2: "Risk Service" {class: service}
+  s3: "Payment Service" {class: service}
+
+  agentB -> s1: "Txn-Token\n(act=agent, sub=alice)" {style.stroke: "#4338ca"; style.stroke-width: 3}
+  s1 -> s2: "Txn-Token を propagate" {style.stroke: "#4338ca"; style.stroke-width: 2}
+  s2 -> s3: "監査ログに\n「agent が alice の取引を実行」" {style.stroke: "#4338ca"; style.stroke-width: 2}
+}
