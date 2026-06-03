@@ -1,14 +1,16 @@
 ---
-title: "The Three Layers of AI Agent Authentication: What ID-JAG, Transaction Tokens, and WIF Actually Protect, and When They Will Catch On"
+title: 'The Three Layers of AI Agent Authentication: What ID-JAG, Transaction Tokens, and WIF Actually Protect, and When They Will Catch On'
 published: true
-description: "The UX of AI agent auth feels almost identical to running everything on human creds. So why will ID-JAG, Transaction Tokens, and WIF still spread? I read it from the May 2026 IETF drafts and the primary sources for Anthropic WIF / Okta XAA / MCP, the Replit / EchoLeak / Moltbook incidents, and the adoption curves of MFA, short-lived AWS creds, and Sigstore."
+description: 'The UX of AI agent auth feels almost identical to running everything on human creds. So why will ID-JAG, Transaction Tokens, and WIF still spread? I read it from the May 2026 IETF drafts and the primary sources for Anthropic WIF / Okta XAA / MCP, the Replit / EchoLeak / Moltbook incidents, and the adoption curves of MFA, short-lived AWS creds, and Sigstore.'
 tags:
   - oauth
   - security
   - ai
   - agents
 series: AI Agent Identity
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/agent-identity-three-layers-2026/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/agent-identity-three-layers-2026/cover.png'
+id: 3810476
+date: '2026-06-03T11:12:33Z'
 ---
 
 ## Introduction
