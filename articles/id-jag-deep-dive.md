@@ -7,7 +7,7 @@ tags:
   - security
   - identity
   - ai
-series: OAuth
+series: AI Agent Identity
 id: 3358662
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/id-jag-deep-dive/cover.png'
 date: '2026-03-16T11:54:11Z'
