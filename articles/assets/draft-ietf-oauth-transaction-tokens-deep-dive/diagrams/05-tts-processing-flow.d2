@@ -1,0 +1,29 @@
+direction: down
+
+Req: "Receive a Txn-Token Request"
+V1: "Authenticate the workload\n(client auth)" {shape: diamond}
+V2: "Verify subject_token\nsignature and expiry" {shape: diamond}
+V3: "Requested scope <=\nsubject_token scope?" {shape: diamond}
+V4: "Is this workload allowed to get\na Txn-Token for this scope?" {shape: diamond}
+Build: "Build the Txn-Token:\n- sub (unique in Trust Domain)\n- iat = now, exp = short lifetime\n- aud = Trust Domain\n- txn = unique ID\n- req_wl = workload ID\n- rctx from request_context\n- tctx from request_details"
+Sign: "Sign and return\ntoken_type: N_A\nissued_token_type: txn_token" {
+  style.fill: "#c8e6c9"
+  style.stroke: "#2e7d32"
+  style.font-color: "#0a0f25"
+}
+Err: "Error response\n(RFC 6749 Section 5.2)" {
+  style.fill: "#ffcdd2"
+  style.stroke: "#c62828"
+  style.font-color: "#0a0f25"
+}
+
+Req -> V1
+V1 -> Err: "auth fails"
+V1 -> V2: "OK"
+V2 -> Err: "invalid"
+V2 -> V3: "OK"
+V3 -> Err: "scope exceeds"
+V3 -> V4: "OK"
+V4 -> Err: "not allowed"
+V4 -> Build: "OK"
+Build -> Sign

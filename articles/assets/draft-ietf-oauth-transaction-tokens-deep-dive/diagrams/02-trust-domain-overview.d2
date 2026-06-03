@@ -1,0 +1,26 @@
+direction: down
+
+TrustDomain: "Trust Domain" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#2e7d32"
+  style.font-color: "#0a0f25"
+
+  TTS: "Txn-Token Service\n(TTS)" {
+    style.fill: "#c8e6c9"
+    style.stroke: "#2e7d32"
+    style.font-color: "#0a0f25"
+  }
+  GW: "API Gateway"
+  OrderSvc: "Order Service"
+  RiskSvc: "Risk Service"
+  PaySvc: "Payment Service"
+
+  GW -> TTS: "1. request a Txn-Token"
+  TTS -> GW: "2. issue a signed Txn-Token"
+  GW -> OrderSvc: "3. attach the Txn-Token"
+  OrderSvc -> RiskSvc: "forward the same Txn-Token"
+  RiskSvc -> PaySvc: "forward the same Txn-Token"
+}
+
+User: "User"
+User -> TrustDomain.GW: "OAuth access token"

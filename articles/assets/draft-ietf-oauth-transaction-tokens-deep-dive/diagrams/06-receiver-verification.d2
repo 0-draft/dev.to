@@ -1,0 +1,30 @@
+direction: down
+
+Recv: "Receive a Txn-Token"
+V1: "Verify the JWS signature" {shape: diamond}
+V2: "aud claim matches\nmy Trust Domain?" {shape: diamond}
+V3: "Still within exp?" {shape: diamond}
+Authz: "Use tctx / rctx / scope for\nthe authz decision (out of scope)" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#2e7d32"
+  style.font-color: "#0a0f25"
+}
+Forward: "Forward the same Txn-Token\nto the next workload" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#1565c0"
+  style.font-color: "#0a0f25"
+}
+Err: "Reject" {
+  style.fill: "#ffcdd2"
+  style.stroke: "#c62828"
+  style.font-color: "#0a0f25"
+}
+
+Recv -> V1
+V1 -> Err: "no"
+V1 -> V2: "yes"
+V2 -> Err: "no"
+V2 -> V3: "yes"
+V3 -> Err: "no"
+V3 -> Authz: "yes"
+Authz -> Forward

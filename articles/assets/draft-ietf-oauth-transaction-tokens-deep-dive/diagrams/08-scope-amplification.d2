@@ -1,0 +1,19 @@
+direction: down
+
+Policy: "TTS scope control" {
+  style.font-color: "#0a0f25"
+  Rule: "The scope of an issued Txn-Token\nMUST be <= the subject_token scope"
+}
+OK: "OK: subject_token scope trade.stocks\nbecomes Txn-Token scope trade.stocks" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#2e7d32"
+  style.font-color: "#0a0f25"
+}
+NG: "NG: subject_token scope read.portfolio\nbecomes Txn-Token scope trade.stocks\n(scope amplification)" {
+  style.fill: "#ffcdd2"
+  style.stroke: "#c62828"
+  style.font-color: "#0a0f25"
+}
+
+Policy.Rule -> OK: "compliant"
+Policy.Rule -> NG: "rejected"

@@ -1,0 +1,25 @@
+direction: down
+
+WIMSE: "WIMSE ecosystem" {
+  grid-columns: 1
+  style.fill: "#e8eaf6"
+  style.stroke: "#283593"
+  style.font-color: "#0a0f25"
+  WPT: "WIMSE Workload Proof Token (WPT)\nestablishes sender workload ID"
+  mTLS_WIMSE: "WIMSE Mutual TLS\nworkload-to-workload auth"
+  HTTPSig: "WIMSE HTTP Signatures\nsigns HTTP messages"
+}
+TxnTokenSpec: "Transaction Tokens" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#2e7d32"
+  style.font-color: "#0a0f25"
+  TxnTokens: "Txn-Tokens\npropagate request context"
+}
+Note: "WPT proves who sent it,\nTxn-Token proves what the request is" {
+  style.fill: "#fff9c4"
+  style.stroke: "#f9a825"
+  style.font-color: "#0a0f25"
+}
+
+WIMSE.WPT -> TxnTokenSpec.TxnTokens: "establishes who sent it"
+TxnTokenSpec.TxnTokens -> WIMSE.WPT: "supplies request context"

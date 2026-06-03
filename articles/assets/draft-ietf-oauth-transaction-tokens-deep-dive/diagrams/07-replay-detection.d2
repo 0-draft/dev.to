@@ -1,0 +1,9 @@
+shape: sequence_diagram
+
+Attacker: "Attacker"
+Svc: "Internal Workload"
+
+Attacker -> Svc: "request + stolen Txn-Token\n(txn: 97053963-...)"
+Svc -> Svc: "check txn against the cache"
+Svc -> Svc: "seen this txn before"
+Svc -> Attacker: "reject" {style.stroke-dash: 3}

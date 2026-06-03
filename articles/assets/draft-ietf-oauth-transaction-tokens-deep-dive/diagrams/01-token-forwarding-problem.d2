@@ -1,0 +1,28 @@
+direction: down
+
+User: "User"
+GW: "API Gateway" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#1565c0"
+  style.font-color: "#0a0f25"
+}
+OrderSvc: "Order Service" {
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+RiskSvc: "Risk Service" {
+  style.fill: "#fce4ec"
+  style.stroke: "#c62828"
+  style.font-color: "#0a0f25"
+}
+PaySvc: "Payment Service" {
+  style.fill: "#fce4ec"
+  style.stroke: "#c62828"
+  style.font-color: "#0a0f25"
+}
+
+User -> GW: "OAuth access token"
+GW -> OrderSvc: "forwards the same token"
+OrderSvc -> RiskSvc: "forwards the same token"
+RiskSvc -> PaySvc: "forwards the same token"

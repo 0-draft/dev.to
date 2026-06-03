@@ -1,0 +1,19 @@
+shape: sequence_diagram
+
+User: "External Client"
+GW: "External Endpoint\n(API Gateway)"
+TTS: "Txn-Token Service\n(TTS)"
+Svc1: "Order Service"
+Svc2: "Risk Service"
+
+User -> GW: "1. API request + access token"
+GW -> TTS: "2. Token Exchange (RFC 8693)\nsubject_token = access token\nscope = trade.stocks\nrequest_details = {BUY MSFT}"
+TTS -> TTS: "authenticate, verify subject_token,\nevaluate scope, sign"
+TTS -> GW: "Txn-Token (short-lived JWT)" {style.stroke-dash: 3}
+GW -> Svc1: "3. request + Txn-Token"
+Svc1 -> Svc1: "verify (JWS sig, aud, exp)"
+Svc1 -> Svc2: "forward Txn-Token unchanged"
+Svc2 -> Svc2: "verify Txn-Token"
+Svc2 -> Svc1: "response" {style.stroke-dash: 3}
+Svc1 -> GW: "response" {style.stroke-dash: 3}
+GW -> User: "4. API response" {style.stroke-dash: 3}

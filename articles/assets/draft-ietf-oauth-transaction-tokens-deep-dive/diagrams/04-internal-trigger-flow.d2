@@ -1,0 +1,16 @@
+shape: sequence_diagram
+
+Trigger: "Scheduler"
+Svc0: "Initiator"
+TTS: "TTS"
+Svc1: "Workload 1"
+Svc2: "Workload 2"
+
+Trigger -> Svc0: "timer fires / condition met"
+Svc0 -> TTS: "request Txn-Token\nsubject_token = Self-Signed JWT"
+TTS -> TTS: "authenticate + authorize requester"
+TTS -> Svc0: "issue the Txn-Token" {style.stroke-dash: 3}
+Svc0 -> Svc1: "request + Txn-Token"
+Svc1 -> Svc2: "forward Txn-Token unchanged"
+Svc2 -> Svc1: "response" {style.stroke-dash: 3}
+Svc1 -> Svc0: "response" {style.stroke-dash: 3}
