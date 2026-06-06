@@ -1,14 +1,16 @@
 ---
-title: "Transaction Tokens Deep Dive: The OAuth Spec That Carries 'Who, and Why' Across Your Microservices"
+title: 'Transaction Tokens Deep Dive: The OAuth Spec That Carries ''Who, and Why'' Across Your Microservices'
 published: true
-description: "A close read of IETF draft-ietf-oauth-transaction-tokens-08. How Transaction Tokens (Txn-Tokens) safely propagate request context (user identity and authorization) inside a microservice trust domain, from the flow to the JWT structure to how the TTS works."
+description: 'A close read of IETF draft-ietf-oauth-transaction-tokens-08. How Transaction Tokens (Txn-Tokens) safely propagate request context (user identity and authorization) inside a microservice trust domain, from the flow to the JWT structure to how the TTS works.'
 tags:
   - oauth
   - security
   - microservices
   - identity
-series: "OAuth"
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/draft-ietf-oauth-transaction-tokens-deep-dive/cover.png"
+series: OAuth
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/draft-ietf-oauth-transaction-tokens-deep-dive/cover.png'
+id: 3812538
+date: '2026-06-03T16:17:13Z'
 ---
 
 # Introduction
