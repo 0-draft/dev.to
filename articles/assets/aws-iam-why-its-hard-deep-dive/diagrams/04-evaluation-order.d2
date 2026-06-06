@@ -1,0 +1,25 @@
+direction: down
+
+classes: {
+  start: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  check: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  deny: { style: { fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  allow: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Start: "📡 request arrives" { class: start }
+D1: "① is there an explicit\nDeny anywhere?" { class: check }
+Deny: "⛔ deny immediately\n(ignores any Allow elsewhere)" { class: deny }
+D2: "② does the ceiling group (SCP /\nBoundary / session)\nall Allow it?" { class: check }
+DenyImp: "⛔ deny" { class: deny }
+D3: "③ is there an Allow in the\nadding group (identity /\nresource)?" { class: check }
+Allow: "✅ permit" { class: allow }
+DefDeny: "⛔ implicit Deny\n(default is deny)" { class: deny }
+
+Start -> D1
+D1 -> Deny: "yes"
+D1 -> D2: "no"
+D2 -> DenyImp: "no"
+D2 -> D3: "yes"
+D3 -> Allow: "yes"
+D3 -> DefDeny: "no"

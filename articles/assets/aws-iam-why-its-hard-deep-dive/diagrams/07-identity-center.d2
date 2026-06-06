@@ -1,0 +1,29 @@
+direction: down
+
+classes: {
+  eng: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  idp: { style: { fill: "#e0e7ff"; stroke: "#4338ca"; stroke-width: 2; font-color: "#0a0f25" } }
+  ic: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  ps: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  acct: { style: { fill: "#fff7ed"; stroke: "#c2410c"; stroke-width: 2; font-color: "#0a0f25" } }
+  role: { style: { fill: "#fde68a"; stroke: "#a16207"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Eng: "👤 alice" { class: eng }
+IdP: "🌐 just one account in the IdP\n(Okta / Entra / Google)" { class: idp }
+IC: "🪪 IAM Identity Center\n(centrally manages which permission\ngoes to which account)" { class: ic }
+PS: "📝 Permission Set\n(permission template)" { class: ps }
+A1: "🏭 Prod A" { class: acct }
+A2: "🏭 Prod B" { class: acct }
+A3: "🛠 Dev" { class: acct }
+R1: "🎭 auto-generated Role" { class: role }
+R2: "🎭 auto-generated Role" { class: role }
+R3: "🎭 auto-generated Role" { class: role }
+
+Eng -> IdP -> IC -> PS
+PS -> R1: "Assign"
+R1 -> A1
+PS -> R2: "Assign"
+R2 -> A2
+PS -> R3: "Assign"
+R3 -> A3

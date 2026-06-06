@@ -1,0 +1,28 @@
+direction: down
+
+classes: {
+  add: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  cap: { style: { fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  result: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Add: "➕ Adds permissions\n(union: any Allow passes)" {
+  grid-columns: 1
+  style: { fill: "#dcfce7"; stroke: "#16a34a"; font-color: "#0a0f25" }
+  Id: "📜 identity-based policy\nattached to an identity" { class: add }
+  Res: "📄 resource-based policy\nattached to a resource" { class: add }
+}
+
+Cap: "🔻 Lowers the ceiling\n(intersection: all must permit)" {
+  grid-columns: 1
+  style: { fill: "#fee2e2"; stroke: "#dc2626"; font-color: "#0a0f25" }
+  SCP: "🏛 SCP\nceiling per OU / account" { class: cap }
+  RCP: "🏛 RCP\nresource version of SCP (GA 2024)" { class: cap }
+  PB: "🚧 Permission Boundary\nceiling per Role / User" { class: cap }
+  Sess: "⏳ session policy\ntemporary ceiling at Assume time" { class: cap }
+}
+
+Result: "🔑 Final permissions" { class: result }
+
+Add -> Result
+Cap -> Result

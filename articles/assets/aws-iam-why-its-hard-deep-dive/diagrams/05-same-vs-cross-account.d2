@@ -1,0 +1,25 @@
+direction: down
+
+classes: {
+  same: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  cross: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  ok: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Same: "🏠 within the same account (union: either one is enough)" {
+  style: { fill: "#dcfce7"; stroke: "#16a34a"; font-color: "#0a0f25" }
+  SA: "👤 Allow in alice's\nidentity-based policy" { class: same }
+  SB: "📄 Allow in the resource's\nresource-based policy" { class: same }
+  SOK: "✅ either one Allow\ngets you through" { class: ok }
+  SA -> SOK: "or"
+  SB -> SOK: "or"
+}
+
+Cross: "🌐 cross-account (both: you need both)" {
+  style: { fill: "#fef3c7"; stroke: "#b45309"; font-color: "#0a0f25" }
+  CA: "👤 Allow in company A's\nalice identity-based policy" { class: cross }
+  CB: "📄 Allow for alice in\ncompany B's resource-based policy" { class: cross }
+  COK: "✅ only goes through\nwhen both are present" { class: ok }
+  CA -> COK: "and"
+  CB -> COK: "and"
+}

@@ -1,0 +1,38 @@
+direction: down
+
+classes: {
+  who: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  gate: { style: { fill: "#fff7ed"; stroke: "#c2410c"; stroke-width: 2; font-color: "#0a0f25" } }
+  plus: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  cap: { style: { fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  result: { style: { fill: "#fde68a"; stroke: "#a16207"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Who: "who (Principal)" {
+  style: { fill: "#dbeafe"; stroke: "#2563eb"; font-color: "#0a0f25" }
+  User: "👤 IAM User\npermanent, long-lived keys" { class: who }
+  Role: "🎭 IAM Role\nborrowed, short-lived keys (default)" { class: who }
+}
+
+Gate: "the door into the Role" {
+  style: { fill: "#fff7ed"; stroke: "#c2410c"; font-color: "#0a0f25" }
+  Trust: "🚪 trust policy\nwho may Assume" { class: gate }
+}
+
+Calc: "computing what you can do" {
+  Plus: "➕ identity / resource\n= grant permission by addition" { class: plus }
+  Cap: "🔻 SCP / Boundary / session\n= lower the ceiling by multiplication" { class: cap }
+}
+
+Rule: "iron rules of judgment" {
+  Deny: "⛔ Deny beats everything" { class: cap }
+  Default: "⛔ write nothing, denied" { class: cap }
+}
+
+Result: "🔑 short-lived credentials\n= where all access ends up" { class: result }
+
+Who.User -> Gate
+Who.Role -> Gate
+Gate -> Calc
+Calc -> Rule
+Rule -> Result

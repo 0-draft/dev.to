@@ -1,0 +1,21 @@
+direction: down
+
+classes: {
+  req: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  authn: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  authz: { style: { fill: "#e0e7ff"; stroke: "#4338ca"; stroke-width: 2; font-color: "#0a0f25" } }
+  ok: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  ng: { style: { fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Req: "📡 API request\n(s3:GetObject, etc.)" { class: req }
+AuthN: "🪪 Authentication (AuthN)\nare you really you?" { class: authn }
+AuthZ: "🔑 Authorization (AuthZ)\nare you allowed to do this?" { class: authz }
+OK: "✅ Run it" { class: ok }
+NG: "⛔ AccessDenied" { class: ng }
+
+Req -> AuthN
+AuthN -> AuthZ: "identity confirmed"
+AuthN -> NG: "impostor"
+AuthZ -> OK: "permitted"
+AuthZ -> NG: "not permitted"

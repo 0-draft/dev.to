@@ -1,0 +1,17 @@
+shape: sequence_diagram
+
+P: "👤 alice (Principal)"
+STS: "🎫 STS"
+Trust: "🚪 trust policy"
+Role: "🎭 Role short-lived creds"
+API: "☁️ S3 API"
+
+P -> STS: "I want to AssumeRole"
+STS -> Trust: "is alice allowed in?"
+Trust -> STS: "OK (alice is in the Principal)" { style.stroke-dash: 3 }
+STS -> P: "issue short-lived credentials" { style.stroke-dash: 3 }
+P -> Role: "now you can act as the Role"
+P -> API: "s3:GetObject with those keys"
+API -> Role: "does the permission policy allow it?"
+Role -> API: "OK" { style.stroke-dash: 3 }
+API -> P: "return the object" { style.stroke-dash: 3 }

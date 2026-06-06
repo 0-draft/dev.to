@@ -1,0 +1,21 @@
+direction: down
+
+classes: {
+  eng: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  bad: { style: { fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Eng: "👤 alice" { class: eng }
+
+Bad: "😱 create an IAM User in each account" {
+  style: { fill: "#fee2e2"; stroke: "#dc2626"; font-color: "#0a0f25" }
+  UA: "IAM User\n(for Prod A)" { class: bad }
+  UB: "IAM User\n(for Prod B)" { class: bad }
+  UC: "IAM User\n(for Dev)" { class: bad }
+  UD: "..." { class: bad }
+}
+
+Eng -> Bad.UA
+Eng -> Bad.UB
+Eng -> Bad.UC
+Eng -> Bad.UD
