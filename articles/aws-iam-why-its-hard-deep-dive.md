@@ -1,5 +1,5 @@
 ---
-title: 'Why AWS IAM Is So Hard'
+title: Why AWS IAM Is So Hard
 published: true
 description: '"It says Allow but I still get denied." "I assumed the role but my permissions did not change." These are the spots every IAM beginner gets stuck. I break the difficulty down by its true cause: User vs Role, why a Role carries two policies, how to group policy types into union and intersection, the evaluation order where Deny beats everything, and the asymmetry between same-account and cross-account. Read top to bottom and it clicks.'
 tags:
@@ -8,7 +8,9 @@ tags:
   - security
   - beginners
 series: Amazon Web Services
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-iam-why-its-hard-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-iam-why-its-hard-deep-dive/cover.png'
+id: 3834382
+date: '2026-06-06T10:58:20Z'
 ---
 
 ## Where it starts
