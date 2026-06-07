@@ -8,7 +8,9 @@ tags:
   - kubernetes
   - grpc
 series: Service Mesh
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/xds-universal-data-plane-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/xds-universal-data-plane-deep-dive/cover.png'
+id: 3839919
+date: '2026-06-07T08:25:40Z'
 ---
 
 ## Introduction
