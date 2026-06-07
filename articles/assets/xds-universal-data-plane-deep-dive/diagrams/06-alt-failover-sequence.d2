@@ -1,0 +1,16 @@
+direction: down
+shape: sequence_diagram
+
+C: "xDS Client" {
+  style: { fill: "#fef3c7"; stroke: "#b45309"; font-color: "#0a0f25" }
+}
+Pri: "GCP CP\n(primary)"
+Sec: "Onprem CP\n(alt)"
+
+C -> C: "0. received URI: xdstp://gcp-cp/.../foo #alt=xdstp://onprem-cp/.../bar"
+C -> Pri: "1. subscribe foo"
+Pri -> C: "2. timeout / unreachable" { style.stroke-dash: 3 }
+C -> C: "3. primary failed: parse the alt directive"
+C -> Sec: "4. subscribe bar"
+Sec -> C: "5. returns the body of bar" { style.stroke-dash: 3 }
+C -> C: "6. use bar as the functional substitute"

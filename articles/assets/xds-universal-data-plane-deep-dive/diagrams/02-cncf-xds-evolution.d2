@@ -1,0 +1,24 @@
+direction: down
+
+classes: {
+  dep: { style: { fill: "#fecaca"; stroke: "#b91c1c"; stroke-width: 1; font-color: "#0a0f25" } }
+  now1: { style: { fill: "#bbf7d0"; stroke: "#15803d"; stroke-width: 2; font-color: "#0a0f25" } }
+  neutral: { style: { fill: "#e0e7ff"; stroke: "#4338ca"; font-color: "#0a0f25" } }
+}
+
+past: "past (~2021)" {
+  UDPA: "cncf/udpa" { class: dep }
+  EnvoyAPI1: "envoyproxy/envoy/api" { class: dep }
+}
+now: "now (2026)" {
+  XDS: "cncf/xds\nEnvoy-independent core types" { class: now1 }
+  EnvoyAPI2: "envoyproxy/envoy/api\nEnvoy-specific data model" { class: neutral }
+}
+gRPC: "gRPC xDS client" { class: neutral }
+ztunnel: "Istio ambient (ztunnel)" { class: neutral }
+
+past.UDPA -> now.XDS: "deprecated" { style.stroke-dash: 3 }
+past.EnvoyAPI1 -> now.XDS: "partly generalized" { style.stroke-dash: 3 }
+now.XDS -> now.EnvoyAPI2: "import"
+now.XDS -> gRPC: "import"
+now.XDS -> ztunnel: "import"

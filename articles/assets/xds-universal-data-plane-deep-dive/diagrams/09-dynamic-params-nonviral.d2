@@ -1,0 +1,20 @@
+direction: right
+
+classes: {
+  l: { style: { fill: "#bfdbfe"; stroke: "#1d4ed8"; font-color: "#0a0f25" } }
+  r: { style: { fill: "#bbf7d0"; stroke: "#15803d"; font-color: "#0a0f25" } }
+  c: { style: { fill: "#fed7aa"; stroke: "#c2410c"; font-color: "#0a0f25" } }
+  e: { style: { fill: "#e9d5ff"; stroke: "#7e22ce"; font-color: "#0a0f25" } }
+}
+
+nonviral: "Dynamic Parameters: single name, variants via constraints" {
+  LDS_: "LDS foo\n(no variant)" { class: l }
+  RDS_: "RDS bar\n(no variant)" { class: r }
+  CDS_: "CDS baz\n(no variant)" { class: c }
+  EDS_: "EDS baz-endpoints\nconstraint: env=prod" { class: e }
+  EDS2_: "EDS baz-endpoints\nconstraint: env=canary" { class: e }
+
+  LDS_ -> RDS_ -> CDS_
+  CDS_ -> EDS_: "same name" { style.stroke-dash: 3 }
+  CDS_ -> EDS2_: "same name" { style.stroke-dash: 3 }
+}

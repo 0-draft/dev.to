@@ -1,0 +1,19 @@
+direction: down
+
+classes: {
+  sub: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  cp: { style: { fill: "#e0e7ff"; stroke: "#4338ca"; stroke-width: 2; font-color: "#0a0f25" } }
+  ok: { style: { fill: "#bbf7d0"; stroke: "#15803d"; font-color: "#0a0f25" } }
+  no: { style: { fill: "#fecaca"; stroke: "#b91c1c"; font-color: "#0a0f25" } }
+}
+
+Sub: "subscribe\n.../my-listeners/*?node_type=ingress" { class: sub }
+CP: "Control Plane" { class: cp }
+R1: ".../my-listeners/foo\nnode_type=ingress" { class: ok }
+R2: ".../my-listeners/bar\nnode_type=ingress" { class: ok }
+R3: ".../my-listeners/baz\nnode_type=egress" { class: no }
+
+Sub -> CP
+CP -> R1
+CP -> R2
+CP -> R3: "excluded" { style.stroke-dash: 3 }

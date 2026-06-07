@@ -1,0 +1,22 @@
+direction: up
+
+classes: {
+  e: { style: { fill: "#bbf7d0"; stroke: "#15803d"; font-color: "#0a0f25" } }
+  c: { style: { fill: "#fed7aa"; stroke: "#c2410c"; font-color: "#0a0f25" } }
+  r: { style: { fill: "#bfdbfe"; stroke: "#1d4ed8"; font-color: "#0a0f25" } }
+  l: { style: { fill: "#e9d5ff"; stroke: "#7e22ce"; font-color: "#0a0f25" } }
+}
+
+viral: "variants climb from downstream to upstream (viral)" {
+  EDS1: "EDS\nenv=prod" { class: e }
+  EDS2: "EDS\nenv=canary" { class: e }
+  CDS1: "CDS (-> EDS prod)" { class: c }
+  CDS2: "CDS (-> EDS canary)" { class: c }
+  RDS1: "RDS (-> CDS prod)" { class: r }
+  RDS2: "RDS (-> CDS canary)" { class: r }
+  LDS1: "LDS (-> RDS prod)" { class: l }
+  LDS2: "LDS (-> RDS canary)" { class: l }
+
+  EDS1 -> CDS1 -> RDS1 -> LDS1
+  EDS2 -> CDS2 -> RDS2 -> LDS2
+}

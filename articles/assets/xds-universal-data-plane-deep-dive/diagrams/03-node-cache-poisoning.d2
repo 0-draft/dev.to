@@ -1,0 +1,19 @@
+direction: down
+shape: sequence_diagram
+
+Client1: "Envoy A\n(Node.metadata=v1)" {
+  style: { fill: "#fef3c7"; stroke: "#b45309"; font-color: "#0a0f25" }
+}
+Client2: "Envoy B\n(Node.metadata=v2)" {
+  style: { fill: "#fef3c7"; stroke: "#b45309"; font-color: "#0a0f25" }
+}
+Relay: "xDS Relay\n(cache)"
+CP: "Control Plane"
+
+Client1 -> Relay: "1. subscribe foo"
+Relay -> CP: "2. subscribe foo (forward Node=v1)"
+CP -> Relay: "3. body of foo: payload_v1" { style.stroke-dash: 3 }
+Relay -> Client1: "4. payload_v1" { style.stroke-dash: 3 }
+Relay -> Relay: "5. cached foo"
+Client2 -> Relay: "6. subscribe foo"
+Relay -> Client2: "7. payload_v1 ??? (v2 wanted a different body)" { style.stroke-dash: 3 }

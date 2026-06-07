@@ -1,0 +1,23 @@
+direction: right
+
+classes: {
+  root: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  scheme: { style: { fill: "#dbeafe"; stroke: "#1d4ed8"; font-color: "#0a0f25" } }
+  auth: { style: { fill: "#bbf7d0"; stroke: "#15803d"; font-color: "#0a0f25" } }
+  type: { style: { fill: "#fbcfe8"; stroke: "#be185d"; font-color: "#0a0f25" } }
+  idc: { style: { fill: "#e9d5ff"; stroke: "#7e22ce"; font-color: "#0a0f25" } }
+  ctx: { style: { fill: "#fed7aa"; stroke: "#c2410c"; font-color: "#0a0f25" } }
+}
+
+URI: "xdstp://traffic-director.gcp.io/envoy.config.listener.v3.Listener/api-fe?env=prod&region=us" { class: root }
+S: "xdstp://" { class: scheme }
+A: "traffic-director.gcp.io" { class: auth }
+T: "envoy.config.listener.v3.Listener" { class: type }
+I: "api-fe" { class: idc }
+C: "env=prod&region=us" { class: ctx }
+
+URI -> S: "scheme"
+URI -> A: "authority"
+URI -> T: "type_url"
+URI -> I: "id"
+URI -> C: "context_params"

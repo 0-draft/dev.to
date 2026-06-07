@@ -1,0 +1,23 @@
+direction: down
+
+classes: {
+  hot: { style: { fill: "#fecaca"; stroke: "#b91c1c"; stroke-width: 2; font-color: "#0a0f25" } }
+  warm: { style: { fill: "#fed7aa"; stroke: "#c2410c"; font-color: "#0a0f25" } }
+  cool: { style: { fill: "#bbf7d0"; stroke: "#15803d"; stroke-width: 2; font-color: "#0a0f25" } }
+  lb: { style: { fill: "#dbeafe"; stroke: "#1d4ed8"; stroke-width: 2; font-color: "#0a0f25" } }
+  cp: { style: { fill: "#e0e7ff"; stroke: "#4338ca"; font-color: "#0a0f25" } }
+}
+
+cluster: "Backend Cluster" {
+  BE1: "Backend Pod 1\ncpu=0.83 mem=0.62" { class: warm }
+  BE2: "Backend Pod 2\ncpu=0.21 mem=0.40" { class: cool }
+  BE3: "Backend Pod 3\ncpu=0.95 mem=0.71" { class: hot }
+}
+LB: "L7 LB / gRPC client" { class: lb }
+CP: "xDS Control Plane" { class: cp }
+
+cluster.BE1 -> LB: "OOB OrcaLoadReport stream"
+cluster.BE2 -> LB: "OOB OrcaLoadReport stream"
+cluster.BE3 -> LB: "OOB OrcaLoadReport stream"
+LB -> CP: "aggregate up via LRS" { style.stroke-dash: 3 }
+LB -> cluster.BE2: "send more to the light Pod 2"

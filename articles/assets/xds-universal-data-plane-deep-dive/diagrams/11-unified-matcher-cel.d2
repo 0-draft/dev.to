@@ -1,0 +1,21 @@
+direction: down
+
+classes: {
+  root: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  pred: { style: { fill: "#dbeafe"; stroke: "#1d4ed8"; font-color: "#0a0f25" } }
+  act: { style: { fill: "#bbf7d0"; stroke: "#15803d"; stroke-width: 2; font-color: "#0a0f25" } }
+  def: { style: { fill: "#fecaca"; stroke: "#b91c1c"; font-color: "#0a0f25" } }
+}
+
+Start: "Matcher root" { class: root }
+P1: "predicate:\nheaders['x-env'] == 'prod'" { shape: diamond; class: pred }
+P2: "predicate:\nheaders['x-env'] == 'canary'" { shape: diamond; class: pred }
+A1: "action: route to prod cluster" { class: act }
+A2: "action: route to canary cluster (10%)" { class: act }
+Def: "on_no_match:\naction: 404" { class: def }
+
+Start -> P1
+P1 -> A1: "true"
+P1 -> P2: "false"
+P2 -> A2: "true"
+P2 -> Def: "false"

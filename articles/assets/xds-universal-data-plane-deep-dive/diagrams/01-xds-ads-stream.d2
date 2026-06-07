@@ -1,0 +1,17 @@
+direction: down
+shape: sequence_diagram
+
+C: "xDS Client\n(Envoy / gRPC lib)" {
+  style: { fill: "#fef3c7"; stroke: "#b45309"; font-color: "#0a0f25" }
+}
+S: "Control Plane\n(xDS server)"
+
+C -> C: "0. one StreamAggregatedResources held open"
+C -> S: "1. DiscoveryRequest{node, type_url=Cluster, resource_names=[...]}"
+S -> C: "2. DiscoveryResponse{type_url=Cluster, resources=[Any, Any], nonce=n1}" { style.stroke-dash: 3 }
+C -> S: "3. DiscoveryRequest{version_info=v1, nonce=n1}"
+C -> C: "4. applied OK: ACK (error_detail empty)"
+S -> C: "5. DiscoveryResponse{type_url=Listener, resources=[Any], nonce=n2}" { style.stroke-dash: 3 }
+C -> S: "6. DiscoveryRequest{nonce=n2, error_detail=INVALID_ARGUMENT}"
+C -> C: "7. parse failed: NACK (keeps the previous version)"
+C -> S: "8. Cluster / Listener / Endpoint share one stream, keyed by type_url"

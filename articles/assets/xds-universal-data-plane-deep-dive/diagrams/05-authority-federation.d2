@@ -1,0 +1,18 @@
+direction: down
+
+classes: {
+  client: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  gcp: { style: { fill: "#bfdbfe"; stroke: "#1d4ed8"; stroke-width: 1; font-color: "#0a0f25" } }
+  onprem: { style: { fill: "#bbf7d0"; stroke: "#15803d"; stroke-width: 1; font-color: "#0a0f25" } }
+}
+
+Client: "xDS Client\n(Envoy / gRPC / ztunnel)" { class: client }
+A1: "authority: traffic-director.gcp.io" {
+  CP1: "GCP Traffic Director" { class: gcp }
+}
+A2: "authority: onprem-cp.internal" {
+  CP2: "self-hosted istiod / own CP" { class: onprem }
+}
+
+Client -> A1.CP1: "xdstp://traffic-director.gcp.io/..."
+Client -> A2.CP2: "xdstp://onprem-cp.internal/..."

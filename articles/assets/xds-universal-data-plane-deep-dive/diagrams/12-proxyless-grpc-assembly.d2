@@ -1,0 +1,32 @@
+direction: down
+
+classes: {
+  app: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  stub: { style: { fill: "#fed7aa"; stroke: "#c2410c"; font-color: "#0a0f25" } }
+  xds: { style: { fill: "#bfdbfe"; stroke: "#1d4ed8"; stroke-width: 2; font-color: "#0a0f25" } }
+  lb: { style: { fill: "#bbf7d0"; stroke: "#15803d"; stroke-width: 2; font-color: "#0a0f25" } }
+  cp: { style: { fill: "#e0e7ff"; stroke: "#4338ca"; stroke-width: 1; font-color: "#0a0f25" } }
+  be: { style: { fill: "#fbcfe8"; stroke: "#be185d"; font-color: "#0a0f25" } }
+}
+
+proc: "one gRPC app process" {
+  App: "application code" { class: app }
+  Stub: "gRPC stub" { class: stub }
+  XdsClient: "gRPC built-in xDS client" { class: xds }
+  LB: "custom LB (ORCA-metric based)" { class: lb }
+
+  App -> Stub -> XdsClient
+  XdsClient -> LB
+}
+mesh: "xDS / ORCA mesh" {
+  CP1: "Authority A: CPaaS" { class: cp }
+  CP2: "Authority B: own CP" { class: cp }
+  BE1: "Backend 1" { class: be }
+  BE2: "Backend 2" { class: be }
+}
+
+proc.XdsClient -> mesh.CP1: "xdstp://auth-A/..."
+proc.XdsClient -> mesh.CP2: "xdstp://auth-B/..."
+proc.LB -> mesh.BE1: "ORCA OOB report"
+proc.LB -> mesh.BE2: "ORCA OOB report"
+proc.XdsClient -> mesh.CP1: "LRS w/ custom metric" { style.stroke-dash: 3 }
