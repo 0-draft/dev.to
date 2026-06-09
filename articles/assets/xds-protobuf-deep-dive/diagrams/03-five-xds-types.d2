@@ -1,0 +1,10 @@
+direction: down
+lds: "LDS\nListener Discovery Service\nwhich port to listen on" { style.fill: "#dbeafe"; style.stroke: "#1d4ed8"; style.font-color: "#1e3a8a" }
+rds: "RDS\nRoute Discovery Service\nHTTP routing" { style.fill: "#cffafe"; style.stroke: "#0e7490"; style.font-color: "#164e63" }
+cds: "CDS\nCluster Discovery Service\nupstream grouping" { style.fill: "#fef3c7"; style.stroke: "#b45309"; style.font-color: "#78350f" }
+eds: "EDS\nEndpoint Discovery Service\nactual Pod IP list" { style.fill: "#dcfce7"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+sds: "SDS\nSecret Discovery Service\nTLS certificates" { style.fill: "#fce7f3"; style.stroke: "#be185d"; style.font-color: "#831843" }
+lds -> rds: "points at a route"
+rds -> cds: "points at a cluster"
+cds -> eds: "points at endpoints"
+lds -> sds: "mTLS certs" { style.stroke-dash: 3 }

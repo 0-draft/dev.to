@@ -1,0 +1,15 @@
+direction: down
+l1: "1. xDS transport layer (how it ships)" {
+  style.fill: "#dbeafe"; style.stroke: "#1d4ed8"; style.font-color: "#1e3a8a"
+  t: "DiscoveryRequest / DiscoveryResponse\nADS / Delta\nthe envelope: give me LDS / here is the delta" { style.fill: "#bfdbfe"; style.stroke: "#1d4ed8"; style.font-color: "#1e3a8a" }
+}
+l2: "2. xDS shared data model (vendor-neutral)" {
+  style.fill: "#fef3c7"; style.stroke: "#b45309"; style.font-color: "#78350f"
+  m: "xds.core.v3.* / xds.type.matcher.v3.*\nmatcher, collection, etc\nthe cncf/xds repo, not Envoy-only" { style.fill: "#fde68a"; style.stroke: "#b45309"; style.font-color: "#78350f" }
+}
+l3: "3. resource schema layer (contents, Envoy-specific)" {
+  style.fill: "#dcfce7"; style.stroke: "#15803d"; style.font-color: "#14532d"
+  r: "envoy.config.listener.v3.Listener\nCluster / RouteConfiguration / ...\nwhat a Listener looks like" { style.fill: "#bbf7d0"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+}
+l1 -> l2
+l2 -> l3

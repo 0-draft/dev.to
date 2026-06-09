@@ -1,0 +1,15 @@
+direction: down
+istiod: "istiod" {
+  style.fill: "#ede9fe"; style.stroke: "#6d28d9"; style.font-color: "#4c1d95"
+  cc: "Config Controller\nwatches k8s resources" { style.fill: "#ddd6fe"; style.stroke: "#6d28d9"; style.font-color: "#4c1d95" }
+  sd: "Service Discovery\ntracks services and endpoints" { style.fill: "#ddd6fe"; style.stroke: "#6d28d9"; style.font-color: "#4c1d95" }
+  pc: "PushContext\ncomputed snapshot" { style.fill: "#c4b5fd"; style.stroke: "#6d28d9"; style.font-color: "#2e1065" }
+  gen: "Generator\nbuilds config per type" { style.fill: "#c4b5fd"; style.stroke: "#6d28d9"; style.font-color: "#2e1065" }
+  xds: "xDS Server\n(DiscoveryServer)" { style.fill: "#a78bfa"; style.stroke: "#6d28d9"; style.font-color: "#2e1065" }
+  cc -> pc
+  sd -> pc
+  pc -> gen
+  gen -> xds
+}
+env: "Envoy" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+istiod.xds -> env: "ADS push"

@@ -1,0 +1,22 @@
+direction: down
+cp: "Control plane (the brain)" {
+  style.fill: "#ede9fe"
+  style.stroke: "#6d28d9"
+  style.font-color: "#4c1d95"
+  istiod: "istiod\ncomputes and ships config" {
+    style.fill: "#c4b5fd"
+    style.stroke: "#6d28d9"
+    style.font-color: "#2e1065"
+  }
+}
+dp: "Data plane (the floor)" {
+  style.fill: "#dcfce7"
+  style.stroke: "#15803d"
+  style.font-color: "#14532d"
+  e1: "Envoy\n(Pod A sidecar)" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+  e2: "Envoy\n(Pod B sidecar)" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+  e3: "Envoy\n(Pod C sidecar)" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+}
+cp.istiod -> dp.e1: "ships config"
+cp.istiod -> dp.e2: "ships config"
+cp.istiod -> dp.e3: "ships config"

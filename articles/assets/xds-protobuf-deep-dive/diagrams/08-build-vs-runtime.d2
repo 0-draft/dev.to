@@ -1,0 +1,18 @@
+direction: down
+build: "Build time (once)" {
+  style.fill: "#fef3c7"; style.stroke: "#b45309"; style.font-color: "#78350f"
+  p: ".proto" { style.fill: "#fde68a"; style.stroke: "#b45309"; style.font-color: "#78350f" }
+  c: "generated classes\n(types only, empty)" { style.fill: "#fde68a"; style.stroke: "#b45309"; style.font-color: "#78350f" }
+  p -> c: "protoc"
+}
+run: "Runtime (the whole time istiod runs)" {
+  style.fill: "#ede9fe"; style.stroke: "#6d28d9"; style.font-color: "#4c1d95"
+  k: "Kubernetes API\nVirtualService / Service / EndpointSlice" { style.fill: "#ddd6fe"; style.stroke: "#6d28d9"; style.font-color: "#4c1d95" }
+  gen: "2. a Generator news up the\nempty type and fills the fields" { style.fill: "#c4b5fd"; style.stroke: "#6d28d9"; style.font-color: "#2e1065" }
+  bytes: "bytes" { style.fill: "#a5b4fc"; style.stroke: "#4338ca"; style.font-color: "#312e81" }
+  env: "Envoy" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+  k -> gen: "1. watch and detect changes"
+  gen -> bytes: "3. proto.Marshal"
+  bytes -> env: "4. push over the ADS stream"
+}
+build.c -> run.gen: "embedded in the istiod binary" { style.stroke-dash: 3 }

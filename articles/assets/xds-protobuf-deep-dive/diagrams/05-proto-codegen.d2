@@ -1,0 +1,8 @@
+direction: right
+proto: ".proto\ntype blueprint" { style.fill: "#fef3c7"; style.stroke: "#b45309"; style.font-color: "#78350f" }
+protoc: "protoc\n(compiler)" { style.fill: "#fed7aa"; style.stroke: "#c2410c"; style.font-color: "#7c2d12" }
+go: "Go classes\n(for istiod)" { style.fill: "#dbeafe"; style.stroke: "#1d4ed8"; style.font-color: "#1e3a8a" }
+cpp: "C++ classes\n(for Envoy)" { style.fill: "#dcfce7"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+proto -> protoc
+protoc -> go
+protoc -> cpp

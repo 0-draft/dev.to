@@ -1,0 +1,12 @@
+direction: down
+cp: "Control plane" {
+  style.fill: "#ede9fe"; style.stroke: "#6d28d9"; style.font-color: "#4c1d95"
+  ds: "xDS server\n(config source)" { style.fill: "#c4b5fd"; style.stroke: "#6d28d9"; style.font-color: "#2e1065" }
+}
+dp: "Data plane" {
+  style.fill: "#dcfce7"; style.stroke: "#15803d"; style.font-color: "#14532d"
+  env: "Envoy" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+}
+dp.env -> cp.ds: "1. connect over gRPC and subscribe"
+cp.ds -> dp.env: "2. push config"
+cp.ds -> dp.env: "3. re-push on change"

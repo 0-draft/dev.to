@@ -1,0 +1,12 @@
+shape: sequence_diagram
+i: "istiod" { style.fill: "#c4b5fd"; style.stroke: "#6d28d9"; style.font-color: "#2e1065" }
+e: "Envoy" { style.fill: "#86efac"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+i -> e: "DiscoveryResponse (config + nonce)"
+valid: "if config is valid" {
+  e -> i: "ACK (echo the same nonce)"
+  e -> e: "apply the new config"
+}
+broken: "if config is broken" {
+  e -> i: "NACK (with error_detail)"
+  e -> e: "keep running the old config"
+}

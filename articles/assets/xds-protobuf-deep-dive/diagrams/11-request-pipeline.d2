@@ -1,0 +1,7 @@
+direction: down
+lds: "LDS\nlistener\nport / L4" { style.fill: "#dbeafe"; style.stroke: "#1d4ed8"; style.font-color: "#1e3a8a" }
+fc: "filter chain\nwhich chain" { style.fill: "#e0e7ff"; style.stroke: "#4338ca"; style.font-color: "#312e81" }
+rds: "RDS\nroute\ndecide per HTTP request" { style.fill: "#cffafe"; style.stroke: "#0e7490"; style.font-color: "#164e63" }
+cds: "CDS\ncluster\nupstream group" { style.fill: "#fef3c7"; style.stroke: "#b45309"; style.font-color: "#78350f" }
+eds: "EDS\nendpoint\nindividual target" { style.fill: "#dcfce7"; style.stroke: "#15803d"; style.font-color: "#14532d" }
+lds -> fc -> rds -> cds -> eds
