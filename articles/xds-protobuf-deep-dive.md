@@ -1,10 +1,16 @@
 ---
-title: "What xDS Actually Ships: Your Control Plane Sends protobuf, Not YAML"
+title: 'What xDS Actually Ships: Your Control Plane Sends protobuf, Not YAML'
 published: true
-description: "A top-to-bottom walk through what istiod hands to the Envoy sidecars. Start with control plane vs data plane, then xDS, then the fact that the wire carries protobuf instead of YAML, how to read protobuf and a real listener.proto, where to place metadata across LDS/RDS/CDS/EDS, and finally pulling a raw DiscoveryResponse out of a live kind cluster."
-tags: ["envoy", "istio", "kubernetes", "grpc"]
+description: 'A top-to-bottom walk through what istiod hands to the Envoy sidecars. Start with control plane vs data plane, then xDS, then the fact that the wire carries protobuf instead of YAML, how to read protobuf and a real listener.proto, where to place metadata across LDS/RDS/CDS/EDS, and finally pulling a raw DiscoveryResponse out of a live kind cluster.'
+tags:
+  - envoy
+  - istio
+  - kubernetes
+  - grpc
 series: Service Mesh
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/xds-protobuf-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/xds-protobuf-deep-dive/cover.png'
+id: 3859152
+date: '2026-06-09T17:09:28Z'
 ---
 
 ## The thing I had wrong for years
