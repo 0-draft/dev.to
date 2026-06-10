@@ -1,0 +1,32 @@
+direction: right
+
+client: "Order service\n(gRPC client)" {
+  style.fill: "#1a73e8"
+  style.stroke: "#0b47a1"
+  style.font-color: "#ffffff"
+}
+svc: "Service (ClusterIP)\npicks a backend once,\nat connection time" {
+  style.fill: "#f9a825"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+podA: "Stock Pod A\nall requests land here" {
+  style.fill: "#d32f2f"
+  style.stroke: "#8e0000"
+  style.font-color: "#ffffff"
+}
+podB: "Stock Pod B\nidle" {
+  style.fill: "#cfd8dc"
+  style.stroke: "#455a64"
+  style.font-color: "#0a0f25"
+}
+podC: "Stock Pod C\nidle" {
+  style.fill: "#cfd8dc"
+  style.stroke: "#455a64"
+  style.font-color: "#0a0f25"
+}
+
+client -> svc: "one long-lived\nHTTP/2 connection" {style.stroke-width: 3}
+svc -> podA: "" {style.stroke-width: 3}
+svc -> podB: "" {style.stroke-dash: 3}
+svc -> podC: "" {style.stroke-dash: 3}
