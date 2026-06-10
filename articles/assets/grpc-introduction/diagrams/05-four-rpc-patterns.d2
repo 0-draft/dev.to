@@ -1,0 +1,69 @@
+direction: down
+
+p1: "1. Unary" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#0b47a1"
+  c: "client" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  s: "server" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  c -> s: "1 request" {style.font-color: "#0a0f25"}
+  s -> c: "1 response" {style.stroke-dash: 3; style.font-color: "#0a0f25"}
+}
+
+p2: "2. Server streaming" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#1b5e20"
+  c: "client" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  s: "server" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  c -> s: "1 request" {style.font-color: "#0a0f25"}
+  s -> c: "response stream" {style.stroke-dash: 3; style.font-color: "#0a0f25"}
+}
+
+p3: "3. Client streaming" {
+  style.fill: "#fff3e0"
+  style.stroke: "#e65100"
+  c: "client" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  s: "server" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  c -> s: "request stream" {style.font-color: "#0a0f25"}
+  s -> c: "1 response" {style.stroke-dash: 3; style.font-color: "#0a0f25"}
+}
+
+p4: "4. Bidirectional streaming" {
+  style.fill: "#f3e5f5"
+  style.stroke: "#4a148c"
+  c: "client" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  s: "server" {
+    style.fill: "#ffffff"
+    style.stroke: "#455a64"
+    style.font-color: "#0a0f25"
+  }
+  c -> s: "request stream" {style.font-color: "#0a0f25"}
+  s -> c: "response stream" {style.stroke-dash: 3; style.font-color: "#0a0f25"}
+}

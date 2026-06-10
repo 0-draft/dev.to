@@ -1,0 +1,35 @@
+direction: right
+
+browser: "Browser" {
+  style.fill: "#7b1fa2"
+  style.stroke: "#4a148c"
+  style.font-color: "#ffffff"
+}
+g1: "gRPC server" {
+  style.fill: "#ef9a9a"
+  style.stroke: "#8e0000"
+  style.font-color: "#0a0f25"
+}
+proxy: "Envoy or similar\ntranslating proxy" {
+  style.fill: "#f9a825"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+g2: "gRPC server" {
+  style.fill: "#1a73e8"
+  style.stroke: "#0b47a1"
+  style.font-color: "#ffffff"
+}
+g3: "Connect server\n(also speaks gRPC)" {
+  style.fill: "#2e7d32"
+  style.stroke: "#1b5e20"
+  style.font-color: "#ffffff"
+}
+
+browser -> g1: "plain gRPC: blocked\n(fetch cannot read trailers)" {
+  style.stroke: "#d32f2f"
+  style.stroke-dash: 3
+}
+browser -> proxy: "gRPC-Web"
+proxy -> g2: "gRPC"
+browser -> g3: "Connect protocol\n(plain HTTP is enough)"

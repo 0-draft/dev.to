@@ -1,0 +1,62 @@
+direction: down
+
+logical: "Logical view: three RPCs in flight on one connection" {
+  style.fill: "#fafafa"
+  style.stroke: "#455a64"
+  grid-rows: 1
+
+  s1: "Stream 1\nReserve()\nin progress" {
+    style.fill: "#1a73e8"
+    style.stroke: "#0b47a1"
+    style.font-color: "#ffffff"
+  }
+  s3: "Stream 3\nCharge()\nin progress" {
+    style.fill: "#2e7d32"
+    style.stroke: "#1b5e20"
+    style.font-color: "#ffffff"
+  }
+  s5: "Stream 5\nWatchOrder()\nreceiving" {
+    style.fill: "#7b1fa2"
+    style.stroke: "#4a148c"
+    style.font-color: "#ffffff"
+  }
+}
+
+wire: "On the wire: frames interleaved, tagged with their stream number" {
+  style.fill: "#fafafa"
+  style.stroke: "#455a64"
+  grid-rows: 1
+
+  w1: "HEADERS\ns=1" {
+    style.fill: "#1a73e8"
+    style.stroke: "#0b47a1"
+    style.font-color: "#ffffff"
+  }
+  w2: "HEADERS\ns=3" {
+    style.fill: "#2e7d32"
+    style.stroke: "#1b5e20"
+    style.font-color: "#ffffff"
+  }
+  w3: "DATA\ns=1" {
+    style.fill: "#1a73e8"
+    style.stroke: "#0b47a1"
+    style.font-color: "#ffffff"
+  }
+  w4: "DATA\ns=5" {
+    style.fill: "#7b1fa2"
+    style.stroke: "#4a148c"
+    style.font-color: "#ffffff"
+  }
+  w5: "DATA\ns=3" {
+    style.fill: "#2e7d32"
+    style.stroke: "#1b5e20"
+    style.font-color: "#ffffff"
+  }
+  w6: "DATA\ns=5" {
+    style.fill: "#7b1fa2"
+    style.stroke: "#4a148c"
+    style.font-color: "#ffffff"
+  }
+}
+
+logical -> wire: "split into frames, sent over one TCP connection"

@@ -1,0 +1,33 @@
+direction: down
+
+proto: "order.proto\n(the single source of truth for the API)" {
+  style.fill: "#f9a825"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+
+go: "Go server + client\n(order service)" {
+  style.fill: "#1a73e8"
+  style.stroke: "#0b47a1"
+  style.font-color: "#ffffff"
+}
+java: "Java client\n(stock service)" {
+  style.fill: "#d32f2f"
+  style.stroke: "#8e0000"
+  style.font-color: "#ffffff"
+}
+swift: "Swift client\n(iOS app)" {
+  style.fill: "#7b1fa2"
+  style.stroke: "#4a148c"
+  style.font-color: "#ffffff"
+}
+ts: "TypeScript client\n(web frontend)" {
+  style.fill: "#00897b"
+  style.stroke: "#004d40"
+  style.font-color: "#ffffff"
+}
+
+proto -> go: "protoc --go_out"
+proto -> java: "protoc --java_out"
+proto -> swift: "protoc --swift_out"
+proto -> ts: "buf + connect-es"

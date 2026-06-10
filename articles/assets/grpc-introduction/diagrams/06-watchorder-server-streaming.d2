@@ -1,0 +1,20 @@
+shape: sequence_diagram
+
+app: "Mobile app" {
+  style.fill: "#f3e5f5"
+  style.stroke: "#4a148c"
+  style.font-color: "#0a0f25"
+}
+order: "Order service" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#0b47a1"
+  style.font-color: "#0a0f25"
+}
+
+app -> order: "1. WatchOrder(order_id = ord_gx100_1234567)"
+order -> app: "2. OrderEvent: PENDING" {style.stroke-dash: 3}
+order -> order: "waits for the stock service to confirm"
+order -> app: "3. OrderEvent: CONFIRMED" {style.stroke-dash: 3}
+order -> order: "shipping happens"
+order -> app: "4. OrderEvent: SHIPPED" {style.stroke-dash: 3}
+app -> order: "all of the above rides one HTTP/2 stream. No polling" {style.stroke-dash: 5}

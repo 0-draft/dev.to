@@ -1,0 +1,33 @@
+direction: down
+
+phone: "Mobile app" {
+  style.fill: "#7b1fa2"
+  style.stroke: "#4a148c"
+  style.font-color: "#ffffff"
+}
+gw: "API gateway" {
+  style.fill: "#f9a825"
+  style.stroke: "#e65100"
+  style.font-color: "#0a0f25"
+}
+orders: "Order service (Go)" {
+  style.fill: "#1a73e8"
+  style.stroke: "#0b47a1"
+  style.font-color: "#ffffff"
+}
+stock: "Stock service (Java)" {
+  style.fill: "#d32f2f"
+  style.stroke: "#8e0000"
+  style.font-color: "#ffffff"
+}
+pay: "Payment service (Go)" {
+  style.fill: "#2e7d32"
+  style.stroke: "#1b5e20"
+  style.font-color: "#ffffff"
+}
+
+phone -> gw: "HTTPS + JSON\n(the outside edge stays REST)"
+gw -> orders: "gRPC"
+orders -> stock: "gRPC: Reserve()"
+orders -> pay: "gRPC: Charge()"
+orders -> gw: "gRPC server streaming:\nWatchOrder()" {style.stroke-dash: 3}

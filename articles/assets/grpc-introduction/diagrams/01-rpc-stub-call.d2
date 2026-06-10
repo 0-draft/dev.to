@@ -1,0 +1,37 @@
+direction: down
+
+order: "Order service (Go)" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#0b47a1"
+
+  app: "Application code\nstockClient.Reserve(ctx, req)" {
+    style.fill: "#1a73e8"
+    style.stroke: "#0b47a1"
+    style.font-color: "#ffffff"
+  }
+  stub: "Generated stub\nserializes args, sends the bytes" {
+    style.fill: "#90caf9"
+    style.stroke: "#0b47a1"
+    style.font-color: "#0a0f25"
+  }
+  app -> stub
+}
+
+stock: "Stock service (Java)" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#1b5e20"
+
+  stub: "Generated stub\nrebuilds args from the bytes" {
+    style.fill: "#a5d6a7"
+    style.stroke: "#1b5e20"
+    style.font-color: "#0a0f25"
+  }
+  impl: "Reserve() implementation\nthe actual logic" {
+    style.fill: "#2e7d32"
+    style.stroke: "#1b5e20"
+    style.font-color: "#ffffff"
+  }
+  stub -> impl
+}
+
+order.stub -> stock.stub: "network\n(HTTP/2 + protobuf)"

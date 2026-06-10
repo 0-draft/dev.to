@@ -1,0 +1,18 @@
+shape: sequence_diagram
+
+client: "Client\n(order service)" {
+  style.fill: "#e3f2fd"
+  style.stroke: "#0b47a1"
+  style.font-color: "#0a0f25"
+}
+server: "Server\n(stock service)" {
+  style.fill: "#e8f5e9"
+  style.stroke: "#1b5e20"
+  style.font-color: "#0a0f25"
+}
+
+client -> server: "1. HEADERS:  :path = /OrderService/CreateOrder,  content-type = application/grpc"
+client -> server: "2. DATA (END_STREAM):  5-byte prefix + request protobuf"
+server -> client: "3. HEADERS:  :status = 200"
+server -> client: "4. DATA:  5-byte prefix + response protobuf"
+server -> client: "5. HEADERS = trailer (END_STREAM):  grpc-status = 0"
