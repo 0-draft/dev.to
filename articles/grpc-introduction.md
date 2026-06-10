@@ -1,10 +1,16 @@
 ---
-title: "gRPC Deep Dive: Stubs, HTTP/2 Frames, and Why Netflix, Spotify, and Mercari Switched"
+title: 'gRPC Deep Dive: Stubs, HTTP/2 Frames, and Why Netflix, Spotify, and Mercari Switched'
 published: true
-description: "What RPC actually means, what Protocol Buffers and HTTP/2 each contribute, the four streaming patterns, a Go hands-on measured down to the individual HTTP/2 frames, and what made large companies move their internal traffic to gRPC."
-tags: ["grpc", "microservices", "go", "http2"]
+description: 'What RPC actually means, what Protocol Buffers and HTTP/2 each contribute, the four streaming patterns, a Go hands-on measured down to the individual HTTP/2 frames, and what made large companies move their internal traffic to gRPC.'
+tags:
+  - grpc
+  - microservices
+  - go
+  - http2
 series: gRPC
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/grpc-introduction/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/grpc-introduction/cover.png'
+id: 3866879
+date: '2026-06-10T15:37:14Z'
 ---
 
 # Introduction
