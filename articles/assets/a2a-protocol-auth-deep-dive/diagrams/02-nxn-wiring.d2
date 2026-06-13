@@ -1,0 +1,32 @@
+direction: right
+
+classes: {
+  bad: { style: { fill: "#742a2a"; stroke: "#fc8181"; stroke-width: 2; font-color: "#ffffff" } }
+  good: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  p: { style: { fill: "#744210"; stroke: "#d69e2e"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+mesh: "Plain APIs: wire every pair (N x N blowup)" {
+  a1: "Agent A" { class: bad }
+  a2: "Agent B" { class: bad }
+  a3: "Agent C" { class: bad }
+  a4: "Agent D" { class: bad }
+  a1 <-> a2
+  a1 <-> a3
+  a1 <-> a4
+  a2 <-> a3
+  a2 <-> a4
+  a3 <-> a4
+}
+
+hub: "A2A: everyone speaks one socket" {
+  b1: "Agent A" { class: good }
+  b2: "Agent B" { class: good }
+  b3: "Agent C" { class: good }
+  b4: "Agent D" { class: good }
+  proto: "A2A\ncommon protocol" { shape: circle; class: p }
+  b1 -> proto
+  b2 -> proto
+  b3 -> proto
+  b4 -> proto
+}

@@ -1,0 +1,23 @@
+shape: sequence_diagram
+
+C: "Client Agent"
+AS: "External OAuth AS / IdP"
+R: "Remote Agent (A2A Server)"
+
+C -> R: "Phase 1: GET /.well-known/agent-card.json (no auth)"
+R -> C: "Agent Card (oauth2, scope=read:tasks)" { style.stroke-dash: 3 }
+C -> AS: "Phase 2: get token (client_credentials) [out-of-band]"
+AS -> C: "access_token" { style.stroke-dash: 3 }
+C -> R: "Phase 3: POST /a2a + Bearer token + JSON-RPC"
+R -> R: "validate token + check scope vs skill"
+result: {
+  ok: {
+    R -> C: "200 OK (task result)" { style.stroke-dash: 3 }
+  }
+  token_bad: {
+    R -> C: "401 (token invalid / missing)" { style.stroke-dash: 3 }
+  }
+  scope_bad: {
+    R -> C: "403 (scope insufficient)" { style.stroke-dash: 3 }
+  }
+}

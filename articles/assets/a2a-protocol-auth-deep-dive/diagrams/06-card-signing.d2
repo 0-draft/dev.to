@@ -1,0 +1,28 @@
+direction: down
+
+classes: {
+  s: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  v: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  q: { style: { fill: "#744210"; stroke: "#d69e2e"; stroke-width: 2; font-color: "#ffffff" } }
+  bad: { style: { fill: "#742a2a"; stroke: "#fc8181"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+sign: "Issuer side (Remote Agent)" {
+  raw: "Agent Card (JSON)" { class: s }
+  jcs: "canonicalize with JCS\n(RFC 8785)\n-> one stable byte string" { class: s }
+  jws: "sign with JWS\n(RFC 7515)\n-> store in signatures[]" { class: s }
+  raw -> jcs -> jws
+}
+
+verify: "Verifier side (Client Agent)" {
+  fetch: "fetch the card" { class: v }
+  recanon: "canonicalize with JCS too" { class: v }
+  check: "signature verifies\nwith the right key?" { shape: diamond; class: q }
+  ok: "trust and use" { class: v }
+  ng: "tampering suspected -> reject" { class: bad }
+  fetch -> recanon -> check
+  check -> ok: "Yes"
+  check -> ng: "No"
+}
+
+sign.jws -> verify.fetch: "distribute the card" { style.stroke-dash: 3 }

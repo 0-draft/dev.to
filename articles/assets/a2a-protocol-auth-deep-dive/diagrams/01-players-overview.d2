@@ -1,0 +1,22 @@
+direction: down
+
+classes: {
+  cli: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  rem: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  ext: { style: { fill: "#744210"; stroke: "#d69e2e"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+client: "Client Agent (caller)" {
+  c: "wants to hand off a task" { class: cli }
+}
+
+remote: "Remote Agent / A2A Server (callee)" {
+  card: "Agent Card\n/.well-known/agent-card.json\n(advertises auth requirements)" { class: rem }
+  ep: "A2A endpoint\n(JSON-RPC over HTTPS)" { class: rem }
+}
+
+idp: "External IdP / OAuth AS\n(issues tokens)" { class: ext }
+
+client.c -> remote.card: "1. read the card (no auth)"
+client.c -> idp: "2. get a token"
+client.c -> remote.ep: "3. call with Authorization header"

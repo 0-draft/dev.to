@@ -1,0 +1,36 @@
+direction: right
+
+classes: {
+  bad: { style: { fill: "#742a2a"; stroke: "#fc8181"; stroke-width: 2; font-color: "#ffffff" } }
+  fix: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  std: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+holes: "Holes" {
+  grid-columns: 1
+  h1: "card tampering /\nimpersonation" { class: bad }
+  h2: "replay\n(stolen bearer)" { class: bad }
+  h3: "permission leak\ndown the chain" { class: bad }
+  h4: "scope bypass" { class: bad }
+}
+
+fixes: "Fixes" {
+  grid-columns: 1
+  f1: "require signed cards (JWS+JCS)\n+ verify issuer via PKI" { class: fix }
+  f2: "mtls SecurityScheme\n+ sender-constrained token" { class: fix }
+  f3: "bind credential to originator\n+ cross-domain standards" { class: fix }
+  f4: "enforce per-skill scope\nat Gateway / IAM" { class: fix }
+}
+
+standards: "Delegated standards (other articles)" {
+  grid-columns: 1
+  s1: "SPIFFE / WIMSE\n(identity contents)" { class: std }
+  s2: "ID-JAG / Identity Chaining\n(cross-domain propagation)" { class: std }
+  s3: "Transaction Tokens\n(safe propagation in a chain)" { class: std }
+}
+
+holes.h1 -> fixes.f1 -> standards.s1
+holes.h2 -> fixes.f2 -> standards.s1
+holes.h3 -> fixes.f3 -> standards.s2
+holes.h3 -> fixes.f3 -> standards.s3
+holes.h4 -> fixes.f4

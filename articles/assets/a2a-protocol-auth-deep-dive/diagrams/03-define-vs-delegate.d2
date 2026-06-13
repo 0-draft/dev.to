@@ -1,0 +1,26 @@
+direction: down
+
+classes: {
+  own: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  del: { style: { fill: "#744210"; stroke: "#d69e2e"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+frame: "What A2A defines itself (the frame)" {
+  grid-columns: 1
+  o1: "Agent Card securitySchemes / security\n(reuses the OpenAPI 3.x shape)" { class: own }
+  o2: "5 SecurityScheme types\napiKey / http / oauth2 / openIdConnect / mtls" { class: own }
+  o3: "the no-identity-in-payload design" { class: own }
+  o4: "the Extended Agent Card auth flow" { class: own }
+  o5: "Agent Card JWS signing + JCS canonicalization" { class: own }
+}
+
+delegated: "What A2A delegates to external standards (the contents)" {
+  grid-columns: 1
+  e1: "token issuance / validation\nOAuth2 / OIDC / mTLS" { class: del }
+  e2: "credential acquisition\n(out-of-band)" { class: del }
+  e3: "identity contents / attribute format\n-> WIMSE / SPIFFE territory" { class: del }
+  e4: "actual per-skill authz enforcement\n-> Gateway / IAM / middleware" { class: del }
+  e5: "cross-domain identity propagation\n-> ID-JAG / Identity Chaining territory" { class: del }
+}
+
+frame -> delegated: "delegates" { style.stroke-dash: 3 }

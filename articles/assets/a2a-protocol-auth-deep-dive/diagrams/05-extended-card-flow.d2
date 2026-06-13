@@ -1,0 +1,19 @@
+direction: down
+
+classes: {
+  s: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  q: { style: { fill: "#744210"; stroke: "#d69e2e"; stroke-width: 2; font-color: "#ffffff" } }
+  e: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+start: "Client wants to know Remote's skills" { class: s }
+pub: "GET /.well-known/agent-card.json\n(no auth)" { class: s }
+check: "public card has\ncapabilities.extendedAgentCard = true ?" { shape: diamond; class: q }
+basic: "only base skills visible" { class: e }
+auth: "authenticate, request extended card\n(method: GetExtendedAgentCard\nREST: GET /extendedAgentCard)\nusing a scheme from the public card" { class: q }
+ext: "get the extended card\nextra skills/config visible\n-> replace the cached card" { class: e }
+
+start -> pub -> check
+check -> basic: "false"
+check -> auth: "true"
+auth -> ext
