@@ -10,6 +10,7 @@ tags:
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2a-protocol-auth-deep-dive/cover.png'
 id: 3892021
 date: '2026-06-13T14:26:48Z'
+series: AI Agent Identity
 ---
 
 ## How this started: I opened the auth section and it was nearly empty
