@@ -1,0 +1,26 @@
+direction: down
+
+FLAT: "the usual text-in / text-out wrapper" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2; font-color: "#0a0f25" }
+  a1: "prompt"
+  a2: "Claude"
+  a3: "returns text only"
+  a1 -> a2 -> a3
+}
+
+RICH: "a2claude" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" }
+  b1: "prompt"
+  b2: "Claude"
+  b3: "text"
+  b4: "tools it ran"
+  b5: "diffs it wrote"
+  b6: "cost / turns"
+  b7: "pending permission"
+  b1 -> b2
+  b2 -> b3
+  b2 -> b4
+  b2 -> b5
+  b2 -> b6
+  b2 -> b7
+}

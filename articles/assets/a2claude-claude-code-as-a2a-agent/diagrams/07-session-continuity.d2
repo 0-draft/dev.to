@@ -1,0 +1,15 @@
+shape: sequence_diagram
+
+C: "caller"
+SV: "a2claude"
+CC: "Claude session"
+
+C -> SV: 'call "add a /health endpoint"'
+SV -> CC: "start a new session"
+CC -> SV: "run + session id" { style.stroke-dash: 3 }
+SV -> C: "[completed] returns context X" { style.stroke-dash: 3 }
+SV -> SV: "maps context X to the session id"
+C -> SV: 'call "now add a test for it" --context X'
+SV -> CC: "resume with the remembered session id"
+CC -> SV: "continue with the prior context" { style.stroke-dash: 3 }
+SV -> C: "[completed]" { style.stroke-dash: 3 }

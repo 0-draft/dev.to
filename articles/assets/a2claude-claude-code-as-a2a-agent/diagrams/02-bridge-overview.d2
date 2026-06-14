@@ -1,0 +1,12 @@
+direction: down
+
+caller: "calling agent" { style: { fill: "#E8F0FE"; stroke: "#4285F4"; stroke-width: 2; font-color: "#0a0f25" } }
+server: "a2claude server" { style: { fill: "#FCE8E6"; stroke: "#D97757"; stroke-width: 2; font-color: "#0a0f25" } }
+cc: "Claude Code session" { style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" } }
+proj: "your project" { style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" } }
+
+caller -> server: "A2A protocol"
+server -> cc
+cc -> proj
+cc -> server: "tools / diff / cost / permission" { style.stroke-dash: 3 }
+server -> caller: "streamed back" { style.stroke-dash: 3 }

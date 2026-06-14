@@ -1,0 +1,15 @@
+shape: sequence_diagram
+
+C: "caller"
+SV: "a2claude"
+CC: "Claude session"
+
+C -> SV: 'call "sudo reboot"'
+SV -> CC: "start the run"
+CC -> SV: 'Bash "sudo reboot" needs approval'
+SV -> C: "[input-required] permission requested" { style.stroke-dash: 3 }
+CC -> CC: "parked, still alive"
+C -> SV: 'call "allow" --task <id> --context <id>'
+SV -> CC: "pass the approval, resume"
+CC -> SV: "run, then result"
+SV -> C: "[completed] with cost and turns" { style.stroke-dash: 3 }

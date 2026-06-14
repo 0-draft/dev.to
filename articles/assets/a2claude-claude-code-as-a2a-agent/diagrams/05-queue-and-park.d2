@@ -1,0 +1,13 @@
+shape: sequence_diagram
+
+EX: "mapping layer\n(consumer)"
+S: "BackendSession\n(queue)"
+D: "backend.drive\n(background task)"
+
+D -> S: "emit(text)"
+D -> S: "emit(tool use)"
+EX -> S: "drain()"
+S -> EX: "hand events over in order" { style.stroke-dash: 3 }
+D -> S: "request_permission()"
+D -> D: "parked: session stays alive until an answer arrives"
+S -> EX: "surface permission request, drain stops" { style.stroke-dash: 3 }

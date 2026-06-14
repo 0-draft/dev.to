@@ -1,0 +1,13 @@
+direction: down
+
+caller: "calling agent"
+a2a: "A2A server layer (server.py)" { style: { fill: "#FCE8E6"; stroke: "#D97757"; stroke-width: 2; font-color: "#0a0f25" } }
+ex: "protocol mapping (executor.py)" { style: { fill: "#FCE8E6"; stroke: "#D97757"; stroke-width: 2; font-color: "#0a0f25" } }
+be: "Backend abstraction (normalized events only)" { style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" } }
+echo: "echo backend" { style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" } }
+claude: "claude backend" { style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" } }
+sdk: "Claude Agent SDK"
+
+caller -> a2a -> ex -> be
+be -> echo
+be -> claude -> sdk

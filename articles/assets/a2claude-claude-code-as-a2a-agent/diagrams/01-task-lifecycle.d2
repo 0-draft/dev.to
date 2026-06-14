@@ -1,0 +1,31 @@
+direction: down
+
+classes: {
+  active: {
+    style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+  pause: {
+    style: { fill: "#FCE8E6"; stroke: "#D97757"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+  done: {
+    style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+}
+
+start: "start" { shape: circle; style: { fill: "#0a0f25"; font-color: "#ffffff" } }
+submitted: "submitted"
+working: "working" { class: active }
+input_required: "input-required" { class: pause }
+completed: "completed" { class: done }
+failed: "failed" { class: done }
+canceled: "canceled" { class: done }
+finish: "end" { shape: circle; style: { fill: "#0a0f25"; font-color: "#ffffff" } }
+
+start -> submitted
+submitted -> working: "start work"
+working -> input_required: "a tool needs approval"
+input_required -> working: "resume on allow / deny"
+working -> completed: "done"
+working -> failed: "error"
+working -> canceled: "canceled"
+completed -> finish
