@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2claude-claude-code-as-a2a-agent/cover.png'
 id: 3896493
+date: '2026-06-14T07:54:12Z'
 ---
 
 # Introduction
