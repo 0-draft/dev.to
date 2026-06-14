@@ -1,6 +1,6 @@
 ---
 title: "a2claude: Turn Claude Code Into a Server Other AI Agents Can Call"
-published: false
+published: true
 description: "I built a small OSS tool that exposes Claude Code as an A2A protocol agent server. Another agent calls it over the network, a real Claude Code session runs in your project, and the tools it ran, the diffs it wrote, what it cost, and the permissions it needs all come back. A diagram-driven walk through the design."
 tags: ["showdev", "ai", "agents", "python"]
 series: ShowDev
@@ -70,13 +70,13 @@ a2claude keeps the structure that comes out of Claude Code and carries it onto A
 
 The heart of a2claude comes down to one mapping table: "what Claude Code emits" onto "which A2A surface it lands on". This table, which is also in the README, is the core of the design.
 
-| What Claude Code emits | The A2A surface it lands on |
-| --- | --- |
-| Assistant text | A streamed artifact (`append` / `last_chunk`) |
-| A tool call (Bash, Edit, ...) | A `working` status update |
-| A file edit | A named artifact carrying the diff |
-| Run result | Cost / turns / usage on the completion message |
-| Session id | Mapped to the A2A `contextId` to resume next time |
+| What Claude Code emits        | The A2A surface it lands on                       |
+| ----------------------------- | ------------------------------------------------- |
+| Assistant text                | A streamed artifact (`append` / `last_chunk`)     |
+| A tool call (Bash, Edit, ...) | A `working` status update                         |
+| A file edit                   | A named artifact carrying the diff                |
+| Run result                    | Cost / turns / usage on the completion message    |
+| Session id                    | Mapped to the A2A `contextId` to resume next time |
 
 This mapping is closed up in one place in the code (`executor.py`). That is what pays off in the next section.
 
