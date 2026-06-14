@@ -1,11 +1,15 @@
 ---
-title: "a2claude: Turn Claude Code Into a Server Other AI Agents Can Call"
+title: 'a2claude: Turn Claude Code Into a Server Other AI Agents Can Call'
 published: true
-description: "I built a small OSS tool that exposes Claude Code as an A2A protocol agent server. Another agent calls it over the network, a real Claude Code session runs in your project, and the tools it ran, the diffs it wrote, what it cost, and the permissions it needs all come back. A diagram-driven walk through the design."
-tags: ["showdev", "ai", "agents", "python"]
+description: 'I built a small OSS tool that exposes Claude Code as an A2A protocol agent server. Another agent calls it over the network, a real Claude Code session runs in your project, and the tools it ran, the diffs it wrote, what it cost, and the permissions it needs all come back. A diagram-driven walk through the design.'
+tags:
+  - showdev
+  - ai
+  - agents
+  - python
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2claude-claude-code-as-a2a-agent/cover.png"
-
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2claude-claude-code-as-a2a-agent/cover.png'
+id: 3896493
 ---
 
 # Introduction
