@@ -1,9 +1,14 @@
 ---
-title: "JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential"
+title: 'JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential'
 published: false
-description: "When you authorize a service or a user, the thing you hand over comes in two broad flavors: a JWT (a bearer access token) and an X.509 certificate (mTLS). They look unrelated, but a single axis explains both: bearer or proof-of-possession. Diagram-heavy, readable top to bottom so you can actually pick one."
-tags: ["security", "authentication", "jwt", "tls"]
+description: 'When you authorize a service or a user, the thing you hand over comes in two broad flavors: a JWT (a bearer access token) and an X.509 certificate (mTLS). They look unrelated, but a single axis explains both: bearer or proof-of-possession. Diagram-heavy, readable top to bottom so you can actually pick one.'
+tags:
+  - security
+  - authentication
+  - jwt
+  - tls
 series: Workload Identity
+id: 3907384
 ---
 
 ## Introduction
