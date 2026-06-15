@@ -1,6 +1,6 @@
 ---
 title: 'JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential'
-published: false
+published: true
 description: 'When you authorize a service or a user, the thing you hand over comes in two broad flavors: a JWT (a bearer access token) and an X.509 certificate (mTLS). They look unrelated, but a single axis explains both: bearer or proof-of-possession. Diagram-heavy, readable top to bottom so you can actually pick one.'
 tags:
   - security
@@ -9,6 +9,7 @@ tags:
   - tls
 series: Workload Identity
 id: 3907384
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/jwt-vs-x509-credential/cover.png"
 ---
 
 ## Introduction
@@ -102,15 +103,15 @@ That pins down where each one lives: a JWT is **data flowing through the app lay
 
 With both artifacts in view, let me put them side by side. First a table for the big picture, then notes on the axes that matter most.
 
-| Axis | JWT (access token) | X.509 (mTLS) |
-| --- | --- | --- |
-| Trust model | Bearer | Proof-of-possession |
-| Theft resistance | Weak (steal it, use it) | Strong (useless without the private key) |
-| Layer it works at | App layer (L7 / HTTP header) | Transport layer (TLS handshake) |
-| Survives a proxy / LB | Yes (just a header) | No (mTLS is terminated there) |
-| Verification | Check signature via JWKS (stateless) | CA chain (trust bundle) + signature check |
-| Revocation | Let it expire via a short `exp` | CRL / OCSP, or short-lived certs |
-| Operational cost | Low (no key distribution) | High (distribute, store, renew keys). Automated in a mesh |
+| Axis                  | JWT (access token)                   | X.509 (mTLS)                                              |
+| --------------------- | ------------------------------------ | --------------------------------------------------------- |
+| Trust model           | Bearer                               | Proof-of-possession                                       |
+| Theft resistance      | Weak (steal it, use it)              | Strong (useless without the private key)                  |
+| Layer it works at     | App layer (L7 / HTTP header)         | Transport layer (TLS handshake)                           |
+| Survives a proxy / LB | Yes (just a header)                  | No (mTLS is terminated there)                             |
+| Verification          | Check signature via JWKS (stateless) | CA chain (trust bundle) + signature check                 |
+| Revocation            | Let it expire via a short `exp`      | CRL / OCSP, or short-lived certs                          |
+| Operational cost      | Low (no key distribution)            | High (distribute, store, renew keys). Automated in a mesh |
 
 Three axes are worth expanding.
 
@@ -186,14 +187,14 @@ In real production the standard is a hybrid: "JWT (OAuth) at the user edge, mTLS
 
 To put the decision in one place.
 
-| When | Pick | Why |
-| --- | --- | --- |
-| Service to service, direct inside a mesh | X.509 + mTLS | Auto-renewal works, resists replay |
-| Crossing an L7 proxy / Gateway | JWT | mTLS is terminated and identity vanishes; a JWT survives as a header |
-| From a browser / mobile | JWT | Distributing a private key to the client is impractical |
-| Many services trust the same issuer | JWT | Verifiable via JWKS, no certificate distribution |
-| Strong defense against replay needed | X.509, or a cert-bound / DPoP JWT | Close the bearer weakness with proof-of-possession |
-| Must revoke immediately | X.509 (CRL/OCSP), or a short-lived JWT | JWT is bad at after-the-fact revocation; substitute short lifetimes |
+| When                                     | Pick                                   | Why                                                                  |
+| ---------------------------------------- | -------------------------------------- | -------------------------------------------------------------------- |
+| Service to service, direct inside a mesh | X.509 + mTLS                           | Auto-renewal works, resists replay                                   |
+| Crossing an L7 proxy / Gateway           | JWT                                    | mTLS is terminated and identity vanishes; a JWT survives as a header |
+| From a browser / mobile                  | JWT                                    | Distributing a private key to the client is impractical              |
+| Many services trust the same issuer      | JWT                                    | Verifiable via JWKS, no certificate distribution                     |
+| Strong defense against replay needed     | X.509, or a cert-bound / DPoP JWT      | Close the bearer weakness with proof-of-possession                   |
+| Must revoke immediately                  | X.509 (CRL/OCSP), or a short-lived JWT | JWT is bad at after-the-fact revocation; substitute short lifetimes  |
 
 And the one line to remember goes back to the first picture.
 
