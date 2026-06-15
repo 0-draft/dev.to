@@ -1,0 +1,17 @@
+direction: down
+
+classes: {
+  warn: { style: { fill: "#742a2a"; stroke: "#fc8181"; stroke-width: 2; font-color: "#ffffff" } }
+  mid: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  good: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+plain: "plain JWT\nbearer: steal it, use it" { class: warn }
+bound: "certificate-bound JWT (RFC 8705)\nembed the client cert's thumbprint in the token" { class: mid }
+dpop: "JWT with DPoP\nattach a per-request proof signed with a key" { class: mid }
+result: "stolen token is useless\nwithout the matching private key" { class: good }
+
+plain -> bound: "bind to the mTLS connection"
+plain -> dpop: "bind to a key at the app layer"
+bound -> result
+dpop -> result

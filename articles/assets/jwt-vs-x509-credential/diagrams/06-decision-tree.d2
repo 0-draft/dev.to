@@ -1,0 +1,23 @@
+direction: down
+
+classes: {
+  start: { style: { fill: "#44337a"; stroke: "#9f7aea"; stroke-width: 2; font-color: "#ffffff" } }
+  q: { shape: diamond; style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  jwt: { style: { fill: "#5a4a1e"; stroke: "#d9b44a"; stroke-width: 2; font-color: "#ffffff" } }
+  x509: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+start: "what should the\ncredential be" { class: start }
+q1: "is there an L7 proxy /\nGateway in between?" { class: q }
+q2: "can you automate key\ndistribution and renewal?\n(a mesh, etc.)" { class: q }
+q3: "do you need strong\ndefense against replay?" { class: q }
+jwt: "JWT (bearer)\nif needed: short exp +\nDPoP / cert-bound" { class: jwt }
+x509: "X.509 + mTLS\n(proof-of-possession)" { class: x509 }
+
+start -> q1
+q1 -> jwt: "yes (identity vanishes)"
+q1 -> q2: "no (direct)"
+q2 -> q3: "yes"
+q2 -> jwt: "no (manual is painful)"
+q3 -> x509: "yes"
+q3 -> jwt: "good enough is fine"

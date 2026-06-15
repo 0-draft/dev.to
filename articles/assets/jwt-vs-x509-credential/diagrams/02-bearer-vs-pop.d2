@@ -1,0 +1,26 @@
+direction: down
+
+classes: {
+  warn: { style: { fill: "#742a2a"; stroke: "#fc8181"; stroke-width: 2; font-color: "#ffffff" } }
+  good: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  neutral: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+bearer: "Bearer (JWT)" {
+  style.stroke: "#4a90d9"
+  b1: "holds the token" { class: neutral }
+  b2: "= can use it" { class: neutral }
+  b3: "if stolen,\nthe thief can use it too" { class: warn }
+  b1 -> b2
+  b2 -> b3: "weakness" { style.stroke-dash: 3 }
+}
+
+pop: "Proof-of-possession (X.509 + mTLS)" {
+  style.stroke: "#48bb78"
+  p1: "holds the certificate" { class: neutral }
+  p2: "+ can sign with the private key" { class: neutral }
+  p3: "= can use it" { class: neutral }
+  p4: "sniffing the certificate is useless\nwithout the private key" { class: good }
+  p1 -> p2 -> p3
+  p3 -> p4: "strength" { style.stroke-dash: 3 }
+}

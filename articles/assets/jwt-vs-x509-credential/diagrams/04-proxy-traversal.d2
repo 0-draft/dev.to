@@ -1,0 +1,26 @@
+direction: down
+
+classes: {
+  cli: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  mid: { style: { fill: "#5a4a1e"; stroke: "#d9b44a"; stroke-width: 2; font-color: "#ffffff" } }
+  lost: { style: { fill: "#742a2a"; stroke: "#fc8181"; stroke-width: 2; font-color: "#ffffff" } }
+  good: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+mtls: "X.509 / mTLS" {
+  style.stroke: "#fc8181"
+  client: "Client" { class: cli }
+  gw: "API Gateway / LB\n(TLS termination)" { class: mid }
+  svc: "downstream service" { class: lost }
+  client -> gw: "mTLS: X.509 auth"
+  gw -> svc: "identity vanishes here\ndownstream sees the Gateway" { style.stroke-dash: 3 }
+}
+
+bearer: "JWT / bearer" {
+  style.stroke: "#48bb78"
+  client2: "Client" { class: cli }
+  gw2: "API Gateway / LB" { class: mid }
+  svc2: "downstream service" { class: good }
+  client2 -> gw2: "Authorization: Bearer JWT"
+  gw2 -> svc2: "JWT passes through as a header"
+}

@@ -1,0 +1,17 @@
+direction: down
+
+classes: {
+  iss: { style: { fill: "#44337a"; stroke: "#9f7aea"; stroke-width: 2; font-color: "#ffffff" } }
+  cli: { style: { fill: "#1e3a5f"; stroke: "#4a90d9"; stroke-width: 2; font-color: "#ffffff" } }
+  ver: { style: { fill: "#1e4620"; stroke: "#48bb78"; stroke-width: 2; font-color: "#ffffff" } }
+  res: { style: { fill: "#5a4a1e"; stroke: "#d9b44a"; stroke-width: 2; font-color: "#ffffff" } }
+}
+
+issuer: "Issuer\n(IdP / Certificate Authority)" { class: iss }
+client: "Presenter\n(client / workload)" { class: cli }
+verifier: "Verifier\n(API / peer service)" { class: ver }
+result: "allow / deny" { class: res }
+
+issuer -> client: "1. issue a credential"
+client -> verifier: "2. present it on every request"
+verifier -> result: "3. verify and decide"

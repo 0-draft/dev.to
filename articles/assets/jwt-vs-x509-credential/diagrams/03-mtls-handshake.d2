@@ -1,0 +1,12 @@
+shape: sequence_diagram
+
+C: "Client"
+S: "Server"
+
+C -> S: "1. ClientHello"
+S -> C: "2. server cert + 'show me yours too'" { style.stroke-dash: 3 }
+C -> S: "3. client certificate (X.509)"
+C -> S: "4. sign with private key (CertificateVerify)"
+S -> S: "5. verify cert vs CA chain, then signature = key possession"
+S -> C: "6. authenticated, encrypted session established" { style.stroke-dash: 3 }
+C -> S: "7. only now does the first HTTP request flow"
