@@ -9,7 +9,8 @@ tags:
   - tls
 series: Workload Identity
 id: 3907384
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/jwt-vs-x509-credential/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/jwt-vs-x509-credential/cover.png'
+date: '2026-06-15T13:54:03Z'
 ---
 
 ## Introduction
