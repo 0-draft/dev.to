@@ -8,6 +8,7 @@ tags:
   - mcp
   - typescript
 series: AI Agent Identity
+id: 3989661
 ---
 
 ## The trigger: showing an agent a login screen makes no sense
