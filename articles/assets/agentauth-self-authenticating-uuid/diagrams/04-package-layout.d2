@@ -1,0 +1,29 @@
+direction: down
+
+client: "Client side (agent user)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#2563eb"
+  MCP: "@agentauth/mcp\nuniversal proxy + CLI\ngenerate / derive / connect" {
+    style.fill: "#bfdbfe"
+    style.stroke: "#2563eb"
+    style.font-color: "#0a0f25"
+  }
+}
+server: "Server side (MCP developer)" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  SDK: "@agentauth/sdk\nauthenticate with verify()" {
+    style.fill: "#bbf7d0"
+    style.stroke: "#16a34a"
+    style.font-color: "#0a0f25"
+  }
+}
+CORE: "@agentauth/core\ncrypto primitives\nderive / sign / verify" {
+  style.fill: "#fde68a"
+  style.stroke: "#d97706"
+  style.font-color: "#0a0f25"
+}
+
+client.MCP -> server.SDK: "signed headers"
+client.MCP -> CORE: "used internally" {style.stroke-dash: 3}
+server.SDK -> CORE: "used internally" {style.stroke-dash: 3}

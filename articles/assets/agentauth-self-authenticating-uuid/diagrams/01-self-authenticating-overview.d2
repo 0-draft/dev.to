@@ -1,0 +1,27 @@
+direction: down
+
+T: "AgentAuth Token\naa-... (private key)" {
+  style.fill: "#fecaca"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+ADDR: "Address\n0x... (public ID)" {
+  style.fill: "#fed7aa"
+  style.stroke: "#ea580c"
+  style.font-color: "#0a0f25"
+}
+ID: "AgentAuth ID\n811ec2bf-... (stable UUID)" {
+  style.fill: "#bbf7d0"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+SIG: "Signature\n0x..." {
+  style.fill: "#ddd6fe"
+  style.stroke: "#7c3aed"
+  style.font-color: "#0a0f25"
+}
+
+T -> ADDR: "derive public key"
+ADDR -> ID: "UUIDv5"
+T -> SIG: "sign each request" {style.stroke-dash: 3}
+SIG -> ID: "server verifies"

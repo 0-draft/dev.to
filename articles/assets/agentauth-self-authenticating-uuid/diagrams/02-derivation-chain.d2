@@ -1,0 +1,44 @@
+direction: down
+
+secret: "Lives only inside the client (never leaves)" {
+  style.fill: "#fee2e2"
+  style.stroke: "#dc2626"
+  T: "AgentAuth Token\n= secp256k1 private key\naa- + 64 hex chars" {
+    style.fill: "#fecaca"
+    style.stroke: "#dc2626"
+    style.font-color: "#0a0f25"
+  }
+}
+
+PUB: "Public key\n(65 bytes)" {
+  style.fill: "#fef08a"
+  style.stroke: "#ca8a04"
+  style.font-color: "#0a0f25"
+}
+ADDR: "Address\n0x... (20 bytes)" {
+  style.fill: "#fed7aa"
+  style.stroke: "#ea580c"
+  style.font-color: "#0a0f25"
+}
+ID: "AgentAuth ID\nUUID" {
+  style.fill: "#bbf7d0"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+SRV: "MCP Server" {
+  style.fill: "#bfdbfe"
+  style.stroke: "#2563eb"
+  style.font-color: "#0a0f25"
+}
+DB: "Database" {
+  shape: cylinder
+  style.fill: "#e9d5ff"
+  style.stroke: "#7c3aed"
+  style.font-color: "#0a0f25"
+}
+
+secret.T -> PUB: "1. compute public key\nsecp256k1"
+PUB -> ADDR: "2. keccak256,\nlast 20 bytes"
+ADDR -> ID: "3. UUIDv5\nfixed namespace"
+ADDR -> SRV: "sent to server" {style.stroke-dash: 3}
+ID -> DB: "DB primary key" {style.stroke-dash: 3}

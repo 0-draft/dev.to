@@ -1,0 +1,42 @@
+shape: sequence_diagram
+
+A: "AI Agent" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+P: "@agentauth/mcp\n(client-side proxy)" {
+  style.fill: "#fecaca"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+S: "@agentauth/sdk\n(MCP server)" {
+  style.fill: "#dbeafe"
+  style.stroke: "#2563eb"
+  style.font-color: "#0a0f25"
+}
+DB: "Database" {
+  style.fill: "#e9d5ff"
+  style.stroke: "#7c3aed"
+  style.font-color: "#0a0f25"
+}
+
+A -> P: "1. wants to call a tool"
+P -> P: "2. build payload with timestamp,\nsign with Token (Token never leaves)"
+P -> S: "3. HTTP request + 3 headers\nx-agentauth-address / payload / signature"
+S -> S: "4. base64-decode the payload"
+S -> S: "5. recover Address from signature, compare"
+S -> S: "6. is the timestamp within 60s"
+S -> S: "7. generate AgentAuth ID from Address"
+
+result: "verify() result" {
+  all_pass: "all 4 checks pass" {
+    S -> DB: "fetch or create by AgentAuth ID"
+    S -> P: "authenticated response" {style.stroke-dash: 3}
+    P -> A: "result" {style.stroke-dash: 3}
+  }
+  any_fail: "any check fails" {
+    S -> P: "valid: false (continue as anonymous)" {style.stroke-dash: 3}
+    P -> A: "limited response" {style.stroke-dash: 3}
+  }
+}
