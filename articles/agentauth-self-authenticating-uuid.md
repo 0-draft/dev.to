@@ -1,6 +1,6 @@
 ---
 title: 'AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source'
-published: false
+published: true
 description: 'No login, no sessions, no server-side DB. AgentAuth folds an AI agent identity and authentication into a single UUID. I read it down to the secp256k1 and keccak256 code, and sort out where it sits next to the official OAuth 2.1 authorization in MCP.'
 tags:
   - ai
@@ -9,6 +9,7 @@ tags:
   - typescript
 series: AI Agent Identity
 id: 3989661
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/agentauth-self-authenticating-uuid/cover.png"
 ---
 
 ## The trigger: showing an agent a login screen makes no sense
