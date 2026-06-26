@@ -1,9 +1,14 @@
 ---
-title: "The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)"
+title: 'The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)'
 published: false
-description: "Two answers to the OAuth client-registration problem, side by side: DCR (RFC 7591) writes a row into the AS database, while CIMD (draft-ietf-oauth-client-id-metadata-document) makes the client_id a URL the AS reads. Why MCP, Bluesky, and Solid moved to CIMD, plus the mechanics, a comparison table, and the SSRF defenses."
-tags: ["oauth", "security", "identity", "mcp"]
+description: 'Two answers to the OAuth client-registration problem, side by side: DCR (RFC 7591) writes a row into the AS database, while CIMD (draft-ietf-oauth-client-id-metadata-document) makes the client_id a URL the AS reads. Why MCP, Bluesky, and Solid moved to CIMD, plus the mechanics, a comparison table, and the SSRF defenses.'
+tags:
+  - oauth
+  - security
+  - identity
+  - mcp
 series: OAuth
+id: 3998039
 ---
 
 ## The "who is this client?" problem
