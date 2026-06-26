@@ -9,7 +9,8 @@ tags:
   - typescript
 series: AI Agent Identity
 id: 3989661
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/agentauth-self-authenticating-uuid/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/agentauth-self-authenticating-uuid/cover.png'
+date: '2026-06-25T13:44:37Z'
 ---
 
 ## The trigger: showing an agent a login screen makes no sense
