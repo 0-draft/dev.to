@@ -9,7 +9,8 @@ tags:
   - mcp
 series: OAuth
 id: 3998039
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/client-id-metadata-document-vs-dcr/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/client-id-metadata-document-vs-dcr/cover.png'
+date: '2026-06-26T12:08:30Z'
 ---
 
 ## The "who is this client?" problem
