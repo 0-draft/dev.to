@@ -1,0 +1,15 @@
+direction: down
+
+classes: {
+  early: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  cimd: { style: { fill: "#bbf7d0"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+A: "10+ years ago\nIndieAuth (h-app microformats)" {class: early}
+B: "early 2020s\nSolid-OIDC (Client Identifier Document, JSON-LD)" {class: early}
+C: "2024\nAT Protocol / Bluesky adopts a URL client_id" {class: cimd}
+D: "2025-09\nOAuth WG adopts draft-parecki (CIMD)" {class: cimd}
+E: "2025-11\nMCP makes CIMD the recommended default" {class: cimd}
+F: "2026-03\ndraft-ietf-oauth-client-id-metadata-document-01" {class: cimd}
+
+A -> B -> C -> D -> E -> F

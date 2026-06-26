@@ -1,0 +1,15 @@
+shape: sequence_diagram
+
+U: "User (browser)"
+C: "Client"
+AS: "Authorization Server"
+DOC: "client-metadata.json\n(client's domain)"
+
+C -> AS: "1. /authorize?client_id=<URL>"
+AS -> DOC: "2. GET (no redirect follow)"
+DOC -> AS: "3. JSON (client_id == URL, redirect_uris)" { style.stroke-dash: 3 }
+AS -> AS: "4. check client_id == URL,\nnot internal IP, size limit"
+AS -> AS: "5. match redirect_uri exactly"
+AS -> U: "6. login + consent\n(shows client_id hostname)" { style.stroke-dash: 3 }
+U -> AS: "7. consent"
+AS -> C: "8. authorization code" { style.stroke-dash: 3 }

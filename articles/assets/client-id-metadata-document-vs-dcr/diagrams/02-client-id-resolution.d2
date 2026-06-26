@@ -1,0 +1,20 @@
+direction: down
+
+classes: {
+  start: { style: { fill: "#fef08a"; stroke: "#ca8a04"; stroke-width: 2; font-color: "#0a0f25" } }
+  meta: { style: { fill: "#bfdbfe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  decision: { style: { fill: "#fed7aa"; stroke: "#ea580c"; stroke-width: 2; font-color: "#0a0f25" } }
+  ok: { style: { fill: "#bbf7d0"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  ng: { style: { fill: "#fecaca"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+CID: "client_id" {class: start}
+META: "Client metadata\nredirect_uris / scope / grant_types ..." {class: meta}
+CHECK: "Does the request's\nredirect_uri match\nexactly?" {shape: diamond; class: decision}
+OK: "Issue an authorization code" {class: ok}
+NG: "Reject\n(stops code interception)" {class: ng}
+
+CID -> META: "look it up"
+META -> CHECK: "compare against redirect_uris"
+CHECK -> OK: "Yes"
+CHECK -> NG: "No"

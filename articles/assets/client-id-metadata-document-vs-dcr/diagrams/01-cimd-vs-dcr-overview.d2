@@ -1,0 +1,20 @@
+direction: down
+
+classes: {
+  start: { style: { fill: "#fef08a"; stroke: "#ca8a04"; stroke-width: 2; font-color: "#0a0f25" } }
+  dcr: { style: { fill: "#bfdbfe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  cimd: { style: { fill: "#bbf7d0"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  dcrstate: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  cimdstate: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Q: "How does the AS work out\nwho a client is?" {class: start}
+DCR: "DCR\nthe client registers with the AS at runtime\n= a row written into the AS database" {class: dcr}
+CIMD: "CIMD\nthe client_id is a URL\n= the AS reads JSON the client publishes" {class: cimd}
+DS: "State piles up\non the server (AS)" {class: dcrstate}
+CS: "State lives\non the client" {class: cimdstate}
+
+Q -> DCR
+Q -> CIMD
+DCR -> DS
+CIMD -> CS

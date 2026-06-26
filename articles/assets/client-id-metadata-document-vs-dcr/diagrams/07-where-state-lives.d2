@@ -1,0 +1,37 @@
+direction: down
+
+classes: {
+  dcrleaf: { style: { fill: "#bfdbfe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  cimddoc: { style: { fill: "#bbf7d0"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  asnode: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  ng: { style: { fill: "#fecaca"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  warn: { style: { fill: "#fef9c3"; stroke: "#ca8a04"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+dcr: "DCR: state piles up on the server" {
+  style.fill: "#dbeafe"
+  style.stroke: "#2563eb"
+  C1: "Client instance A" {class: dcrleaf}
+  C2: "Client instance B" {class: dcrleaf}
+  C3: "Client instance C" {class: dcrleaf}
+  RDB: "AS database" {shape: cylinder; class: dcrleaf}
+  NOTE1: "records grow without bound" {class: ng}
+  C1 -> RDB: "register"
+  C2 -> RDB: "register"
+  C3 -> RDB: "register"
+  RDB -> NOTE1
+}
+
+cimd: "CIMD: state lives on the client" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  DOC2: "one client-metadata.json" {class: cimddoc}
+  AS1: "AS 1" {class: asnode}
+  AS2: "AS 2" {class: asnode}
+  AS3: "AS 3" {class: asnode}
+  NOTE2: "zero writes on the AS side\njust the cost of an outbound fetch" {class: warn}
+  AS1 -> DOC2: "GET"
+  AS2 -> DOC2: "GET"
+  AS3 -> DOC2: "GET"
+  DOC2 -> NOTE2
+}

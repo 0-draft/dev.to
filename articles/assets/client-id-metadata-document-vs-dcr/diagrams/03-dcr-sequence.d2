@@ -1,0 +1,12 @@
+shape: sequence_diagram
+
+C: "Client"
+AS: "Authorization Server (AS)"
+DB: "AS database"
+
+C -> AS: "1. POST /register (redirect_uris, client_name, ...)"
+AS -> DB: "2. write a new registration record"
+AS -> C: "3. 201 Created: client_id + client_secret + registration_access_token" { style.stroke-dash: 3 }
+C -> AS: "4. /authorize?client_id=s6BhdRkqt3 ..."
+AS -> DB: "5. look up the record by client_id"
+AS -> C: "6. match redirect_uri, return the authorization code" { style.stroke-dash: 3 }

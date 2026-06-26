@@ -1,0 +1,29 @@
+direction: down
+
+classes: {
+  danger: { style: { fill: "#fecaca"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  decision: { style: { fill: "#fed7aa"; stroke: "#ea580c"; stroke-width: 2; font-color: "#0a0f25" } }
+  block: { style: { fill: "#fca5a5"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  ok: { style: { fill: "#bbf7d0"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+REQ: "client_id = an attacker-chosen URL" {class: danger}
+R1: "https?" {shape: diamond; class: decision}
+R2: "Does the IP resolve to\na special-use (internal) range?" {shape: diamond; class: decision}
+R3: "Did it return a redirect?" {shape: diamond; class: decision}
+R4: "200 + JSON +\nwithin the size limit?" {shape: diamond; class: decision}
+R5: "document client_id == URL?" {shape: diamond; class: decision}
+BLK: "Reject" {class: block}
+OK: "Accept as client metadata" {class: ok}
+
+REQ -> R1
+R1 -> BLK: "No"
+R1 -> R2: "Yes"
+R2 -> BLK: "Yes (internal)"
+R2 -> R3: "No (public)"
+R3 -> BLK: "Yes"
+R3 -> R4: "No"
+R4 -> BLK: "No"
+R4 -> R5: "Yes"
+R5 -> BLK: "No"
+R5 -> OK: "Yes"

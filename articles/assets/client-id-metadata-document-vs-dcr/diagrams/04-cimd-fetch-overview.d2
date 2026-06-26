@@ -1,0 +1,25 @@
+direction: down
+
+classes: {
+  cimd: { style: { fill: "#bbf7d0"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  asnode: { style: { fill: "#bfdbfe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  ok: { style: { fill: "#fef08a"; stroke: "#ca8a04"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+client: "Client side (your own domain)" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  DOC: "oauth-client-metadata.json\nredirect_uris / scope ...\nclient_id = this URL itself" {class: cimd}
+}
+
+as: "Authorization server side" {
+  style.fill: "#dbeafe"
+  style.stroke: "#2563eb"
+  AS: "AS" {class: asnode}
+}
+
+OK: "Issue an authorization code" {class: ok}
+
+as.AS -> client.DOC: "GET the unknown client_id (a URL)" { style.stroke-dash: 3 }
+client.DOC -> as.AS: "return JSON" { style.stroke-dash: 3 }
+as.AS -> OK: "match redirect_uri"
