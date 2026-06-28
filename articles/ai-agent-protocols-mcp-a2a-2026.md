@@ -1,15 +1,16 @@
 ---
-title: "Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026"
+title: 'Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026'
 published: true
-description: "A clean map of MCP, A2A, and ACP and when to reach for each, brought up to date for 2026. ACP is not an independent protocol anymore: it merged into A2A in August 2025 and its repo is archived. Diagram-heavy, meant to be read top to bottom."
+description: 'A clean map of MCP, A2A, and ACP and when to reach for each, brought up to date for 2026. ACP is not an independent protocol anymore: it merged into A2A in August 2025 and its repo is archived. Diagram-heavy, meant to be read top to bottom.'
 tags:
   - ai
   - agents
   - mcp
   - a2a
 series: AI Agent Identity
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/ai-agent-protocols-mcp-a2a-2026/cover.png"
-
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/ai-agent-protocols-mcp-a2a-2026/cover.png'
+id: 4011856
+date: '2026-06-28T11:51:47Z'
 ---
 
 ## How this started: I went looking for ACP and it was gone
