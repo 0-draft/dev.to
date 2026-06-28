@@ -1,6 +1,6 @@
 ---
 title: "Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026"
-published: false
+published: true
 description: "A clean map of MCP, A2A, and ACP and when to reach for each, brought up to date for 2026. ACP is not an independent protocol anymore: it merged into A2A in August 2025 and its repo is archived. Diagram-heavy, meant to be read top to bottom."
 tags:
   - ai
