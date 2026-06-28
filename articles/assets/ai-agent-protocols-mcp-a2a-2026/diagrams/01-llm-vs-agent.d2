@@ -1,0 +1,25 @@
+direction: down
+
+classes: {
+  user: { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  llm:  { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  tool: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+LLMOnly: "LLM on its own" {
+  U1: "User" { class: user }
+  L1: "LLM" { class: llm }
+  U1 -> L1: "question"
+  L1 -> U1: "just answers in text"
+}
+
+Agent: "AI agent" {
+  U2: "User" { class: user }
+  L2: "LLM\nbrain" { class: llm }
+  T: "Tools\nsearch / booking API / DB" { class: tool }
+  U2 -> L2: "goal"
+  L2 -> L2: "reason"
+  L2 -> T: "use a tool"
+  T -> L2: "result"
+  L2 -> U2: "finish and report back"
+}

@@ -1,0 +1,25 @@
+direction: down
+
+classes: {
+  user:  { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  orch:  { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 3; font-color: "#0a0f25" } }
+  agent: { style: { fill: "#fce7f3"; stroke: "#db2777"; stroke-width: 2; font-color: "#0a0f25" } }
+  tool:  { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+User: "User\narrange my trip" { shape: oval; class: user }
+Orch: "Orchestrator\nagent" { class: orch }
+Flight: "Flight\nagent" { class: agent }
+Hotel: "Hotel\nagent" { class: agent }
+FT1: "Seat-search API" { class: tool }
+FT2: "Booking DB" { class: tool }
+HT1: "Inventory API" { class: tool }
+HT2: "Payment API" { class: tool }
+
+User -> Orch
+Orch <-> Flight: "A2A horizontal"
+Orch <-> Hotel: "A2A horizontal"
+Flight -> FT1: "MCP vertical"
+Flight -> FT2: "MCP vertical"
+Hotel -> HT1: "MCP vertical"
+Hotel -> HT2: "MCP vertical"

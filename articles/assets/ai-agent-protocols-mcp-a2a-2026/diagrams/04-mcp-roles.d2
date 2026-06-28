@@ -1,0 +1,24 @@
+direction: right
+
+classes: {
+  host:   { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  server: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  prim:   { style: { fill: "#f3e8ff"; stroke: "#9333ea"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+Host: "Host (agent app)" {
+  LLM: "LLM brain" { class: host }
+  C1: "Client 1" { class: host }
+  C2: "Client 2" { class: host }
+}
+S1: "MCP Server\nGitHub" { class: server }
+S2: "MCP Server\nPostgres" { class: server }
+P1: "tools / resources / prompts" { class: prim }
+P2: "tools / resources / prompts" { class: prim }
+
+Host.LLM -- Host.C1
+Host.LLM -- Host.C2
+Host.C1 -> S1: "JSON-RPC"
+Host.C2 -> S2: "JSON-RPC"
+S1 -> P1: "exposes" { style.stroke-dash: 3 }
+S2 -> P2: "exposes" { style.stroke-dash: 3 }

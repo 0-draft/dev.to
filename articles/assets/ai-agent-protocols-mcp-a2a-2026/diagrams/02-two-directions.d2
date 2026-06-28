@@ -1,0 +1,20 @@
+direction: down
+
+classes: {
+  me:   { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 3; font-color: "#0a0f25" } }
+  tool: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  peer: { style: { fill: "#fce7f3"; stroke: "#db2777"; stroke-width: 2; font-color: "#0a0f25" } }
+}
+
+A: "Your agent\nbrain: LLM" { class: me }
+T1: "Search tool" { class: tool }
+T2: "Internal DB" { class: tool }
+T3: "Booking API" { class: tool }
+B: "Another company's agent" { class: peer }
+C: "Another team's agent" { class: peer }
+
+A -> T1: "vertical: use a tool\nmaster / servant"
+A -> T2: "vertical"
+A -> T3: "vertical"
+A <-> B: "horizontal: delegate work\npeers"
+A <-> C: "horizontal"

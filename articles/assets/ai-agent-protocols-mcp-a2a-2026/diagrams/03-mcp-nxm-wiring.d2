@@ -1,0 +1,37 @@
+direction: down
+
+classes: {
+  model: { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 2; font-color: "#0a0f25" } }
+  tool:  { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  hub:   { style: { fill: "#fef08a"; stroke: "#ca8a04"; stroke-width: 3; font-color: "#0a0f25" } }
+}
+
+Before: "Without MCP: N x M custom wiring" {
+  m1: "Claude" { class: model }
+  m2: "GPT" { class: model }
+  t1: "Slack" { class: tool }
+  t2: "GitHub" { class: tool }
+  t3: "DB" { class: tool }
+  m1 -- t1
+  m1 -- t2
+  m1 -- t3
+  m2 -- t1
+  m2 -- t2
+  m2 -- t3
+}
+
+After: "With MCP: one common socket" {
+  n1: "Claude" { class: model }
+  n2: "GPT" { class: model }
+  n3: "Gemini" { class: model }
+  MCP: "MCP\ncommon protocol" { shape: hexagon; class: hub }
+  s1: "Slack server" { class: tool }
+  s2: "GitHub server" { class: tool }
+  s3: "DB server" { class: tool }
+  n1 -> MCP
+  n2 -> MCP
+  n3 -> MCP
+  MCP -> s1
+  MCP -> s2
+  MCP -> s3
+}

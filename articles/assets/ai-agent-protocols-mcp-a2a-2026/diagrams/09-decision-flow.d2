@@ -1,0 +1,21 @@
+direction: down
+
+classes: {
+  q:    { style: { fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25" } }
+  mcp:  { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 3; font-color: "#0a0f25" } }
+  a2a:  { style: { fill: "#fce7f3"; stroke: "#db2777"; stroke-width: 3; font-color: "#0a0f25" } }
+  note: { style: { fill: "#e5e7eb"; stroke: "#6b7280"; stroke-width: 1; font-color: "#0a0f25" } }
+}
+
+Q1: "Does the other side\nthink for itself?" { shape: diamond; class: q }
+MCP: "Use MCP\nconnect it as a tool" { class: mcp }
+Q2: "Is it yours\nto own?" { shape: diamond; class: q }
+Note1: "A plain API works\nuse A2A if you want a standard" { class: note }
+A2A: "Use A2A\nread the card, hand off work" { class: a2a }
+Note2: "Don't pick ACP for new work\nit merged into A2A" { class: note }
+
+Q1 -> MCP: "No, it just\nruns commands"
+Q1 -> Q2: "Yes, an\nautonomous agent"
+Q2 -> Note1: "Yours / under\nyour control"
+Q2 -> A2A: "Another team's / company's\nagent you don't know"
+A2A -> Note2: "history" { style.stroke-dash: 3 }

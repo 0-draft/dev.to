@@ -1,0 +1,31 @@
+direction: down
+
+classes: {
+  ag:  { style: { fill: "#fce7f3"; stroke: "#db2777"; stroke-width: 2; font-color: "#0a0f25" } }
+  hub: { style: { fill: "#fef08a"; stroke: "#ca8a04"; stroke-width: 3; font-color: "#0a0f25" } }
+}
+
+NxN: "No standard: wiring per pair" {
+  a1: "Agent A" { class: ag }
+  a2: "Agent B" { class: ag }
+  a3: "Agent C" { class: ag }
+  a4: "Agent D" { class: ag }
+  a1 -- a2
+  a1 -- a3
+  a1 -- a4
+  a2 -- a3
+  a2 -- a4
+  a3 -- a4
+}
+
+Hub: "A2A: one card format and convention" {
+  b1: "Agent A" { class: ag }
+  b2: "Agent B" { class: ag }
+  b3: "Agent C" { class: ag }
+  b4: "Agent D" { class: ag }
+  h: "A2A" { shape: hexagon; class: hub }
+  b1 -> h
+  b2 -> h
+  b3 -> h
+  b4 -> h
+}

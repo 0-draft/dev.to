@@ -1,0 +1,19 @@
+shape: sequence_diagram
+
+C: "Client\nagent" {
+  style.fill: "#dbeafe"; style.stroke: "#2563eb"; style.font-color: "#0a0f25"
+}
+Card: "Agent Card\n(business card)" {
+  style.fill: "#fef3c7"; style.stroke: "#b45309"; style.font-color: "#0a0f25"
+}
+R: "Remote\nagent" {
+  style.fill: "#fce7f3"; style.stroke: "#db2777"; style.font-color: "#0a0f25"
+}
+
+C -> Card: "1. [read card] GET /.well-known/agent-card.json"
+Card -> C: "2. capabilities + auth requirements" { style.stroke-dash: 3 }
+C -> R: "3. [start task] send task: within policy?"
+R -> C: "4. state: working" { style.stroke-dash: 3 }
+R -> C: "5. [ask back] state: input-required, need dates" { style.stroke-dash: 3 }
+C -> R: "6. send the extra info"
+R -> C: "7. state: completed + artifact" { style.stroke-dash: 3 }

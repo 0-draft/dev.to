@@ -1,0 +1,16 @@
+direction: down
+
+classes: {
+  alive: { style: { fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25" } }
+  warn:  { style: { fill: "#fef08a"; stroke: "#ca8a04"; stroke-width: 2; font-color: "#0a0f25" } }
+  dead:  { style: { fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25" } }
+  now:   { style: { fill: "#dbeafe"; stroke: "#2563eb"; stroke-width: 3; font-color: "#0a0f25" } }
+}
+
+s1: "Mar 2025\nACP announced\n(IBM / BeeAI)" { class: alive }
+s2: "Mar 2025 on\nruns alongside\nA2A and MCP" { class: warn }
+s3: "Aug 2025\nACP merges into A2A" { class: warn }
+s4: "Aug 27, 2025\nrepo archived" { class: dead }
+s5: "2026 on\nhorizontal lane is\nA2A only" { class: now }
+
+s1 -> s2 -> s3 -> s4 -> s5
