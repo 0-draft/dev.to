@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/shogi-on-github-profile/cover_image.png'
 id: 4387297
+date: '2026-08-13T11:18:30Z'
 ---
 
 ## Introduction
