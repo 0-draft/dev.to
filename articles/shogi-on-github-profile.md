@@ -1,10 +1,10 @@
 ---
 title: "Let's Play Shogi: I Turned My GitHub Profile README Into a Playable Board"
-published: false
+published: true
 description: "You can play shogi on my GitHub profile README. Not a single line of JavaScript runs there, so the board is built out of links, images, and Issues. Here is how it works."
 tags: ["showdev", "github", "python", "automation"]
 series: ShowDev
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/shogi-on-github-profile/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/shogi-on-github-profile/cover_image.png"
 ---
 
 ## Introduction
