@@ -1,0 +1,42 @@
+direction: down
+
+classes: {
+  src: {
+    style: {
+      fill: "#1e3a5f"
+      stroke: "#4a90d9"
+      stroke-width: 2
+      font-color: "#ffffff"
+    }
+  }
+  keep: {
+    style: {
+      fill: "#1e4620"
+      stroke: "#48bb78"
+      stroke-width: 2
+      font-color: "#ffffff"
+    }
+  }
+  strip: {
+    style: {
+      fill: "#7b341e"
+      stroke: "#dd6b20"
+      stroke-width: 2
+      font-color: "#ffffff"
+    }
+  }
+}
+
+md: "What you write in README.md" { class: src }
+
+ok1: "Links\n(a href)" { class: keep }
+ok2: "Images\n(img src)" { class: keep }
+ok3: "Tables\n(table)" { class: keep }
+ng1: "script tags\nare stripped" { class: strip }
+ng2: "onclick\nis stripped" { class: strip }
+
+md -> ok1
+md -> ok2
+md -> ok3
+md -> ng1
+md -> ng2

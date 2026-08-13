@@ -1,0 +1,22 @@
+shape: sequence_diagram
+
+V: "Visitor" {
+  style: {
+    fill: "#fef3c7"
+    stroke: "#b45309"
+    font-color: "#0a0f25"
+  }
+}
+P: "Profile\nREADME"
+I: "Issue"
+A: "GitHub\nActions"
+R: "Repository"
+
+V -> P: "1. Click a piece"
+P -> I: "2. Form opens,\ntitle prefilled"
+V -> I: "3. Submit new issue"
+I -> A: "4. issues.opened" { style.stroke-dash: 3 }
+A -> A: "5. shogi.py"
+A -> R: "6. Commit README\nand board state"
+A -> I: "7. Comment,\nclose the issue"
+R -> P: "8. Board has moved\n(about 30s)" { style.stroke-dash: 3 }

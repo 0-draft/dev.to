@@ -1,0 +1,35 @@
+direction: down
+
+classes: {
+  step: {
+    style: {
+      fill: "#1e3a5f"
+      stroke: "#4a90d9"
+      stroke-width: 2
+      font-color: "#ffffff"
+    }
+  }
+  mark: {
+    style: {
+      fill: "#5c4813"
+      stroke: "#d69e2e"
+      stroke-width: 2
+      font-color: "#ffffff"
+    }
+  }
+  done: {
+    style: {
+      fill: "#1e4620"
+      stroke: "#48bb78"
+      stroke-width: 2
+      font-color: "#ffffff"
+    }
+  }
+}
+
+a: "1. Click a piece" { class: step }
+b: "Red circles appear\non the squares it can reach" { class: mark }
+c: "2. Click a circle" { class: step }
+d: "The piece moves" { class: done }
+
+a -> b -> c -> d
