@@ -8,7 +8,8 @@ tags:
   - envoy
   - llm
 id: 4396281
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/envoy-ai-gateway-hands-on/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/envoy-ai-gateway-hands-on/cover.png'
+date: '2026-08-14T11:24:30Z'
 ---
 
 ## The day we ended up with three places to call an LLM
