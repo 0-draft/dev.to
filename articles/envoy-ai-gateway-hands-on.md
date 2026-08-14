@@ -1,9 +1,13 @@
 ---
-title: "Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes"
+title: 'Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes'
 published: false
-description: "Start with the aigw CLI, which needs no Kubernetes at all, then work through schema translation, provider fallback, model name virtualization, the MCP gateway, and finally a kind deployment. Every command and every output here was run on a real machine."
-tags: ["ai", "kubernetes", "envoy", "llm"]
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/envoy-ai-gateway-hands-on/cover.png"
+description: 'Start with the aigw CLI, which needs no Kubernetes at all, then work through schema translation, provider fallback, model name virtualization, the MCP gateway, and finally a kind deployment. Every command and every output here was run on a real machine.'
+tags:
+  - ai
+  - kubernetes
+  - envoy
+  - llm
+id: 4396281
 ---
 
 ## The day we ended up with three places to call an LLM
