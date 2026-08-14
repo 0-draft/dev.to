@@ -8,6 +8,7 @@ tags:
   - envoy
   - llm
 id: 4396281
+series: Service Mesh
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/envoy-ai-gateway-hands-on/cover.png'
 date: '2026-08-14T11:24:30Z'
 ---
