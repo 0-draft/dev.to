@@ -1,0 +1,39 @@
+direction: down
+
+classes: {
+  agent: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  gw: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+  srv: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+AGENT: "MCP client\nClaude / Goose\nyour own agent" {class: agent}
+GW: "Envoy AI Gateway\n/mcp\nmerges the tool list\nfilters it, injects auth" {class: gw}
+M1: "GitHub MCP\nissue_read and others" {class: srv}
+M2: "Context7 MCP\nquery-docs and others" {class: srv}
+M3: "internal MCP" {class: srv}
+
+AGENT -> GW: "one connection, one session"
+GW -> M1: "github__*"
+GW -> M2: "context7__*"
+GW -> M3: "internal__*"

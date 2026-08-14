@@ -1,0 +1,50 @@
+direction: down
+
+classes: {
+  cp: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  dp: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+CP: "Control plane: builds the config" {
+  style.fill: "#fefce8"
+  style.stroke: "#b45309"
+
+  K8S: "Kubernetes API Server\nwhere the CRDs live" {class: cp}
+  AIC: "AI Gateway Controller\nwatches the CRDs" {class: cp}
+  EXT: "Extension Server\namends xDS with AI-specific config" {class: cp}
+  EGC: "Envoy Gateway Controller\nbuilds and ships xDS" {class: cp}
+
+  K8S -> AIC: "AIGatewayRoute and friends"
+  AIC -> K8S: "generates HTTPRoute"
+  K8S -> EGC: "HTTPRoute / Gateway"
+  AIC -> EXT
+  EXT -> EGC
+}
+
+DP: "Data plane: where traffic flows" {
+  style.fill: "#f0fdf4"
+  style.stroke: "#16a34a"
+
+  ENV: "Envoy Proxy" {class: dp}
+  EXTPROC: "External Processor\nsame Pod as Envoy\ntranslation, model extraction\ntoken accounting" {class: dp}
+
+  ENV -> EXTPROC: "gRPC"
+  EXTPROC -> ENV: "gRPC"
+}
+
+CP.EGC -> DP.ENV: "xDS"
+CP.AIC -> DP.EXTPROC: "config and credentials"

@@ -1,0 +1,68 @@
+direction: down
+
+classes: {
+  app: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  prov: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  gw: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 3
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+BEFORE: "Before: every app carries everything" {
+  direction: right
+  style.fill: "#fefce8"
+  style.stroke: "#b45309"
+
+  A1: "Service A\nOpenAI SDK\nkeys, retries, metrics" {class: app}
+  A2: "Service B\nboto3\nkeys, retries, metrics" {class: app}
+  A3: "Service C\nhand-rolled HTTP\nretries" {class: app}
+  P1: "OpenAI" {class: prov}
+  P2: "Bedrock" {class: prov}
+  P3: "self-hosted vLLM" {class: prov}
+
+  A1 -> P1
+  A2 -> P2
+  A3 -> P3
+}
+
+AFTER: "After: collect it at the front door" {
+  direction: right
+  style.fill: "#fefce8"
+  style.stroke: "#16a34a"
+
+  B1: "Service A\njust send the request" {class: app}
+  B2: "Service B\njust send the request" {class: app}
+  B3: "Service C\njust send the request" {class: app}
+  GW: "AI Gateway\nschema translation / key injection\ntoken metering / limits / failover" {class: gw}
+  Q1: "OpenAI" {class: prov}
+  Q2: "Bedrock" {class: prov}
+  Q3: "self-hosted vLLM" {class: prov}
+
+  B1 -> GW
+  B2 -> GW
+  B3 -> GW
+  GW -> Q1
+  GW -> Q2
+  GW -> Q3
+}
+
+BEFORE -> AFTER {style.stroke-width: 3}

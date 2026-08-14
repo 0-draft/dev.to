@@ -1,0 +1,42 @@
+shape: sequence_diagram
+
+C: "Client" {
+  style.fill: "#dbeafe"
+  style.stroke: "#2563eb"
+  style.font-color: "#0a0f25"
+}
+E: "Envoy" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+X: "ExtProc" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+P: "AI provider" {
+  style.fill: "#fee2e2"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+
+outbound: "Outbound: pick a destination, translate, authenticate" {
+  C -> E: "1. POST /v1/chat/completions\n{\"model\":\"team-chat\", ...}"
+  E -> X: "2. forward headers and body"
+  X -> X: "3. read model from the body"
+  X -> E: "4. attach x-ai-eg-model: team-chat" {style.stroke-dash: 3}
+  E -> E: "5. match the header, pick the backend"
+  E -> X: "6. upstream stage processing"
+  X -> X: "7. schema translation plus model rename"
+  X -> E: "8. inject the auth header" {style.stroke-dash: 3}
+  E -> P: "9. the translated request"
+}
+
+inbound: "Inbound: translate back, count, record" {
+  P -> E: "10. response including usage" {style.stroke-dash: 3}
+  E -> X: "11. forward the response"
+  X -> X: "12. pull token counts out of usage"
+  X -> E: "13. write into dynamic metadata" {style.stroke-dash: 3}
+  E -> C: "14. response in OpenAI format" {style.stroke-dash: 3}
+}

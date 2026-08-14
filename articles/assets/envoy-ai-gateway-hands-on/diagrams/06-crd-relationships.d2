@@ -1,0 +1,41 @@
+direction: down
+
+classes: {
+  ai: {
+    style: {
+      fill: "#ede9fe"
+      stroke: "#7c3aed"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  std: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  sec: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+ROUTE: "AIGatewayRoute\nrouting rules\nplus token cost definitions" {class: ai}
+BE: "AIServiceBackend\nthe egress schema\nOpenAI / AWSBedrock / ..." {class: ai}
+BSP: "BackendSecurityPolicy\nupstream auth\nAPIKey / AWS / Azure / GCP" {class: sec}
+GW: "Gateway\nwhich port to listen on" {class: std}
+BACKEND: "Backend\nthe actual hostname and port" {class: std}
+TLS: "BackendTLSPolicy\nupstream TLS verification" {class: std}
+
+ROUTE -> GW: "parentRefs"
+ROUTE -> BE: "backendRefs"
+BE -> BACKEND: "backendRef"
+BSP -> BE: "targetRefs"
+TLS -> BACKEND: "targetRefs"

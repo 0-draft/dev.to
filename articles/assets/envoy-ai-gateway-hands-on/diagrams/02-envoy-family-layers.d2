@@ -1,0 +1,25 @@
+direction: down
+
+AIGW: "Envoy AI Gateway v1.0.0\nAIGatewayRoute, AIServiceBackend, and friends\nschema translation, token metering, MCP" {
+  style.fill: "#ede9fe"
+  style.stroke: "#7c3aed"
+  style.stroke-width: 3
+  style.font-color: "#0a0f25"
+}
+
+EG: "Envoy Gateway v1.8.1+\na Gateway API implementation\nbuilds and ships xDS" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+ENVOY: "Envoy Proxy v1.38.1\nthe C++ proxy that moves the packets\nfilter chains, ExtProc" {
+  style.fill: "#e0f2fe"
+  style.stroke: "#0369a1"
+  style.stroke-width: 2
+  style.font-color: "#0a0f25"
+}
+
+AIGW -> EG: "reads CRDs, generates HTTPRoute\nand amends xDS via the extension server"
+EG -> ENVOY: "ships config over xDS"

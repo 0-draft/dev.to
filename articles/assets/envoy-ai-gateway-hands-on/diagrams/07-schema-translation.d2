@@ -1,0 +1,45 @@
+direction: down
+
+classes: {
+  inn: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  outt: {
+    style: {
+      fill: "#dcfce7"
+      stroke: "#16a34a"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+IN: "What the client sent: OpenAI format" {
+  style.fill: "#eff6ff"
+  style.stroke: "#2563eb"
+
+  I1: "POST /v1/chat/completions" {class: inn}
+  I2: "max_tokens: 100" {class: inn}
+  I3: "messages[0]\nrole: system\ncontent: 'You are terse.'" {class: inn}
+  I4: "messages[1]\nrole: user\ncontent: 'hi'" {class: inn}
+}
+
+OUT: "What the upstream received: Bedrock Converse format" {
+  style.fill: "#f0fdf4"
+  style.stroke: "#16a34a"
+
+  O1: "POST /model/claude-mock/converse" {class: outt}
+  O2: "inferenceConfig.maxTokens: 100" {class: outt}
+  O3: "system[0].text\n'You are terse.'" {class: outt}
+  O4: "messages[0]\nrole: user\ncontent[0].text: 'hi'" {class: outt}
+}
+
+IN.I1 -> OUT.O1: "rewrite the path"
+IN.I2 -> OUT.O2: "restructure the key"
+IN.I3 -> OUT.O3: "lift out of messages"
+IN.I4 -> OUT.O4: "wrap content in an array"

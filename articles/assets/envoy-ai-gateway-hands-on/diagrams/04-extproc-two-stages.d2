@@ -1,0 +1,43 @@
+direction: down
+
+classes: {
+  proc: {
+    style: {
+      fill: "#dbeafe"
+      stroke: "#2563eb"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  core: {
+    style: {
+      fill: "#fef3c7"
+      stroke: "#b45309"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+  prov: {
+    style: {
+      fill: "#fee2e2"
+      stroke: "#dc2626"
+      stroke-width: 2
+      font-color: "#0a0f25"
+    }
+  }
+}
+
+IN: "Request\nOpenAI format" {class: prov}
+R: "ExtProc: router stage\nextract model from body\nattach x-ai-eg-model\ndecide the route" {class: proc}
+ROUTER: "Envoy router filter\npicks a backend by priority" {class: core}
+U1: "ExtProc: upstream stage\ntranslate for OpenAI\nattach the OpenAI key" {class: proc}
+U2: "ExtProc: upstream stage\ntranslate for Bedrock\nsign with SigV4" {class: proc}
+P1: "OpenAI" {class: prov}
+P2: "Bedrock" {class: prov}
+
+IN -> R
+R -> ROUTER
+ROUTER -> U1
+ROUTER -> U2: "on failure" {style.stroke-dash: 3}
+U1 -> P1
+U2 -> P2

@@ -1,0 +1,49 @@
+shape: sequence_diagram
+
+C: "Client" {
+  style.fill: "#dbeafe"
+  style.stroke: "#2563eb"
+  style.font-color: "#0a0f25"
+}
+E: "Envoy" {
+  style.fill: "#fef3c7"
+  style.stroke: "#b45309"
+  style.font-color: "#0a0f25"
+}
+X: "ExtProc" {
+  style.fill: "#dcfce7"
+  style.stroke: "#16a34a"
+  style.font-color: "#0a0f25"
+}
+R: "RateLimit + Redis" {
+  style.fill: "#ede9fe"
+  style.stroke: "#7c3aed"
+  style.font-color: "#0a0f25"
+}
+P: "Provider" {
+  style.fill: "#fee2e2"
+  style.stroke: "#dc2626"
+  style.font-color: "#0a0f25"
+}
+
+outbound: "Outbound: check the balance, do not spend it" {
+  C -> E: "1. request (x-tenant-id: team-a)"
+  E -> R: "2. does team-a have budget left? cost=0"
+  R -> E: "3. OK" {style.stroke-dash: 3}
+  E -> P: "4. forward"
+}
+
+inbound: "Inbound: bill once the real number exists" {
+  P -> E: "5. response plus usage" {style.stroke-dash: 3}
+  E -> X: "6. process the response"
+  X -> E: "7. write llm_input_token=11 to dynamic metadata" {style.stroke-dash: 3}
+  E -> R: "8. deduct 11 from team-a"
+  E -> C: "9. 200 OK" {style.stroke-dash: 3}
+}
+
+exhausted: "If the budget is already exhausted" {
+  C -> E: "10. next request"
+  E -> R: "11. balance?"
+  R -> E: "12. out of budget" {style.stroke-dash: 3}
+  E -> C: "13. 429 Too Many Requests" {style.stroke-dash: 3}
+}
