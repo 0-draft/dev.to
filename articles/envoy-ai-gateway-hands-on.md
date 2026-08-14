@@ -1,6 +1,6 @@
 ---
 title: 'Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes'
-published: false
+published: true
 description: 'Start with the aigw CLI, which needs no Kubernetes at all, then work through schema translation, provider fallback, model name virtualization, the MCP gateway, and finally a kind deployment. Every command and every output here was run on a real machine.'
 tags:
   - ai
