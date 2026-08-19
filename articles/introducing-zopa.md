@@ -17,7 +17,7 @@ There are plenty of times you want to delegate "let this request through, or blo
 
 The trouble is OPA-as-wasm is heavy. The Go runtime, the Rego parser, and the evaluator are all in there. You only want to return allow/deny at the edge, but you ship something many times the size of the evaluator. Cedar and Casbin don't ship official wasm builds (as of May 2026). The slot for "drop-in proxy-wasm authorization filter" is empty.
 
-[zopa](https://github.com/0-draft/zopa) is what I built to fill that slot. A Zig `wasm32-freestanding` binary, ~60 KB at release. No GC; memory turns over on a per-request arena. It runs on any host that implements proxy-wasm 0.2.1 (Envoy / wasmtime / wamr / v8).
+[zopa](https://github.com/kanywst/zopa) is what I built to fill that slot. A Zig `wasm32-freestanding` binary, ~60 KB at release. No GC; memory turns over on a per-request arena. It runs on any host that implements proxy-wasm 0.2.1 (Envoy / wasmtime / wamr / v8).
 
 ## Big picture
 
@@ -169,7 +169,7 @@ Supported node types:
 
 `some` / `every` also iterate over JSON objects: pick `kind: "keys"` (default) or `kind: "values"`.
 
-Zopa doesn't reach the full Rego (user-defined functions, `with` clauses, partial evaluation, imports, etc.). The scope is "decide allow/deny at the edge". Full reference: [`docs/ast.md`](https://github.com/0-draft/zopa/blob/main/docs/ast.md).
+Zopa doesn't reach the full Rego (user-defined functions, `with` clauses, partial evaluation, imports, etc.). The scope is "decide allow/deny at the edge". Full reference: [`docs/ast.md`](https://github.com/kanywst/zopa/blob/main/docs/ast.md).
 
 ## Try it
 
@@ -179,7 +179,7 @@ You need Zig 0.16.0:
 
 ```bash
 brew install zig
-git clone https://github.com/0-draft/zopa
+git clone https://github.com/kanywst/zopa
 cd zopa
 zig build --release=small
 ```
@@ -254,7 +254,7 @@ http_filters:
 
 `configuration.value` is the policy AST as JSON. The example reads "GET passes; everything else denies".
 
-A complete end-to-end sample lives in [`examples/envoy/`](https://github.com/0-draft/zopa/tree/main/examples/envoy); `zig build test-envoy` runs curl assertions against a real Envoy. CI exercises Node, wasmtime, and a real Envoy on every commit.
+A complete end-to-end sample lives in [`examples/envoy/`](https://github.com/kanywst/zopa/tree/main/examples/envoy); `zig build test-envoy` runs curl assertions against a real Envoy. CI exercises Node, wasmtime, and a real Envoy on every commit.
 
 ### Container image
 
@@ -308,8 +308,8 @@ Feedback I'd love:
 
 ## Reference
 
-- Repo: <https://github.com/0-draft/zopa>
-- Issues: <https://github.com/0-draft/zopa/issues>
-- v0.2.0 release: <https://github.com/0-draft/zopa/releases/tag/v0.2.0>
+- Repo: <https://github.com/kanywst/zopa>
+- Issues: <https://github.com/kanywst/zopa/issues>
+- v0.2.0 release: <https://github.com/kanywst/zopa/releases/tag/v0.2.0>
 - OCI image: `ghcr.io/0-draft/zopa:v0.2.0`
 - proxy-wasm spec: <https://github.com/proxy-wasm/spec>
