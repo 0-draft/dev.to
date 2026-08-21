@@ -49,7 +49,7 @@ Total time: about **60 minutes**. Each command has a one-line explanation, so th
 - AWS CLI (v2)
 - A Mac or Linux terminal (`openssl` is preinstalled)
 - Windows users: run this inside WSL2
-- Theory background is in [AWS IAM Roles Anywhere Deep Dive](https://dev.to/kanywst/aws-iam-roles-anywhere-deep-dive)
+- Theory background is in [AWS IAM Roles Anywhere Deep Dive](https://dev.to/kanywst/aws-iam-roles-anywhere-deep-dive-j51)
 
 If you've never touched X.509 / PKI, you can still follow along. Term cheatsheet first.
 
@@ -678,5 +678,5 @@ What you might explore next:
 - [aws_signing_helper](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/credential-helper.html)
 - [Conditions on `aws:PrincipalTag/x509Subject/CN`](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/trust-model.html)
 - [AWS IAM Deep Dive (previous post)](https://dev.to/kanywst/aws-iam-deep-dive-2b81)
-- [AWS STS Deep Dive (theory)](https://dev.to/kanywst/aws-sts-deep-dive)
-- [IAM Roles Anywhere Deep Dive (theory)](https://dev.to/kanywst/aws-iam-roles-anywhere-deep-dive)
+- [AWS STS Deep Dive (theory)](https://dev.to/kanywst/aws-sts-deep-dive-19ha)
+- [IAM Roles Anywhere Deep Dive (theory)](https://dev.to/kanywst/aws-iam-roles-anywhere-deep-dive-j51)

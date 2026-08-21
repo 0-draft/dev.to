@@ -13,7 +13,7 @@ id: 3519854
 date: '2026-04-18T15:16:48Z'
 ---
 
-# Introduction
+## Introduction
 
 "Which authorization engine should I use?"
 
@@ -180,6 +180,6 @@ PRs are absolutely welcome. If a good tool or article is missing, please add it.
 ## Related Articles
 
 - [AuthZEN Authorization API 1.0 Deep Dive](https://dev.to/kanywst/authzen-authorization-api-10-deep-dive-the-standard-api-that-separates-authorization-decisions-1m2a) : Deep Dive into the AuthZEN Spec
-- [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-eac) : Design and Implementation of opa-authzen-plugin
-- [Google Zanzibar Deep Dive](https://dev.to/kanywst/google-zanzibar-deep-dive-handling-2-trillion-acls-in-under-10ms-456d) : Explaining the Zanzibar Paper
-- [RBAC vs ABAC vs ReBAC](https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3c89) : Comparing Access Control Models
+- [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81) : Design and Implementation of opa-authzen-plugin
+- [Google Zanzibar Deep Dive](https://dev.to/kanywst/google-zanzibar-deep-dive-handling-2-trillion-acls-in-under-10ms-f06) : Explaining the Zanzibar Paper
+- [RBAC vs ABAC vs ReBAC](https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3i2d) : Comparing Access Control Models

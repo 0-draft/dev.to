@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-09T11:04:07Z'
 ---
 
-# Introduction
+## Introduction
 
 When developing an application using OAuth 2.0 or OpenID Connect (OIDC), what is the very first step you take?
 Usually, you log into the management console of an Identity Provider (IdP/OP) like Google, Auth0, or Okta, click the "Create New Application" button, manually register the callback URL (`redirect_uri`), and obtain a Client ID and Client Secret.
@@ -70,7 +70,7 @@ It is broadly divided into two phases.
 ### Phase 1: Registration Endpoint Discovery
 
 The client first needs to know, "Where should I send the registration request?"
-This is resolved using the mechanism of [OpenID Connect Discovery 1.0](https://dev.to/kanywst/openid-connect-discovery-10-deep-dive-ops-self-introduction-and-dynamic-configuration-retrieval-3321766).
+This is resolved using the mechanism of [OpenID Connect Discovery 1.0](https://dev.to/kanywst/openid-connect-discovery-10-deep-dive-ops-self-introduction-and-dynamic-configuration-retrieval-2ja9).
 
 The client accesses the OP's `/.well-known/openid-configuration` and looks for the `"registration_endpoint"` key in the metadata. That URL is the entry point for dynamic registration.
 
