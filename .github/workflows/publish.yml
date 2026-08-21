@@ -7,6 +7,26 @@ on:
     paths:
       - 'articles/**/*.md'
   workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Which articles to push'
+        type: choice
+        options:
+          - changed
+          - all
+        default: changed
+
+# Both this workflow and Schedule Publisher commit to main. Sharing one
+# concurrency group keeps their pushes from racing into a non-fast-forward.
+concurrency:
+  group: devto-main-write
+  cancel-in-progress: false
+
+env:
+  # Pinned: an unpinned global install would silently pick up whatever the
+  # registry serves at build time.
+  DEVTO_CLI_VERSION: '1.4.0'
+  ARTICLE_LIST: articles.nul
 
 jobs:
   publish:
@@ -18,55 +38,100 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          files: articles/*.md
+          python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+          npm install -g "@sinedied/devto-cli@${DEVTO_CLI_VERSION}"
+
+      - name: Collect articles to push
+        id: collect
+        env:
+          SCOPE: ${{ inputs.scope }}
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          list="${RUNNER_TEMP}/${ARTICLE_LIST}"
+
+          # ':(glob)' stops '*' from matching '/', so this stays top-level only.
+          # articles/TIL/ and any other subdirectory is intentionally not published.
+          if [ "$EVENT" = "workflow_dispatch" ] && [ "$SCOPE" = "all" ]; then
+            git ls-files -z -- ':(glob)articles/*.md' > "$list"
+          else
+            base="$BEFORE"
+            if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ] \
+               || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+              # First push on a branch, or a force-push rewrote history.
+              base="$(git rev-parse "${AFTER}^" 2>/dev/null || echo "$AFTER")"
+            fi
+            git diff -z --name-only --diff-filter=d "$base" "$AFTER" -- ':(glob)articles/*.md' > "$list"
+          fi
+
+          files=()
+          mapfile -d '' -t files < "$list"
+          echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+          echo "Articles to push: ${#files[@]}"
+          if [ "${#files[@]}" -gt 0 ]; then
+            printf '  %s\n' "${files[@]}"
+          fi
+
+      - name: Validate articles
+        if: steps.collect.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          mapfile -d '' -t files < "${RUNNER_TEMP}/${ARTICLE_LIST}"
+          python scripts/validate_articles.py "${files[@]}"
 
       - name: Publish articles
+        if: steps.collect.outputs.count != '0'
         env:
-          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          # devto-cli reads DEVTO_TOKEN from the environment. Passing the key as
+          # an argv flag would expose it to anything that can read /proc on the
+          # runner; the env var does not appear in the process table.
+          DEVTO_TOKEN: ${{ secrets.DEVTO_API_KEY }}
         run: |
-          # Determine which files to publish
-          if [ "${{ steps.changed-files.outputs.any_changed }}" == "true" ]; then
-            FILES="${{ steps.changed-files.outputs.all_changed_files }}"
-            echo "Detected changed files: $FILES"
-          else
-            # On manual trigger or if no specific changes detected in articles/
-            FILES=$(ls articles/*.md)
-            echo "No specific changes detected or manual trigger. Processing all files."
+          set -euo pipefail
+          if [ -z "$DEVTO_TOKEN" ]; then
+            echo "::error::DEVTO_API_KEY secret is not set; nothing was published."
+            exit 1
+          fi
+          mapfile -d '' -t files < "${RUNNER_TEMP}/${ARTICLE_LIST}"
+
+          # One invocation for the whole batch. devto-cli fetches the full remote
+          # article list once per run, throttles writes internally (30 updates /
+          # 30s, 10 creates / 30s) and retries 429s, so per-file loops with
+          # sleeps only multiply the remote fetches.
+          dev push "${files[@]}" -r "${GITHUB_REPOSITORY}" -b "${GITHUB_REF_NAME}"
+
+      - name: Commit and push metadata written back by devto-cli
+        if: steps.collect.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -- ':(glob)articles/*.md'
+          if git diff --cached --quiet; then
+            echo "No frontmatter changes to commit."
+            exit 0
           fi
 
-          # Install devto-cli
-          npm install -g @sinedied/devto-cli
-
-          for file in $FILES; do
-            if [ -f "$file" ]; then
-              echo "------------------------------------------------------"
-              echo "Publishing $file..."
-              dev push "$file" -t $DEVTO_API_KEY -r ${{ github.repository }}
-              
-              # Wait to avoid 429 Too Many Requests
-              # dev.to API rate limit is around 3 requests per second, 
-              # but giving it more breath is safer for large batches.
-              echo "Waiting 5 seconds..."
-              sleep 5
+          git commit -m "chore: update article metadata from dev.to [skip ci]"
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
             fi
+            echo "Push rejected (attempt ${attempt}); rebasing onto origin/${GITHUB_REF_NAME}."
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            sleep $((attempt * 5))
           done
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Stage all potential changes (article IDs or dates updated by devto-cli)
-          git add articles/*.md
-          
-          if ! git diff --cached --exit-code; then
-            echo "Changes detected in frontmatter. Committing..."
-            git commit -m "chore: update article metadata from dev.to [skip ci]"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+          echo "::error::Could not push the metadata commit after 3 attempts."
+          exit 1

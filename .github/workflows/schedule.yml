@@ -5,10 +5,19 @@ on:
     # Run every hour at minute 0
     - cron: '0 * * * *'
   workflow_dispatch:
-    # Allow manual trigger for testing
+    inputs:
+      dry_run:
+        description: 'Report what would publish without changing anything'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+
+# Shares a group with "Publish to dev.to" so the two never push to main at once.
+concurrency:
+  group: devto-main-write
+  cancel-in-progress: false
 
 jobs:
   check-and-publish:
@@ -22,27 +31,45 @@ jobs:
         with:
           python-version: '3.x'
           cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
 
       - name: Install dependencies
-        run: |
-          pip install -r scripts/requirements.txt
+        run: pip install -r scripts/requirements.txt
 
       - name: Run scheduler script
+        env:
+          DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          python scripts/publish_scheduler.py
-
-      - name: Commit and Push if changed
-        run: |
-          # Configure git
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Check for changes
-          if [[ -n $(git status -s articles/*.md) ]]; then
-            echo "Changes detected. Committing..."
-            git add articles/*.md
-            git commit -m "chore: auto-publish scheduled articles"
-            git push
+          set -euo pipefail
+          if [ "${DRY_RUN:-false}" = "true" ]; then
+            python scripts/publish_scheduler.py --dry-run
           else
-            echo "No articles published."
+            python scripts/publish_scheduler.py
           fi
+
+      - name: Commit and push if changed
+        if: inputs.dry_run != true
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Top-level articles only, matching what publish.yml syncs.
+          git add -- ':(glob)articles/*.md'
+          if git diff --cached --quiet; then
+            echo "No articles published."
+            exit 0
+          fi
+
+          # Deliberately no [skip ci]: this commit is what triggers publish.yml.
+          git commit -m "chore: auto-publish scheduled articles"
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected (attempt ${attempt}); rebasing onto origin/${GITHUB_REF_NAME}."
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the scheduled-publish commit after 3 attempts."
+          exit 1
