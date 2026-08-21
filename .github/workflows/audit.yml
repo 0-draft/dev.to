@@ -1,0 +1,90 @@
+name: Weekly audit
+
+on:
+  schedule:
+    # Mondays at 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: devto-audit
+  cancel-in-progress: false
+
+env:
+  DEVTO_CLI_VERSION: '1.4.0'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      # Reporting only: link rot and legacy lint debt should be visible without
+      # turning a scheduled run red every week.
+      - name: Validate every article
+        continue-on-error: true
+        run: python scripts/validate_articles.py --all --format=md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check every link, including third-party
+        continue-on-error: true
+        run: python scripts/check_links.py --all --external --format=md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Detect drift against dev.to
+        continue-on-error: true
+        env:
+          DEVTO_TOKEN: ${{ secrets.DEVTO_API_KEY }}
+        run: |
+          set -uo pipefail
+          if [ -z "${DEVTO_TOKEN:-}" ]; then
+            echo "DEVTO_API_KEY is not set; skipping drift check." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          npm install -g "@sinedied/devto-cli@${DEVTO_CLI_VERSION}"
+          {
+            echo "### Drift against dev.to"
+            echo
+            echo 'Anything not reported as up-to-date was missed by a publish run.'
+            echo
+            echo '```text'
+            # --dry-run reports what would change without writing to dev.to.
+            dev push 'articles/*.md' -r "${GITHUB_REPOSITORY}" -b "${GITHUB_REF_NAME}" --dry-run 2>&1 | tail -n 200
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Refresh INDEX.md and README stats
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: python scripts/gen_index.py
+
+      - name: Commit refreshed index
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add INDEX.md README.md
+          if git diff --cached --quiet; then
+            echo "Index already up to date."
+            exit 0
+          fi
+          git commit -m "chore: refresh article index and stats [skip ci]"
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the index refresh after 3 attempts."
+          exit 1
