@@ -1,0 +1,103 @@
+name: Validate articles
+
+on:
+  pull_request:
+    paths:
+      - 'articles/**/*.md'
+      - 'scripts/**'
+      - '.github/workflows/validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'articles/**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Resolve base revision
+        id: base
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          if [ -n "${BASE_REF:-}" ]; then
+            git fetch --no-tags origin "$BASE_REF"
+            base="$(git rev-parse FETCH_HEAD)"
+          elif [ -n "${BEFORE:-}" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] \
+               && git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+            base="$BEFORE"
+          else
+            base="$(git rev-parse HEAD^ 2>/dev/null || git rev-parse HEAD)"
+          fi
+          echo "ref=$base" >> "$GITHUB_OUTPUT"
+          echo "Comparing against $base"
+
+      - name: Collect changed articles
+        id: collect
+        env:
+          BASE: ${{ steps.base.outputs.ref }}
+        run: |
+          set -euo pipefail
+          list="${RUNNER_TEMP}/changed.nul"
+          git diff -z --name-only --diff-filter=d "$BASE" HEAD -- ':(glob)articles/*.md' > "$list"
+          files=()
+          mapfile -d '' -t files < "$list"
+          echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+          echo "Changed articles: ${#files[@]}"
+          if [ "${#files[@]}" -gt 0 ]; then
+            printf '  %s\n' "${files[@]}"
+          fi
+
+      - name: Validate frontmatter and assets
+        if: steps.collect.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          mapfile -d '' -t files < "${RUNNER_TEMP}/changed.nul"
+          python scripts/validate_articles.py "${files[@]}"
+
+      - name: markdownlint (no new errors)
+        if: steps.collect.outputs.count != '0'
+        env:
+          BASE: ${{ steps.base.outputs.ref }}
+        run: |
+          set -euo pipefail
+          mapfile -d '' -t files < "${RUNNER_TEMP}/changed.nul"
+          python scripts/lint_ratchet.py --base "$BASE" "${files[@]}"
+
+      - name: Check links
+        if: steps.collect.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          mapfile -d '' -t files < "${RUNNER_TEMP}/changed.nul"
+          python scripts/check_links.py "${files[@]}"
+
+      - name: Repo-wide report
+        if: always()
+        run: |
+          {
+            python scripts/validate_articles.py --all --format=md || true
+          } >> "$GITHUB_STEP_SUMMARY"
