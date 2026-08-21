@@ -1,3 +1,4 @@
+import argparse
 import os
 import glob
 import re
@@ -10,10 +11,11 @@ from datetime import timezone
 ARTICLES_DIR = "articles"
 
 
-def main():
+def main(dry_run=False):
     # Use UTC for consistency with typical CI environments and frontmatter dates
     now = datetime.datetime.now(timezone.utc)
-    print(f"[-] Checking for scheduled articles at {now.isoformat()}...")
+    mode = " (dry run, no files will be modified)" if dry_run else ""
+    print(f"[-] Checking for scheduled articles at {now.isoformat()}...{mode}")
 
     # Find all markdown files in the articles directory
     search_pattern = os.path.join(ARTICLES_DIR, "*.md")
@@ -87,6 +89,10 @@ def main():
         if pub_date <= now:
             print(f"[+] Publishing: {filepath} (Scheduled: {pub_date.isoformat()})")
 
+            if dry_run:
+                updated_count += 1
+                continue
+
             # Update the file content
             # We use regex replacement on the Frontmatter text to preserve comments/style
             new_fm_text = re.sub(
@@ -111,9 +117,19 @@ def main():
 
     if updated_count == 0:
         print("[-] No articles need publishing.")
+    elif dry_run:
+        print(f"[-] {updated_count} article(s) would be published. Nothing was written.")
     else:
         print(f"[-] Successfully published {updated_count} article(s).")
 
 
 if __name__ == "__main__":
-    main()
+    cli = argparse.ArgumentParser(
+        description="Flip articles whose scheduled UTC date has passed to published: true."
+    )
+    cli.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="report what would be published without modifying any file",
+    )
+    main(dry_run=cli.parse_args().dry_run)
