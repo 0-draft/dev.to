@@ -1,0 +1,3 @@
+# Only gen_cover_image.py needs Pillow. Kept out of requirements.txt so the
+# hourly scheduler workflow does not pay for a wheel it never imports.
+Pillow==12.3.0

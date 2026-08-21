@@ -1,2 +1,5 @@
-PyYAML
-python-dateutil
+# Runtime dependencies for the scripts in this directory.
+# Pinned exactly so Dependabot's pip ecosystem has something to bump; an
+# unpinned file gives it no version constraint to update and it stays silent.
+PyYAML==6.0.3
+python-dateutil==2.9.0.post0
