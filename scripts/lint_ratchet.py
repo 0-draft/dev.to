@@ -22,20 +22,39 @@ import sys
 import tempfile
 from collections import Counter
 
-CONFIG = os.path.expanduser("~/.markdownlint-cli2.jsonc")
 LINT_CMD = ["npx", "--yes", "markdownlint-cli2"]
 # e.g. "articles/foo.md:16 error MD025/single-title/single-h1 Multiple top-level..."
 FINDING_RE = re.compile(r"^\S+\.md:\d+(?::\d+)?\s+\w+\s+(MD\d+)/")
+
+
+def resolve_config():
+    """Absolute path to the ruleset, or None.
+
+    The repo-local config wins so CI and local runs agree. The path must be
+    absolute because the baseline lint runs from a temporary directory, where
+    markdownlint's own config discovery would find nothing.
+    """
+    for candidate in (".markdownlint-cli2.jsonc", os.path.expanduser("~/.markdownlint-cli2.jsonc")):
+        if os.path.exists(candidate):
+            return os.path.abspath(candidate)
+    return None
+
+
+CONFIG = resolve_config()
+
+
+def lint_command(paths):
+    cmd = list(LINT_CMD)
+    if CONFIG:
+        cmd += ["--config", CONFIG]
+    return cmd + list(paths)
 
 
 def run_lint(paths, cwd=None):
     """Return Counter of rule -> occurrences across the given files."""
     if not paths:
         return Counter()
-    cmd = list(LINT_CMD)
-    if os.path.exists(CONFIG):
-        cmd += ["--config", CONFIG]
-    cmd += paths
+    cmd = lint_command(paths)
     result = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
     counts = Counter()
     for line in (result.stdout + result.stderr).splitlines():
@@ -90,7 +109,14 @@ def main():
         print("[-] No changed articles to lint.")
         return 0
 
-    print(f"[-] Linting {len(paths)} changed article(s) against {args.base}.")
+    if CONFIG is None:
+        # Falling back to markdownlint defaults would enable MD013, which this
+        # repo deliberately disables; the ratchet would then reject every new
+        # article. Fail loudly instead of silently changing the ruleset.
+        print("[!] No .markdownlint-cli2.jsonc found in the repo or home directory.", file=sys.stderr)
+        return 1
+
+    print(f"[-] Linting {len(paths)} changed article(s) against {args.base} using {CONFIG}.")
     current = run_lint(paths)
 
     with tempfile.TemporaryDirectory() as workdir:
@@ -112,8 +138,7 @@ def main():
 
     if regressions:
         print("\n[!] This change adds markdownlint errors. Full output:\n")
-        cmd = list(LINT_CMD) + (["--config", CONFIG] if os.path.exists(CONFIG) else []) + paths
-        subprocess.run(cmd)
+        subprocess.run(lint_command(paths))
         return 1
 
     if total_current < total_base:

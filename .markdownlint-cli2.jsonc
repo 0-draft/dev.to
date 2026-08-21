@@ -1,0 +1,22 @@
+// Mirrors ~/.markdownlint-cli2.jsonc so CI enforces the same rules the author
+// lints with locally. Without a config in the repo, markdownlint on the runner
+// falls back to its defaults, which enables MD013 (line-length). That directly
+// contradicts this repo's house rule that a paragraph is one unwrapped line,
+// and would make every new article unable to pass the lint ratchet.
+//
+// This adds no suppressions of its own. Keep it in sync with the global file.
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD024": false,
+    "MD033": { "allowed_elements": ["picture", "source", "img"] },
+    "MD036": false,
+    "MD041": false,
+    "MD060": false
+  },
+  "ignores": [
+    "node_modules/**",
+    ".venv/**"
+  ]
+}

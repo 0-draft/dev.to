@@ -2,7 +2,9 @@
 SHELL := /bin/bash
 
 PYTHON  ?= $(shell [ -x .venv/bin/python ] && echo .venv/bin/python || echo python3)
-LINT    := npx --yes markdownlint-cli2 --config $(HOME)/.markdownlint-cli2.jsonc
+# Repo-local ruleset wins so `make lint` and CI agree.
+MDCONFIG ?= $(shell [ -f .markdownlint-cli2.jsonc ] && echo .markdownlint-cli2.jsonc || echo $(HOME)/.markdownlint-cli2.jsonc)
+LINT    := npx --yes markdownlint-cli2 --config $(MDCONFIG)
 ARTICLES := articles/*.md
 BASE     ?= origin/main
 
