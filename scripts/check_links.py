@@ -19,8 +19,10 @@ import glob
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 
 ARTICLES_DIR = "articles"
@@ -36,6 +38,8 @@ HEADERS = {
 TIMEOUT = 20
 WORKERS = 8
 RETRIES = 2
+HOST_DELAY = 0.3     # seconds between two requests to the same host
+RECHECK_DELAY = 3.0  # pause before re-checking a 404, which may just be throttling
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n?", re.DOTALL)
 INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
@@ -104,6 +108,20 @@ def is_internal(url):
 
 
 def probe(url):
+    """Return (status, note), re-checking a 404 before believing it.
+
+    Throttling is not always signalled honestly. csrc.nist.gov answers a
+    request it does not want with 404, not 429, so a single 404 cannot be
+    trusted. A real 404 costs one extra request; there are few of those.
+    """
+    status, note = probe_once(url)
+    if status == 404:
+        time.sleep(RECHECK_DELAY)
+        status, note = probe_once(url)
+    return status, note
+
+
+def probe_once(url):
     """Return (status, note). status is an int, or None when unreachable."""
     last = None
     for attempt in range(RETRIES + 1):
@@ -126,6 +144,34 @@ def probe(url):
     return last if last else (None, "unknown")
 
 
+def probe_host(urls):
+    """Probe one host's URLs one at a time.
+
+    csrc.nist.gov answers concurrent requests with 404 rather than 429, which
+    is indistinguishable from real link rot: four NIST publications were
+    reported dead and every one of them returned 200 when probed serially.
+    Hosts still run in parallel with each other, so this costs little.
+    """
+    results = []
+    for index, url in enumerate(urls):
+        if index:
+            time.sleep(HOST_DELAY)
+        results.append((url, probe(url)))
+    return results
+
+
+def probe_all(urls):
+    """Return {url: (status, note)}, serialised per host."""
+    by_host = defaultdict(list)
+    for url in urls:
+        by_host[urlhost(url)].append(url)
+    results = {}
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        for batch in pool.map(probe_host, by_host.values()):
+            results.update(batch)
+    return results
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("paths", nargs="*")
@@ -146,12 +192,12 @@ def main():
         return 0
 
     urls = sorted(links)
-    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        results = list(pool.map(probe, urls))
+    probed = probe_all(urls)
 
     broken = []
     unreachable = []
-    for url, (status, note) in zip(urls, results):
+    for url in urls:
+        status, note = probed[url]
         if status is None:
             unreachable.append((url, note))
         elif status >= 400:
