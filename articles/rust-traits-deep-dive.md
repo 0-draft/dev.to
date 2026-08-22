@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-11T23:33:15Z'
 ---
 
-# Introduction
+## Introduction
 
 For those coming from Java or TypeScript, **Rust Traits** are often dismissed with, "Ah, so they're basically interfaces, right?"
 

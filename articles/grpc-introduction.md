@@ -13,7 +13,7 @@ id: 3866879
 date: '2026-06-10T15:37:14Z'
 ---
 
-# Introduction
+## Introduction
 
 While writing my xDS post (the one about istiod shipping protobuf to Envoy over a gRPC stream), I noticed something uncomfortable. I use gRPC every day. And if someone had asked me "so what is gRPC, exactly", I would have said "HTTP/2" and "Protocol Buffers" and then run out of sentences.
 

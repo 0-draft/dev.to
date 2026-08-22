@@ -13,7 +13,7 @@ date: '2026-02-01T13:58:48Z'
 series: Engineering Mindset
 ---
 
-# Introduction
+## Introduction
 
 For engineers, code reviews occupy a significant portion of daily work. However, many struggle with questions like, "How granular should I get?", "Where is the line between personal preference and a bug?", or "Why is the review process stalling our development?"
 

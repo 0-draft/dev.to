@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-25T11:26:55Z'
 ---
 
-# Introduction
+## Introduction
 
 Kubernetes networking revolves around the abstraction of "Service," but behind it lies historical context and evolution for scalability.
 Especially the transition from **Endpoints** to **EndpointSlice** is critically important for large-scale cluster operations.

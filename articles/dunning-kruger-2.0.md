@@ -13,7 +13,7 @@ date: '2026-02-06T11:50:27Z'
 series: Engineering Mindset
 ---
 
-# Introduction
+## Introduction
 
 In the traditional engineering growth curve, there was always a distinct, unavoidable phase: the **"Valley of Despair."**
 

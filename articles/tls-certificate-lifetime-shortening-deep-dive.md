@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-11T05:16:18Z'
 ---
 
-# Introduction
+## Introduction
 
 The other day, I was casually scrolling through my server's certificate renewal logs when something caught my eye.
 

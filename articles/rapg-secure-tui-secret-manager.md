@@ -13,7 +13,7 @@ date: '2026-01-20T12:19:15Z'
 series: ShowDev
 ---
 
-# Introduction
+## Introduction
 
 We've all been there. You join a new project, and the first thing you hear is:
 *"Check the pinned message in Slack for the `.env` file."*
@@ -94,7 +94,7 @@ $ rapg audit
 Moving from another tool? You can import from CSV or export to `.env` (if you *really* must).
 
 ```bash
-$ rapg import lastpass_export.csv
+rapg import lastpass_export.csv
 ```
 
 ## Try It Out

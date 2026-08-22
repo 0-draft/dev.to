@@ -13,7 +13,7 @@ date: '2026-02-04T12:35:48Z'
 series: Concurrency
 ---
 
-# Introduction
+## Introduction
 
 When writing concurrent code in Go, have you ever hesitated between `sync.Mutex` and `sync.RWMutex` to protect a shared map or resource?
 

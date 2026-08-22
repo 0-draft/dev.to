@@ -13,7 +13,7 @@ id: 3812538
 date: '2026-06-03T16:17:13Z'
 ---
 
-# Introduction
+## Introduction
 
 A modern system processes a single request across many cooperating microservices. A user clicks "Buy" on a trading site, and behind that one click the API gateway, the order service, the risk service, the payment service, and the notification service all fire in a chain.
 

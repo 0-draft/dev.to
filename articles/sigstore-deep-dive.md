@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-22T14:51:44Z'
 ---
 
-# Introduction
+## Introduction
 
 In my previous article, "Supply Chain Security: A Deep Dive into SBOM and Code Signing," we took Cosign's keyless signing for a spin. You run `cosign sign`, your browser pops up, you log in with GitHub, and boom—your container image is signed. No private key management. The moment the signing is done, the key is thrown away into the void.
 

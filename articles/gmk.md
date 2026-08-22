@@ -13,7 +13,7 @@ date: '2026-01-16T14:19:04Z'
 series: ShowDev
 ---
 
-# 😫 The Problem
+## 😫 The Problem
 
 We've all been there. You find an amazing library on GitHub, you star it, and then... you forget about it. Two weeks later, you need it for a project.
 
@@ -24,7 +24,7 @@ We've all been there. You find an amazing library on GitHub, you star it, and th
 
 It’s friction. It breaks your flow.
 
-# 🚀 The Solution: gmk (Git Mark)
+## 🚀 The Solution: gmk (Git Mark)
 
 I built **[gmk](https://github.com/kanywst/gmk)** to solve this exact problem. It's a blazing fast, interactive CLI tool written in **Rust** that lets you bookmark repositories once and clone them anywhere, instantly.
 

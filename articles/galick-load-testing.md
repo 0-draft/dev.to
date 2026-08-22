@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-20T18:45:48Z'
 ---
 
-# Introduction
+## Introduction
 
 If you've ever needed to load test an API, you've likely faced **The Dilemma**.
 
@@ -32,9 +32,7 @@ So, I built **[Galick](https://github.com/kanywst/galick)**.
 
 It solves The Dilemma by using **Starlark** (a dialect of Python) for scripting instead of JavaScript. Starlark is designed to be embedded in Go; it's thread-safe, lightweight, and doesn't require a heavy VM for each user.
 
-<div align="center">
-  <img src="https://github.com/kanywst/galick/raw/main/demo.gif" width="100%" alt="Galick Demo" />
-</div>
+![Galick Demo](https://github.com/kanywst/galick/raw/main/demo.gif)
 
 With Galick, you get:
 
@@ -104,7 +102,7 @@ services:
     command: ["--url", "http://app:8080", "--duration", "30s"]
 ```
 
-# Architecture: Standing on Giants
+## Architecture: Standing on Giants
 
 I didn't reinvent the wheel. Galick synthesizes the best parts of existing tools:
 

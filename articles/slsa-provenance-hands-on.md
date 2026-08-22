@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-29T07:38:30Z'
 ---
 
-# Introduction
+## Introduction
 
 I wrote [Supply Chain Security: A Deep Dive into SBOM and Code Signing](https://dev.to/kanywst/supply-chain-security-a-deep-dive-into-sbom-and-code-signing-2n1l) earlier. That post pinned down "what's in it" via SBOM and "who signed it" via Cosign.
 

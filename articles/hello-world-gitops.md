@@ -11,7 +11,7 @@ id: 3157786
 date: '2026-01-08T10:56:18Z'
 ---
 
-# Introduction
+## Introduction
 
 As software engineers, we spend a significant amount of our time in the terminal and code editors. We love version control, we love automation, and we love plain text. So, why should our blogging experience be any different?
 

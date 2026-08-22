@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-08T09:13:58Z'
 ---
 
-# Introduction
+## Introduction
 
 It is 2026. If you ask an AI agent to "speed up this process," it will return parallelized code in seconds.
 However, how many engineers can logically explain **why that code becomes faster**, or **why it doesn't become as fast as expected**?

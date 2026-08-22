@@ -13,9 +13,9 @@ id: 3494284
 date: '2026-04-13T11:20:54Z'
 ---
 
-# Introduction
+## Introduction
 
-I perfectly understand how human users authenticate in modern web apps via OAuth 2.0. A browser opens, the user clicks "Allow" on a consent screen, and an access token is issued. 
+I perfectly understand how human users authenticate in modern web apps via OAuth 2.0. A browser opens, the user clicks "Allow" on a consent screen, and an access token is issued.
 
 But the other day, while looking at a backend architecture involving dozens of microservices, a fundamental question hit me: **"How does machine-to-machine (M2M) authentication actually work when there is no human sitting in front of a browser?"**
 

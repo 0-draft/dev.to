@@ -13,7 +13,7 @@ id: 3281303
 date: '2026-02-24T13:09:24Z'
 ---
 
-# Introduction
+## Introduction
 
 In the previous article, we dissected RFC 6749 (OAuth 2.0 Authorization Framework). You should now understand the big picture of OAuth 2.0 — the roles, Grant Types, and token acquisition flows.
 

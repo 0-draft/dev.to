@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-28T11:34:24Z'
 ---
 
-# Introduction
+## Introduction
 
 While doing a deep dive on Sigstore and TUF, a question hit me out of nowhere.
 

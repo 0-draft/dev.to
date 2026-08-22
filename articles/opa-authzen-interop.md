@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-05T13:14:55Z'
 ---
 
-# Introduction
+## Introduction
 
 In my earlier post, [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81), I covered how I added AuthZEN API support (`POST /access/v1/evaluation`) directly to OPA.
 

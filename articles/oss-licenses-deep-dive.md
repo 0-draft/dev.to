@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-23T03:56:02Z'
 ---
 
-# Introduction
+## Introduction
 
 I've always been interested in OSS development.
 But I was never that interested in licenses.

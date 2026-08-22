@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-27T20:38:56Z'
 ---
 
-# Introduction
+## Introduction
 
 **"Wait, what exactly is the difference between OCI Runtime and CRI again?"**
 

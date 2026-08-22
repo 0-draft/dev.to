@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-26T11:40:58Z'
 ---
 
-# Introduction
+## Introduction
 
 When you hear "monitoring tool," **Prometheus** is likely the first thing that comes to mind.
 While it is as ubiquitous as air in the Kubernetes world, can you explain in detail how data flows inside it and how it is stored on disk?

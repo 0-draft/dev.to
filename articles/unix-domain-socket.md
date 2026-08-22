@@ -13,7 +13,7 @@ date: '2026-01-15T14:05:23Z'
 series: Linux Kernel
 ---
 
-# Introduction
+## Introduction
 
 `/var/run/docker.sock` for controlling Docker. `agent.sock` for SPIRE to authenticate workloads.
 Why do these tools, which underpin modern infrastructure, adopt the seemingly archaic "UNIX Domain Socket (UDS)" as their standard interface instead of TCP/IP?

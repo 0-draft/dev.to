@@ -13,7 +13,7 @@ date: '2026-01-10T03:21:42Z'
 series: Linux Kernel
 ---
 
-# Introduction
+## Introduction
 
 **"In Linux, everything is a file."**
 

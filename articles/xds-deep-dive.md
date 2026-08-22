@@ -13,7 +13,7 @@ id: 3527803
 date: '2026-04-20T15:40:41Z'
 ---
 
-# Introduction
+## Introduction
 
 I was debugging Istio routing the other day, and honestly, I had a moment where I felt a bit "creeped out."
 

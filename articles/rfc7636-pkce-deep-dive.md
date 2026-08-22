@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-12T05:31:58Z'
 ---
 
-# Introduction
+## Introduction
 
 Last time, we tore apart the core mechanics of **RFC 6749 (Authorization Code Grant)**.
 

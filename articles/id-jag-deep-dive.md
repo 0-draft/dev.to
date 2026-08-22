@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-16T11:54:11Z'
 ---
 
-# Introduction
+## Introduction
 
 Lately, while following discussions about AI agent architectures and integration patterns, I keep seeing the keyword "ID-JAG" pop up.
 
@@ -439,6 +439,7 @@ In enterprise environments, both IdPs and SaaS apps are often multi-tenant. The 
 | **Example**        | On-premises IdP           | Okta, Azure Entra ID           |
 
 **Single-Tenant example:**
+
 ```json
 {
   "iss": "https://idp.company.com",
@@ -448,6 +449,7 @@ In enterprise environments, both IdPs and SaaS apps are often multi-tenant. The 
 ```
 
 **Multi-Tenant example:**
+
 ```json
 {
   "iss": "https://acme.okta.com",
@@ -467,12 +469,14 @@ In multi-tenant environments, there are two patterns for ensuring client_id uniq
 | **Global**        | client_id is unique across all tenants. No duplicates across the entire IDP or Resource AS           | Unique by client_id alone          |
 
 **Tenant-Scoped example:**
+
 ```text
 IdP (Okta) tenant-123: client_id = "app-001"
 IdP (Okta) tenant-456: client_id = "app-001" (same value is OK)
 ```
 
 **Global example:**
+
 ```text
 IdP (Okta) across all tenants: client_id = "app-tenant-123-001" (unique across all tenants)
 ```
@@ -553,6 +557,7 @@ Unlike Enterprise Deployment, this is a **no pre-registration** scenario:
 - The Resource AS is **configured to accept ID-JAGs from unregistered clients**
 
 **Implementation with ID-JAG:**
+
 ```text
 User SSO Login
   → IdP issues ID Token

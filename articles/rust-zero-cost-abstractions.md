@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-14T15:02:56Z'
 ---
 
-# Introduction
+## Introduction
 
 In the world of programming, there has long been a believed "Law of Equivalent Exchange":
 

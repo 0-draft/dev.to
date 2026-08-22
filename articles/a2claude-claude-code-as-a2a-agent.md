@@ -13,7 +13,7 @@ id: 3896493
 date: '2026-06-14T07:54:12Z'
 ---
 
-# Introduction
+## Introduction
 
 Running a single AI agent is starting to feel dated. You have an agent that researches, one that plans, one that writes code, each with a role, handing work to each other. When I tried to wire up a setup like that, I got stuck on one question: what do I use for the "writes code" slot?
 

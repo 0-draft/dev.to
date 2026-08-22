@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-01T02:27:44Z'
 ---
 
-# Introduction
+## Introduction
 
 Recently, while reading protocol specifications (RFCs) like OAuth 2.0 or OpenID Connect (OIDC), have you ever stumbled upon a fundamental question?
 

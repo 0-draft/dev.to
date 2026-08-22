@@ -13,7 +13,7 @@ id: 3351989
 date: '2026-03-14T15:58:39Z'
 ---
 
-# Introduction
+## Introduction
 
 I've been wondering about distributed systems lately—specifically, multiple microservices across different cloud providers. Say a request starts in Domain A, needs to access Domain B's services, and then Domain C. It seems simple at first glance.
 
@@ -494,25 +494,25 @@ In federation contracts, examine whether **each metadata is truly necessary and 
 
 Let me consolidate the use cases mentioned in the specification's Appendix.
 
-#### 1. Multi-Cloud / Hybrid Environment User Context Preservation
+### 1. Multi-Cloud / Hybrid Environment User Context Preservation
 
 ![real world use case](./assets/identity-chaining-deep-dive/real-world.png)
 
 Even in mixed on-premises and cloud environments, the original user's ID and authorization context flow to each workload. Intermediate services maintain the request context (who initiated it, which services it traversed) for authorization decisions.
 
-#### 2. CI/CD Pipeline External Resource Access
+### 2. CI/CD Pipeline External Resource Access
 
 ![CI/CD](./assets/identity-chaining-deep-dive/ci-cd.png)
 
 When CI pipelines access external resources, build metadata (commit hash, repo name, etc.) can be safely propagated via Identity Chaining. Static API key management becomes unnecessary, and the resource side enables fine-grained access control.
 
-#### 3. SSO to API Integration Extension
+### 3. SSO to API Integration Extension
 
 ![sso](./assets/identity-chaining-deep-dive/sso.png)
 
 For API integration between multiple SaaS apps with SSO relationships through an IdP, no additional user consent is required. Access control is based on IdP policies.
 
-#### 4. Cross-Domain API Authorization
+### 4. Cross-Domain API Authorization
 
 Email client accessing third-party calendar API. The email client and calendar service don't need prior relationships; they can integrate if they share a common IdP.
 

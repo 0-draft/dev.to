@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-29T19:46:01Z'
 ---
 
-# Introduction
+## Introduction
 
 For security engineers, the **"Trust Boundary"** has long been the "red dotted line" drawn on architecture diagrams. Inside the firewall was safe; outside was dangerous. The DMZ was a buffer zone. That idyllic era is long gone.
 

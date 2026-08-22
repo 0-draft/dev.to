@@ -12,7 +12,7 @@ date: '2026-01-10T22:17:04Z'
 series: Docker
 ---
 
-# Introduction
+## Introduction
 
 'I don't really get how Kubernetes or Docker work, but they sure are convenient.'
 
@@ -437,7 +437,7 @@ mount -t overlay overlay -o lowerdir=lower,upperdir=upper,workdir=work merged
 
 1. **Is it synthesized?**
 
-Looking at the `merged` directory, you can see the file that was in `lower`.
+    Looking at the `merged` directory, you can see the file that was in `lower`.
 
     ```bash
     ls merged/
@@ -457,7 +457,7 @@ Looking at the `merged` directory, you can see the file that was in `lower`.
 
 3. **What is the reality? (Copy-on-Write)**
 
-Check `lower` (which should be read-only) and `upper` (for saving diffs).
+    Check `lower` (which should be read-only) and `upper` (for saving diffs).
 
     ```bash
     # lower (base) is unchanged!

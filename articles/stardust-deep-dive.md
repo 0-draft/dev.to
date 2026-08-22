@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-01T15:01:02Z'
 ---
 
-# Introduction
+## Introduction
 
 [GitHub Trending](https://github.com/trending) is an excellent resource, but its user experience isn't particularly optimized for engineers with broad interests across multiple languages.
 
@@ -41,7 +41,7 @@ This "parallelization" reduces the cost of actively seeking out information, all
 * **Cinematic UI**: Uses Framer Motion for data visualization, aiming for an immersive design reminiscent of sci-fi movie interfaces.
 * **Instant Interaction**: A Single Page Application (SPA) powered by React 19 and TanStack Query eliminates page load delays.
 
-# Conclusion
+## Conclusion
 
 Stardust is also an experiment in how simply changing the "presentation method" of information can dramatically improve information intake efficiency.
 

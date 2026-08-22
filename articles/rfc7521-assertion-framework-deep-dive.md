@@ -12,7 +12,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-12T13:38:07Z'
 ---
 
-# Introduction
+## Introduction
 
 In OAuth 2.0, client authentication typically uses a `client_id` and `client_secret` pair (or PKCE). For obtaining access tokens, common authorization grants include the "Authorization Code Grant" involving user authentication, and the "Client Credentials Grant" used for batch processing.
 

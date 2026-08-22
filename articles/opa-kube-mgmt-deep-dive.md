@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-21T00:36:09Z'
 ---
 
-# Introduction
+## Introduction
 
 When we talk about "policy management" in the Kubernetes world, **OPA (Open Policy Agent)** is the first thing that comes to mind.
 However, OPA itself is beautifully simple. In a nutshell, it's just **"a function that takes JSON as input and returns JSON as output."**

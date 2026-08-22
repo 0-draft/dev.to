@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-28T18:25:11Z'
 ---
 
-# Introduction
+## Introduction
 
 Many engineers think, "I want to monitor my system, so I'll just install Node Exporter." But have you ever stopped to consider **what this binary is actually doing**?
 

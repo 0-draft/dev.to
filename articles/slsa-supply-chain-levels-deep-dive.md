@@ -13,7 +13,7 @@ id: 3551901
 date: '2026-04-26T04:59:20Z'
 ---
 
-# Introduction
+## Introduction
 
 When I first investigated the SolarWinds incident, one technical detail absolutely floored me.
 

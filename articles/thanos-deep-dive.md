@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-26T15:03:28Z'
 ---
 
-# Introduction
+## Introduction
 
 Prometheus is a wonderful tool, but as operations grow in duration and scale, you inevitably hit two major barriers.
 

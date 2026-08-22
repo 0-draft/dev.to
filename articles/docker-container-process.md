@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-31T14:51:48Z'
 ---
 
-# Introduction
+## Introduction
 
 In the world of Docker and Kubernetes, **"One Container = One Process"** is considered an ironclad rule.
 

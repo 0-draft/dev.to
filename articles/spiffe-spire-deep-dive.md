@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-14T04:55:32Z'
 ---
 
-# Introduction
+## Introduction
 
 It is 2026. Are your microservices still embedding "API keys" in environment variables?
 Or, are you still placing static credentials on on-premise servers just to use AWS IAM roles?

@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-09T12:43:47Z'
 ---
 
-# Introduction
+## Introduction
 
 "Why did we need to discard the world's most widely used web server?"
 

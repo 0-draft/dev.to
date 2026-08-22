@@ -13,7 +13,7 @@ date: '2026-01-13T14:33:43Z'
 series: Cryptography
 ---
 
-# Introduction
+## Introduction
 
 I recently noticed something while profiling a high-throughput Go service: **RSA verification was suspiciously fast.**
 
@@ -73,10 +73,12 @@ However, the way the "difficulty to crack" scales for an attacker is completely 
 When we talk about "heavy/light processing" in cryptography, the standard is **Bitwise Operations**.
 
 ### Bitwise Operations (Representative of Light Processing)
+
 These are simple operations like "swapping 0 and 1" or "shifting left/right" that the CPU excels at.
 Symmetric encryption like AES is built by combining these bitwise operations like a puzzle, so it runs incredibly fast even without dedicated hardware.
 
 ### Public Key Cryptography (Heavy Processing)
+
 On the other hand, digital signatures involve **"mathematical calculations on huge numbers"**.
 
 * **RSA:** Multiplying a 2048-bit number (about 600 decimal digits!) thousands of times.

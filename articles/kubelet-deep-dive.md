@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-04T15:03:12Z'
 ---
 
-# Introduction
+## Introduction
 
 In a Kubernetes cluster, it is the **Kubelet** that actually starts/stops containers and manages the state of the Node.
 If the API Server is the "Command Tower," the Kubelet is the "Field Commander" residing on each Node, acting as the most critical component—the brain of the Node.

@@ -13,7 +13,7 @@ date: '2026-01-11T11:48:44Z'
 series: Supply Chain Security
 ---
 
-# Introduction
+## Introduction
 
 In modern software development, the "code we write ourselves" is only a small fraction of the entire application. Every day, we combine numerous OSS libraries and container images—our "components"—to build systems.
 
@@ -272,7 +272,6 @@ cosign sign $IMAGE_NAME
 
 1. A browser opens, asking you to log in to an OIDC provider (Google, GitHub, Microsoft).
 2. If you log in and see the success screen, it worked.
-1.
 
 You might be concerned about logs like this appearing:
 

@@ -12,7 +12,7 @@ date: '2026-01-09T00:06:14Z'
 series: ShowDev
 ---
 
-# Introduction
+## Introduction
 
 Have you ever wondered when your favorite programming language was actually released? Or when the major platforms we use today first appeared on the internet?
 

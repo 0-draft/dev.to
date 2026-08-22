@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-22T14:02:14Z'
 ---
 
-# Introduction
+## Introduction
 
 "Just use Tor (hide your IP) and you're anonymous" — this is nothing more than a fantasy in the face of modern advanced tracking technologies and state-level actors (Global Passive Adversaries).
 

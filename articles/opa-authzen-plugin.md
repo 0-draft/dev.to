@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-01T17:10:01Z'
 ---
 
-# Introduction
+## Introduction
 
 In my [previous article](https://dev.to/kanywst/authzen-authorization-api-10-deep-dive-the-standard-api-that-separates-authorization-decisions-1m2a), I did a deep dive into the AuthZEN Authorization API 1.0 spec. It standardizes communication between PEPs and PDPs. You send a JSON request asking "can this subject do this action on this resource?" and get back `{"decision": true/false}`.
 

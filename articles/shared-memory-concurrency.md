@@ -13,7 +13,7 @@ date: '2026-02-07T13:54:27Z'
 series: Concurrency
 ---
 
-# Introduction
+## Introduction
 
 In 2026, it has become the norm for server-side CPUs to exceed 128 cores, and ARM architectures like Apple Silicon dominate the desktop. In this environment, the act of "sharing a variable" in multi-threaded programming compels a surprisingly complex coordination at the hardware level, far beyond what the source code suggests.
 

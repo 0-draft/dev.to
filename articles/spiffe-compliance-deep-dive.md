@@ -13,7 +13,7 @@ id: 3787416
 date: '2026-05-31T06:05:03Z'
 ---
 
-# Introduction
+## Introduction
 
 "This is SPIFFE compliant." "Our implementation is SPIFFE-compatible." Read the SPIRE, Istio, or Cilium docs and you bump into these phrases everywhere. But if you actually stop and ask what compliance means, the answer is surprisingly hard to nail down.
 

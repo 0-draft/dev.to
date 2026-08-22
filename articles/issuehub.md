@@ -13,7 +13,7 @@ id: 3180667
 date: '2026-01-18T16:48:16Z'
 ---
 
-# Introduction
+## Introduction
 
 Let's be real—you want to contribute to Open Source Software (OSS), don't you? You've seen those legendary developers with their green-filled GitHub graphs, and you admire that world. You want to be a part of it. You want to give back to the tools you use every day.
 

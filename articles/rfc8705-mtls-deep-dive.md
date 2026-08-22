@@ -13,7 +13,7 @@ id: 3288176
 date: '2026-02-26T13:39:06Z'
 ---
 
-# Introduction
+## Introduction
 
 In my previous article exploring RFC 6750 (Bearer Token Usage), I concluded with the following statement:
 

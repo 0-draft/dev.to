@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-16T15:43:26Z'
 ---
 
-# Introduction
+## Introduction
 
 It is 2026. Several years have passed since `GOMEMLIMIT` was introduced in Go 1.19, and we have acquired the technique of "running the GC according to container limits." However, even if this setting becomes fully automated in the future, there remains a "true final boss" that cannot be defeated by configuration alone.
 

@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-29T12:02:44Z'
 ---
 
-# Introduction
+## Introduction
 
 With the shift toward microservices and the widespread adoption of multi-tenant SaaS, requirements that cannot be expressed by traditional access control are rapidly increasing.
 

@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-30T12:08:40Z'
 ---
 
-# Introduction
+## Introduction
 
 In the authentication space, OpenID Connect has become the de facto standard, centralizing identity around Identity Providers. In the authorization space — specifically delegated authorization — OAuth 2.0 stands as a robust standard.
 
@@ -242,7 +242,7 @@ Assemble the 4-tuple into JSON and send it to the PDP.
 
 In plain language, this query asks:
 
-> Can the user **alice@acmecorp.com** **read (can_read)** **account #123**? (At time 1985-10-26T01:22-07:00)
+> Can the user **`alice@acmecorp.com`** **read (can_read)** **account #123**? (At time 1985-10-26T01:22-07:00)
 
 ### 3.2 Response — Decision
 

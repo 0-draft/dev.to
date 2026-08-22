@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-23T13:11:37Z'
 ---
 
-# Introduction
+## Introduction
 
 Everyone has heard of OAuth 2.0. If you have ever clicked a "Sign in with Google" button, you are already benefiting from it.
 

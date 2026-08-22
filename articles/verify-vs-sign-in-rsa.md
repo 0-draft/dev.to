@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-17T11:43:44Z'
 ---
 
-# Introduction
+## Introduction
 
 It is a well-known fact that "RSA's security depends on the difficulty of prime factorization," but in actual computer calculations (signing and verifying), what the CPU is sweating over is **"Modular Exponentiation."**
 

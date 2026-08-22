@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-05T22:02:08Z'
 ---
 
-# Introduction
+## Introduction
 
 When you type `ps aux`, have you ever found the eerie letter **"Z"** in the STAT column?
 Or have you ever encountered a "PID limit reached" error while investigating a `CrashLoopBackOff` on a Kubernetes Pod?

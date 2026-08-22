@@ -13,7 +13,7 @@ date: '2026-01-14T13:56:55Z'
 series: Go vs Rust
 ---
 
-# Introduction
+## Introduction
 
 "Go is great for concurrency" and "Rust is memory-safe and fast."
 These are common phrases, but can you explain **"Why?"** from an OS-level perspective?

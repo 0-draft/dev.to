@@ -13,7 +13,7 @@ date: '2026-02-11T14:59:49Z'
 series: Engineering Mindset
 ---
 
-# Introduction
+## Introduction
 
 "I fixed this error by pasting it into ChatGPT."
 "Copilot wrote this code, so it should work."

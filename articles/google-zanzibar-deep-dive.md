@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-01T13:58:38Z'
 ---
 
-# Introduction
+## Introduction
 
 Spend any time in the authorization space and you'll notice that SpiceDB and OpenFGA both claim to be "inspired by Google Zanzibar." I got curious and pulled up the 2019 USENIX ATC paper — "Zanzibar: Google's Consistent, Global Authorization System" — to see what the fuss was about.
 

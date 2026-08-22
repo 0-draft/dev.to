@@ -4,7 +4,12 @@
 // contradicts this repo's house rule that a paragraph is one unwrapped line,
 // and would make every new article unable to pass the lint ratchet.
 //
-// MD010 is the one deliberate addition on top of the global file: gofmt indents
+// Two deliberate additions on top of the global file.
+//
+// MD033 allows <br>: a markdown table cell has no other way to hold a line
+// break, and dev.to renders it. Every other element stays disallowed.
+//
+// MD010: gofmt indents
 // with tabs, so every Go sample in the corpus is a "hard tab" violation (153 of
 // them). Tabs in prose are still flagged.
 {
@@ -13,7 +18,7 @@
     "MD010": { "code_blocks": false },
     "MD013": false,
     "MD024": false,
-    "MD033": { "allowed_elements": ["picture", "source", "img"] },
+    "MD033": { "allowed_elements": ["picture", "source", "img", "br"] },
     "MD036": false,
     "MD041": false,
     "MD060": false

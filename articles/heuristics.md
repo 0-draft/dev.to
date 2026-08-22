@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-15T15:16:37Z'
 ---
 
-# Introduction
+## Introduction
 
 It is 2026. The systems we handle have grown beyond the limits of what any single human can fully comprehend.
 With AI-generated code becoming the norm and the volume of codebase we manage exploding, if we chase "perfect architecture," "100% test coverage," or "mathematically optimal resource allocation," our budget and time will run out long before release.

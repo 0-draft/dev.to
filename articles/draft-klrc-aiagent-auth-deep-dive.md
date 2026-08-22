@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-14T08:37:17Z'
 ---
 
-# Introduction
+## Introduction
 
 While ChatGPT and various AI coding assistants have become widespread as personal tools, AI is now being embedded into enterprise systems as an autonomous actor. Calling APIs on behalf of users, reading databases, writing to external systems — this is the AI agent.
 

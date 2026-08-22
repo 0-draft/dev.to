@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-02-28T06:16:17Z'
 ---
 
-# Introduction
+## Introduction
 
 In previous articles, we decoded RFC 6749 (OAuth 2.0), RFC 6750 (Bearer Token), and RFC 8705 (mTLS). You probably understand how the "authorization" mechanism of OAuth 2.0 works by now.
 
@@ -265,7 +265,7 @@ Why use only the half (22 chars) instead of the full hash (43 chars)? The reason
 
 OIDC represents "user information" as **Claims**. A Claim literally means an "assertion". While it might sound synonymous to a "JWT field," there is a reason it is called a "Claim" and not a "field." It carries the nuance of **"The OP is claiming that this is true (= which might not necessarily be an absolute fact)."**
 
-For example, `"email": "jane@example.com"` means "The OP *claims* that this person's email is jane@example.com." Whether the OP actually verified that email ownership is indicated by another Claim entirely (`email_verified`). Also, Claims exist not only inside the JWT (ID Token) but also in the JSON response of the UserInfo Endpoint. "Claims" is an abstract concept of assertions about an entity, not something exclusive to JWT formatting.
+For example, `"email": "jane@example.com"` means "The OP *claims* that this person's email is `jane@example.com`." Whether the OP actually verified that email ownership is indicated by another Claim entirely (`email_verified`). Also, Claims exist not only inside the JWT (ID Token) but also in the JSON response of the UserInfo Endpoint. "Claims" is an abstract concept of assertions about an entity, not something exclusive to JWT formatting.
 
 There are two ways to request Claims.
 

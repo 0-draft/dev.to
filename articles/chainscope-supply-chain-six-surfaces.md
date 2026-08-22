@@ -12,7 +12,7 @@ date: '2026-04-29T15:05:15Z'
 series: ShowDev
 ---
 
-# Introduction
+## Introduction
 
 On 2025-03-14, the GitHub Action `tj-actions/changed-files` was hijacked. CVE-2025-30066. The blast radius: 23,000 repositories, 15 hours.
 

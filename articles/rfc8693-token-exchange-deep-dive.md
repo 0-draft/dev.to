@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-03T13:08:29Z'
 ---
 
-# Introduction
+## Introduction
 
 In modern system architectures, particularly in microservices architectures, the following scenarios are incredibly common:
 
@@ -151,7 +151,7 @@ The `act` claim is placed as an object within the JWT payload and indicates the 
 
 ```
 
-The backend receiving this token looks at `sub` to determine "this is a request from user@example.com," while simultaneously logging the `act` claim to maintain an audit trail showing that "however, the caller was service-A."
+The backend receiving this token looks at `sub` to determine "this is a request from `user@example.com`," while simultaneously logging the `act` claim to maintain an audit trail showing that "however, the caller was service-A."
 
 **Chain of Delegation**
 

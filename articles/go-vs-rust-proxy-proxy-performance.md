@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-01-23T16:00:35Z'
 ---
 
-# Introduction
+## Introduction
 
 ## 1. The Rise of Go and the Hard Reality of Proxies
 

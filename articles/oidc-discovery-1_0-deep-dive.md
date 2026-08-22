@@ -13,7 +13,7 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-03-07T08:50:17Z'
 ---
 
-# Introduction
+## Introduction
 
 You probably use OIDC (OpenID Connect) every day to integrate Google Login or authentication flows into your applications. When doing so, have you ever experienced just setting `issuer: "https://accounts.google.com"` in your library initialization code, and it automatically resolves the Authorization Endpoint, Token Endpoint, and even the location of the public keys (JWKS)?
 

@@ -13,7 +13,7 @@ id: 3396056
 date: '2026-03-24T16:57:16Z'
 ---
 
-# Introduction
+## Introduction
 
 Modern systems are wild. A user clicks a single button, and behind the scenes, ten or twenty independent workloads — microservices, containers, functions — fire off in sequence.
 
