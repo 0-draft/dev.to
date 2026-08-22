@@ -1,4 +1,8 @@
 ---
+# devto_sync: false makes devto-cli skip this file outright, so the template can
+# never be published as an article even if it somehow reaches `dev push`.
+# Delete this line when you copy the file into articles/.
+devto_sync: false
 title: "Article Title Here"
 published: false
 description: "A short description of the post."

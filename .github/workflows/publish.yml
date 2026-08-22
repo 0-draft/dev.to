@@ -123,18 +123,23 @@ jobs:
           # repository and keeps the original `id` values. Name the files first.
           python scripts/check_devto_ids.py "${files[@]}" || exit 1
 
-          extra=()
+          # Build one argument array. Never interpolate a possibly-empty array
+          # as "${arr[@]:-}": that yields a single empty-string argument, which
+          # devto-cli passes to globby as a pattern and which then matches far
+          # more than the batch.
+          args=("${files[@]}" -r "${GITHUB_REPOSITORY}" -b "${GITHUB_REF_NAME}")
           if [ "${RECONCILE:-false}" = "true" ]; then
             # Matches local articles to remote ones by title and adopts their id
             # instead of creating duplicates.
-            extra+=(--reconcile)
+            args+=(--reconcile)
           fi
 
           # One invocation for the whole batch. devto-cli fetches the full remote
           # article list once per run, throttles writes internally (30 updates /
           # 30s, 10 creates / 30s) and retries 429s, so per-file loops with
           # sleeps only multiply the remote fetches.
-          dev push "${files[@]}" -r "${GITHUB_REPOSITORY}" -b "${GITHUB_REF_NAME}" "${extra[@]:-}"
+          echo "Pushing ${#files[@]} article(s)."
+          dev push "${args[@]}"
 
       - name: Commit and push metadata written back by devto-cli
         if: steps.collect.outputs.count != '0'
