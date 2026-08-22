@@ -26,6 +26,13 @@ from concurrent.futures import ThreadPoolExecutor
 ARTICLES_DIR = "articles"
 REPO = "0-draft/dev.to"
 USER_AGENT = "devto-repo-link-check/1.0 (+https://github.com/0-draft/dev.to)"
+# Some hosts content-negotiate and 404 a request that does not ask for HTML.
+# crates.io is one: /crates/clap is 404 without this header and 200 with it.
+HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 TIMEOUT = 20
 WORKERS = 8
 RETRIES = 2
@@ -101,7 +108,7 @@ def probe(url):
     last = None
     for attempt in range(RETRIES + 1):
         for method in ("HEAD", "GET"):
-            request = urllib.request.Request(url, method=method, headers={"User-Agent": USER_AGENT})
+            request = urllib.request.Request(url, method=method, headers=HEADERS)
             try:
                 with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
                     return response.status, ""
