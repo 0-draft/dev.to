@@ -32,7 +32,7 @@ Instead of managing text files, you store your secrets in a secure, local vault.
 
 **No text files. No accidental commits. Just code.**
 
-![Demo](https://raw.githubusercontent.com/kanywst/rapg/refs/heads/master/demo.gif)
+![Demo](https://raw.githubusercontent.com/kanywst/rapg/refs/heads/master/demo-v2.gif)
 
 ## The Killer Feature: Process Injection
 

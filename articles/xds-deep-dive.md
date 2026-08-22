@@ -301,4 +301,4 @@ xDS is no longer just Envoy's internal protocol. It is the absolute, most vital 
 * [Envoy xDS REST and gRPC Protocol (Official Documentation)](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol)
 * [xDS API Overview - Envoy](https://www.envoyproxy.io/docs/envoy/latest/api/api)
 * [CNCF xDS API Repository](https://github.com/cncf/xds)
-* [gRPC Proxyless Service Mesh](https://grpc.io/docs/guides/xds/)
+* [xDS Features in gRPC (proxyless service mesh)](https://github.com/grpc/grpc/blob/master/doc/grpc_xds_features.md)

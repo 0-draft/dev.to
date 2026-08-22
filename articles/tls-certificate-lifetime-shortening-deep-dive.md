@@ -380,10 +380,10 @@ Phase 1 (200 days) took effect in March 2026. It's already here. If your organiz
 
 ## References
 
-- [CA/Browser Forum - Ballot SC-081v3](https://cabforum.org/2025/04/07/ballot-sc-081v3-reduce-ssl-tls-certificate-validities/)
+- [CA/Browser Forum - Ballot SC081v3: Introduce Schedule of Reducing Validity and Data Reuse Periods](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/)
 - [Let's Encrypt - Why Ninety-Day Lifetimes for Certificates?](https://letsencrypt.org/2015/11/09/why-90-days.html)
-- [Let's Encrypt - Short-Lived Certificates (2024/2026)](https://letsencrypt.org/2024/12/04/short-lived-certs/)
+- [Let's Encrypt - Certificate Lifetime Rationale and Plans](https://letsencrypt.org/docs/cert-lifetimes/)
 - [RFC 8555 - Automatic Certificate Management Environment (ACME)](https://datatracker.ietf.org/doc/html/rfc8555)
 - [RFC 6960 - X.509 Internet PKI Online Certificate Status Protocol (OCSP)](https://datatracker.ietf.org/doc/html/rfc6960)
 - [Adam Langley - Revocation Checking and Chrome's CRL (2012)](https://www.imperialviolet.org/2012/02/05/crlsets.html)
-- [DigiCert - TLS Certificate Validity Changes](https://www.digicert.com/blog/tls-certificate-validity-changes)
+- [DigiCert - TLS Certificate Lifetimes Will Officially Reduce to 47 Days](https://www.digicert.com/blog/tls-certificate-lifetimes-will-officially-reduce-to-47-days)

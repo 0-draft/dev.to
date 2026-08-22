@@ -25,8 +25,8 @@ I became interested in these heuristics and compiled them below.
 
 ![image](./assets/heuristics/image.png)
 
-* [Hacker Heuristics](https://kanywst.github.io/hacker-heuristics/)
-* [Github](https://github.com/kanywst/hacker-heuristics)
+* [Hacker Heuristics](https://kanywst.github.io/hammurabi/)
+* [Github](https://github.com/kanywst/hammurabi)
 
 ---
 

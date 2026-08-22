@@ -241,14 +241,14 @@ Security that nobody uses is not security. The decade of Notary v1 proved that.
 ## References
 
 - [Docker Blog: Retiring Docker Content Trust](https://www.docker.com/blog/retiring-docker-content-trust/)
-- [InfoQ: Docker Retires Docker Content Trust with Less Than 0.05% of Image Pulls Using DCT](https://www.infoq.com/news/2025/08/docker-content-trust-retirement/)
+- [InfoQ: Docker Content Trust Retired as Alternatives Flourish](https://www.infoq.com/news/2025/08/docker-content-trust-retired)
 - [Microsoft: Deprecation of Docker Content Trust on Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-content-trust)
 - [Docker Blog: Notary v2 and Signing Requirements (Dec 2019 kickoff)](https://www.docker.com/blog/notary-v2-and-signing-requirements/)
 - [Harbor: Notary v1 Removal (v2.9.0)](https://github.com/goharbor/harbor/wiki/Harbor-Notary-v1-Migration-Guide)
 - [OCI Distribution Specification v1.1.0](https://github.com/opencontainers/distribution-spec/releases/tag/v1.1.0)
 - [Notary Project (Notation)](https://notaryproject.dev/)
 - [Sigstore](https://www.sigstore.dev/)
-- [Sigstore Blog: Root Key Ceremony (June 18, 2021)](https://blog.sigstore.dev/sigstore-root-key-ceremony/)
+- [Sigstore Blog: A New Kind of Trust Root (June 2021 root key ceremony)](https://blog.sigstore.dev/a-new-kind-of-trust-root-f11eeeed92ef/)
 - [PEP 458: Secure PyPI downloads with signed repository metadata](https://peps.python.org/pep-0458/)
 - [PEP 480: Surviving a Compromise of PyPI](https://peps.python.org/pep-0480/)
 - [PyPI Blog: Trusted Publishers](https://blog.pypi.org/posts/2023-04-20-introducing-trusted-publishers/)

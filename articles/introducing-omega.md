@@ -23,7 +23,7 @@ Cedar [joined CNCF Sandbox on 2025-10-08](https://aws.amazon.com/blogs/opensourc
 and is in production at Cloudflare, MongoDB, StrongDM, and AWS Bedrock
 AgentCore. SPIFFE is the de-facto workload identity model.
 
-[Omega](https://github.com/0-draft/omega) is my attempt at wiring those
+[Omega](https://github.com/kanywst/omega) is my attempt at wiring those
 pieces into one Apache-2.0 binary.
 
 ## A few terms first
@@ -52,7 +52,7 @@ One binary with three subcommands:
 
 ## What ships today
 
-Repo: <https://github.com/0-draft/omega>. Items marked `tracked` are
+Repo: <https://github.com/kanywst/omega>. Items marked `tracked` are
 GitHub issues, not features in the source tree.
 
 | Layer                   | Status      |
@@ -75,7 +75,7 @@ GitHub issues, not features in the source tree.
 ## 60-second hands-on
 
 ```bash
-git clone https://github.com/0-draft/omega
+git clone https://github.com/kanywst/omega
 cd omega
 make docker-up
 ```
@@ -172,7 +172,7 @@ PQC (ML-DSA / ML-KEM) and a CSI driver are deliberately later. CRL and
 OCSP are not on the list at all; short-lived SVIDs plus rotation is
 the revocation story. Detailed non-goals (secrets storage, end-user
 login UI, service-mesh data plane, SIEM, agent runtime) live in
-[`docs/non-goals.md`](https://github.com/0-draft/omega/blob/main/docs/non-goals.md).
+[`docs/non-goals.md`](https://github.com/kanywst/omega/blob/main/docs/non-goals.md).
 
 ## Try it
 
@@ -180,6 +180,5 @@ If you have spent an evening stitching SPIRE to OPA to Keycloak to
 Loki, please clone it, run `make docker-up`, and tell me where it
 breaks.
 
-- Repo: <https://github.com/0-draft/omega>
-- Issues: <https://github.com/0-draft/omega/issues>
-- Discussions: <https://github.com/0-draft/omega/discussions>
+- Repo: <https://github.com/kanywst/omega>
+- Issues: <https://github.com/kanywst/omega/issues>
