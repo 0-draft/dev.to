@@ -15,6 +15,10 @@ on:
           - changed
           - all
         default: changed
+      reconcile:
+        description: 'Adopt existing dev.to articles by title instead of creating new ones'
+        type: boolean
+        default: false
 
 # Both this workflow and Schedule Publisher commit to main. Sharing one
 # concurrency group keeps their pushes from racing into a non-fast-forward.
@@ -70,7 +74,14 @@ jobs:
             if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ] \
                || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
               # First push on a branch, or a force-push rewrote history.
-              base="$(git rev-parse "${AFTER}^" 2>/dev/null || echo "$AFTER")"
+              # --verify --quiet stays silent when there is no parent; plain
+              # 'rev-parse <sha>^' would echo the unresolvable ref to stdout and
+              # exit non-zero, leaving a two-line value that breaks git diff.
+              base="$(git rev-parse --verify --quiet "${AFTER}^" || true)"
+            fi
+            if [ -z "$base" ]; then
+              # Root commit: diff against the empty tree, so every article counts as added.
+              base="$(git hash-object -t tree /dev/null)"
             fi
             git diff -z --name-only --diff-filter=d "$base" "$AFTER" -- ':(glob)articles/*.md' > "$list"
           fi
@@ -97,6 +108,7 @@ jobs:
           # an argv flag would expose it to anything that can read /proc on the
           # runner; the env var does not appear in the process table.
           DEVTO_TOKEN: ${{ secrets.DEVTO_API_KEY }}
+          RECONCILE: ${{ inputs.reconcile }}
         run: |
           set -euo pipefail
           if [ -z "$DEVTO_TOKEN" ]; then
@@ -105,11 +117,24 @@ jobs:
           fi
           mapfile -d '' -t files < "${RUNNER_TEMP}/${ARTICLE_LIST}"
 
+          # devto-cli aborts the whole batch if any local `id` is missing from
+          # the account behind the token, with only "Cannot find published
+          # article on dev.to: <title>". That happens to anyone who forks this
+          # repository and keeps the original `id` values. Name the files first.
+          python scripts/check_devto_ids.py "${files[@]}" || exit 1
+
+          extra=()
+          if [ "${RECONCILE:-false}" = "true" ]; then
+            # Matches local articles to remote ones by title and adopts their id
+            # instead of creating duplicates.
+            extra+=(--reconcile)
+          fi
+
           # One invocation for the whole batch. devto-cli fetches the full remote
           # article list once per run, throttles writes internally (30 updates /
           # 30s, 10 creates / 30s) and retries 429s, so per-file loops with
           # sleeps only multiply the remote fetches.
-          dev push "${files[@]}" -r "${GITHUB_REPOSITORY}" -b "${GITHUB_REF_NAME}"
+          dev push "${files[@]}" -r "${GITHUB_REPOSITORY}" -b "${GITHUB_REF_NAME}" "${extra[@]:-}"
 
       - name: Commit and push metadata written back by devto-cli
         if: steps.collect.outputs.count != '0'

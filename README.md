@@ -70,6 +70,12 @@ A repo secret `DEVTO_API_KEY` is required; generate it from your dev.to account 
 </tr>
 </table>
 
+## Reusing this repository
+
+If you fork or copy this repo to run your own dev.to sync, **delete the `id:` and `date:` lines from any article you keep**. Those ids belong to this account, and `devto-cli` aborts the whole batch with `Cannot find published article on dev.to: <title>` when it meets an id your token cannot see. `scripts/check_devto_ids.py` runs before every publish and names the offending files instead of leaving you with that one line.
+
+If your articles already exist on dev.to but the local copies have no `id`, run the publish workflow manually with the **reconcile** input enabled. It matches local articles to remote ones by title and adopts their ids rather than creating duplicates.
+
 ## Checks
 
 `validate.yml` gates every push and pull request that touches an article. It runs three checks against the changed files only, so the pre-linter backlog in older articles never blocks new work:

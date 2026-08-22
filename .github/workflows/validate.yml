@@ -51,7 +51,15 @@ jobs:
                && git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
             base="$BEFORE"
           else
-            base="$(git rev-parse HEAD^ 2>/dev/null || git rev-parse HEAD)"
+            # --verify --quiet prints nothing when HEAD has no parent. Plain
+            # 'git rev-parse HEAD^' echoes the unresolvable "HEAD^" to stdout
+            # *and* exits non-zero, so a '||' fallback appends a second line and
+            # the multi-line value is rejected by $GITHUB_OUTPUT.
+            base="$(git rev-parse --verify --quiet 'HEAD^' || true)"
+          fi
+          if [ -z "$base" ]; then
+            # Root commit: diff against the empty tree so every file reads as added.
+            base="$(git hash-object -t tree /dev/null)"
           fi
           echo "ref=$base" >> "$GITHUB_OUTPUT"
           echo "Comparing against $base"
