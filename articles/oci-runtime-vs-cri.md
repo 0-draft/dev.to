@@ -5,8 +5,8 @@ description: 'A deep dive into the clear distinction between OCI Runtime and CRI
 tags:
   - kubernetes
   - container
-  - CRI
-  - OCI
+  - cri
+  - oci
 series: Kubernetes Fundamental
 id: 3202737
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/oci-runtime-vs-cri/cri-vs-oci.png'
