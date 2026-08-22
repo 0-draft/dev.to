@@ -64,8 +64,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Refresh INDEX.md and README stats
-        env:
-          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        # Public dev.to API only, so this produces the same file on a laptop.
         run: python scripts/gen_index.py
 
       - name: Commit refreshed index

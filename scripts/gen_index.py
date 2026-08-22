@@ -2,8 +2,11 @@
 """Generate INDEX.md and refresh the stats block in README.md.
 
 Local frontmatter supplies the canonical title/series/tags; dev.to's API supplies
-the live URL and engagement numbers. The public endpoint needs no credentials.
-Set DEVTO_API_KEY to additionally pull page-view counts, which are private.
+the live URL and engagement numbers.
+
+Only the public endpoint is used, deliberately. Page-view counts are private and
+would need DEVTO_API_KEY, which CI has and a laptop usually does not, so the two
+would produce different files and churn INDEX.md on every run.
 
 Usage:
     python scripts/gen_index.py            # write INDEX.md and update README.md
@@ -17,6 +20,7 @@ import glob
 import json
 import os
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -42,7 +46,7 @@ def fetch(url, headers=None):
 
 
 def fetch_remote():
-    """Return {id: {url, reactions, comments, views, published_at}}."""
+    """Return {id: {url, reactions, comments, published_at}}."""
     remote = {}
     page = 1
     while True:
@@ -56,35 +60,34 @@ def fetch_remote():
                 "comments": article.get("comments_count", 0),
                 "reading_time": article.get("reading_time_minutes"),
                 "published_at": (article.get("published_at") or "")[:10],
-                "views": None,
             }
         if len(batch) < 1000:
             break
         page += 1
 
-    key = os.environ.get("DEVTO_API_KEY")
-    if key:
-        try:
-            page = 1
-            while True:
-                batch = fetch(f"{API}/articles/me/all?per_page=1000&page={page}", {"api-key": key})
-                if not batch:
-                    break
-                for article in batch:
-                    if article["id"] in remote:
-                        remote[article["id"]]["views"] = article.get("page_views_count")
-                if len(batch) < 1000:
-                    break
-                page += 1
-        except urllib.error.HTTPError as exc:
-            print(f"[!] Could not fetch private stats ({exc.code}); continuing without view counts.", file=sys.stderr)
-
     return remote
+
+
+def article_paths():
+    """Tracked top-level articles.
+
+    Deliberately not a filesystem glob: local-only drafts are invisible to CI,
+    so globbing would make `make index` and the audit workflow disagree and
+    churn INDEX.md back and forth. Tracked files are also exactly what
+    publish.yml can ever sync.
+    """
+    result = subprocess.run(
+        ["git", "ls-files", "--", ":(glob)articles/*.md"], capture_output=True, text=True
+    )
+    if result.returncode == 0 and result.stdout.strip():
+        return sorted(p for p in result.stdout.split("\n") if p.endswith(".md"))
+    print("[!] git ls-files unavailable; falling back to a filesystem glob.", file=sys.stderr)
+    return sorted(glob.glob(os.path.join(ARTICLES_DIR, "*.md")))
 
 
 def load_articles():
     articles = []
-    for path in sorted(glob.glob(os.path.join(ARTICLES_DIR, "*.md"))):
+    for path in article_paths():
         with open(path, encoding="utf-8") as handle:
             match = FRONTMATTER_RE.match(handle.read())
         if not match:
@@ -118,8 +121,6 @@ def row(path, fm, remote):
         parts = [f"{info['reactions']}👍"]
         if info["comments"]:
             parts.append(f"{info['comments']}💬")
-        if info.get("views"):
-            parts.append(f"{info['views']} views")
         engagement = " · ".join(parts)
     source = f"[src](./{path})"
     return f"| {link} | {tags} | {state} | {engagement} | {source} |"
