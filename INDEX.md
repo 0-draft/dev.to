@@ -158,7 +158,7 @@
 | --- | --- | --- | --- | --- |
 | [Kubernetes Deep Dive: Kubelet](https://dev.to/kanywst/kubernetes-deep-dive-kubelet-2h8k) | `kubernetes`, `kubelet`, `internal`, `architecture` | 2026-02-04 | 1👍 | [src](./articles/kubelet-deep-dive.md) |
 | [Kubernetes Deep Dive: Networking (Service, EndpointSlice, Gateway)](https://dev.to/kanywst/kubernetes-deep-dive-networking-service-endpointslice-gateway-18cn) | `kubernetes`, `networking`, `service`, `ingress` | 2026-01-25 | 1👍 · 1💬 | [src](./articles/kubernetes-networking.md) |
-| [Kubernetes Deep Dive: OCI Runtime vs CRI](https://dev.to/kanywst/kubernetes-deep-dive-oci-runtime-vs-cri-4o2n) | `kubernetes`, `container`, `CRI`, `OCI` | 2026-01-27 | 0👍 | [src](./articles/oci-runtime-vs-cri.md) |
+| [Kubernetes Deep Dive: OCI Runtime vs CRI](https://dev.to/kanywst/kubernetes-deep-dive-oci-runtime-vs-cri-4o2n) | `kubernetes`, `container`, `cri`, `oci` | 2026-01-27 | 0👍 | [src](./articles/oci-runtime-vs-cri.md) |
 
 ### O11y (3)
 
@@ -188,7 +188,7 @@
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
 | [Go Heap Fragmentation Deep Dive: The Battle Against 'Invisible Memory' Continues](https://dev.to/kanywst/go-heap-fragmentation-deep-dive-the-battle-against-invisible-memory-continues-4o7h) | `go`, `golang`, `memory`, `performance` | 2026-02-16 | 1👍 | [src](./articles/go-heap-fragmentation-deep-dive.md) |
-| [Is it True That Go Maps Don't Shrink?](https://dev.to/kanywst/is-it-true-that-go-maps-dont-shrink-3m3) | `go`, `golang`, `memory`, `performance`, `backend` | 2026-02-17 | 1👍 · 3💬 | [src](./articles/go-map-does-not-shrink.md) |
+| [Is it True That Go Maps Don't Shrink?](https://dev.to/kanywst/is-it-true-that-go-maps-dont-shrink-3m3) | `go`, `memory`, `performance`, `backend` | 2026-02-17 | 1👍 · 3💬 | [src](./articles/go-map-does-not-shrink.md) |
 
 ### Go vs Rust (2)
 
