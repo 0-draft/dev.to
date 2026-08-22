@@ -255,6 +255,7 @@ done
 ```
 
 What to check:
+
 - Are your TLS certificates using ECDSA (P-256 or above)? If they are still RSA-2048, start planning the migration.
 - Are your SSH keys Ed25519? If they are still RSA-2048, regenerate them with `ssh-keygen -t ed25519`.
 - Are your JWT signatures using ES256 / EdDSA? If RS256, consider switching.

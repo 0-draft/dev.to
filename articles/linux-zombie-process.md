@@ -39,6 +39,7 @@ If the parent calls `wait()`, the zombie rests in peace (disappears).
 ![normal](./assets/linux-zombie/nomarl.png)
 
 > **Syscall Memo**:
+>
 > * `wait()`: Blocks and waits for any one child process to terminate.
 > * `waitpid()`: A high-functionality version that can specify a PID or perform non-blocking checks with the `WNOHANG` option.
 

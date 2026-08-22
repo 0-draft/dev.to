@@ -40,7 +40,7 @@ Whether the source code disclosure obligation propagates to derivative works is 
 
 The most widely adopted license on GitHub. Let's read the full text. It's surprisingly short.
 
-```
+```text
 Copyright (c) <year> <copyright holders>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -124,6 +124,7 @@ A Permissive license originating from UC Berkeley. Essentially almost identical 
 The BSD License has two variations:
 
 **BSD 2-Clause (Simplified BSD)** — Essentially equivalent to MIT:
+
 1. Retain the copyright notice when redistributing source code
 2. Include the copyright notice in documentation when redistributing binaries
 
@@ -264,7 +265,7 @@ In recent years, major OSS companies have changed licenses one after another, sh
 
 Facebook released React under a custom "BSD+Patents" license. This license included a clause where **if you filed any patent lawsuit against Facebook (even patents unrelated to React), you would lose your right to use React**.
 
-```
+```text
 July 2017       Apache Software Foundation bans BSD+Patents in Apache projects
 September 2017  WordPress (25% of all websites) announces it will stop using React
 September 22, 2017  Facebook announces license change to MIT
@@ -279,6 +280,7 @@ In response to AWS launching a MongoDB-compatible managed service (DocumentDB), 
 SSPL's requirements are extreme: if you offer SSPL software as a service, you must release **the entire service stack** (including management tools, APIs, and infrastructure software) under SSPL.
 
 Result:
+
 - OSI (Open Source Initiative) refused to recognize SSPL as an open source license
 - Fedora, Debian, and RHEL removed MongoDB from their repositories
 
@@ -286,7 +288,7 @@ Result:
 
 In August 2023, HashiCorp changed Terraform, Vault, Consul, and all other products from MPL 2.0 to BSL (Business Source License).
 
-```
+```text
 August 10, 2023   HashiCorp announces license change to BSL
 August 15, 2023   "OpenTF Manifesto" published → 33,000+ GitHub stars
 August 25, 2023   Community decides to fork
@@ -299,7 +301,7 @@ A fork launched in just 40 days. Over 140 companies and 700+ individuals express
 
 Redis' license journey encapsulates the difficulty of OSS licensing:
 
-```
+```text
 ~2018           Redis Core: BSD 3-Clause (pure OSS)
 August 2018     Optional modules only: Apache 2.0 + Commons Clause
 February 2019   Modules changed to RSAL (Redis Source Available License)

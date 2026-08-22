@@ -160,6 +160,7 @@ With Provenance understood, let's dissect the Build Track. Each level is defined
 The bare minimum. The build process spits out Provenance.
 
 L1 Requirements:
+
 - Follows a consistent build process (e.g., scripted).
 - Provenance is generated (contains builder.id, buildType, externalParameters, subject).
 - **Provenance does NOT need to be signed.**

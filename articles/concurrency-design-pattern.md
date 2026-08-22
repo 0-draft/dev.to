@@ -286,6 +286,7 @@ Event-driven architecture for handling massive concurrent connections (C10K prob
 
 > **💡 Column: What is the difference from CSP (Channel)?**
 > The goal of "Non-blocking" is the same, but the **Layer** they solve is different.
+>
 > * **Reactor (epoll)**: **OS Level**. Interested in the **Notification** of "**When** can I read?"
 > * **CSP (Channel)**: **App Level**. Interested in the **Coordination** of "**What** to send to whom?"
 >

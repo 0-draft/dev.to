@@ -184,7 +184,7 @@ To construct an Inclusion Proof for Entry 2, you only need the **hashes of the s
 
 Verification flow:
 
-```
+```text
 1. H2 = Hash(Entry 2)              ← You calculate this locally
 2. H23 = Hash(H2 + H3)             ← H3 comes from Rekor
 3. Root' = Hash(H01 + H23)         ← H01 comes from Rekor
@@ -480,6 +480,7 @@ spec:
 This policy dictates: **"Images under `ghcr.io/myorg/` are ONLY allowed to run if they were signed by the build.yml workflow on the main branch via GitHub Actions."**
 
 Evaluation logic:
+
 - If multiple `ClusterImagePolicy` resources match, **all** of them must be satisfied (AND).
 - If a single policy has multiple `authorities`, **any one** of them will satisfy it (OR).
 

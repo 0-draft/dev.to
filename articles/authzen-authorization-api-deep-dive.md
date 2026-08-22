@@ -532,14 +532,14 @@ The mechanism follows the **`.well-known` URI** pattern (RFC 8615) — a web con
 
 ### 6.1 Discovery Endpoint
 
-```
+```http
 GET /.well-known/authzen-configuration HTTP/1.1
 Host: pdp.example.com
 ```
 
 In multi-tenant environments, tenant-specific metadata can be provided:
 
-```
+```http
 GET /.well-known/authzen-configuration/tenant1 HTTP/1.1
 Host: pdp.example.com
 ```

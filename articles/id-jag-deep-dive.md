@@ -118,7 +118,7 @@ Let's dig into each step.
 
 This is a standard OpenID Connect flow — nothing ID-JAG-specific. When the user logs into the Wiki app, they're redirected to the enterprise IdP for authentication.
 
-```
+```http
 302 Redirect
 Location: https://acme.idp.example/authorize
   ?response_type=code
@@ -152,7 +152,7 @@ The Wiki app sends a request to the IdP's **Token Exchange endpoint** saying "gi
 
 #### Request
 
-```
+```http
 POST /oauth2/token HTTP/1.1
 Host: acme.idp.example
 Content-Type: application/x-www-form-urlencoded
@@ -181,7 +181,7 @@ Breaking down each parameter:
 
 In draft-02, **Refresh Tokens** can also be used as the `subject_token`. Even if the ID Token has expired, a new ID-JAG can be obtained directly using the SSO Refresh Token. For SAML assertion environments, a path is also defined to first exchange the assertion for a Refresh Token and then obtain the ID-JAG.
 
-```
+```text
 // Using a Refresh Token
 subject_token=tGzv3JOkF0XG5Qx2TlKWIA
 &subject_token_type=urn:ietf:params:oauth:token-type:refresh_token
@@ -286,7 +286,7 @@ The `aud` (audience) is the decisive difference. An ID Token says "To Wiki App: 
 
 Once the Wiki app has the ID-JAG, it presents it to Chat's authorization server (Resource Authorization Server) Token endpoint. The protocol used is RFC 7523 (JWT Bearer Grant).
 
-```
+```http
 POST /oauth2/token HTTP/1.1
 Host: acme.chat.example
 Authorization: Basic yZS1yYW5kb20tc2VjcmV0v3JOkF0XG5Qx2
@@ -327,7 +327,7 @@ Finally, we have a standard OAuth access token.
 
 The rest is a standard API call.
 
-```
+```http
 GET /api/channels/general/history
 Host: api.chat.example
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
@@ -467,13 +467,13 @@ In multi-tenant environments, there are two patterns for ensuring client_id uniq
 | **Global**        | client_id is unique across all tenants. No duplicates across the entire IDP or Resource AS           | Unique by client_id alone          |
 
 **Tenant-Scoped example:**
-```
+```text
 IdP (Okta) tenant-123: client_id = "app-001"
 IdP (Okta) tenant-456: client_id = "app-001" (same value is OK)
 ```
 
 **Global example:**
-```
+```text
 IdP (Okta) across all tenants: client_id = "app-tenant-123-001" (unique across all tenants)
 ```
 
@@ -553,7 +553,7 @@ Unlike Enterprise Deployment, this is a **no pre-registration** scenario:
 - The Resource AS is **configured to accept ID-JAGs from unregistered clients**
 
 **Implementation with ID-JAG:**
-```
+```text
 User SSO Login
   → IdP issues ID Token
 
@@ -567,6 +567,7 @@ Calendar AS
 ```
 
 **Benefits:**
+
 - Users don't need to log in separately to each tool
 - Automatic sync between tools improves productivity
 - IT admins maintain unified permission management
@@ -593,7 +594,7 @@ The standout part here is **Phase 2: Tool Discovery**.
 
 When the LLM agent accesses an external tool for the first time, it has no token. Making a raw API call returns `401 Unauthorized`. The `WWW-Authenticate` header in the response contains the **Protected Resource Metadata** (RFC 9728) URL.
 
-```
+```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer resource_metadata=
   "https://saas.example.net/.well-known/oauth-protected-resource"

@@ -186,7 +186,7 @@ Here is a concrete example of registration:
 
 And the runtime verification flow:
 
-```
+```text
 ① Pre-Registration (One-time)
    Admin -> IdP DB: tls_client_auth_subject_dn = "CN=my-app"
 
@@ -230,7 +230,7 @@ The answer is an emphatic **No**. This is precisely why the standard mandates th
 
 The runtime verification flow works like this:
 
-```
+```text
 ① Pre-Registration
    Client: "I am client_id=xyz. Here is my cert (via jwks / jwks_uri)"
    -> Stored in the IdP DB
@@ -584,10 +584,10 @@ The dreaded vulnerability of Bearer Tokens ("If it"s stolen, it"s game over") ha
 
 ## References
 
-* [RFC 8705 - OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/html/rfc8705)
-* [RFC 6749 - The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749)
-* [RFC 6750 - The OAuth 2.0 Authorization Framework: Bearer Token Usage](https://datatracker.ietf.org/doc/html/rfc6750)
-* [RFC 9449 - OAuth 2.0 Demonstrating Proof of Possession (DPoP)](https://datatracker.ietf.org/doc/html/rfc9449)
-* [RFC 7800 - Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)](https://datatracker.ietf.org/doc/html/rfc7800)
-* [RFC 9700 - OAuth 2.0 Security Best Current Practice](https://datatracker.ietf.org/doc/html/rfc9700)
-* [FAPI 2.0 Security Profile](https://openid.net/specs/fapi-2_0-security-profile.html)
+- [RFC 8705 - OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/html/rfc8705)
+- [RFC 6749 - The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749)
+- [RFC 6750 - The OAuth 2.0 Authorization Framework: Bearer Token Usage](https://datatracker.ietf.org/doc/html/rfc6750)
+- [RFC 9449 - OAuth 2.0 Demonstrating Proof of Possession (DPoP)](https://datatracker.ietf.org/doc/html/rfc9449)
+- [RFC 7800 - Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)](https://datatracker.ietf.org/doc/html/rfc7800)
+- [RFC 9700 - OAuth 2.0 Security Best Current Practice](https://datatracker.ietf.org/doc/html/rfc9700)
+- [FAPI 2.0 Security Profile](https://openid.net/specs/fapi-2_0-security-profile.html)

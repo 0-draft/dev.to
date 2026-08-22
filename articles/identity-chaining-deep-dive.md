@@ -316,6 +316,7 @@ Clients can explicitly restrict to "read-only for this request." Uses RFC 8693's
 Critical rule: **AS A must never grant broader rights than the original token**.
 
 Example:
+
 - Original token: `scope: read write delete admin`
 - Client request: `scope: read`
 - Returned JWT authorization grant: `scope: read` ✅
@@ -447,7 +448,7 @@ In OAuth federation (multi-domain token exchange), user data can leak unnecessar
 
 **Domain A (financial institution) includes in JWT:**
 
-```
+```text
 - User identifier
 - Account type (premium / standard)
 - Transaction limit ($10,000)
@@ -457,7 +458,7 @@ In OAuth federation (multi-domain token exchange), user data can leak unnecessar
 
 **Domain B (payment gateway) actually needs:**
 
-```
+```text
 - User identifier
 - Transaction limit ($10,000) ← This only
 ```

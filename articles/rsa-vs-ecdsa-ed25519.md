@@ -78,6 +78,7 @@ Symmetric encryption like AES is built by combining these bitwise operations lik
 
 ### Public Key Cryptography (Heavy Processing)
 On the other hand, digital signatures involve **"mathematical calculations on huge numbers"**.
+
 * **RSA:** Multiplying a 2048-bit number (about 600 decimal digits!) thousands of times.
 * **ECC:** Jumping and moving points thousands of times on an elliptic curve graph.
 

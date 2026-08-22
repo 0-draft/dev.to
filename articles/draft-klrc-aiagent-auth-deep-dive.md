@@ -84,7 +84,7 @@ The draft adopts the **WIMSE identifier** as the primary identifier. WIMSE is a 
 
 The operationally mature implementation is **SPIFFE (Secure Production Identity Framework for Everyone)**. The SPIFFE identifier (SPIFFE ID) is an implementation of the WIMSE identifier model, taking the following URI form:
 
-```
+```text
 spiffe://trust-domain.example/path/to/agent
 ```
 

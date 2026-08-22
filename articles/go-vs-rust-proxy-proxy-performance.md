@@ -199,7 +199,7 @@ The values below combine the **Max Throughput** (from `./scripts/bench_perf.sh`)
 
 ## Conclusion
 
-- **Nginx** remains the efficiency king, delivering the highest throughput with the lowest memory footprint. Its architecture, refined over decades, proves that C is still unmatched for raw event-loop performance.
-- **Envoy** scales well across multiple cores (high CPU usage) to deliver strong performance, but is heavier on resources. This is the trade-off for its rich feature set and observability.
-- **Pingora** offers a balanced profile, with good performance and reasonable resource usage, sitting between Nginx and Envoy. It shows the promise of Rust: high performance with memory safety.
-- **Traefik** prioritizes features and ease of use over raw throughput in this specific "hello world" benchmark scenario. The Go runtime overhead, as discussed, plays a significant role here. It is excellent for usability, but for raw packet-pushing power, the specialized runtimes win.
+* **Nginx** remains the efficiency king, delivering the highest throughput with the lowest memory footprint. Its architecture, refined over decades, proves that C is still unmatched for raw event-loop performance.
+* **Envoy** scales well across multiple cores (high CPU usage) to deliver strong performance, but is heavier on resources. This is the trade-off for its rich feature set and observability.
+* **Pingora** offers a balanced profile, with good performance and reasonable resource usage, sitting between Nginx and Envoy. It shows the promise of Rust: high performance with memory safety.
+* **Traefik** prioritizes features and ease of use over raw throughput in this specific "hello world" benchmark scenario. The Go runtime overhead, as discussed, plays a significant role here. It is excellent for usability, but for raw packet-pushing power, the specialized runtimes win.
