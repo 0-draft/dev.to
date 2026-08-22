@@ -4,10 +4,13 @@
 // contradicts this repo's house rule that a paragraph is one unwrapped line,
 // and would make every new article unable to pass the lint ratchet.
 //
-// This adds no suppressions of its own. Keep it in sync with the global file.
+// MD010 is the one deliberate addition on top of the global file: gofmt indents
+// with tabs, so every Go sample in the corpus is a "hard tab" violation (153 of
+// them). Tabs in prose are still flagged.
 {
   "config": {
     "default": true,
+    "MD010": { "code_blocks": false },
     "MD013": false,
     "MD024": false,
     "MD033": { "allowed_elements": ["picture", "source", "img"] },
