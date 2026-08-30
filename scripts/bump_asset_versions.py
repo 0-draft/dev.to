@@ -69,6 +69,12 @@ def code_mask(text: str) -> bytearray:
     Mirrors validate_articles.py's strip_code line-by-line fence tracking rather
     than a `.*?` regex over the whole document, so `~~~` fences and four-backtick
     fences are handled the same way in both scripts.
+
+    Shares strip_code's one blind spot: a four-space indented code block is not
+    recognised. That is deliberate rather than merely unimplemented, because an
+    indented line is far more often a list-item continuation than a code block,
+    and the two image refs in this corpus that look indented are both list
+    continuations that do want bumping. Fence your code and this cannot bite.
     """
     mask = bytearray(len(text))
     position = 0
