@@ -50,6 +50,8 @@ The slug becomes part of the dev.to URL (dev.to appends a random suffix on first
 
 Images and hands-on resources go under `articles/assets/<slug>/`. The publish step runs `dev push -r ${{ github.repository }}`, which rewrites relative asset paths to `raw.githubusercontent.com` URLs before sending to dev.to. Cover images at the canonical size (1000x420) can be generated with `scripts/gen_cover_image.py`.
 
+Re-rendering an image in place used to be invisible to readers: `devto-cli` skips an article whose markdown has not changed, and dev.to's CDN caches every image URL `immutable` for a year. `scripts/bump_asset_versions.py` closes both gaps by rewriting `?v=<content hash>` on every reference to a changed asset, and the publish workflow runs it automatically.
+
 </td>
 </tr>
 <tr>
@@ -97,6 +99,7 @@ make lint-changed validate-changed   # exactly what CI gates on
 make links-external                  # slow: reports third-party link rot
 make index                           # regenerate INDEX.md and README stats
 make diagrams                        # re-render every D2 source to PNG
+make bump-assets                     # cache-bust image refs whose asset changed
 make schedule-dry                    # what the scheduler would publish, writes nothing
 ```
 
