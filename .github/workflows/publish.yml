@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - 'articles/**/*.md'
+      # A re-rendered diagram changes no markdown, so without this the push
+      # never reaches the workflow. See the cache-busting step below.
+      - 'articles/assets/**'
   workflow_dispatch:
     inputs:
       scope:
@@ -84,6 +87,22 @@ jobs:
               base="$(git hash-object -t tree /dev/null)"
             fi
             git diff -z --name-only --diff-filter=d "$base" "$AFTER" -- ':(glob)articles/*.md' > "$list"
+
+            # An asset-only change leaves the owning article's markdown byte
+            # identical, so devto-cli would skip it and Bunny CDN would keep
+            # serving the old image for a year. Rewriting ?v=<content hash> on
+            # every reference makes both notice. The script prints the articles
+            # it touched; fold them into the batch.
+            assets="${RUNNER_TEMP}/assets.nul"
+            git diff -z --name-only --diff-filter=d "$base" "$AFTER" -- ':(glob)articles/assets/**' > "$assets"
+            if [ -s "$assets" ]; then
+              mapfile -d '' -t changed_assets < "$assets"
+              python scripts/bump_asset_versions.py "${changed_assets[@]}" > "${RUNNER_TEMP}/bumped.txt"
+              # sort -z keeps the union NUL-delimited and drops the articles that
+              # are already in the batch from their own markdown edit.
+              { cat "$list"; tr '\n' '\0' < "${RUNNER_TEMP}/bumped.txt"; } | sort -z -u > "${list}.union"
+              mv "${list}.union" "$list"
+            fi
           fi
 
           files=()
@@ -141,13 +160,15 @@ jobs:
           echo "Pushing ${#files[@]} article(s)."
           dev push "${args[@]}"
 
-      - name: Commit and push metadata written back by devto-cli
+      - name: Commit and push frontmatter and asset-version changes
         if: steps.collect.outputs.count != '0'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Two sources of change here: the id/date devto-cli writes back, and
+          # the ?v= tokens bump_asset_versions.py rewrote during collection.
           git add -- ':(glob)articles/*.md'
           if git diff --cached --quiet; then
             echo "No frontmatter changes to commit."

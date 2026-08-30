@@ -13,7 +13,7 @@ CHANGED := $(shell git diff --name-only --diff-filter=d $(BASE)...HEAD -- 'artic
                    git diff --name-only --diff-filter=d -- 'articles/*.md' 2>/dev/null; \
                    git ls-files --others --exclude-standard -- 'articles/*.md' 2>/dev/null)
 
-.PHONY: help setup check validate validate-changed lint lint-changed links links-external index index-check diagrams schedule-dry clean
+.PHONY: help setup check validate validate-changed lint lint-changed links links-external index index-check diagrams bump-assets schedule-dry clean
 
 help: ## Show this help
 	@grep -hE '^[a-z-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-16s\033[0m %s\n", $$1, $$2}'
@@ -59,6 +59,13 @@ diagrams: ## Re-render every D2 source to PNG
 	  count=$$((count+1)); \
 	done; \
 	echo "[+] Rendered $$count diagram(s)"
+
+bump-assets: ## Cache-bust image refs for assets changed vs $(BASE) (CI does this too)
+	@assets="$$(git diff --name-only --diff-filter=d $(BASE)...HEAD -- 'articles/assets/' 2>/dev/null; \
+	            git diff --name-only --diff-filter=d -- 'articles/assets/' 2>/dev/null; \
+	            git ls-files --others --exclude-standard -- 'articles/assets/' 2>/dev/null)"; \
+	if [ -z "$$assets" ]; then echo "[-] No changed assets."; \
+	else echo "$$assets" | sort -u | xargs $(PYTHON) scripts/bump_asset_versions.py; fi
 
 schedule-dry: ## Show which articles the scheduler would publish (writes nothing)
 	$(PYTHON) scripts/publish_scheduler.py --dry-run
