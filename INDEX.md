@@ -54,7 +54,7 @@
 | [RFC 7521 Deep Dive: Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants](https://dev.to/kanywst/rfc-7521-deep-dive-assertion-framework-for-oauth-20-client-authentication-and-authorization-grants-3gk8) | `oauth`, `security`, `authentication` | 2026-03-12 | 3👍 | [src](./articles/rfc7521-assertion-framework-deep-dive.md) |
 | [RFC 7523 Deep Dive: JWT Profile](https://dev.to/kanywst/rfc-7523-deep-dive-jwt-profile-2df5) | `oauth`, `jwt`, `security`, `authentication` | 2026-04-13 | 0👍 | [src](./articles/rfc7523-jwt-profile-deep-dive.md) |
 | [RFC 7636 Deep Dive: How PKCE Kills Authorization Code Interception Attacks](https://dev.to/kanywst/rfc-7636-deep-dive-how-pkce-kills-authorization-code-interception-attacks-91i) | `oauth`, `security`, `authentication`, `pkce` | 2026-04-12 | 0👍 | [src](./articles/rfc7636-pkce-deep-dive.md) |
-| [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 11👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
+| [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 12👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
 | [RFC 8705 Deep Dive: Turning Access Tokens into "Unstealable Tokens" with mTLS](https://dev.to/kanywst/rfc-8705-deep-dive-turning-access-tokens-into-unstealable-tokens-with-mtls-406) | `oauth`, `security`, `tls`, `api` | 2026-02-26 | 4👍 · 1💬 | [src](./articles/rfc8705-mtls-deep-dive.md) |
 
 ### AI Agent Identity (7)
@@ -132,7 +132,7 @@
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
-| [Concurrency Design Patterns: From Fundamental Theory to Architecture](https://dev.to/kanywst/concurrency-design-patterns-from-fundamental-theory-to-architecture-35j7) | `concurrency`, `designpatterns`, `architecture`, `performance` | 2026-02-08 | 3👍 | [src](./articles/concurrency-design-pattern.md) |
+| [Concurrency Design Patterns: From Fundamental Theory to Architecture](https://dev.to/kanywst/concurrency-design-patterns-from-fundamental-theory-to-architecture-35j7) | `concurrency`, `designpatterns`, `architecture`, `performance` | 2026-02-08 | 4👍 | [src](./articles/concurrency-design-pattern.md) |
 | [Go Deep Dive: Mutex vs RWMutex](https://dev.to/kanywst/go-deep-dive-mutex-vs-rwmutex-9o9) | `go`, `concurrency`, `performance`, `programming` | 2026-02-04 | 1👍 | [src](./articles/mutex-vs-rwmutex.md) |
 | [Concurrency Deep Dive: Memory Models, Lock-Free, and RCU](https://dev.to/kanywst/concurrency-deep-dive-memory-models-lock-free-and-rcu-11mp) | `rust`, `concurrency`, `performance`, `architecture` | 2026-02-07 | 1👍 | [src](./articles/shared-memory-concurrency.md) |
 
@@ -172,7 +172,7 @@
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
-| [Pingora Deep Dive: The Rust Proxy That Retired NGINX](https://dev.to/kanywst/pingora-the-rust-proxy-that-retired-nginx-2hd1) | `rust`, `pingora`, `proxy`, `cloudflare` | 2026-02-09 | 2👍 | [src](./articles/pingora-deep-dive.md) |
+| [Pingora Deep Dive: The Rust Proxy That Retired NGINX](https://dev.to/kanywst/pingora-the-rust-proxy-that-retired-nginx-2hd1) | `rust`, `pingora`, `proxy`, `cloudflare` | 2026-02-09 | 3👍 | [src](./articles/pingora-deep-dive.md) |
 | [Rust Traits Deep Dive: Static vs. Dynamic Dispatch](https://dev.to/kanywst/rust-traits-deep-dive-static-vs-dynamic-dispatch-3eol) | `rust`, `traits`, `generics`, `polymorphism` | 2026-02-11 | 0👍 | [src](./articles/rust-traits-deep-dive.md) |
 | [Rust Zero-Cost Abstractions Deep Dive](https://dev.to/kanywst/rust-zero-cost-abstractions-deep-dive-5a0m) | `rust`, `cpp`, `compiler`, `performance` | 2026-02-14 | 3👍 | [src](./articles/rust-zero-cost-abstractions.md) |
 
@@ -245,4 +245,4 @@
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
-| [Hello World: Managing Dev.to Articles with GitOps](https://dev.to/kanywst/hello-world-managing-devto-articles-with-gitops-5594) | `productivity`, `github`, `automation`, `gitops` | 2026-01-08 | 1👍 · 3💬 | [src](./articles/hello-world-gitops.md) |
+| [Hello World: Managing Dev.to Articles with GitOps](https://dev.to/kanywst/hello-world-managing-devto-articles-with-gitops-5594) | `productivity`, `github`, `automation`, `gitops` | 2026-01-08 | 1👍 · 4💬 | [src](./articles/hello-world-gitops.md) |
