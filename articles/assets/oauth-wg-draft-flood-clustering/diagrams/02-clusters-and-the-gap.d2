@@ -1,0 +1,49 @@
+direction: down
+
+existing: "既存の RFC と採用済み文書は、この9つのどれかに収まる" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2 }
+  grid-rows: 3
+  c1: "Client / Server API\nRFC 6749 / 6750 / 7636\n9126 (PAR) / 9396 (RAR)\nv2-1" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c2: "Client Identity,\nAuthentication, Registration\nRFC 7591 / 7592 (DCR)\n8705 (mTLS)\nspiffe-client-auth\nattestation-based-client-auth" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c3: "Token Formats / Types\nRFC 7519 (JWT)\n9901 (SD-JWT)\nsd-jwt-vc" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c4: "Token Lifecycle\nRFC 7009 / 7662\nstatus-list" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c5: "Security\nRFC 6819 / 8252 / 9700\nsecurity-topics-update" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c6: "Discovery\nRFC 8414 (AS metadata)\n9728 (RS metadata)\nclient-id-metadata-document\nCIMD はここ。Registration ではない" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+  c7: "Proof of Possession\nRFC 8705 (mTLS)\n9449 (DPoP)" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c8: "Same-Domain Chaining\nRFC 8693 (Token Exchange)\ntransaction-tokens" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  c9: "Cross-Domain Chaining\nRFC 7521 / 7522 / 7523\nidentity-chaining\nidentity-assertion-authz-grant" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+}
+
+gap: "個人ドラフト32本が扱っている問題は、どこにも収まらない\nエージェントが別のエージェントに、権限を減衰させて渡す\n委任の来歴 (誰が最初に承認したか) を何段先まで運ぶか\nホップごとに AS に行くと AS が単一障害点になる" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 3; stroke-dash: 4; font-color: "#0a0f25" }
+}
+
+newcluster: "スライドに書かれた現在地\nMay need to create a new one?  Complex-Delegation??\n疑問符2つ。ここが標準化の地図の空白" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+next: "2026-09-28 interim-2026-oauth-07\nAnthropic & OpenAI Agentic Use Cases\nドラフトを持たない2社がユースケースを持ち込む枠\n仕様ではなく需要を先に聞く順序" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+existing -> gap: "分類しようとすると"
+gap -> newcluster
+newcluster -> next: "空白を埋めにいく場"
