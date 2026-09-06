@@ -1,0 +1,54 @@
+direction: down
+
+pair: "2つのポリシーセットを比べる" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2 }
+  grid-columns: 1
+  q1: "equivalent\n\n2つは同じか?\n\nリファクタ / 記法の書き換え\nポリシー生成器の検証" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+  q2: "implies\n\npolicies1 が許すものを\npolicies2 も全部許すか?\n\n権限が広がっていないかの確認\n移行前後の比較" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+  q3: "disjoint\n\n重なりはないか?\n\nテナント分離\nロールの排他性" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+}
+
+single: "1つのポリシーセットを調べる" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2 }
+  grid-columns: 1
+  s1: "always-allows\n全部許してしまうか?\n条件が意図せず常に真に\nなっていないかの事故検出" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  s2: "always-denies\n全部拒否してしまうか?\nデプロイして「誰も入れない」\nを事前に潰す" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  s3: "never-matches\n絶対にマッチしないか?\nデッドポリシー検出\nスキーマ変更で生まれる" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  s4: "never-errors\n実行時エラーを起こさないか?\n属性欠落などによる\n評価エラーの排除" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+}
+
+usage: "implies を両方向に流すと方向が分かる" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2 }
+  grid-columns: 1
+  u1: "buggy implies old\nVERIFIED\nbuggy が許すものは\nすべて old も許す" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  u2: "old implies buggy\n反例: level = classification\n= 9223372036854775807\nold は許すが buggy は許さない" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  u3: "結論\nbuggy は old の真部分集合\nこの変更は締め付けであって\n権限の拡大ではない" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+}
+
+ci: "CI への入れ方\nPR ごと: 変更前後で implies を両方向。広がっているなら PR に書かせる\n定期実行: 全ポリシーに never-matches と never-errors\nデプロイ前: always-allows / always-denies を最終防波堤に" {
+  style: { fill: "#F1F3F4"; stroke: "#5F6368"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+pair -> usage: "実際に効くのは implies"
+single -> ci
+usage -> ci
