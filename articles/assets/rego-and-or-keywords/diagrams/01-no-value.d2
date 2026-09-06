@@ -1,0 +1,48 @@
+direction: down
+
+rego: "Rego の式は boolean を返すものではない" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2 }
+  grid-rows: 1
+  r1: "式は「成功する」か「失敗する」\n失敗した式は未定義になる\nfalse になるのではない" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+  r2: "しかし false という値も\n普通に存在する\ninput.enabled == false は\n成功しうる式" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+}
+
+badpath: "もし値を返す or を入れたら" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2 }
+  grid-rows: 1
+  b1: "言語の中に真偽の体系が2つ同居する\n「成功 / 失敗」と「true / false」" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  b2: "式のあらゆる場所で\n「失敗した」と\n「false という値が返った」を\n区別する必要が出る" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+}
+
+choice: "OPA が選んだ設計: and / or は値を返さない\n成功するか失敗するかだけ。既存の枠に完全に収まる\n言語の意味論を1つも増やしていない" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+consequence: "その結果として禁止されること (すべて実測でエラー)" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2 }
+  grid-rows: 1
+  c1: "変数に代入できない\nbad := (x == 1 or x == 2)\nrego_parse_error" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  c2: "内包表記の head にできない\n[n == 1 or n == 2 | ...]\nrego_parse_error" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  c3: "関数の引数にできない\ncount([x == 1 or x == 2])\nrego_parse_error" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  c4: "オペランド内で変数を作れない\nx := 1 or x := 2\ncannot assign vars inside\nimplicit or operand" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+}
+
+rego -> badpath: "素朴に || を足すと"
+badpath -> choice: "避けた"
+choice -> consequence
