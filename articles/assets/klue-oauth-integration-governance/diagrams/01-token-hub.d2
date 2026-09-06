@@ -1,0 +1,30 @@
+direction: down
+
+pat: "2022年の休眠 GitHub PAT が1本\n外部ベンダとのパイロット用。案件は中止、トークンは残った" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+hub: "統合プロバイダのインフラ\n顧客N社 x プラットフォーム9個ぶんの OAuth トークンが1箇所に集まる\nSalesforce / HubSpot / SharePoint / Zoom / Gong\nChorus / Clari / Google Drive / Slack" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+victims: "トークンが影響を受けた組織: Klue の申告で 195社" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2 }
+  grid-columns: 4
+  v1: "Huntress" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v2: "Recorded Future" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v3: "LastPass" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v4: "Jamf" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v5: "Tanium" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v6: "Gong" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v7: "Sprout Social" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  v8: "ほか 十数社が公表\n残りは非公表" { style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" } }
+}
+
+note: "入口は1本、出口は195本。統合プロバイダを狙う投資効率がここに出ている\n被害者側のログには「いつもの Klue がいつものように API を叩いている」としか映らない" {
+  style: { fill: "#F1F3F4"; stroke: "#5F6368"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+pat -> hub: "1本で入る"
+hub -> victims: "顧客ごとのトークンを収穫"
+victims -> note

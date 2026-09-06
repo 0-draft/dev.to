@@ -1,0 +1,41 @@
+direction: down
+
+chain: "攻撃の連鎖と、それぞれを切れる手" {
+  style: { fill: "#F1F3F4"; stroke: "#5F6368"; stroke-width: 2 }
+  grid-rows: 4
+  s1: "1. 休眠 GitHub PAT で侵入\n2022年発行、4年間未使用" {
+    style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  f1: "対策: 発行時に期限を必須化\n最終使用日時を記録し\nN日未使用を自動失効\n\n最終使用日時が取れない仕組みは\nそれ自体が欠陥。棚卸しできない" {
+    style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  s2: "2. コードを投入して\n顧客トークンを収穫" {
+    style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  f2: "対策: デプロイ経路と\n顧客トークンへのアクセス経路を分離\n\nここが繋がっていたことが\n被害の規模を決めた" {
+    style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+  s3: "3. リフレッシュトークンで\n新しいアクセストークンを生成" {
+    style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  f3: "対策: rotation と再利用検知\n無効化済みの古いトークンが使われたら\nファミリー全体を失効\n盗難の明確な証拠になる" {
+    style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  s4: "4. 広い権限で10種類の\nオブジェクトを24時間吸い出す" {
+    style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  f4: "対策: スコープを絞る\nCloudflare の optional scopes (2026-08-20)\nユーザーが同意画面で権限を外せる\n付与されたスコープ集合を必ず確認する" {
+    style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+}
+
+detect: "検出は不可能ではなかった\nUser-Agent は Python-urllib/3.12 のまま。偽装の努力ゼロ\n10種類のオブジェクトへの read 急増、失敗リクエストの混在\nQueryMore の多用 (2000件制限の回避)、10万件の例外メッセージ\nそれでも約24時間走り続けた" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+longterm: "長期の方向: bearer をやめる\nDPoP (RFC 9449) / mTLS バインディング (RFC 8705) でトークンを鍵に縛る\naudience 制限で他所では通らなくする\nMCP 2026-07-28 のパススルー禁止、EMA の audience 制限 MUST\nSPIFFE WIT-SVID の cnf 必須も、すべて同じ設計判断" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+chain -> detect
+detect -> longterm
