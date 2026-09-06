@@ -1,10 +1,14 @@
 ---
-title: "エージェントに何を許したかを、暗号的に証明可能な形で持ち歩く: AP2 の Mandate を JSON Schema から読む"
+title: 'エージェントに何を許したかを、暗号的に証明可能な形で持ち歩く: AP2 の Mandate を JSON Schema から読む'
 published: false
-description: "エージェントのツール呼び出しを値ごとに認可するゲートを手で書いたら、同じものが AP2 の Open Payment Mandate として標準化されていた。allowed_payees、amount_range、budget、reference。2026年4月28日に FIDO Alliance が2つの WG を発表し、Google の AP2 と Mastercard の Verifiable Intent は決済側の Payments TWG に寄贈された。JSON Schema を実際に読んで、何が新しくて何が既存部品の再利用なのかを分ける"
-tags: ["security", "ai", "identity", "payments"]
+description: エージェントのツール呼び出しを値ごとに認可するゲートを手で書いたら、同じものが AP2 の Open Payment Mandate として標準化されていた。allowed_payees、amount_range、budget、reference。2026年4月28日に FIDO Alliance が2つの WG を発表し、Google の AP2 と Mastercard の Verifiable Intent は決済側の Payments TWG に寄贈された。JSON Schema を実際に読んで、何が新しくて何が既存部品の再利用なのかを分ける
+tags:
+  - security
+  - ai
+  - identity
+  - payments
 series: AI Agent Identity
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/fido-agentic-auth-ap2-mandates/cover.png"
+id: 4589226
 ---
 
 エージェントのツール呼び出しを「引数の値まで見て」認可するゲートを、自分で書いたことがある。送金ツールに対して、こういう段を並べた。
