@@ -1,0 +1,58 @@
+direction: down
+
+spec: "仕様の層: 完成している" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2 }
+  grid-rows: 1
+  s1: "Authorization API 1.0\nFinal Specification\n2026-01-11" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  s2: "evaluation / evaluations\nsearch 3種 / discovery\n全部 Final に収録済み" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  s3: "2026年の追加プロファイル\nCOAZ / ARAP / Obligations\nOAuth プロファイル4本" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+}
+
+vendor: "商用 IAM / 認可ベンダの層: 乗っている" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2 }
+  grid-rows: 1
+  v1: "Axiomatics / PlainID / SGNL\nEmpowerID / IndyKite / Ping\nWSO2 / Aserto / Cerbos ほか" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+  v2: "動機: 販売上の機能\n「標準準拠なのでロックインしません」\n実装コストは変換層1枚" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+}
+
+oss: "開発者が自分で立てる OSS エンジンの層: 止まっている" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2 }
+  grid-rows: 1
+  o1: "OPA 本体\nissue #8449 を not planned\n2026-04-01" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  o2: "MCP\next-auth#14 を押し返し\n「プロトコル側の変更は不要」" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  o3: "SpiceDB\ninterop に一度も不参加\nOry Keto も同様" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+}
+
+numbers: "実装数に出ている歪み" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2 }
+  grid-rows: 1
+  n1: "todo シナリオ\n17実装\n(うち大半が商用ベンダ)" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  n2: "search シナリオ\n9実装\n評価方向が逆転して被せられない" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  n3: "適合性認証\n0実装\nプログラム自体が未リリース" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+}
+
+spec -> vendor: "販売材料になるので届く"
+vendor -> oss: "ここで止まる"
+oss -> numbers: "結果として"
