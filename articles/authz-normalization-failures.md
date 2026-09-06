@@ -1,10 +1,14 @@
 ---
-title: "同じものを2通りに書けると、認可は割れる: 正規化の失敗という脆弱性クラス"
+title: '同じものを2通りに書けると、認可は割れる: 正規化の失敗という脆弱性クラス'
 published: false
-description: "OpenFGA に in_cidr の1行修正を送った。::ffff:10.1.2.3 と 10.1.2.3 は RFC 4291 上は同じホストなのに、認可判定が割れていた。この形のバグは MySQL の照合順序にも、oauth2-proxy のパス照合にも、同じ顔で出てくる。正規化の失敗が認可でだけ致命傷になる理由と、どこに正規化を置くべきかを4つの実例から整理する"
-tags: ["security", "authorization", "go", "opensource"]
+description: 'OpenFGA に in_cidr の1行修正を送った。::ffff:10.1.2.3 と 10.1.2.3 は RFC 4291 上は同じホストなのに、認可判定が割れていた。この形のバグは MySQL の照合順序にも、oauth2-proxy のパス照合にも、同じ顔で出てくる。正規化の失敗が認可でだけ致命傷になる理由と、どこに正規化を置くべきかを4つの実例から整理する'
+tags:
+  - security
+  - authorization
+  - go
+  - opensource
 series: Authorization
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-normalization-failures/cover.png"
+id: 4589225
 ---
 
 2026年6月、OpenFGA に小さな PR を出した。[#3181 "fix: match IPv4-mapped IPv6 addresses in the in_cidr condition"](https://github.com/openfga/openfga/pull/3181)。マージされたのは6月25日、本質的な変更は1行だ。
@@ -45,7 +49,7 @@ Go の `net/netip` で追える。`netip.ParseAddr("::ffff:10.1.2.3")` が返す
 
 `Unmap()` は「IPv4-mapped IPv6 なら IPv4 に戻す、それ以外はそのまま」というメソッドだ。パース時点でこれを通せば、以降は必ず正規形になる。
 
-![同じホストの2つの表記が、認可で別の判定になる](./assets/authz-normalization-failures/diagrams/01-two-spellings.png)
+![同じホストの2つの表記が、認可で別の判定になる](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/authz-normalization-failures/diagrams/01-two-spellings.png)
 
 ### 1行では終わらなかった
 
@@ -162,7 +166,7 @@ CVE-2026-40575 の patch セクションに、見逃せない記述がある。
 
 Ory Oathkeeper の [GHSA-p224-6x5r-fjpm](https://github.com/ory/oathkeeper/security/advisories/GHSA-p224-6x5r-fjpm) も同じクラスで、ルールは正規化前の生パスに対して照合され、リクエストは正規化後の保護されたパスに解決される。パストラバーサルによる認可バイパスだ。
 
-![どのバグも「1つのものに2つの表現がある」ところで起きている](./assets/authz-normalization-failures/diagrams/02-where-normalization-belongs.png)
+![どのバグも「1つのものに2つの表現がある」ところで起きている](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/authz-normalization-failures/diagrams/02-where-normalization-belongs.png)
 
 ## バグクラスとして整理する
 

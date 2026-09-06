@@ -1,10 +1,14 @@
 ---
-title: "client_id を URL にした代償: CIMD -02 と、デプロイ管理が識別子管理になる問題"
+title: 'client_id を URL にした代償: CIMD -02 と、デプロイ管理が識別子管理になる問題'
 published: false
-description: "CIMD の draft -02 が2026年7月に出た。用語は Client Identifier URL に変わり、比較規則が明文化され、Privacy Considerations が新設された。だが issue tracker で本当に揉めているのは別のところだ。URL が識別子である以上 URL は変えられず、CIMD は設定値を publish している。この2つが合わさると、設定を変えたいだけなのに既存ユーザーの同意が全部飛ぶ。?iss= 論争の正体を追う"
-tags: ["oauth", "security", "identity", "mcp"]
+description: CIMD の draft -02 が2026年7月に出た。用語は Client Identifier URL に変わり、比較規則が明文化され、Privacy Considerations が新設された。だが issue tracker で本当に揉めているのは別のところだ。URL が識別子である以上 URL は変えられず、CIMD は設定値を publish している。この2つが合わさると、設定を変えたいだけなのに既存ユーザーの同意が全部飛ぶ。?iss= 論争の正体を追う
+tags:
+  - oauth
+  - security
+  - identity
+  - mcp
 series: OAuth
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/cimd-02-deployment-vs-identity/cover.png"
+id: 4589288
 ---
 
 以前、[CIMD と DCR を比べる記事](https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi)を書いた。あのとき僕は、CIMD の中心にある考え方を綺麗だと思っていた。

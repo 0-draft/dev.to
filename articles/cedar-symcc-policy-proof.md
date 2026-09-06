@@ -1,10 +1,14 @@
 ---
-title: "Cedar のポリシーを SMT で証明する: 「このリファクタは権限を広げていない」を 0.01 秒で保証する"
+title: 'Cedar のポリシーを SMT で証明する: 「このリファクタは権限を広げていない」を 0.01 秒で保証する'
 published: false
-description: "認可ポリシーのリファクタが怖いのは、テストが通っても「テストしていないケース」が残るからだ。Cedar 4.12.0 の symcc は、ポリシーを SMT にコンパイルして等価性や包含関係を全称的に証明する。デフォルトのバイナリには入っていない罠、CLI から呼べるソルバが CVC5 だけな件も含めて、実際に反例を出すまでを全部やった"
-tags: ["authorization", "cedar", "security", "rust"]
+description: 認可ポリシーのリファクタが怖いのは、テストが通っても「テストしていないケース」が残るからだ。Cedar 4.12.0 の symcc は、ポリシーを SMT にコンパイルして等価性や包含関係を全称的に証明する。デフォルトのバイナリには入っていない罠、CLI から呼べるソルバが CVC5 だけな件も含めて、実際に反例を出すまでを全部やった
+tags:
+  - authorization
+  - cedar
+  - security
+  - rust
 series: Authorization
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/cedar-symcc-policy-proof/cover.png"
+id: 4589222
 ---
 
 認可ポリシーのリファクタは怖い。
@@ -324,7 +328,7 @@ entities: [
 
 面白いのは、同じ問題に対してソルバが2回とも違う反例を出したことだ (`-1` と `i64::MAX`)。反例は「ある1つの witness」であって、正規形ではない。
 
-![equivalent / implies / disjoint がそれぞれ答える問い](./assets/cedar-symcc-policy-proof/diagrams/02-what-each-check-answers.png)
+![equivalent / implies / disjoint がそれぞれ答える問い](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/cedar-symcc-policy-proof/diagrams/02-what-each-check-answers.png)
 
 ## 各サブコマンドが答える問い
 

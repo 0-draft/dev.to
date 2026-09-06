@@ -1,10 +1,14 @@
 ---
-title: "仕様は Final になった。それでも OPA には入らなかった: 自分で出した AuthZEN 対応 issue が5日で閉じるまで"
+title: '仕様は Final になった。それでも OPA には入らなかった: 自分で出した AuthZEN 対応 issue が5日で閉じるまで'
 published: false
-description: "OpenID AuthZEN Authorization API 1.0 は2026年1月に Final Specification になった。3月、OPA に対応を入れる issue を立てて実装まで出したが、5日後に自分でPRを閉じた。決め手はメンテナの1つの質問だった。「標準が Final になること」と「開発者が使うこと」の間にある距離を、interop の実データと他プロジェクトの判断から測る"
-tags: ["authorization", "openid", "opa", "security"]
+description: OpenID AuthZEN Authorization API 1.0 は2026年1月に Final Specification になった。3月、OPA に対応を入れる issue を立てて実装まで出したが、5日後に自分でPRを閉じた。決め手はメンテナの1つの質問だった。「標準が Final になること」と「開発者が使うこと」の間にある距離を、interop の実データと他プロジェクトの判断から測る
+tags:
+  - authorization
+  - openid
+  - opa
+  - security
 series: Authorization
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authzen-final-but-not-adopted/cover.png"
+id: 4589221
 ---
 
 2026年3月27日、Open Policy Agent のリポジトリに issue を立てた。[#8449 "Support for OpenID AuthZEN Authorization API 1.0"](https://github.com/open-policy-agent/opa/issues/8449)。
@@ -238,7 +242,7 @@ Search API は仕様の第8章に正式に入っている。draft ではない�
 
 OpenID Connect が普及した歴史を振り返ると、認証プログラムは「準拠している」を検証可能な主張に変えるための装置だった。それがまだない。つまり今の時点で「AuthZEN 準拠」は自己申告でしかない。
 
-![AuthZEN の採用が止まっている層](./assets/authzen-final-but-not-adopted/diagrams/02-adoption-layers.png)
+![AuthZEN の採用が止まっている層](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/authzen-final-but-not-adopted/diagrams/02-adoption-layers.png)
 
 ## それでも仕様の側は止まっていない
 

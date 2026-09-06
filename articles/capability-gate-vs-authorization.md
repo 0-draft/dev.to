@@ -1,10 +1,14 @@
 ---
-title: "ツールを渡すことと、その呼び出しを許すことは別だ: LLM エージェントの confused deputy を LangChain の実ソースで確かめる"
+title: 'ツールを渡すことと、その呼び出しを許すことは別だ: LLM エージェントの confused deputy を LangChain の実ソースで確かめる'
 published: false
-description: "エージェントに送金ツールを渡した瞬間、フレームワークは何を検証しているのか。LangChain の BaseTool.run を実際に読み、モデルが吐いた引数がどこで止まるかを追った。答えは Pydantic の型検証だけだった。18万ドルの不正送金が素通りする再現コードと、5段の per-call 認可ゲートを実装して塞ぐまで"
-tags: ["ai", "security", "authorization", "python"]
+description: エージェントに送金ツールを渡した瞬間、フレームワークは何を検証しているのか。LangChain の BaseTool.run を実際に読み、モデルが吐いた引数がどこで止まるかを追った。答えは Pydantic の型検証だけだった。18万ドルの不正送金が素通りする再現コードと、5段の per-call 認可ゲートを実装して塞ぐまで
+tags:
+  - ai
+  - security
+  - authorization
+  - python
 series: AI Agent Identity
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/capability-gate-vs-authorization/cover.png"
+id: 4589223
 ---
 
 エージェントに送金ツールを持たせた。ユーザーは経理サポート担当の bob で、承認された送金上限は500ドル。エージェントはメールを読んで、請求書の処理を手伝う。
@@ -54,7 +58,7 @@ authorization gate は「この主体が、この引数で、この呼び出し�
 
 capability gate はツール名を見る。authorization gate は引数の値を見る。この差が全部だ。
 
-![capability gate は名前しか見ない、authorization gate は値を見る](./assets/capability-gate-vs-authorization/diagrams/01-two-gates.png)
+![capability gate は名前しか見ない、authorization gate は値を見る](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/capability-gate-vs-authorization/diagrams/01-two-gates.png)
 
 送金ツールを持たせる時点で、capability gate は必然的に PASS する。持たせないと仕事にならないからだ。つまり capability gate は、そのツールが必要な瞬間には必ず開いている。防御として機能する場面が構造的に存在しない。
 
@@ -102,7 +106,7 @@ provided_fields = result_v2.model_fields_set
 
 `amount: float` に `Field(le=500)` を付ければ上限は入れられる、と思うかもしれない。入れられるが、それは静的な定数だ。「bob なら500ドル、経理課長なら5万ドル」は表現できない。Pydantic のスキーマはリクエストごとの主体を知らない。スキーマ検証と認可は、そもそも見ている情報が違う。
 
-![LangChain の dispatch 経路。認可が入る場所が存在しない](./assets/capability-gate-vs-authorization/diagrams/02-dispatch-path.png)
+![LangChain の dispatch 経路。認可が入る場所が存在しない](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/capability-gate-vs-authorization/diagrams/02-dispatch-path.png)
 
 ## 再現する
 

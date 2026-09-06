@@ -1,10 +1,14 @@
 ---
-title: "OAuth WG の採用文書は15本、個人ドラフトは80本: エージェント委任の標準化が意図的に進まない理由"
+title: 'OAuth WG の採用文書は15本、個人ドラフトは80本: エージェント委任の標準化が意図的に進まない理由'
 published: false
-description: "datatracker を数えた。OAuth WG が採用している active な文書は15本。その周りに個人ドラフトが80本あり、うち32本がエージェントか委任のものだった。2026年に採用されたのは2本だけ。WG は Clustering of OAuth WG Work という triage 戦略で応じ、9月に4本の interim を組んだ。9月28日の回のタイトルは Anthropic & OpenAI Agentic Use Cases。標準化が遅いことが失敗ではない理由を、一次資料から追う"
-tags: ["oauth", "security", "ietf", "ai"]
+description: datatracker を数えた。OAuth WG が採用している active な文書は15本。その周りに個人ドラフトが80本あり、うち32本がエージェントか委任のものだった。2026年に採用されたのは2本だけ。WG は Clustering of OAuth WG Work という triage 戦略で応じ、9月に4本の interim を組んだ。9月28日の回のタイトルは Anthropic & OpenAI Agentic Use Cases。標準化が遅いことが失敗ではない理由を、一次資料から追う
+tags:
+  - oauth
+  - security
+  - ietf
+  - ai
 series: OAuth
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/oauth-wg-draft-flood-clustering/cover.png"
+id: 4589229
 ---
 
 「AI エージェントの認可はまだ標準がない」という話をよく見る。それは正しいのだが、**「標準化が進んでいない」と「誰も提案していない」はまったく別のこと**だ。
@@ -108,7 +112,7 @@ draft-valverde-oauth-pact
 
 この重複こそが、WG が困っている当のものだ。
 
-![採用15本と個人ドラフト80本の量的な差。80のうち32 (黄) がエージェント / 委任](./assets/oauth-wg-draft-flood-clustering/diagrams/01-15-80-32.png)
+![採用15本と個人ドラフト80本の量的な差。80のうち32 (黄) がエージェント / 委任](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/oauth-wg-draft-flood-clustering/diagrams/01-15-80-32.png)
 
 ## WG chairs の反応
 
@@ -188,7 +192,7 @@ IETF 127 で発表するための手続きも書かれている。
 
 `probably robotic`。分類と初期レビューを自動化する想定だ。AI エージェントの認可について書かれたドラフトの洪水を、AI で捌く。量の問題に対する回答としては、これしかないと思う。
 
-![9つのクラスタと、そのどこにも収まらないエージェント委任](./assets/oauth-wg-draft-flood-clustering/diagrams/02-clusters-and-the-gap.png)
+![9つのクラスタと、そのどこにも収まらないエージェント委任](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/oauth-wg-draft-flood-clustering/diagrams/02-clusters-and-the-gap.png)
 
 ## 4本の interim が組まれた
 

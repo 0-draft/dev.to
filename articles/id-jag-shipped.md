@@ -1,10 +1,14 @@
 ---
-title: "ID-JAG が製品になった日: IETF の draft が Okta の GA 機能として出荷されるまで"
+title: 'ID-JAG が製品になった日: IETF の draft が Okta の GA 機能として出荷されるまで'
 published: false
-description: "2026年3月に ID-JAG を読んだときは、まだ IETF の WG ドラフトだった。6月17日に MCP の Enterprise-Managed Authorization が Stable になり、8月24日に Okta Agent SSO が GA になって追加費用なしで同梱された。3層のプロファイル構造、token_type: N_A という珍しい値、そして「IdP が管理者ポリシーを評価する」という一行が何を変えたのかを仕様本文から追う"
-tags: ["oauth", "identity", "mcp", "ai"]
+description: '2026年3月に ID-JAG を読んだときは、まだ IETF の WG ドラフトだった。6月17日に MCP の Enterprise-Managed Authorization が Stable になり、8月24日に Okta Agent SSO が GA になって追加費用なしで同梱された。3層のプロファイル構造、token_type: N_A という珍しい値、そして「IdP が管理者ポリシーを評価する」という一行が何を変えたのかを仕様本文から追う'
+tags:
+  - oauth
+  - identity
+  - mcp
+  - ai
 series: AI Agent Identity
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/id-jag-shipped/cover.png"
+id: 4589227
 ---
 
 2026年3月、[ID-JAG の記事](https://dev.to/kanywst/id-jag-deep-dive-1mhp)を書いた。あのとき ID-JAG は IETF の WG ドラフトで、「面白い仕組みだが、実際に使われるのはまだ先だろう」と思っていた。
@@ -41,7 +45,7 @@ Claude を MCP クライアントとして、社内の MCP サーバに繋ぐ。
 
 ID-JAG が入れたのは、その介在点だ。
 
-![N回の同意が、管理者が一度定義したポリシーの評価に置き換わる](./assets/id-jag-shipped/diagrams/01-consent-vs-policy.png)
+![N回の同意が、管理者が一度定義したポリシーの評価に置き換わる](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/id-jag-shipped/diagrams/01-consent-vs-policy.png)
 
 ## 3層のプロファイル構造
 
@@ -82,7 +86,7 @@ EMA の仕様書は、この関係を冒頭で明示している。
 
 **プロファイルが3段重なっている**ことは、実装するときに効いてくる。エラーの原因を追うとき、どの層の要件に違反したのかを切り分ける必要がある。
 
-![identity-chaining から MCP EMA までの3層。それぞれの標準化ステータスが違う](./assets/id-jag-shipped/diagrams/02-three-layers.png)
+![identity-chaining から MCP EMA までの3層。それぞれの標準化ステータスが違う](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/id-jag-shipped/diagrams/02-three-layers.png)
 
 ## フローを仕様の HTTP で追う
 

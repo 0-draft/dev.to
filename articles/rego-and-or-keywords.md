@@ -1,10 +1,14 @@
 ---
-title: "Rego に and と or が入った: 値を返さない演算子という設計判断と、実測1.88倍の短絡評価"
+title: 'Rego に and と or が入った: 値を返さない演算子という設計判断と、実測1.88倍の短絡評価'
 published: false
-description: "OPA v1.20.0 で Rego に and と or が入った。長年「Rego に or はない、ルールを分けろ」が定石だったので、これは言語としてはかなり大きい追加になる。値を返さない、変数を作れない、and が先にまとまる。この3つの制約が何を守っているのかを実際に動かして確かめ、短絡評価の効果を opa bench で測った"
-tags: ["opa", "rego", "authorization", "policy"]
+description: OPA v1.20.0 で Rego に and と or が入った。長年「Rego に or はない、ルールを分けろ」が定石だったので、これは言語としてはかなり大きい追加になる。値を返さない、変数を作れない、and が先にまとまる。この3つの制約が何を守っているのかを実際に動かして確かめ、短絡評価の効果を opa bench で測った
+tags:
+  - opa
+  - rego
+  - authorization
+  - policy
 series: Authorization
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/rego-and-or-keywords/cover.png"
+id: 4589230
 ---
 
 Rego を書きはじめた人がほぼ全員つまずくのが、これだ。
@@ -173,7 +177,7 @@ allow if input.user.admin
 
 これは機能を削ったのではなく、言語の一貫性を守るための設計だと思う。
 
-![値を返す or を入れると、Rego に2つの真偽体系が同居することになる](./assets/rego-and-or-keywords/diagrams/01-no-value.png)
+![値を返す or を入れると、Rego に2つの真偽体系が同居することになる](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/rego-and-or-keywords/diagrams/01-no-value.png)
 
 ## 制約2: オペランドの中で変数を作れない
 

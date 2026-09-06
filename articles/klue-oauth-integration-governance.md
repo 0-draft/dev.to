@@ -1,10 +1,14 @@
 ---
-title: "4年前に忘れられた1つのクレデンシャルが、9つの SaaS のトークンを持っていった: Klue 侵害の構造"
+title: '4年前に忘れられた1つのクレデンシャルが、9つの SaaS のトークンを持っていった: Klue 侵害の構造'
 published: false
-description: "2022年に外部ベンダとのパイロット用に発行され、案件が終わっても消されなかった GitHub Personal Access Token が1つ。2026年6月11日、攻撃者はそれで Klue の GitHub 環境に入り、顧客の OAuth トークンを収穫するコードを送り込んだ。Salesforce に脆弱性はない。それでも顧客の CRM は抜かれた。統合プロバイダがトークンのハブになる構造と、検出クエリと、爆発半径を縮める4つの手を整理する"
-tags: ["security", "oauth", "saas", "supplychain"]
+description: 2022年に外部ベンダとのパイロット用に発行され、案件が終わっても消されなかった GitHub Personal Access Token が1つ。2026年6月11日、攻撃者はそれで Klue の GitHub 環境に入り、顧客の OAuth トークンを収穫するコードを送り込んだ。Salesforce に脆弱性はない。それでも顧客の CRM は抜かれた。統合プロバイダがトークンのハブになる構造と、検出クエリと、爆発半径を縮める4つの手を整理する
+tags:
+  - security
+  - oauth
+  - saas
+  - supplychain
 series: Supply Chain Security
-# cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/klue-oauth-integration-governance/cover.png"
+id: 4589260
 ---
 
 侵害の記事を読むとき、僕はいつも「根本原因」の欄を最初に見る。だいたいはゼロデイでも高度な攻撃でもない。
@@ -71,7 +75,7 @@ Klue は競合インテリジェンスの SaaS で、「Battlecards」という�
 - 被害者は自分のログを見ても分からない。Salesforce 側から見れば、いつもの Klue が、いつものように API を叩いているだけ
 - 信頼の連鎖が可視化されていない。「うちは Salesforce を使っている」は把握していても、「うちの Salesforce トークンを何社が持っているか」を即答できる組織は少ない
 
-![統合プロバイダは N 社 x M プラットフォームのトークンを1箇所に集める](./assets/klue-oauth-integration-governance/diagrams/01-token-hub.png)
+![統合プロバイダは N 社 x M プラットフォームのトークンを1箇所に集める](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/klue-oauth-integration-governance/diagrams/01-token-hub.png)
 
 ## これは初めてではない
 
@@ -194,7 +198,7 @@ Klue の文脈に引き直すと、9つのプラットフォームすべてに�
 
 MCP (LLM にツールを繋ぐプロトコル) の2026-07-28 仕様は、サーバが自分宛でないトークンを受け取って他所へ中継することを禁じた。同じく MCP のエンタープライズ向け認可拡張は、発行されるアクセストークンが「どのサーバ向けか」を明示し、他のサーバでは通らないようにすることを必須にしている。ワークロードに ID を配る標準である SPIFFE も、2026年7月に取り込んだ新しいトークン形式で、鍵を持っていることの証明を必須にし、持っているだけで使える提示を禁止した。
 
-![どこで止められたか。4つの層それぞれに手がある](./assets/klue-oauth-integration-governance/diagrams/02-where-to-cut.png)
+![どこで止められたか。4つの層それぞれに手がある](https://raw.githubusercontent.com/0-draft/dev.to/main/articles/assets/klue-oauth-integration-governance/diagrams/02-where-to-cut.png)
 
 ## 実務のチェックリスト
 
