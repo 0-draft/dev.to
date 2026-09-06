@@ -1,0 +1,44 @@
+direction: down
+
+l1: "draft-ietf-oauth-identity-chaining\n信頼ドメインをまたいで identity をつなぐ一般論\n標準化: IESG 承認済み、RFC Editor キュー (2026-06-22)。RFC 番号は未割当" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+l2: "draft-ietf-oauth-identity-assertion-authz-grant (ID-JAG)\nSSO で得た identity assertion を別ドメインのアクセストークンに換える\n標準化: -04 (2026-05-21)、WG 文書。WGLC 未実施" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+l3: "MCP Enterprise-Managed Authorization (EMA)\nClient = MCP Client、Resource Server = MCP Server と固定\n標準化: MCP の拡張として Stable (2026-06-17)" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+prod: "製品\nOkta Agent SSO GA (2026-08-24)\ncore Okta SSO に追加費用なしで同梱\nXAA が MCP EMA の公式実装として位置づけ" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+parts: "速く進めた理由: 何も発明していない" {
+  style: { fill: "#F1F3F4"; stroke: "#5F6368"; stroke-width: 2 }
+  grid-columns: 1
+  p1: "SSO\nOpenID Connect / SAML" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+  p2: "ID Token -> ID-JAG\nRFC 8693 Token Exchange" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+  p3: "ID-JAG -> アクセストークン\nRFC 7523 JWT Grant" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+  p4: "AS 発見 / クライアント識別\nRFC 9728 / CIMD" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+}
+
+odd: "落差: 一番下の土台がまだ RFC でなく\n真ん中は WGLC すら通っていないのに\n一番上は Stable で製品出荷されている" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 3; stroke-dash: 4; font-color: "#0a0f25" }
+}
+
+l1 -> l2: "のプロファイル"
+l2 -> l3: "のプロファイル"
+l3 -> prod: "の実装"
+parts -> l2: "部品はすべて既存 RFC"
+prod -> odd
