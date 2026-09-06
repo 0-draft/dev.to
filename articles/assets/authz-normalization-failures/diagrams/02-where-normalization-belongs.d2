@@ -1,0 +1,47 @@
+direction: down
+
+bad: "壊れている形: 判定と実行が別の表現を見る" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2 }
+  grid-columns: 1
+  req: "リクエスト\nGET /foo/%23/bar\nX-Forwarded-Uri: /public" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  pep: "PEP (oauth2-proxy)\n表現 A を見て判定\nヘッダ / フラグメント前で切る\n-> skip-auth に一致、通す" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  be: "バックエンド\n表現 B を見て実行\n実リクエストラインを解釈\n-> 保護されたリソースを返す" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  req -> pep -> be
+}
+
+shared: "4件に共通する形" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2 }
+  grid-columns: 1
+  c1: "OpenFGA in_cidr\n同じものが別物になる\n表記の選択者: NW スタック" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  c2: "OpenFGA MySQL 照合順序\n別物が同じものになる\n表記の選択者: 攻撃者\nCVE-2026-55170" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+  c3: "oauth2-proxy / Oathkeeper\n判定対象と実行対象が別物\n表記の選択者: 攻撃者\nCVE-2026-40575 / 41059" {
+    style: { fill: "#ffffff"; stroke: "#F9AB00"; font-color: "#0a0f25" }
+  }
+}
+
+good: "置くべき場所: 外部文字列が内部型になる境界" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2 }
+  grid-columns: 1
+  g1: "境界で1回だけ正規化\nParseIPAddress()\n比較の直前ではやらない" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  g2: "比較の両オペランドに\n同じ正規化を通す\n片側だけは新しい非対称を作る" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  g3: "正規形を型で強制する\nフィールドを unexported にして\nパース関数を唯一の入口にする" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+}
+
+bad -> shared: "抽象化すると"
+shared -> good: "対処"

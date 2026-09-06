@@ -1,0 +1,36 @@
+direction: down
+
+host: "1つのホスト\n10.1.2.3\n(RFC 4291 2.5.5.2 上、以下の2表記は同じもの)" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+dotted: "点表記で届く\n10.1.2.3\nIs4() == true" {
+  style: { fill: "#ffffff"; stroke: "#5F6368"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+mapped: "マップ形式で届く\n::ffff:10.1.2.3\nIs4In6() == true / Is4() == false\nデュアルスタックのソケットが返す形" {
+  style: { fill: "#ffffff"; stroke: "#5F6368"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+t: "in_cidr(\"10.0.0.0/8\")\n-> true" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+f: "in_cidr(\"10.0.0.0/8\")\n-> false\nファミリ不一致で Contains が無条件 false" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+allow: "allow if in_cidr(社内網)\n正当な利用者を拒否する\nfail-closed" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+deny: "but not in_cidr(ブロックリスト)\nブロックが効かなくなる\nfail-open。こちらが危険" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+host -> dotted
+host -> mapped
+dotted -> t
+mapped -> f
+f -> allow: "肯定条件なら"
+f -> deny: "否定条件なら"
