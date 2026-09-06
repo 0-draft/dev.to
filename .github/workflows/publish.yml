@@ -121,6 +121,7 @@ jobs:
           python scripts/validate_articles.py "${files[@]}"
 
       - name: Publish articles
+        id: publish
         if: steps.collect.outputs.count != '0'
         env:
           # devto-cli reads DEVTO_TOKEN from the environment. Passing the key as
@@ -158,10 +159,30 @@ jobs:
           # 30s, 10 creates / 30s) and retries 429s, so per-file loops with
           # sleeps only multiply the remote fetches.
           echo "Pushing ${#files[@]} article(s)."
-          dev push "${args[@]}"
 
+          # Do NOT let a partial failure end the step here. devto-cli writes the
+          # id/date back into each file as that article succeeds, so a batch
+          # where one article 429s still has ids on disk for all the others.
+          # Letting `set -e` abort now would skip the commit step below and throw
+          # those ids away, and the next run would have to --reconcile them back
+          # by title. Record the status instead and fail the job after the
+          # writeback has been committed.
+          set +e
+          dev push "${args[@]}"
+          push_status=$?
+          set -e
+          echo "status=${push_status}" >> "$GITHUB_OUTPUT"
+          if [ "$push_status" -ne 0 ]; then
+            echo "::warning::dev push exited ${push_status}. Committing the ids that did come back before failing the job."
+          fi
+
+      # Gated on the push having actually run rather than on it having
+      # succeeded, so a batch where some articles failed still commits the ids
+      # of the ones that did not. An empty `status` means `dev push` was never
+      # reached (no articles, missing token, id precheck failed), and then there
+      # is nothing to write back.
       - name: Commit and push frontmatter and asset-version changes
-        if: steps.collect.outputs.count != '0'
+        if: ${{ !cancelled() && steps.publish.outputs.status != '' }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -185,4 +206,14 @@ jobs:
             sleep $((attempt * 5))
           done
           echo "::error::Could not push the metadata commit after 3 attempts."
+          exit 1
+
+      # The push failure is surfaced here rather than in the step that ran it,
+      # so that the metadata commit above happens first.
+      - name: Fail if the dev.to push reported errors
+        if: ${{ !cancelled() && steps.publish.outputs.status != '' && steps.publish.outputs.status != '0' }}
+        run: |
+          echo "::error::dev push exited with ${{ steps.publish.outputs.status }}. \
+          Articles that succeeded kept their ids and were committed. \
+          Re-run this workflow with reconcile=true to adopt the rest by title."
           exit 1
