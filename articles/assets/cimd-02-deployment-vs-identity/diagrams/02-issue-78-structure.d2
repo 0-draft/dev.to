@@ -1,0 +1,34 @@
+direction: down
+
+proposal: "issue #78 (2026-05-01, njwatson32)\nAS が CIMD を取得するとき ?iss= で自分を名乗ってはどうか\n目的: 段階的ロールアウトと AS ごとのメタデータ" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+objection: "共著者 Emelia Smith の反対 (1時間50分後)\n\"CIMDs ... are meant to be static files\"\n\"CIMDs also do not know anything about their AS's.\n They shouldn't know the difference.\"\n仕様の哲学としては完全に正しい" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+dig: "議論が掘り当てた本当の問題 (2026-05-19, Karl McGuinness)\n\"CIMD is currently publishing configured values\n and not just supported capabilities\"\n語彙が設定値用なので、能力を表そうとすると型が壊れる\ndpop_bound_access_tokens: [false, true] は書けない" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+split: "議論の分岐" {
+  style: { fill: "#F1F3F4"; stroke: "#5F6368"; stroke-width: 2 }
+  grid-rows: 1
+  s1: "#78 の残り\nやるならクエリではなく\nHTTP ヘッダで\nIETF 126 で収束しかけ\n未解決" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+  s2: "#88 に分離 (2026-07-09)\nmix-up 対策なら\nper-AS 文書ではなく\nAS に iss を返させればよい" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+  s3: "#89\n動的に中身が変わる CIMD を\n禁じる security consideration\nクエリ制限は SHOULD NOT どまり" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+}
+
+resolved: "#88 は CIMD の外で決着した\ndraft-ietf-oauth-v2-1-16 (2026-09-02)\n\"Make iss response parameter required to be sent by the AS\"\n同じ版で PKCE plain も削除\nAaron Parecki が7月に予測したとおりになった" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+proposal -> objection -> dig -> split
+split -> resolved: "#88 のみ"

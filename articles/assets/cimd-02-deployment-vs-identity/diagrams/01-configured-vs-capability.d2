@@ -1,0 +1,48 @@
+direction: down
+
+vocab: "RFC 7591 の語彙は「1つの登録における設定値」のために作られた" {
+  style: { fill: "#F1F3F4"; stroke: "#5F6368"; stroke-width: 2 }
+  grid-columns: 1
+  v1: "token_endpoint_auth_method\n単一の値\n\"private_key_jwt\"\n対応方式のリストではない" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+  v2: "dpop_bound_access_tokens\nboolean\ntrue または false\n能力の宣言ではない" {
+    style: { fill: "#ffffff"; stroke: "#5F6368"; font-color: "#0a0f25" }
+  }
+}
+
+dcr: "DCR: 登録が (クライアント x AS) ごとに独立している" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2 }
+  grid-columns: 1
+  d1: "AS1 の登録レコード\nauth_method: none\ndpop: false\n古い AS 向け" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  d2: "AS2 の登録レコード\nauth_method: private_key_jwt\ndpop: true\n新しい AS 向け" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  d3: "更新は RFC 7592\nclient_id は変わらない\n同意もトークンも残る" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+}
+
+cimd: "CIMD: 1つの文書が全 AS に使われる" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2 }
+  grid-columns: 1
+  c1: "https://app.example.com/client.json\nauth_method: private_key_jwt\ndpop: true\n全 AS が同じものを見る" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  c2: "未対応の AS も\n即座に新しい値を見る\n拒否か誤処理をする\n段階的ロールアウトができない" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  c3: "AS ごとに変えたいなら\nURL を分けるしかない\nしかし URL = client_id" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+}
+
+cost: "URL を分けた瞬間に起きること\nAS から見れば完全に新しい client_id\n既存ユーザーの同意が全員ぶん無効化される\n発行済みトークンも監査ログ上の連続性も切れる\n\n\"That turns deployment management into identifier management.\"" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 3; font-color: "#0a0f25" }
+}
+
+vocab -> dcr: "AS ごとにレコードがあるので破綻しない"
+vocab -> cimd: "AS ごとの置き場所がないので破綻する"
+cimd -> cost
