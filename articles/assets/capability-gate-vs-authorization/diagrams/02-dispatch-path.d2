@@ -1,0 +1,31 @@
+direction: down
+
+input: "モデルが吐いた ToolCall\nto_account: attacker-99 / amount: 180000.00" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+validate: "1091行  _to_args_and_kwargs()\n  -> _parse_input() -> args_schema.model_validate()" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+knows: "Pydantic が保証すること" {
+  style: { fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2 }
+  grid-columns: 1
+  k1: "amount が float であること" {
+    style: { fill: "#ffffff"; stroke: "#1A73E8"; font-color: "#0a0f25" }
+  }
+  k2: "知らないこと\nbob の上限が 500 であること\nattacker-99 が許可リスト外であること\nそもそも bob が誰なのか" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; stroke-width: 2; font-color: "#0a0f25" }
+  }
+}
+
+gap: "ここに何もない\n主体は誰か / この値は許されるか を問う経路が\nフレームワークに存在しない" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 3; stroke-dash: 4; font-color: "#0a0f25" }
+}
+
+exec: "1098行  context.run(self._run, *args, **kwargs)\n副作用がここで起きる。18万ドルが動く" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+input -> validate -> gap -> exec
+validate -> knows: "実体"

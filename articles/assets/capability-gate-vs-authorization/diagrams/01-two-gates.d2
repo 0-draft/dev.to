@@ -1,0 +1,36 @@
+direction: right
+
+call: "モデルが吐いたツール呼び出し\nname: transfer_money\nto_account: attacker-99\namount: 180000.00\nmemo: vendor settlement" {
+  style: { fill: "#FEF7E0"; stroke: "#F9AB00"; stroke-width: 2; font-color: "#0a0f25" }
+}
+
+cap: "capability gate: 名前しか見ない" {
+  style: { fill: "#FCE8E6"; stroke: "#D93025"; stroke-width: 2 }
+  grid-columns: 1
+  c1: "見ているもの\ntransfer_money" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  c2: "問い\nこのツールは\n露出しているか?" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+  c3: "答え: PASS\n露出させないと\n仕事にならないので\n常に開いている" {
+    style: { fill: "#ffffff"; stroke: "#D93025"; font-color: "#0a0f25" }
+  }
+}
+
+authz: "authorization gate: 値と主体を見る" {
+  style: { fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2 }
+  grid-columns: 1
+  a1: "見ているもの\nto_account=attacker-99\namount=180000.00\n+ session.user=bob\n+ bob の上限=500" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  a2: "問い\nbob はこの相手に\nこの金額を送って\nよいか?" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+  a3: "答え: DENY\n振込先が許可リスト外\n金額が上限の360倍" {
+    style: { fill: "#ffffff"; stroke: "#34A853"; font-color: "#0a0f25" }
+  }
+}
+
+call -> cap: "現状のフレームワーク"
+call -> authz: "必要なもの"
