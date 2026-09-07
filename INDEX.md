@@ -2,7 +2,7 @@
 
 # Article index
 
-106 article(s) in this repository, 106 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+116 article(s) in this repository, 106 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
@@ -28,11 +28,42 @@
 | [Velo: A Cross-Platform Network Speed Monitor Built with Go & Wails](https://dev.to/kanywst/velo-a-cross-platform-network-speed-monitor-built-with-go-wails-3g3p) | `showdev`, `wails`, `golang`, `vue` | 2026-01-10 | 0👍 | [src](./articles/velo.md) |
 | [y509: A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains](https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-for-viewing-and-analyzing-x509-certificate-chains-5fn6) | `showdev`, `golang`, `cli`, `security` | 2026-01-09 | 2👍 | [src](./articles/y509.md) |
 
+### OAuth (11)
+
+| Article | Tags | Published | Engagement | Source |
+| --- | --- | --- | --- | --- |
+| client_id を URL にした代償: CIMD -02 と、デプロイ管理が識別子管理になる問題 | `oauth`, `security`, `identity`, `mcp` | draft |  | [src](./articles/cimd-02-deployment-vs-identity.md) |
+| [The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)](https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi) | `oauth`, `security`, `identity`, `mcp` | 2026-06-26 | 1👍 | [src](./articles/client-id-metadata-document-vs-dcr.md) |
+| [Transaction Tokens Deep Dive: The OAuth Spec That Carries 'Who, and Why' Across Your Microservices](https://dev.to/kanywst/transaction-tokens-deep-dive-the-oauth-spec-that-carries-who-and-why-across-your-microservices-7k1) | `oauth`, `security`, `microservices`, `identity` | 2026-06-03 | 1👍 | [src](./articles/draft-ietf-oauth-transaction-tokens-deep-dive.md) |
+| OAuth WG の採用文書は15本、個人ドラフトは80本: エージェント委任の標準化が意図的に進まない理由 | `oauth`, `security`, `ietf`, `ai` | draft |  | [src](./articles/oauth-wg-draft-flood-clustering.md) |
+| [RFC 6749 Deep Dive: Understanding OAuth 2.0 Design Decisions from the Specification](https://dev.to/kanywst/rfc-6749-deep-dive-understanding-oauth-20-design-decisions-from-the-specification-2amb) | `oauth`, `security`, `authentication`, `oidc` | 2026-02-23 | 9👍 | [src](./articles/rfc6749-oauth2-deep-dive.md) |
+| [RFC 6750 Deep Dive: How Bearer Tokens Actually Work, Straight from the Spec](https://dev.to/kanywst/rfc-6750-deep-dive-how-bearer-tokens-actually-work-straight-from-the-spec-20ph) | `oauth`, `security`, `authentication`, `api` | 2026-02-24 | 4👍 | [src](./articles/rfc6750-bearer-token-deep-dive.md) |
+| [RFC 7521 Deep Dive: Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants](https://dev.to/kanywst/rfc-7521-deep-dive-assertion-framework-for-oauth-20-client-authentication-and-authorization-grants-3gk8) | `oauth`, `security`, `authentication` | 2026-03-12 | 3👍 | [src](./articles/rfc7521-assertion-framework-deep-dive.md) |
+| [RFC 7523 Deep Dive: JWT Profile](https://dev.to/kanywst/rfc-7523-deep-dive-jwt-profile-2df5) | `oauth`, `jwt`, `security`, `authentication` | 2026-04-13 | 0👍 | [src](./articles/rfc7523-jwt-profile-deep-dive.md) |
+| [RFC 7636 Deep Dive: How PKCE Kills Authorization Code Interception Attacks](https://dev.to/kanywst/rfc-7636-deep-dive-how-pkce-kills-authorization-code-interception-attacks-91i) | `oauth`, `security`, `authentication`, `pkce` | 2026-04-12 | 0👍 | [src](./articles/rfc7636-pkce-deep-dive.md) |
+| [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 12👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
+| [RFC 8705 Deep Dive: Turning Access Tokens into "Unstealable Tokens" with mTLS](https://dev.to/kanywst/rfc-8705-deep-dive-turning-access-tokens-into-unstealable-tokens-with-mtls-406) | `oauth`, `security`, `tls`, `api` | 2026-02-26 | 4👍 · 1💬 | [src](./articles/rfc8705-mtls-deep-dive.md) |
+
+### AI Agent Identity (10)
+
+| Article | Tags | Published | Engagement | Source |
+| --- | --- | --- | --- | --- |
+| [A2A Protocol Auth, Taken Apart: Why the Spec Is Thin and Where That Leaves Holes](https://dev.to/kanywst/a2a-protocol-auth-taken-apart-why-the-spec-is-thin-and-where-that-leaves-holes-22ii) | `ai`, `agents`, `security`, `oauth` | 2026-06-13 | 0👍 | [src](./articles/a2a-protocol-auth-deep-dive.md) |
+| [ID-JAG, Transaction Tokens, WIF: The Three Layers of AI Agent Auth](https://dev.to/kanywst/the-three-layers-of-ai-agent-authentication-what-id-jag-transaction-tokens-and-wif-actually-1mbk) | `oauth`, `security`, `ai`, `agents` | 2026-06-03 | 1👍 · 1💬 | [src](./articles/agent-identity-three-layers-2026.md) |
+| [AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source](https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh) | `ai`, `security`, `mcp`, `typescript` | 2026-06-25 | 0👍 | [src](./articles/agentauth-self-authenticating-uuid.md) |
+| [Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026](https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha) | `ai`, `agents`, `mcp`, `a2a` | 2026-06-28 | 1👍 | [src](./articles/ai-agent-protocols-mcp-a2a-2026.md) |
+| ツールを渡すことと、その呼び出しを許すことは別だ: LLM エージェントの confused deputy を LangChain の実ソースで確かめる | `ai`, `security`, `authorization`, `python` | draft |  | [src](./articles/capability-gate-vs-authorization.md) |
+| [AI Agent Authentication & Authorization Deep Dive: Reading draft-klrc-aiagent-auth-00](https://dev.to/kanywst/ai-agent-authentication-authorization-deep-dive-reading-draft-klrc-aiagent-auth-00-5d1) | `ai`, `agents`, `oauth`, `security` | 2026-03-14 | 5👍 · 2💬 | [src](./articles/draft-klrc-aiagent-auth-deep-dive.md) |
+| エージェントに何を許したかを、暗号的に証明可能な形で持ち歩く: AP2 の Mandate を JSON Schema から読む | `security`, `ai`, `identity`, `payments` | draft |  | [src](./articles/fido-agentic-auth-ap2-mandates.md) |
+| [ID-JAG Deep Dive](https://dev.to/kanywst/id-jag-deep-dive-1mhp) | `oauth`, `security`, `identity`, `ai` | 2026-03-16 | 8👍 | [src](./articles/id-jag-deep-dive.md) |
+| ID-JAG が製品になった日: IETF の draft が Okta の GA 機能として出荷されるまで | `oauth`, `identity`, `mcp`, `ai` | draft |  | [src](./articles/id-jag-shipped.md) |
+| [Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth](https://dev.to/kanywst/identity-chaining-deep-dive-connecting-identity-across-trust-domains-with-oauth-2onb) | `oauth`, `security`, `identity`, `microservices` | 2026-03-14 | 3👍 · 3💬 | [src](./articles/identity-chaining-deep-dive.md) |
+
 ### Amazon Web Services (10)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
-| [AWS Free Hands-On](https://dev.to/kanywst/aws-free-hands-on-build-s3-lambda-dynamodb-on-the-always-free-tier-plus-iam-cloudwatch-and-34le) | `aws`, `tutorial`, `serverless`, `beginner` | 2026-05-15 | 2👍 | [src](./articles/aws-hands-on-free-tier-2026.md) |
+| [AWS Free Hands-On](https://dev.to/kanywst/aws-free-hands-on-build-s3-lambda-dynamodb-on-the-always-free-tier-plus-iam-cloudwatch-and-34le) | `aws`, `tutorial`, `serverless`, `beginner` | 2026-05-15 | 3👍 | [src](./articles/aws-hands-on-free-tier-2026.md) |
 | [AWS IAM Deep Dive](https://dev.to/kanywst/aws-iam-deep-dive-2b81) | `aws`, `iam`, `security`, `authentication` | 2026-05-17 | 1👍 | [src](./articles/aws-iam-deep-dive.md) |
 | [AWS IAM Roles Anywhere Deep Dive](https://dev.to/kanywst/aws-iam-roles-anywhere-deep-dive-j51) | `aws`, `iam`, `security`, `authentication` | 2026-05-28 | 0👍 | [src](./articles/aws-iam-roles-anywhere-deep-dive.md) |
 | [Why AWS IAM Is So Hard](https://dev.to/kanywst/why-aws-iam-is-so-hard-58bp) | `aws`, `iam`, `security`, `beginners` | 2026-06-06 | 0👍 | [src](./articles/aws-iam-why-its-hard-deep-dive.md) |
@@ -43,49 +74,28 @@
 | [AWS STS Deep Dive](https://dev.to/kanywst/aws-sts-deep-dive-19ha) | `aws`, `sts`, `iam`, `security` | 2026-05-24 | 0👍 | [src](./articles/aws-sts-deep-dive.md) |
 | [WORM (Write Once Read Many) Deep Dive](https://dev.to/kanywst/worm-write-once-read-many-deep-dive-2l7k) | `storage`, `security`, `compliance`, `aws` | 2026-05-18 | 0👍 | [src](./articles/worm-mode-deep-dive.md) |
 
-### OAuth (9)
+### Authorization (10)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
-| [The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)](https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi) | `oauth`, `security`, `identity`, `mcp` | 2026-06-26 | 1👍 | [src](./articles/client-id-metadata-document-vs-dcr.md) |
-| [Transaction Tokens Deep Dive: The OAuth Spec That Carries 'Who, and Why' Across Your Microservices](https://dev.to/kanywst/transaction-tokens-deep-dive-the-oauth-spec-that-carries-who-and-why-across-your-microservices-7k1) | `oauth`, `security`, `microservices`, `identity` | 2026-06-03 | 1👍 | [src](./articles/draft-ietf-oauth-transaction-tokens-deep-dive.md) |
-| [RFC 6749 Deep Dive: Understanding OAuth 2.0 Design Decisions from the Specification](https://dev.to/kanywst/rfc-6749-deep-dive-understanding-oauth-20-design-decisions-from-the-specification-2amb) | `oauth`, `security`, `authentication`, `oidc` | 2026-02-23 | 9👍 | [src](./articles/rfc6749-oauth2-deep-dive.md) |
-| [RFC 6750 Deep Dive: How Bearer Tokens Actually Work, Straight from the Spec](https://dev.to/kanywst/rfc-6750-deep-dive-how-bearer-tokens-actually-work-straight-from-the-spec-20ph) | `oauth`, `security`, `authentication`, `api` | 2026-02-24 | 4👍 | [src](./articles/rfc6750-bearer-token-deep-dive.md) |
-| [RFC 7521 Deep Dive: Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants](https://dev.to/kanywst/rfc-7521-deep-dive-assertion-framework-for-oauth-20-client-authentication-and-authorization-grants-3gk8) | `oauth`, `security`, `authentication` | 2026-03-12 | 3👍 | [src](./articles/rfc7521-assertion-framework-deep-dive.md) |
-| [RFC 7523 Deep Dive: JWT Profile](https://dev.to/kanywst/rfc-7523-deep-dive-jwt-profile-2df5) | `oauth`, `jwt`, `security`, `authentication` | 2026-04-13 | 0👍 | [src](./articles/rfc7523-jwt-profile-deep-dive.md) |
-| [RFC 7636 Deep Dive: How PKCE Kills Authorization Code Interception Attacks](https://dev.to/kanywst/rfc-7636-deep-dive-how-pkce-kills-authorization-code-interception-attacks-91i) | `oauth`, `security`, `authentication`, `pkce` | 2026-04-12 | 0👍 | [src](./articles/rfc7636-pkce-deep-dive.md) |
-| [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 12👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
-| [RFC 8705 Deep Dive: Turning Access Tokens into "Unstealable Tokens" with mTLS](https://dev.to/kanywst/rfc-8705-deep-dive-turning-access-tokens-into-unstealable-tokens-with-mtls-406) | `oauth`, `security`, `tls`, `api` | 2026-02-26 | 4👍 · 1💬 | [src](./articles/rfc8705-mtls-deep-dive.md) |
-
-### AI Agent Identity (7)
-
-| Article | Tags | Published | Engagement | Source |
-| --- | --- | --- | --- | --- |
-| [A2A Protocol Auth, Taken Apart: Why the Spec Is Thin and Where That Leaves Holes](https://dev.to/kanywst/a2a-protocol-auth-taken-apart-why-the-spec-is-thin-and-where-that-leaves-holes-22ii) | `ai`, `agents`, `security`, `oauth` | 2026-06-13 | 0👍 | [src](./articles/a2a-protocol-auth-deep-dive.md) |
-| [ID-JAG, Transaction Tokens, WIF: The Three Layers of AI Agent Auth](https://dev.to/kanywst/the-three-layers-of-ai-agent-authentication-what-id-jag-transaction-tokens-and-wif-actually-1mbk) | `oauth`, `security`, `ai`, `agents` | 2026-06-03 | 1👍 · 1💬 | [src](./articles/agent-identity-three-layers-2026.md) |
-| [AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source](https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh) | `ai`, `security`, `mcp`, `typescript` | 2026-06-25 | 0👍 | [src](./articles/agentauth-self-authenticating-uuid.md) |
-| [Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026](https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha) | `ai`, `agents`, `mcp`, `a2a` | 2026-06-28 | 1👍 | [src](./articles/ai-agent-protocols-mcp-a2a-2026.md) |
-| [AI Agent Authentication & Authorization Deep Dive: Reading draft-klrc-aiagent-auth-00](https://dev.to/kanywst/ai-agent-authentication-authorization-deep-dive-reading-draft-klrc-aiagent-auth-00-5d1) | `ai`, `agents`, `oauth`, `security` | 2026-03-14 | 5👍 · 2💬 | [src](./articles/draft-klrc-aiagent-auth-deep-dive.md) |
-| [ID-JAG Deep Dive](https://dev.to/kanywst/id-jag-deep-dive-1mhp) | `oauth`, `security`, `identity`, `ai` | 2026-03-16 | 8👍 | [src](./articles/id-jag-deep-dive.md) |
-| [Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth](https://dev.to/kanywst/identity-chaining-deep-dive-connecting-identity-across-trust-domains-with-oauth-2onb) | `oauth`, `security`, `identity`, `microservices` | 2026-03-14 | 3👍 · 3💬 | [src](./articles/identity-chaining-deep-dive.md) |
-
-### Authorization (6)
-
-| Article | Tags | Published | Engagement | Source |
-| --- | --- | --- | --- | --- |
+| 同じものを2通りに書けると、認可は割れる: 正規化の失敗という脆弱性クラス | `security`, `authorization`, `go`, `opensource` | draft |  | [src](./articles/authz-normalization-failures.md) |
 | [AuthZEN Authorization API 1.0 Deep Dive: The Standard API That Separates Authorization Decisions from Enforcement](https://dev.to/kanywst/authzen-authorization-api-10-deep-dive-the-standard-api-that-separates-authorization-decisions-1m2a) | `oauth`, `security`, `authorization`, `api` | 2026-03-30 | 2👍 | [src](./articles/authzen-authorization-api-deep-dive.md) |
+| 仕様は Final になった。それでも OPA には入らなかった: 自分で出した AuthZEN 対応 issue が5日で閉じるまで | `authorization`, `openid`, `opa`, `security` | draft |  | [src](./articles/authzen-final-but-not-adopted.md) |
+| Cedar のポリシーを SMT で証明する: 「このリファクタは権限を広げていない」を 0.01 秒で保証する | `authorization`, `cedar`, `security`, `rust` | draft |  | [src](./articles/cedar-symcc-policy-proof.md) |
 | [Google Zanzibar Deep Dive: Handling 2 Trillion ACLs in Under 10ms](https://dev.to/kanywst/google-zanzibar-deep-dive-handling-2-trillion-acls-in-under-10ms-f06) | `authorization`, `security`, `architecture`, `google` | 2026-04-01 | 3👍 · 2💬 | [src](./articles/google-zanzibar-deep-dive.md) |
 | [Why I Built opa-authzen-interop: Verifying OPA on AuthZEN Interop](https://dev.to/kanywst/why-i-built-opa-authzen-interop-verifying-opa-on-authzen-interop-52i9) | `showdev`, `opa`, `authorization`, `rego` | 2026-04-05 | 0👍 | [src](./articles/opa-authzen-interop.md) |
 | [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81) | `showdev`, `opa`, `authorization`, `go` | 2026-04-01 | 1👍 | [src](./articles/opa-authzen-plugin.md) |
 | [RBAC vs ABAC vs ReBAC: How to Choose and Implement Access Control Models](https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3i2d) | `authorization`, `security`, `architecture`, `iam` | 2026-03-29 | 2👍 · 2💬 | [src](./articles/rbac-abac-rebac-access-control-deep-dive.md) |
+| Rego に and と or が入った: 値を返さない演算子という設計判断と、実測1.88倍の短絡評価 | `opa`, `rego`, `authorization`, `policy` | draft |  | [src](./articles/rego-and-or-keywords.md) |
 | [Why I Built awesome-authorization: Mapping the World of Auth Engines onto a Single Page](https://dev.to/kanywst/why-i-built-awesome-authorization-mapping-the-world-of-auth-engines-onto-a-single-page-4mof) | `authorization`, `security`, `opensource`, `showdev` | 2026-04-18 | 0👍 | [src](./articles/why-i-created-awesome-authorization.md) |
 
-### Supply Chain Security (6)
+### Supply Chain Security (7)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
 | [Why Did Docker Abandon TUF?: A Turbulent History of Container Signing](https://dev.to/kanywst/why-did-docker-abandon-tuf-a-turbulent-history-of-container-signing-29i4) | `security`, `docker`, `supplychain`, `sigstore` | 2026-04-28 | 2👍 | [src](./articles/docker-tuf-history-deep-dive.md) |
 | [Hacking GitHub: From Tag Rewrites to Dangling Commits, Where the Git Protocol Trusts You Without Checking](https://dev.to/kanywst/hacking-github-from-tag-rewrites-to-dangling-commits-where-the-git-protocol-trusts-you-without-2o4h) | `security`, `github`, `git`, `supplychain` | 2026-04-30 | 0👍 | [src](./articles/github-hacking-deep-dive.md) |
+| 4年前に忘れられた1つのクレデンシャルが、9つの SaaS のトークンを持っていった: Klue 侵害の構造 | `security`, `oauth`, `saas`, `supplychain` | draft |  | [src](./articles/klue-oauth-integration-governance.md) |
 | [Supply Chain Security: A Deep Dive into SBOM and Code Signing](https://dev.to/kanywst/supply-chain-security-a-deep-dive-into-sbom-and-code-signing-2n1l) | `security`, `sbom`, `kubernetes`, `devops` | 2026-01-11 | 0👍 | [src](./articles/sbom-and-code-signing.md) |
 | [Sigstore Deep Dive: Unmasking the Magic Behind Keyless Verification](https://dev.to/kanywst/sigstore-deep-dive-unmasking-the-magic-behind-keyless-verification-lmh) | `security`, `sigstore`, `kubernetes`, `devops` | 2026-04-22 | 1👍 | [src](./articles/sigstore-deep-dive.md) |
 | [SLSA Provenance Hands-on: Generate with GitHub Actions, Verify with slsa-verifier](https://dev.to/kanywst/slsa-provenance-hands-on-generate-with-github-actions-verify-with-slsa-verifier-56ka) | `security`, `supplychain`, `slsa`, `sigstore` | 2026-04-29 | 0👍 | [src](./articles/slsa-provenance-hands-on.md) |
