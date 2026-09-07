@@ -185,8 +185,8 @@ SPIFFE はワークロード (サービスやコンテナ) に ID を配る標�
 | `payment.reference` | Constrains the payment to a specific checkout reference |
 | `payment.agent_recurrence` | Provides conditions for the agent to reuse this Payment Mandate multiple times |
 | `payment.execution_date` | Defines the valid time window for the payment execution |
-| `payment.allowed_payment_instruments` | Defines the set of possible payment instruments |
-| `payment.allowed_pisps` | Defines the set of PISPs authorized to facilitate the transaction |
+| `payment.allowed_payment_instruments` | Defines the set of possible payment instruments for this Payment Mandate |
+| `payment.allowed_pisps` | Defines the set of Payment Initiation Service Providers (PISPs) authorized to facilitate the transaction |
 
 冒頭に書いた手書きゲートと突き合わせる。
 

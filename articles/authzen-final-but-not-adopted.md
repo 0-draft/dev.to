@@ -159,7 +159,7 @@ srenatus からのコメントは、技術的な指摘ではなかった。
 
 > Agreed, let's hold for now. Thanks though @kanywst! Keep the ideas coming 😃
 
-issue は `not planned` で閉じた。僕は PR を閉じた。
+issue が `not planned` で閉じられ、その50分後に僕が PR を閉じた。
 
 **この判断は正しい。** 誰も採用していない仕様のために、CNCF Graduated プロジェクトのコアに恒久的なメンテナンス負債を追加する理由はない。もし僕がメンテナ側だったら同じことを言う。
 
@@ -216,7 +216,7 @@ OSS エンジンにとっては違う。エンドポイントが1本増えると
 
 OPA だけが特殊だったわけではない。
 
-MCP (Model Context Protocol) でも同じことが起きた。[ext-auth#14 "AuthZEN integration"](https://github.com/modelcontextprotocol/ext-auth/issues/14) は2026年2月2日に立ち、メンテナの Nate Barbettini と Den Delimarsky が押し返した。論旨は「MCP サーバはすでに AuthZEN の PEP になれるので、プロトコル側に変更は要らない」。issue は今も open のまま、最終活動が2026年2月19日で止まっている。
+MCP (Model Context Protocol) でも同じことが起きた。[ext-auth#14 "OpenID AuthZEN Integration for Fine-Grained Authorization"](https://github.com/modelcontextprotocol/ext-auth/issues/14) は2026年2月2日に立ち、メンテナの Nate Barbettini と Den Delimarsky が押し返した。論旨は「MCP サーバはすでに AuthZEN の PEP になれるので、プロトコル側に変更は要らない」。issue は今も open のまま、最終活動が2026年2月19日で止まっている。
 
 この判断は OPA のケースと構造が同じだ。「やりたければ外側でできる。コアに入れる理由がない」。
 
@@ -250,13 +250,13 @@ OpenID Connect が普及した歴史を振り返ると、認証プログラム�
 
 | 成果物 | 日付 | 中身 |
 | --- | --- | --- |
-| COAZ Framework 1.0 / COAZ-MCP Binding 1.0 | 2026-02-13 | 任意のプロトコルの情報モデルを CEL で SARC にマップする。第一の対象が MCP |
+| COAZ Framework 1.0 / COAZ-MCP Binding 1.0 | 文書の日付は 2026-02-13、WG Draft 承認は 2026-06-15 | 任意のプロトコルの情報モデルを CEL で SARC にマップする。第一の対象が MCP |
 | **ARAP / AARP** (Access Request and Approval Profile) | 2026-06-15 に WG Draft 承認 | 「拒否だが申請可能」を標準化する |
 | Obligations Profile 1.0 | 2026-07-03 | PDP が PEP に義務を課すモデル |
 | OAuth プロファイル4本 | **2026-09-02 マージ** | JWT アクセストークンへの認可クレーム、token exchange、token issuance、AROP |
 | `draft-gazitt-oauth-authzen-token-exchange-01` | 2026-09-02 | IETF 側。RFC 8693 / identity chaining / ID-JAG / transaction tokens を AuthZEN 評価にマップ |
 
-ARAP については名前の罠がある。OpenID Foundation のブログとスペック一覧は「AARP」と書き、仕様ソースの `abbrev` は「ARAP」になっている。同じ文書だ。仕様を引用するなら ARAP、プレスリリースを引用するなら AARP。
+ARAP については名前の罠がある。2026年6月15日の**発表ブログだけが「AARP」**と書き、スペック一覧も、Identiverse のまとめ記事も、仕様ソースの `abbrev` も「ARAP」を使っている。同じ文書だ。ブログ以外はすべて ARAP だと思っておけばいい。
 
 そして ARAP は WG 内部で揉めている。issue [#520 "ARAP does too many things"](https://github.com/openid/authzen/issues/520) と #610 "inconsistencies and over-stepping" がどちらも2026年8月時点で active だ。
 
