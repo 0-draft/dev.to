@@ -24,7 +24,7 @@ So I gave four of them the same rules and ran every possible request through all
 
 One square is one request, one row per engine, filled means allowed. Pink is where they disagree.
 
-## Where it breaks
+## Where ReBAC stops
 
 The page adds one rule at a time. The owner can edit. Folder admins too. Then: only during business hours.
 
