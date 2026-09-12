@@ -1,6 +1,6 @@
 ---
 title: I Made Four Authorization Engines Answer the Same Questions
-published: false
+published: true
 description: 'Cedar, OPA/Rego, Casbin and a Zanzibar-style ReBAC model, given identical rules and every possible request, with the disagreements drawn on screen. Runs entirely in the browser.'
 tags:
   - showdev
@@ -9,6 +9,7 @@ tags:
   - webassembly
 series: ShowDev
 id: 4637146
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/cover.png"
 ---
 
 "Which authorization engine should I use" always gets answered with a table. Cedar is analyzable, Rego is expressive, Zanzibar is relationship-based. I could never feel the difference from any of it.
