@@ -9,7 +9,8 @@ tags:
   - webassembly
 series: ShowDev
 id: 4637146
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/cover.png'
+date: '2026-09-12T07:11:35Z'
 ---
 
 "Which authorization engine should I use" always gets answered with a table. Cedar is analyzable, Rego is expressive, Zanzibar is relationship-based. I could never feel the difference from any of it.
