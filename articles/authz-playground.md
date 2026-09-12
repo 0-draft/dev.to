@@ -38,7 +38,7 @@ The same rules side by side are worth as much as the decisions:
 
 Add a document and Casbin needs its policy table regenerated, while ReBAC just gains a tuple and the model never moves.
 
-## Two bugs worth confessing
+## What broke
 
 The projections are where I could lie without noticing, so they get checked twice: all four engines run every request and any disagreement is reported, and a separate implementation written from the requirement text alone checks they are not all wrong together.
 
