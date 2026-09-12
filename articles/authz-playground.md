@@ -1,5 +1,5 @@
 ---
-title: 'I Made Four Authorization Engines Answer the Same Questions'
+title: I Made Four Authorization Engines Answer the Same Questions
 published: false
 description: 'Cedar, OPA/Rego, Casbin and a Zanzibar-style ReBAC model, given identical rules and every possible request, with the disagreements drawn on screen. Runs entirely in the browser.'
 tags:
@@ -8,7 +8,7 @@ tags:
   - security
   - webassembly
 series: ShowDev
-# cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/map.png'
+id: 4637146
 ---
 
 "Which authorization engine should I use" always gets answered with a table. Cedar is analyzable, Rego is expressive, Zanzibar is relationship-based. I could never feel the difference from any of it.
@@ -18,7 +18,7 @@ So I gave four of them the same rules and ran every possible request through all
 - **Live demo:** [https://0-draft.github.io/authz-playground/](https://0-draft.github.io/authz-playground/)
 - **Repo:** [0-draft/authz-playground](https://github.com/0-draft/authz-playground)
 
-![The divergence map](https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/map.png)
+![The divergence map](https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/map.png?v=0d6c7044)
 
 One square is one request, one row per engine, filled means allowed. Pink is where they disagree.
 
@@ -32,7 +32,7 @@ That gap is why OpenFGA later added Conditions. Their announcement names time of
 
 The same rules side by side are worth as much as the decisions:
 
-![The same requirements in four languages](https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/proj.png)
+![The same requirements in four languages](https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/proj.png?v=7c8e686d)
 
 Add a document and Casbin needs its policy table regenerated, while ReBAC just gains a tuple and the model never moves.
 
