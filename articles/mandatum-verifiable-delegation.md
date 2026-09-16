@@ -1,13 +1,14 @@
 ---
-title: "Mandatum: Making an AI Agent's Authority a Chain You Can Verify"
+title: 'Mandatum: Making an AI Agent''s Authority a Chain You Can Verify'
 published: false
-description: "Agents inherit credentials, so you cannot say who is responsible, cannot revoke one agent, and cannot constrain a sequence of calls. I built a Go library that turns an agent's authority into a signed chain rooted in a named human."
+description: 'Agents inherit credentials, so you cannot say who is responsible, cannot revoke one agent, and cannot constrain a sequence of calls. I built a Go library that turns an agent''s authority into a signed chain rooted in a named human.'
 tags:
   - showdev
   - go
   - security
   - authorization
 series: Authorization
+id: 4667299
 ---
 
 ## Introduction
@@ -38,7 +39,7 @@ MCP's authorization specification covers the transport: how a client gets a toke
 
 An agent's authority becomes a signed chain rooted in a named human.
 
-![Delegation, then enforcement](./assets/mandatum-verifiable-delegation/diagrams/01-delegation-and-enforcement.png)
+![Delegation, then enforcement](./assets/mandatum-verifiable-delegation/diagrams/01-delegation-and-enforcement.png?v=f1355ef4)
 
 Each link commits to its parent by hash, so links are not interchangeable. Capabilities can only narrow going down. The human at the root is carried unchanged to every leaf, so attribution survives arbitrary sub-delegation. Revoke any link and everything below it dies with it. Nothing else does.
 
