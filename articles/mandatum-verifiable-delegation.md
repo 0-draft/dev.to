@@ -1,6 +1,6 @@
 ---
 title: 'Mandatum: Making an AI Agent''s Authority a Chain You Can Verify'
-published: false
+published: true
 description: 'Agents inherit credentials, so you cannot say who is responsible, cannot revoke one agent, and cannot constrain a sequence of calls. I built a Go library that turns an agent''s authority into a signed chain rooted in a named human.'
 tags:
   - showdev
