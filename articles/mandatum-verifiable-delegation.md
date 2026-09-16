@@ -10,6 +10,7 @@ tags:
 series: Authorization
 id: 4667299
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/mandatum-verifiable-delegation/cover.png'
+date: '2026-09-16T10:45:49Z'
 ---
 
 ## Introduction
