@@ -1,0 +1,40 @@
+shape: sequence_diagram
+
+human: Alice
+idp: Identity Provider
+planner: agent planner
+retriever: agent retriever
+pep: MCP server (PEP)
+pdp: AuthZEN PDP
+
+delegation: {
+  label: "delegation: authority only ever narrows"
+
+  human -> idp: authenticate (password + hardware key)
+  idp -> planner: "MDA0 | search.* | 1h | 2 hops left"
+  planner -> retriever: "MDA1 | search.query | 40m | 1 hop left"
+  retriever."a link that tries to widen is rejected by the verifier"
+}
+
+enforcement: {
+  label: "enforcement: before the tool runs, every call"
+
+  retriever -> pep: "tools/call search.query + chain"
+  pep -> pep: verify chain offline (V1-V9)
+  pep -> pep: check the chain's history
+  pep -> pdp: "subject = Alice, agent = retriever"
+  pdp -> pep: allow
+  pep -> retriever: result
+}
+
+sequence: {
+  label: "the pair no per-call check can see"
+
+  retriever -> pep: "tools/call fetch(external URL)"
+  pep -> retriever: allowed
+  retriever -> pep: "tools/call write(internal record)"
+  pep -> retriever: "DENIED: no-write-after-external-read" {
+    style.stroke: "#c0392b"
+    style.bold: true
+  }
+}
