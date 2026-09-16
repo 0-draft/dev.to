@@ -2,15 +2,16 @@
 
 # Article index
 
-116 article(s) in this repository, 106 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+117 article(s) in this repository, 107 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
-### ShowDev (17)
+### ShowDev (18)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
 | [a2claude: Turn Claude Code Into a Server Other AI Agents Can Call](https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6) | `showdev`, `ai`, `agents`, `python` | 2026-06-14 | 0👍 | [src](./articles/a2claude-claude-code-as-a2a-agent.md) |
+| [I Made Four Authorization Engines Answer the Same Questions](https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96) | `showdev`, `authorization`, `security`, `webassembly` | 2026-09-12 | 0👍 | [src](./articles/authz-playground.md) |
 | [brtc (Brute-force Cost): A CLI Tool to Convert Password Strength into "Time to Crack and a Real USD Invoice"](https://dev.to/kanywst/brtc-a-cli-tool-to-convert-password-strength-into-time-to-crack-and-a-real-usd-invoice-24k9) | `security`, `go`, `cli`, `showdev` | 2026-03-08 | 1👍 | [src](./articles/brtc-password-cracking-cost.md) |
 | [I built chainscope: reading supply chain attacks across 6 surfaces, one slide at a time](https://dev.to/kanywst/i-built-chainscope-reading-supply-chain-attacks-across-6-surfaces-one-slide-at-a-time-28mc) | `security`, `supplychain`, `showdev` | 2026-04-29 | 0👍 | [src](./articles/chainscope-supply-chain-six-surfaces.md) |
 | [Galick: I built the ultimate Load Testing tool (Go + Starlark)](https://dev.to/kanywst/galick-i-built-the-ultimate-load-testing-tool-go-starlark-ipc) | `showdev`, `go`, `performance`, `testing` | 2026-01-20 | 1👍 · 3💬 | [src](./articles/galick-load-testing.md) |
