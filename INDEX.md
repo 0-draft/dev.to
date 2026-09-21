@@ -2,7 +2,7 @@
 
 # Article index
 
-117 article(s) in this repository, 107 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+118 article(s) in this repository, 108 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
@@ -28,6 +28,22 @@
 | [The Birth of Websites: A Visual Journey through IT History](https://dev.to/kanywst/the-birth-of-websites-a-visual-journey-through-it-history-444f) | `showdev`, `vue`, `webdev`, `history` | 2026-01-09 | 0👍 | [src](./articles/the-birth-of-websites.md) |
 | [Velo: A Cross-Platform Network Speed Monitor Built with Go & Wails](https://dev.to/kanywst/velo-a-cross-platform-network-speed-monitor-built-with-go-wails-3g3p) | `showdev`, `wails`, `golang`, `vue` | 2026-01-10 | 0👍 | [src](./articles/velo.md) |
 | [y509: A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains](https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-for-viewing-and-analyzing-x509-certificate-chains-5fn6) | `showdev`, `golang`, `cli`, `security` | 2026-01-09 | 2👍 | [src](./articles/y509.md) |
+
+### Authorization (11)
+
+| Article | Tags | Published | Engagement | Source |
+| --- | --- | --- | --- | --- |
+| 同じものを2通りに書けると、認可は割れる: 正規化の失敗という脆弱性クラス | `security`, `authorization`, `go`, `opensource` | draft |  | [src](./articles/authz-normalization-failures.md) |
+| [AuthZEN Authorization API 1.0 Deep Dive: The Standard API That Separates Authorization Decisions from Enforcement](https://dev.to/kanywst/authzen-authorization-api-10-deep-dive-the-standard-api-that-separates-authorization-decisions-1m2a) | `oauth`, `security`, `authorization`, `api` | 2026-03-30 | 2👍 | [src](./articles/authzen-authorization-api-deep-dive.md) |
+| 仕様は Final になった。それでも OPA には入らなかった: 自分で出した AuthZEN 対応 issue が5日で閉じるまで | `authorization`, `openid`, `opa`, `security` | draft |  | [src](./articles/authzen-final-but-not-adopted.md) |
+| Cedar のポリシーを SMT で証明する: 「このリファクタは権限を広げていない」を 0.01 秒で保証する | `authorization`, `cedar`, `security`, `rust` | draft |  | [src](./articles/cedar-symcc-policy-proof.md) |
+| [Google Zanzibar Deep Dive: Handling 2 Trillion ACLs in Under 10ms](https://dev.to/kanywst/google-zanzibar-deep-dive-handling-2-trillion-acls-in-under-10ms-f06) | `authorization`, `security`, `architecture`, `google` | 2026-04-01 | 3👍 · 2💬 | [src](./articles/google-zanzibar-deep-dive.md) |
+| [Mandatum: Making an AI Agent's Authority a Chain You Can Verify](https://dev.to/kanywst/mandatum-making-an-ai-agents-authority-a-chain-you-can-verify-1hoa) | `showdev`, `go`, `security`, `authorization` | 2026-09-16 | 1👍 | [src](./articles/mandatum-verifiable-delegation.md) |
+| [Why I Built opa-authzen-interop: Verifying OPA on AuthZEN Interop](https://dev.to/kanywst/why-i-built-opa-authzen-interop-verifying-opa-on-authzen-interop-52i9) | `showdev`, `opa`, `authorization`, `rego` | 2026-04-05 | 0👍 | [src](./articles/opa-authzen-interop.md) |
+| [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81) | `showdev`, `opa`, `authorization`, `go` | 2026-04-01 | 1👍 | [src](./articles/opa-authzen-plugin.md) |
+| [RBAC vs ABAC vs ReBAC: How to Choose and Implement Access Control Models](https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3i2d) | `authorization`, `security`, `architecture`, `iam` | 2026-03-29 | 2👍 · 2💬 | [src](./articles/rbac-abac-rebac-access-control-deep-dive.md) |
+| Rego に and と or が入った: 値を返さない演算子という設計判断と、実測1.88倍の短絡評価 | `opa`, `rego`, `authorization`, `policy` | draft |  | [src](./articles/rego-and-or-keywords.md) |
+| [Why I Built awesome-authorization: Mapping the World of Auth Engines onto a Single Page](https://dev.to/kanywst/why-i-built-awesome-authorization-mapping-the-world-of-auth-engines-onto-a-single-page-4mof) | `authorization`, `security`, `opensource`, `showdev` | 2026-04-18 | 0👍 | [src](./articles/why-i-created-awesome-authorization.md) |
 
 ### OAuth (11)
 
@@ -74,21 +90,6 @@
 | [AWS SigV4 and SigV4A Deep Dive](https://dev.to/kanywst/aws-sigv4-and-sigv4a-deep-dive-12li) | `aws`, `sigv4`, `security`, `signing` | 2026-05-30 | 1👍 | [src](./articles/aws-sigv4-and-sigv4a-deep-dive.md) |
 | [AWS STS Deep Dive](https://dev.to/kanywst/aws-sts-deep-dive-19ha) | `aws`, `sts`, `iam`, `security` | 2026-05-24 | 0👍 | [src](./articles/aws-sts-deep-dive.md) |
 | [WORM (Write Once Read Many) Deep Dive](https://dev.to/kanywst/worm-write-once-read-many-deep-dive-2l7k) | `storage`, `security`, `compliance`, `aws` | 2026-05-18 | 0👍 | [src](./articles/worm-mode-deep-dive.md) |
-
-### Authorization (10)
-
-| Article | Tags | Published | Engagement | Source |
-| --- | --- | --- | --- | --- |
-| 同じものを2通りに書けると、認可は割れる: 正規化の失敗という脆弱性クラス | `security`, `authorization`, `go`, `opensource` | draft |  | [src](./articles/authz-normalization-failures.md) |
-| [AuthZEN Authorization API 1.0 Deep Dive: The Standard API That Separates Authorization Decisions from Enforcement](https://dev.to/kanywst/authzen-authorization-api-10-deep-dive-the-standard-api-that-separates-authorization-decisions-1m2a) | `oauth`, `security`, `authorization`, `api` | 2026-03-30 | 2👍 | [src](./articles/authzen-authorization-api-deep-dive.md) |
-| 仕様は Final になった。それでも OPA には入らなかった: 自分で出した AuthZEN 対応 issue が5日で閉じるまで | `authorization`, `openid`, `opa`, `security` | draft |  | [src](./articles/authzen-final-but-not-adopted.md) |
-| Cedar のポリシーを SMT で証明する: 「このリファクタは権限を広げていない」を 0.01 秒で保証する | `authorization`, `cedar`, `security`, `rust` | draft |  | [src](./articles/cedar-symcc-policy-proof.md) |
-| [Google Zanzibar Deep Dive: Handling 2 Trillion ACLs in Under 10ms](https://dev.to/kanywst/google-zanzibar-deep-dive-handling-2-trillion-acls-in-under-10ms-f06) | `authorization`, `security`, `architecture`, `google` | 2026-04-01 | 3👍 · 2💬 | [src](./articles/google-zanzibar-deep-dive.md) |
-| [Why I Built opa-authzen-interop: Verifying OPA on AuthZEN Interop](https://dev.to/kanywst/why-i-built-opa-authzen-interop-verifying-opa-on-authzen-interop-52i9) | `showdev`, `opa`, `authorization`, `rego` | 2026-04-05 | 0👍 | [src](./articles/opa-authzen-interop.md) |
-| [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81) | `showdev`, `opa`, `authorization`, `go` | 2026-04-01 | 1👍 | [src](./articles/opa-authzen-plugin.md) |
-| [RBAC vs ABAC vs ReBAC: How to Choose and Implement Access Control Models](https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3i2d) | `authorization`, `security`, `architecture`, `iam` | 2026-03-29 | 2👍 · 2💬 | [src](./articles/rbac-abac-rebac-access-control-deep-dive.md) |
-| Rego に and と or が入った: 値を返さない演算子という設計判断と、実測1.88倍の短絡評価 | `opa`, `rego`, `authorization`, `policy` | draft |  | [src](./articles/rego-and-or-keywords.md) |
-| [Why I Built awesome-authorization: Mapping the World of Auth Engines onto a Single Page](https://dev.to/kanywst/why-i-built-awesome-authorization-mapping-the-world-of-auth-engines-onto-a-single-page-4mof) | `authorization`, `security`, `opensource`, `showdev` | 2026-04-18 | 0👍 | [src](./articles/why-i-created-awesome-authorization.md) |
 
 ### Supply Chain Security (7)
 
