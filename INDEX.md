@@ -58,7 +58,7 @@
 | [RFC 7521 Deep Dive: Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants](https://dev.to/kanywst/rfc-7521-deep-dive-assertion-framework-for-oauth-20-client-authentication-and-authorization-grants-3gk8) | `oauth`, `security`, `authentication` | 2026-03-12 | 3👍 | [src](./articles/rfc7521-assertion-framework-deep-dive.md) |
 | [RFC 7523 Deep Dive: JWT Profile](https://dev.to/kanywst/rfc-7523-deep-dive-jwt-profile-2df5) | `oauth`, `jwt`, `security`, `authentication` | 2026-04-13 | 0👍 | [src](./articles/rfc7523-jwt-profile-deep-dive.md) |
 | [RFC 7636 Deep Dive: How PKCE Kills Authorization Code Interception Attacks](https://dev.to/kanywst/rfc-7636-deep-dive-how-pkce-kills-authorization-code-interception-attacks-91i) | `oauth`, `security`, `authentication`, `pkce` | 2026-04-12 | 0👍 | [src](./articles/rfc7636-pkce-deep-dive.md) |
-| [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 12👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
+| [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 13👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
 | [RFC 8705 Deep Dive: Turning Access Tokens into "Unstealable Tokens" with mTLS](https://dev.to/kanywst/rfc-8705-deep-dive-turning-access-tokens-into-unstealable-tokens-with-mtls-406) | `oauth`, `security`, `tls`, `api` | 2026-02-26 | 4👍 · 1💬 | [src](./articles/rfc8705-mtls-deep-dive.md) |
 
 ### AI Agent Identity (10)
@@ -66,7 +66,7 @@
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
 | [A2A Protocol Auth, Taken Apart: Why the Spec Is Thin and Where That Leaves Holes](https://dev.to/kanywst/a2a-protocol-auth-taken-apart-why-the-spec-is-thin-and-where-that-leaves-holes-22ii) | `ai`, `agents`, `security`, `oauth` | 2026-06-13 | 0👍 | [src](./articles/a2a-protocol-auth-deep-dive.md) |
-| [ID-JAG, Transaction Tokens, WIF: The Three Layers of AI Agent Auth](https://dev.to/kanywst/the-three-layers-of-ai-agent-authentication-what-id-jag-transaction-tokens-and-wif-actually-1mbk) | `oauth`, `security`, `ai`, `agents` | 2026-06-03 | 1👍 · 1💬 | [src](./articles/agent-identity-three-layers-2026.md) |
+| [ID-JAG, Transaction Tokens, WIF: The Three Layers of AI Agent Auth](https://dev.to/kanywst/the-three-layers-of-ai-agent-authentication-what-id-jag-transaction-tokens-and-wif-actually-1mbk) | `oauth`, `security`, `ai`, `agents` | 2026-06-03 | 2👍 · 1💬 | [src](./articles/agent-identity-three-layers-2026.md) |
 | [AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source](https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh) | `ai`, `security`, `mcp`, `typescript` | 2026-06-25 | 0👍 | [src](./articles/agentauth-self-authenticating-uuid.md) |
 | [Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026](https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha) | `ai`, `agents`, `mcp`, `a2a` | 2026-06-28 | 1👍 | [src](./articles/ai-agent-protocols-mcp-a2a-2026.md) |
 | ツールを渡すことと、その呼び出しを許すことは別だ: LLM エージェントの confused deputy を LangChain の実ソースで確かめる | `ai`, `security`, `authorization`, `python` | draft |  | [src](./articles/capability-gate-vs-authorization.md) |
