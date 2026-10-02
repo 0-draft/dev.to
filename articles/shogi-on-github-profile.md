@@ -13,6 +13,8 @@ id: 4387297
 date: '2026-08-13T11:18:30Z'
 ---
 
+> **Update (2026-10-02):** the board has moved out of my profile README into its own repository, [0-draft/shogi](https://github.com/0-draft/shogi). Everything below still describes how it works; only the address changed.
+
 ## Introduction
 
 There is a shogi board on my GitHub profile. Click a piece and you play a move.
@@ -141,8 +143,8 @@ The part I like is that the players swap out asynchronously. Whoever plays Black
 
 As a thing to put on a profile, I think it says more than a skill list does.
 
-The board is one move in right now. If you pass by, play one.
+If you pass by, play a move.
 
 Let's play shogi.
 
-<https://github.com/kanywst>
+<https://github.com/0-draft/shogi>
