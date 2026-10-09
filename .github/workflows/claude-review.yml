@@ -1,0 +1,200 @@
+name: Claude review
+
+# CI (if this repository has any) answers "does it build and do the checks
+# pass". This asks the questions no script here can. It reviews, it does not
+# gate: nothing here is a required check.
+#
+# The action refuses to run when this file differs from the copy on the default
+# branch, so a pull request cannot rewrite its own reviewer. The cost is that
+# any change to this file, including the one that added it, goes unreviewed by
+# Claude until it is merged.
+#
+# "It does not gate" is about findings, not about delivery. A run that reviews
+# and then cannot post what it found is indistinguishable from a clean diff,
+# and the check is green either way. The last step here fails when that
+# happens, for the same reason the token check fails rather than reviewing
+# nothing quietly.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions: {}
+
+# One review per pull request. A rapid re-push cancels the run it superseded
+# rather than paying for a review of a diff that no longer exists.
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: review the diff
+    # A pull request from a fork gets no secrets, so the job would fail on
+    # authentication rather than say anything useful. Drafts are skipped until
+    # they are marked ready, which is what the ready_for_review trigger is for.
+    #
+    # Dependabot is skipped for the same reason as a fork: a run it triggers
+    # reads Dependabot secrets, not Actions secrets, so the token is empty no
+    # matter what is configured here. A version bump is also the diff this
+    # review has least to say about.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pull-requests: write  # post the summary and the inline findings
+      issues: read  # the delivery check reads conversation comments, served from the issues endpoint
+      id-token: write  # required by the action's default GitHub App authentication
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # No job in this repository pushes, so the checkout token has no
+          # reason to outlive the step that used it.
+          persist-credentials: false
+          fetch-depth: 0
+
+      # Without the secret the action exits successfully having reviewed
+      # nothing, which is worse than failing: the check goes green and the
+      # pull request looks reviewed. Fail here instead, where the reason is
+      # legible.
+      - name: Require the token
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::CLAUDE_CODE_OAUTH_TOKEN is not set. Generate one with 'claude setup-token', then: gh secret set CLAUDE_CODE_OAUTH_TOKEN"
+            exit 1
+          fi
+
+      # Anything the review posts has to be newer than this, or it is a
+      # leftover from an earlier push and says nothing about this diff. Two
+      # minutes of slack absorbs clock skew between the runner and the API.
+      - name: Mark the start of this review
+        id: started
+        run: echo "at=$(date -u -d '-2 minutes' +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+
+      - uses: anthropics/claude-code-action@ed670b4cf9de2a5a570d130d2f6197b9e543cd64 # v1
+        id: claude
+        with:
+          # A subscription token, not an API key: runs against the Claude plan
+          # instead of API credits. Generate it with `claude setup-token`.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR: ${{ github.event.pull_request.number }}
+
+            This repository (0-draft/dev.to): Dev.to Articles Management
+
+            Before reviewing, read whatever this repository says about itself: CLAUDE.md,
+            AGENTS.md, CONTRIBUTING.md, README.md (and README.ja.md if present), and the
+            workflows under .github/workflows. Those define what the project promises and
+            what CI already checks. Do not repeat what CI already does.
+
+            Look for what only a reader can catch:
+
+            1. Correctness of the change against the project's own stated rules and
+               invariants. A change that contradicts CLAUDE.md, CONTRIBUTING.md or the
+               README is a finding even when every check is green.
+
+            2. Factual claims. This org publishes explainers, deep dives and reference
+               material. A new or edited statement about a protocol, a cloud service, a
+               price, a date, a version or an attribution needs to be true, not merely
+               plausible. Flag anything that reads as recalled rather than sourced.
+
+            3. Content parity. Where content exists in more than one language (EN/JA),
+               both must say the same thing. A string added in one language only, or a
+               translation that drifted from its source, is a finding. Japanese should be
+               plain technical prose, not colloquial or translationese.
+
+            4. Injection and trust boundaries. Anything driven by GitHub issues, comments
+               or other user input (games, guest books, ingest jobs) must not let that
+               input reach a shell, a GitHub expression in a run block, or rendered HTML
+               unescaped. Workflows should keep least-privilege permissions and pinned
+               actions.
+
+            5. Claims that outrun the code. A README line, doc comment or UI text that
+               promises behaviour the code does not have is a defect, not a nit.
+
+            Do not sign anything you post. No "Generated with" footer, no co-authored-by
+            line, no self-attribution of any kind, in any comment or commit. The review
+            stands on the findings, and a signature is noise on every one of them.
+
+            Post findings as inline comments on the lines they concern. Use one
+            top-level comment for the summary. Be specific and cite
+            `file:line`. If the diff is clean against all of the above, say so
+            in one line rather than manufacturing nits.
+
+            Write the summary to a file and post it with
+            `gh pr comment --body-file <path>`. A body built inline from a
+            heredoc or a command substitution does not match the allowlist and
+            is refused, which loses the whole review.
+
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Write,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+
+      # The gate below keys off the action's conclusion output. Print what it
+      # was, so a run that gates when it should not - or does not when it
+      # should - can be diagnosed from the log rather than by guessing.
+      - name: Report the review outcome
+        if: always()
+        env:
+          CONCLUSION: ${{ steps.claude.outputs.conclusion }}
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+        run: |
+          echo "action conclusion: '${CONCLUSION}'"
+          echo "execution file:    '${EXECUTION_FILE}'"
+
+      # A review that runs, is refused a tool call on the way to posting, and
+      # exits green leaves the pull request unreviewed behind a passing check.
+      # Write is allowed above so a long summary can go to a file and out
+      # through `gh pr comment --body-file`, which is the shape the allowlist
+      # matches; this catches it when something is refused anyway.
+      #
+      # Silence on its own is not the signal. A follow-up push whose review had
+      # nothing to add to what is already on the pull request posts nothing and
+      # denies nothing, and that is fine. The failure is silence *with* a
+      # refusal behind it. An unreadable denial count is treated as a refusal,
+      # because the whole point is not to call a pull request reviewed on the
+      # strength of a green check.
+      - name: Fail on a review that was not delivered
+        if: always() && steps.claude.outputs.conclusion == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          SINCE: ${{ steps.started.outputs.at }}
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+          # The action's default bot_name, which this workflow does not override.
+          BOT: claude[bot]
+        run: |
+          set -euo pipefail
+          fresh() {
+            gh api --paginate "$1" --jq \
+              "[.[] | select(.user.login == \"$BOT\") | select((.$2 // \"\") >= \"$SINCE\")] | length" |
+              awk '{ n += $1 } END { print n + 0 }'
+          }
+          summary=$(fresh "repos/$REPO/issues/$PR/comments" updated_at)
+          inline=$(fresh "repos/$REPO/pulls/$PR/comments" updated_at)
+          reviews=$(fresh "repos/$REPO/pulls/$PR/reviews" submitted_at)
+          total=$((summary + inline + reviews))
+          echo "posted since $SINCE: $summary summary, $inline inline, $reviews review(s)"
+          if [ "$total" -gt 0 ]; then
+            exit 0
+          fi
+
+          denials=unknown
+          if [ -n "${EXECUTION_FILE:-}" ] && [ -f "$EXECUTION_FILE" ]; then
+            denials=$(jq -r '[.. | objects | select(.type? == "result") | .permission_denials_count?]
+              | map(select(. != null)) | last // 0' "$EXECUTION_FILE" 2>/dev/null || echo unknown)
+          fi
+          echo "denied tool calls: $denials"
+          if [ "$denials" = "0" ]; then
+            echo "::notice::The review posted nothing and nothing was refused, so it had nothing to add to what is already on this pull request."
+            exit 0
+          fi
+          echo "::error::The review ran, was refused a tool call ($denials), and posted nothing, so this pull request is unreviewed despite a green check. Widen --allowedTools above."
+          exit 1
