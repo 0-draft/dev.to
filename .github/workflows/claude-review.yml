@@ -133,8 +133,10 @@ jobs:
             heredoc or a command substitution does not match the allowlist and
             is refused, which loses the whole review.
 
+          # --allowedTools is a closed list, so the read tools have to be named or
+          # the review cannot open the files the prompt tells it to read.
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,Write,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowedTools "Read,Grep,Glob,mcp__github_inline_comment__create_inline_comment,Write,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
 
       # The gate below keys off the action's conclusion output. Print what it
       # was, so a run that gates when it should not - or does not when it
@@ -147,6 +149,14 @@ jobs:
         run: |
           echo "action conclusion: '${CONCLUSION}'"
           echo "execution file:    '${EXECUTION_FILE}'"
+          # Name the refused tool calls, so a denial can be fixed by widening the
+          # allowlist above instead of guessing which tool the review reached for.
+          if [ -n "${EXECUTION_FILE:-}" ] && [ -f "$EXECUTION_FILE" ]; then
+            jq -r '[.. | objects | select(.type? == "result") | .permission_denials?]
+              | map(select(. != null)) | last // [] | .[]
+              | "denied: \(.tool_name // "?") \(.tool_input | tojson | .[0:200])"' \
+              "$EXECUTION_FILE" 2>/dev/null || true
+          fi
 
       # A review that runs, is refused a tool call on the way to posting, and
       # exits green leaves the pull request unreviewed behind a passing check.
