@@ -91,7 +91,7 @@ On 2026-10-13 the three tracks reported:
 
 ## From radar to deep dive
 
-The ranking is only the first half. When something crosses the threshold, the repo has templates for a deep dive (context, spec notes, an interop checklist, and a hands-on log), so reading a spec ends with notes I can return to instead of a closed browser tab. The first one covers `draft-ietf-oauth-v2-1`. If WIMSE itself is new to you, I wrote a [WIMSE deep dive](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) earlier.
+The ranking is only the first half. When something crosses the threshold, the repo has templates for a deep dive (context, spec notes, an interop checklist, and a hands-on log), so reading a spec ends with notes I can return to instead of a closed browser tab. The first one covers [`draft-ietf-oauth-v2-1`](https://github.com/0-draft/identity-deep-dive/tree/main/tracks/oauth-wg/deep-dives/draft-ietf-oauth-v2-1). If WIMSE itself is new to you, I wrote a [WIMSE deep dive](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) earlier.
 
 ## Conclusion
 
