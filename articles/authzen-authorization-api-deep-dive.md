@@ -829,4 +829,4 @@ If XACML was "the XML of the authorization world," AuthZEN is "the JSON REST API
 - [Authorization API 1.0 (OpenID Foundation)](https://openid.net/specs/authorization-api-1_0.html)
 - [OpenID AuthZEN Working Group](https://openid.net/wg/authzen/)
 - [XACML 3.0 (OASIS)](http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html)
-- [NIST SP 800-162: Guide to Attribute Based Access Control (ABAC)](https://csrc.nist.gov/publications/detail/sp/800-162/final)
+- [NIST SP 800-162: Guide to Attribute Based Access Control (ABAC)](https://csrc.nist.gov/pubs/sp/800/162/upd2/final)
