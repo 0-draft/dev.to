@@ -13,7 +13,7 @@ date: '2026-11-13T00:00:00Z'
 
 ## Introduction
 
-If you work on identity, the specs move under you. An OAuth WG draft enters Working Group Last Call, a WIMSE draft gets a new revision, an OpenID repo suddenly has a burst of PRs. Each of those is a signal that "now is the time to read this", but the signals are spread across IETF Datatracker, the mail archive, and more than sixty GitHub repositories.
+If you work on identity, the specs move under you. An OAuth WG draft enters Working Group Last Call, a WIMSE draft gets a new revision, an OpenID repo suddenly has a burst of PRs. Each of those is a signal that "now is the time to read this", but the signals are spread across IETF Datatracker, the mail archive, and about ninety GitHub repositories (65 under `openid`, 20 under `oauth-wg`, and 6 under `ietf-wg-wimse` on the day I checked).
 
 I kept missing them, so I built **[identity-deep-dive](https://github.com/0-draft/identity-deep-dive)**: a pipeline that collects those sources every day, scores what it finds, and publishes the ranking at **[0-draft.github.io/identity-deep-dive](https://0-draft.github.io/identity-deep-dive/)**.
 
@@ -81,9 +81,9 @@ And here is the top candidate from the 2026-10-13 run, straight from `candidates
 
 A draft in WG Last Call that was revised in the last three days and has an active repo is exactly the thing worth reading today, and the reasons say why it ranked first. If the weights feel wrong for your interests, you change the YAML, not the scorer.
 
-## What a daily run looks like
+## What one daily run looked like
 
-On 2026-10-13 the three tracks reported:
+These numbers are a single snapshot, the 2026-10-13 run, so they will have moved by the time you read this. The site always shows the latest run. That day the three tracks reported:
 
 - **OAuth WG:** 11 active drafts. The top three were `attestation-based-client-auth` (125), `rfc7523bis` (90), and `sd-jwt-vc` (83).
 - **WIMSE:** 8 active WG drafts, 16 related drafts, 68 mailing-list posts scanned. The newest WG draft was `draft-ietf-wimse-aims-00` (AI Identity Management System).
@@ -91,7 +91,7 @@ On 2026-10-13 the three tracks reported:
 
 ## From radar to deep dive
 
-The ranking is only the first half. When something crosses the threshold, the repo has templates for a deep dive (context, spec notes, an interop checklist, and a hands-on log), so reading a spec ends with notes I can return to instead of a closed browser tab. The first one covers [`draft-ietf-oauth-v2-1`](https://github.com/0-draft/identity-deep-dive/tree/main/tracks/oauth-wg/deep-dives/draft-ietf-oauth-v2-1). If WIMSE itself is new to you, I wrote a [WIMSE deep dive](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) earlier.
+The ranking is only the first half. When something crosses the threshold, the repo has templates for a deep dive (context, spec notes, an interop checklist, and a hands-on log), so reading a spec ends with notes I can return to instead of a closed browser tab. The first one, written in April 2026, covers [`draft-ietf-oauth-v2-1`](https://github.com/0-draft/identity-deep-dive/tree/main/tracks/oauth-wg/deep-dives/draft-ietf-oauth-v2-1). If WIMSE itself is new to you, I wrote a [WIMSE deep dive](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) earlier.
 
 ## Conclusion
 
