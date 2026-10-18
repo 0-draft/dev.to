@@ -8,7 +8,7 @@ tags:
   - security
   - identity
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/identity-deep-dive-radar/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/identity-deep-dive-radar/cover.png?v=0e583817'
 date: '2026-11-13T00:00:00Z'
 id: 4869711
 ---
