@@ -8,6 +8,7 @@ tags:
   - githubactions
   - gamedev
 series: ShowDev
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/blackjack-readme-table/cover.png'
 date: '2026-11-15T00:00:00Z'
 id: 4856990
 ---
