@@ -180,9 +180,7 @@ When you call `io.Copy(dst, src)` in Go, a fixed **32KB** buffer is allocated in
 
 ## 6. Experiment
 
-We measured benchmarks for each reverse proxy using the following repository:
-
-* [kanywst/reverse-proxy-benchmark](https://github.com/kanywst/reverse-proxy-benchmark)
+We measured benchmarks for each reverse proxy using a benchmark repository (`kanywst/reverse-proxy-benchmark`). That repository has since been made private and archived, so the numbers below are the recorded results.
 
 Executed on MacBook Pro M1 Max.
 

@@ -165,7 +165,7 @@ curl -v -H "Host: one.one.one.one" http://localhost:6188
 
 If you get a response from the backend specified in `upstream_peer`, it's a success!
 
-**Sample Repository**: [https://github.com/kanywst/p1ng0r4](https://github.com/kanywst/p1ng0r4)
+**Sample Repository**: the original sample repository (`kanywst/p1ng0r4`) has since been made private and archived. The code above is the complete example.
 
 ## Conclusion
 
