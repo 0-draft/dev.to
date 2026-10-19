@@ -2,16 +2,17 @@
 
 # Article index
 
-118 article(s) in this repository, 108 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+120 article(s) in this repository, 108 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
-### ShowDev (18)
+### ShowDev (20)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
 | [a2claude: Turn Claude Code Into a Server Other AI Agents Can Call](https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6) | `showdev`, `ai`, `agents`, `python` | 2026-06-14 | 0👍 | [src](./articles/a2claude-claude-code-as-a2a-agent.md) |
-| [I Made Four Authorization Engines Answer the Same Questions](https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96) | `showdev`, `authorization`, `security`, `webassembly` | 2026-09-12 | 0👍 | [src](./articles/authz-playground.md) |
+| [I Made Four Authorization Engines Answer the Same Questions](https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96) | `showdev`, `authorization`, `security`, `webassembly` | 2026-09-12 | 0👍 · 1💬 | [src](./articles/authz-playground.md) |
+| A Blackjack Table That Lives in a README, Dealt by GitHub Actions | `showdev`, `python`, `githubactions`, `gamedev` | draft |  | [src](./articles/blackjack-readme-table.md) |
 | [brtc (Brute-force Cost): A CLI Tool to Convert Password Strength into "Time to Crack and a Real USD Invoice"](https://dev.to/kanywst/brtc-a-cli-tool-to-convert-password-strength-into-time-to-crack-and-a-real-usd-invoice-24k9) | `security`, `go`, `cli`, `showdev` | 2026-03-08 | 1👍 | [src](./articles/brtc-password-cracking-cost.md) |
 | [I built chainscope: reading supply chain attacks across 6 surfaces, one slide at a time](https://dev.to/kanywst/i-built-chainscope-reading-supply-chain-attacks-across-6-surfaces-one-slide-at-a-time-28mc) | `security`, `supplychain`, `showdev` | 2026-04-29 | 0👍 | [src](./articles/chainscope-supply-chain-six-surfaces.md) |
 | [Galick: I built the ultimate Load Testing tool (Go + Starlark)](https://dev.to/kanywst/galick-i-built-the-ultimate-load-testing-tool-go-starlark-ipc) | `showdev`, `go`, `performance`, `testing` | 2026-01-20 | 1👍 · 3💬 | [src](./articles/galick-load-testing.md) |
@@ -19,6 +20,7 @@
 | [GitHub Profile: A "Guest Book" Anyone Can Sign](https://dev.to/kanywst/github-profile-a-guest-book-anyone-can-sign-2) | `showdev`, `github`, `python`, `automation` | 2026-03-23 | 1👍 · 1💬 | [src](./articles/guestbook-github-profile.md) |
 | [Hacker Heuristics: Mental Shortcuts for Surviving a World Without 'Correct' Answers](https://dev.to/kanywst/hacker-heuristics-mental-shortcuts-for-surviving-a-world-without-correct-answers-4725) | `engineering`, `design`, `architecture`, `showdev` | 2026-02-15 | 1👍 | [src](./articles/heuristics.md) |
 | [I Just Wanted a Login Form: The "Swamp" of Complexity in the Modern Auth Ecosystem](https://dev.to/kanywst/i-just-wanted-a-login-form-the-swamp-of-complexity-in-the-modern-auth-ecosystem-23pm) | `showdev`, `authentication`, `authorization`, `security` | 2026-03-01 | 3👍 · 1💬 | [src](./articles/i-just-wanted-a-login-form.md) |
+| identity-deep-dive: A Daily, Scored Radar for OAuth WG, WIMSE, and OpenID Specs | `showdev`, `oauth`, `security`, `identity` | draft |  | [src](./articles/identity-deep-dive-radar.md) |
 | [Introducing Omega: SPIFFE Workload Identity + AuthZEN Authorization in a Single Binary](https://dev.to/kanywst/introducing-omega-spiffe-workload-identity-authzen-authorization-in-a-single-binary-48j0) | `spiffe`, `authzen`, `security`, `opensource` | 2026-05-01 | 1👍 · 1💬 | [src](./articles/introducing-omega.md) |
 | [Introducing Zopa: a 60 KB authorization engine for proxy-wasm, written in Zig](https://dev.to/kanywst/introducing-zopa-a-60-kb-authorization-engine-for-proxy-wasm-written-in-zig-1l66) | `wasm`, `authorization`, `zig`, `opensource` | 2026-05-10 | 0👍 | [src](./articles/introducing-zopa.md) |
 | [IssueHub: Helping Beginners Find Their First OSS Contribution Opportunities](https://dev.to/kanywst/issuehub-helping-beginners-find-their-first-oss-contribution-opportunities-2g7k) | `showdev`, `oss`, `nextjs`, `typescript` | 2026-01-18 | 2👍 | [src](./articles/issuehub.md) |
