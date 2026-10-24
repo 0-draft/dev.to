@@ -20,7 +20,7 @@ So I gave four of them the same rules and ran every possible request through all
 - **Live demo:** [https://0-draft.github.io/authz-playground/](https://0-draft.github.io/authz-playground/)
 - **Repo:** [0-draft/authz-playground](https://github.com/0-draft/authz-playground)
 
-![One question, every engine, every hour of the day](https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/day.png)
+![One question, every engine, every hour of the day](./assets/authz-playground/day.png?v=47286c34)
 
 One question, asked of every engine at every hour of the day. A raised line is allow. Red is where they disagree.
 
@@ -41,7 +41,7 @@ define editor: (owner or admin from parent) and within_hours
 
 It agrees with the other three on every request. It is still not free. A condition can only hang off a tuple, and business hours are about the request rather than any relationship, so every document needs a placeholder tuple whose only job is to carry the clock. The page rates it possible but forced, not native.
 
-![The classic model and the conditional one, asked the same question at 08:00](https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/authz-playground/graphs.png)
+![The classic model and the conditional one, asked the same question at 08:00](./assets/authz-playground/graphs.png?v=09f1795d)
 
 Add a document and Casbin needs its policy table regenerated, while ReBAC just gains a tuple and the model never moves.
 
