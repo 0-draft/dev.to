@@ -62,7 +62,7 @@ MFA does nothing against a pre-auth flaw. An offline backup lets you recover fro
 
 - NPA figures come from NPA's own statistics workbooks, sheet by sheet. Percentages are computed in one place and unit-tested against NPA's published roundings.
 - Every KEV field was checked with `jq` against the catalog JSON; the 2026-numbered CVEs were also checked against the NVD API.
-- Anything not confirmed in a primary source is left out. The 79 cited documents are listed on the [sources page](https://0-draft.github.io/vpn-is-the-door/sources/).
+- Anything not confirmed in a primary source is left out. The 80 cited documents are listed on the [sources page](https://0-draft.github.io/vpn-is-the-door/sources/).
 
 No exploit code or attack steps appear anywhere.
 
