@@ -13,6 +13,8 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-04-05T13:14:55Z'
 ---
 
+> **Update (2026-10-28):** the harness has moved into [opa-authzen-plugin/interop/todo](https://github.com/kanywst/opa-authzen-plugin/tree/main/interop/todo), and `opa-authzen-interop` is archived. Its only consumer turned out to be the plugin's own CI, and the split let it fall two releases behind the plugin without any test going red, so the separation argued for below didn't pay for itself.
+
 ## Introduction
 
 In my earlier post, [I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81), I covered how I added AuthZEN API support (`POST /access/v1/evaluation`) directly to OPA.
@@ -152,9 +154,9 @@ yarn test http://localhost:8181 authorization-api-1_0-01 console
 
 There are still many parts I need to improve. If you spot anything, feedback would really help.
 
-- Bug reports: [Issue](https://github.com/kanywst/opa-authzen-interop/issues/new/choose) with reproducible steps
-- Spec mismatches: [Issue](https://github.com/kanywst/opa-authzen-interop/issues/new/choose) with the relevant scenario URL
-- Improvements / implementation changes: [Pull Request](https://github.com/kanywst/opa-authzen-interop/pulls)
+- Bug reports: [Issue](https://github.com/kanywst/opa-authzen-plugin/issues/new/choose) with reproducible steps
+- Spec mismatches: [Issue](https://github.com/kanywst/opa-authzen-plugin/issues/new/choose) with the relevant scenario URL
+- Improvements / implementation changes: [Pull Request](https://github.com/kanywst/opa-authzen-plugin/pulls)
 
 `evaluations` support is still in progress, so suggestions and fixes are both very welcome.
 
@@ -162,7 +164,7 @@ There are still many parts I need to improve. If you spot anything, feedback wou
 
 ## Links
 
-- `opa-authzen-interop` (this repo): [https://github.com/kanywst/opa-authzen-interop](https://github.com/kanywst/opa-authzen-interop)
+- `opa-authzen-interop` (archived; now [opa-authzen-plugin/interop/todo](https://github.com/kanywst/opa-authzen-plugin/tree/main/interop/todo)): [https://github.com/kanywst/opa-authzen-interop](https://github.com/kanywst/opa-authzen-interop)
 - `opa-authzen-plugin`: [https://github.com/kanywst/opa-authzen-plugin](https://github.com/kanywst/opa-authzen-plugin)
 - AuthZEN Interop Introduction: [https://authzen-interop.net/docs/intro/](https://authzen-interop.net/docs/intro/)
 - Todo 1.1 payload spec: [https://authzen-interop.net/docs/scenarios/todo-1.1/](https://authzen-interop.net/docs/scenarios/todo-1.1/)
