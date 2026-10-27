@@ -1,10 +1,15 @@
 ---
-title: "The door was the VPN: why ransomware in Japan comes in through VPN appliances"
+title: 'The door was the VPN: why ransomware in Japan comes in through VPN appliances'
 published: false
-description: "In 2025, 61 of the 92 Japanese ransomware victims that could say how the attacker got in named their VPN appliance. I drew the reasons as a break-in investigation report."
-tags: ["showdev", "security", "ransomware", "vpn"]
+description: 'In 2025, 61 of the 92 Japanese ransomware victims that could say how the attacker got in named their VPN appliance. I drew the reasons as a break-in investigation report.'
+tags:
+  - showdev
+  - security
+  - ransomware
+  - vpn
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/vpn-is-the-door/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/vpn-is-the-door/cover.png?v=398e801f'
+id: 4929020
 ---
 
 ## Introduction
