@@ -2,16 +2,16 @@
 
 # Article index
 
-120 article(s) in this repository, 108 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+121 article(s) in this repository, 109 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
-### ShowDev (20)
+### ShowDev (21)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
 | [a2claude: Turn Claude Code Into a Server Other AI Agents Can Call](https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6) | `showdev`, `ai`, `agents`, `python` | 2026-06-14 | 0👍 | [src](./articles/a2claude-claude-code-as-a2a-agent.md) |
-| [I Made Four Authorization Engines Answer the Same Questions](https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96) | `showdev`, `authorization`, `security`, `webassembly` | 2026-09-12 | 0👍 · 1💬 | [src](./articles/authz-playground.md) |
+| [I Made Four Authorization Engines Answer the Same Questions](https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96) | `showdev`, `authorization`, `security`, `webassembly` | 2026-09-12 | 1👍 · 1💬 | [src](./articles/authz-playground.md) |
 | A Blackjack Table That Lives in a README, Dealt by GitHub Actions | `showdev`, `python`, `githubactions`, `gamedev` | draft |  | [src](./articles/blackjack-readme-table.md) |
 | [brtc (Brute-force Cost): A CLI Tool to Convert Password Strength into "Time to Crack and a Real USD Invoice"](https://dev.to/kanywst/brtc-a-cli-tool-to-convert-password-strength-into-time-to-crack-and-a-real-usd-invoice-24k9) | `security`, `go`, `cli`, `showdev` | 2026-03-08 | 1👍 | [src](./articles/brtc-password-cracking-cost.md) |
 | [I built chainscope: reading supply chain attacks across 6 surfaces, one slide at a time](https://dev.to/kanywst/i-built-chainscope-reading-supply-chain-attacks-across-6-surfaces-one-slide-at-a-time-28mc) | `security`, `supplychain`, `showdev` | 2026-04-29 | 0👍 | [src](./articles/chainscope-supply-chain-six-surfaces.md) |
@@ -29,6 +29,7 @@
 | [Stardust: The dashboard that transforms GitHub trends from "search" to "monitoring"](https://dev.to/kanywst/stardust-the-dashboard-that-transforms-github-trends-from-search-to-monitoring-5732) | `showdev`, `react`, `typescript`, `github` | 2026-02-01 | 1👍 | [src](./articles/stardust-deep-dive.md) |
 | [The Birth of Websites: A Visual Journey through IT History](https://dev.to/kanywst/the-birth-of-websites-a-visual-journey-through-it-history-444f) | `showdev`, `vue`, `webdev`, `history` | 2026-01-09 | 0👍 | [src](./articles/the-birth-of-websites.md) |
 | [Velo: A Cross-Platform Network Speed Monitor Built with Go & Wails](https://dev.to/kanywst/velo-a-cross-platform-network-speed-monitor-built-with-go-wails-3g3p) | `showdev`, `wails`, `golang`, `vue` | 2026-01-10 | 0👍 | [src](./articles/velo.md) |
+| [Ransomware in Japan: 61 of 92 Known Entry Points in 2025 Were VPN Appliances](https://dev.to/kanywst/ransomware-in-japan-61-of-92-known-entry-points-in-2025-were-vpn-appliances-49gn) | `showdev`, `security`, `ransomware`, `vpn` | 2026-10-27 | 0👍 | [src](./articles/vpn-is-the-door.md) |
 | [y509: A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains](https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-for-viewing-and-analyzing-x509-certificate-chains-5fn6) | `showdev`, `golang`, `cli`, `security` | 2026-01-09 | 2👍 | [src](./articles/y509.md) |
 
 ### Authorization (11)
@@ -76,7 +77,7 @@
 | エージェントに何を許したかを、暗号的に証明可能な形で持ち歩く: AP2 の Mandate を JSON Schema から読む | `security`, `ai`, `identity`, `payments` | draft |  | [src](./articles/fido-agentic-auth-ap2-mandates.md) |
 | [ID-JAG Deep Dive](https://dev.to/kanywst/id-jag-deep-dive-1mhp) | `oauth`, `security`, `identity`, `ai` | 2026-03-16 | 8👍 | [src](./articles/id-jag-deep-dive.md) |
 | ID-JAG が製品になった日: IETF の draft が Okta の GA 機能として出荷されるまで | `oauth`, `identity`, `mcp`, `ai` | draft |  | [src](./articles/id-jag-shipped.md) |
-| [Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth](https://dev.to/kanywst/identity-chaining-deep-dive-connecting-identity-across-trust-domains-with-oauth-2onb) | `oauth`, `security`, `identity`, `microservices` | 2026-03-14 | 3👍 · 3💬 | [src](./articles/identity-chaining-deep-dive.md) |
+| [Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth](https://dev.to/kanywst/identity-chaining-deep-dive-connecting-identity-across-trust-domains-with-oauth-2onb) | `oauth`, `security`, `identity`, `microservices` | 2026-03-14 | 4👍 · 3💬 | [src](./articles/identity-chaining-deep-dive.md) |
 
 ### Amazon Web Services (10)
 
