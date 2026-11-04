@@ -1,14 +1,16 @@
 ---
-title: 'Secret Scanners Look for Credentials. I Wanted One That Looks for Me.'
+title: Secret Scanners Look for Credentials. I Wanted One That Looks for Me.
 published: true
-description: Coding agents commit what they see. Home paths, the project slug Claude Code derives from your home directory, a hostname in pasted terminal output, a session link in the PR body. None of it is a secret, so gitleaks stays quiet. kwangmyong scans repositories and GitHub for your own identity instead.
+description: 'Coding agents commit what they see. Home paths, the project slug Claude Code derives from your home directory, a hostname in pasted terminal output, a session link in the PR body. None of it is a secret, so gitleaks stays quiet. kwangmyong scans repositories and GitHub for your own identity instead.'
 tags:
   - showdev
   - git
   - privacy
   - security
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/kwangmyong/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/kwangmyong/cover.png?v=cd8716a6'
+id: 4973059
+date: '2026-11-04T04:39:45Z'
 ---
 
 I let coding agents write a lot of my commits now. They write what they see, and what they see is my machine: `/Users/<me>/src/...` in a README, the `-Users-<me>-<repo>` slug Claude Code uses for its project directory in a note about memory, `me@my-laptop ~ %` in a pasted test log, a `claude.ai/code/session_...` link at the bottom of a PR body.
