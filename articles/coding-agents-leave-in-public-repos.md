@@ -7,7 +7,9 @@ tags:
   - git
   - privacy
   - security
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/coding-agents-leave-in-public-repos/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/coding-agents-leave-in-public-repos/cover.png?v=43feca34'
+id: 4975796
+date: '2026-11-04T13:38:24Z'
 ---
 
 I let coding agents write a lot of my commits now. They write what they see, and what they see is my machine: `/Users/<me>/src/...` in a README, a project path in a notes file, a session link at the bottom of a commit. None of it is a secret, so no secret scanner flags it. It is still my account name, in public.
