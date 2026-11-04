@@ -1,7 +1,7 @@
 ---
 title: What Coding Agents Leave in Public Git Repos
 published: true
-description: 'Tens of thousands of public files carry a developer''s real login in a path an agent wrote, and millions of commits carry a session link. I counted, sampled, and built a hook to stop it.'
+description: 'Tens of thousands of public files carry a developer''s real login in a path an agent wrote, and millions of commits carry a session link. I counted them and wrote a hook that blocks it.'
 tags:
   - ai
   - git
@@ -14,7 +14,7 @@ date: '2026-11-04T13:38:24Z'
 
 I let coding agents write a lot of my commits now. They write what they see, and what they see is my machine: `/Users/<me>/src/...` in a README, a project path in a notes file, a session link at the bottom of a commit. None of it is a secret, so no secret scanner flags it. It is still my account name, in public.
 
-I wanted to know how common that is. On 2026-11-04 I ran GitHub code and commit search for the traces agents leave, then sampled the results to check how many were real.
+I wanted to know how common that is, so I counted with GitHub search and checked samples by hand.
 
 ## The numbers
 
@@ -31,9 +31,9 @@ I wanted to know how common that is. On 2026-11-04 I ran GitHub code and commit 
 Caveats:
 
 - Code search only sees default branches of indexed repositories, so the file counts are a floor, not a census.
-- GitHub's commit count for the session link moved between 1.8 million and 10.8 million within one afternoon. I would not quote any single figure from it. Every one of the 500 most recent results did contain a session link, though.
+- GitHub's commit count for the session link moved between 1.8 million and 10.8 million in one afternoon. All 500 of the newest results did contain one.
 - My samples are the first pages of results, not a random draw.
-- I am not naming any repository or person. Every number above is an aggregate.
+- No repository or person is named here. Every number is an aggregate.
 
 ## Why each one ends up there
 
@@ -42,8 +42,6 @@ Caveats:
 **The project slug.** Claude Code keeps per-project state under `~/.claude/projects/` in a directory named after the absolute path, so `/Users/taro/src/app` becomes `-Users-taro-src-app`. That slug shows up in notes, logs and debugging output that agents paste into the repository.
 
 **Session links.** Some agent setups add a trailer like `Claude-Session: https://claude.ai/code/session_…` to each commit, or a task link to the PR body. What the link does publicly is tie a commit to an agent session and, across repositories, tie commits to each other.
-
-Of the three, the login in a path is the one I would fix first: it is your name on the machine, it is in the working tree where everyone reads it, and it stays in history after you delete it.
 
 ## Check your own
 
@@ -59,7 +57,7 @@ Your public files with your home path:
 gh search code "/Users/<your-login>/" --owner <your-github-login>
 ```
 
-Or run the tool I ended up writing, which does both and more, against a local clone:
+In a local clone, including deleted files and commit metadata:
 
 ```sh
 brew install --cask kanywst/tap/kwangmyong
@@ -71,7 +69,7 @@ kwangmyong scan --history .
 
 ## Stop it at the source
 
-Scanning finds what is already out. The cheaper fix is to stop the agent before the write. `kwangmyong hook claude` runs as a Claude Code `PreToolUse` hook (there are adapters for Codex, Gemini CLI, Cursor, Copilot, Windsurf, Kiro and Devin too). It checks `git commit`, `git push`, `gh` bodies, file writes into the repository and GitHub MCP calls against your name, logins, emails, hostnames and home paths, and exits 2 to block. The agent gets the reason back with the value masked, so it can fix the text instead of just failing.
+Scanning finds what is already out. `kwangmyong hook claude` stops it before the write: as a Claude Code `PreToolUse` hook it blocks `git commit`, `git push`, `gh` bodies, file writes and GitHub MCP calls that carry your name, login, email, hostname or home path, and tells the agent why with the value masked. Codex, Gemini CLI, Cursor, Copilot, Windsurf, Kiro and Devin have adapters too.
 
 ```json
 {
@@ -83,11 +81,9 @@ Scanning finds what is already out. The cheaper fix is to stop the agent before 
 }
 ```
 
-For the session trailer, look at your agent's commit attribution settings; it is configuration, not something you have to scrub after the fact.
-
 ## Method
 
-Queries, run with an authenticated `gh api` on 2026-11-04, spaced out to stay under the search rate limits:
+Run with `gh api` on 2026-11-04:
 
 - code: `"/Users/" filename:CLAUDE.md`, `"/Users/" filename:AGENTS.md`, `"-Users-" ".claude/projects"`, first 300 results each, text-match fragments checked with a regex, placeholders excluded
 - commits: `"claude.ai/code/session_"` and `"chatgpt.com/codex/tasks"`, newest first, 500 results each, messages checked with a regex
