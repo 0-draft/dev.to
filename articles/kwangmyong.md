@@ -20,7 +20,7 @@ None of that is a credential, so secret scanners don't flag it. I wanted one tha
 - Source: <https://github.com/0-draft/kwangmyong>
 - Install: `go install github.com/0-draft/kwangmyong/cmd/kwangmyong@latest`, or a binary from the releases page
 
-![gitleaks finds nothing; kwangmyong finds the made-up developer's home path, hostname, name and session link, and its Claude Code hook blocks gh pr create](./assets/kwangmyong/demo.gif)
+![gitleaks finds nothing; kwangmyong finds the made-up developer's home path, hostname, name and session link, and its Claude Code hook blocks gh pr create](./assets/kwangmyong/demo.gif?v=d3d875b1)
 
 ## Same repository, two scanners
 
