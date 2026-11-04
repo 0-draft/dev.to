@@ -7,6 +7,7 @@ tags:
   - git
   - privacy
   - security
+series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/coding-agents-leave-in-public-repos/cover.png?v=43feca34'
 id: 4975796
 date: '2026-11-04T13:38:24Z'
