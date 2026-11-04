@@ -8,7 +8,7 @@ tags:
   - privacy
   - security
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/kwangmyong/cover.png?v=cd8716a6'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/kwangmyong/cover.png?v=6ec95fc7'
 id: 4973059
 date: '2026-11-04T04:39:45Z'
 ---
@@ -20,7 +20,7 @@ None of that is a credential, so secret scanners don't flag it. I wanted one tha
 - Source: <https://github.com/kanywst/kwangmyong>
 - Install: `brew install --cask kanywst/tap/kwangmyong` or `go install github.com/kanywst/kwangmyong/cmd/kwangmyong@latest`
 
-![gitleaks finds nothing; kwangmyong's terminal UI walks the made-up developer's home path, hostname, name and session link, its Claude Code hook blocks gh pr create, and a clean repo comes back TARGET DARK](./assets/kwangmyong/demo.gif)
+![gitleaks finds nothing; kwangmyong's terminal UI walks the made-up developer's home path, hostname, name and session link, its Claude Code hook blocks gh pr create, and a clean repo comes back TARGET DARK](./assets/kwangmyong/demo.gif?v=839e39cb)
 
 ## Same repository, two scanners
 
@@ -47,7 +47,7 @@ Correct. There are no secrets in it.
 
 On a terminal, `kwangmyong scan --history .` sweeps the repository with a live count, then opens this:
 
-![The kwangmyong terminal UI: places on the left, the masked line, what leaks, why it matters, where else the same value is, and the fix on the right](./assets/kwangmyong/tui.png)
+![The kwangmyong terminal UI: places on the left, the masked line, what leaks, why it matters, where else the same value is, and the fix on the right](./assets/kwangmyong/tui.png?v=07b722ec)
 
 Every value is masked as a prefix and a fingerprint (`ty…[b35fc2ee]`), so a screenshot or a CI log is not a new leak. `r` reveals values on that screen only. Search only sees masked text, so typing your own name into it finds nothing.
 
