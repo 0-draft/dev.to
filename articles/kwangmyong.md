@@ -1,7 +1,7 @@
 ---
 title: Secret Scanners Look for Credentials. I Wanted One That Looks for Me.
 published: true
-description: 'Coding agents commit what they see on your machine. None of it is a secret, so gitleaks stays quiet. kwangmyong looks for you instead.'
+description: 'Coding agents commit what they see on your machine: home paths, hostnames, session links. None of it is a secret, so gitleaks stays quiet. kwangmyong looks for you, shows it in a terminal UI, and blocks the agent before it pushes.'
 tags:
   - showdev
   - git
@@ -17,14 +17,14 @@ I let coding agents write a lot of my commits now. They write what they see, and
 
 None of that is a credential, so secret scanners don't flag it. I wanted one that knows who I am.
 
-- Source: <https://github.com/0-draft/kwangmyong>
-- Install: `go install github.com/0-draft/kwangmyong/cmd/kwangmyong@latest`, or a binary from the releases page
+- Source: <https://github.com/kanywst/kwangmyong>
+- Install: `brew install --cask kanywst/tap/kwangmyong` or `go install github.com/kanywst/kwangmyong/cmd/kwangmyong@latest`
 
-![gitleaks finds nothing; kwangmyong finds the made-up developer's home path, hostname, name and session link, and its Claude Code hook blocks gh pr create](./assets/kwangmyong/demo.gif?v=d3d875b1)
+![gitleaks finds nothing; kwangmyong's terminal UI walks the made-up developer's home path, hostname, name and session link, its Claude Code hook blocks gh pr create, and a clean repo comes back TARGET DARK](./assets/kwangmyong/demo.gif)
 
 ## Same repository, two scanners
 
-A four-commit repository for a made-up developer, Taro Yamada (login `tyamada`, laptop `Taros-MacBook-Pro`):
+The demo is a four-commit repository for a made-up developer, Taro Yamada (login `tyamada`, laptop `Taros-MacBook-Pro`):
 
 - `README.md` mentions `/Users/tyamada/src/app/log`
 - `NOTES.md` mentions `~/.claude/projects/-Users-tyamada-src-app/memory`
@@ -43,64 +43,85 @@ INF no leaks found
 
 Correct. There are no secrets in it.
 
-kwangmyong, given the name, login and hostname:
+## What kwangmyong shows
+
+On a terminal, `kwangmyong scan --history .` sweeps the repository with a live count, then opens this:
+
+![The kwangmyong terminal UI: places on the left, the masked line, what leaks, why it matters, where else the same value is, and the fix on the right](./assets/kwangmyong/tui.png)
+
+Every value is masked as a prefix and a fingerprint (`ty…[b35fc2ee]`), so a screenshot or a CI log is not a new leak. `r` reveals values on that screen only. Search only sees masked text, so typing your own name into it finds nothing.
+
+`ALSO` lists the other places the same value turns up. `FIX` depends on where it is: a file needs an edit, a deleted file or a commit message needs a history rewrite, and `p` drafts that rewrite (git filter-repo inputs plus a checklist of what a rewrite cannot reach) without leaving the screen.
+
+Quit, and the verdict stays in the scrollback:
 
 ```text
-$ kwangmyong scan --history .
-HIGH  identity.name              file NOTES.md:1            ty…[b35fc2ee]
-HIGH  identity.name              file README.md:3           ty…[b35fc2ee]
-HIGH  identity.name              file test.log:1            ty…[b35fc2ee]
-HIGH  identity.host              file test.log:1            Ta…[a84654fa]
-HIGH  generic.agent-session-url  commit 871e593 message     ht…[509ace00]
-HIGH  identity.name              history AUTHORS@686ce61:1  山…[ed6d53c9]
 
-6 findings (6 high, 0 warn)
+╭────────────────────────────────────────────────────────────────────────────╮
+│ ✗ TARGET EXPOSED  6 pieces of intel on you, from 5 places                  │
+│   4 to fix in files · 2 baked into history                                 │
+│   threat level ■■■■□ HIGH                                                  │
+│   swept 3 files · 4 commits · 1 deleted blob                               │
+│   looked for 2 names · 1 login · 1 host · home paths · agent session links │
+│   values are masked · --reveal shows them                                  │
+│   next ▸ kwangmyong plan .  drafts the history rewrite for you to review   │
+╰────────────────────────────────────────────────────────────────────────────╯
 ```
 
-Values are printed as a prefix and a fingerprint, so the scan log doesn't leak them again. `--reveal` prints them.
+A clean repository gets `✓ TARGET DARK` with what was swept and what was looked for, so "nothing found" also says how hard it looked. Piped, in CI, or with `--format json|sarif`, the same report prints without the UI.
 
-## What it searches for
+## It starts from who you are
+
+The profile lives in `~/.config/kwangmyong/config.toml`, never in the repository, and `kwangmyong init` fills it in from the machine: login, home directory, full name, hostname, global git identity.
 
 ```toml
-# ~/.config/kwangmyong/config.toml
 [identity]
 names  = ["Taro Yamada", "山田 太郎"]
 logins = ["tyamada"]
 hosts  = ["Taros-MacBook-Pro"]
 ```
 
-It also adds this machine's login, home directory, hostname and git identity. Each value is expanded into the forms it shows up in: `tyamada`, `t.yamada`, `Yamada Taro`, `-Users-tyamada-`, `Taro's MacBook Pro`.
+Each value is expanded into the forms it actually shows up in: `tyamada`, `t.yamada`, `Yamada Taro`, `-Users-tyamada-`, `Taro's MacBook Pro`. Session links from Claude Code and Codex are flagged without any config.
 
-Session links from Claude Code and Codex are flagged without any config.
+## Stop the agent, not just the commit
 
-## Beyond the working tree
+The part I use most is the hooks. `kwangmyong hook install` sets up pre-commit, commit-msg and pre-push for a repository. For agents, the pre-tool hook gets the tool call before it runs:
 
-`kwangmyong github <owner>` reads issues, PRs, comments, reviews, releases and gists through the API. `git filter-repo` doesn't reach those.
+| Agent | Hook |
+| --- | --- |
+| Claude Code | `kwangmyong hook claude` |
+| Codex CLI | `kwangmyong hook codex` |
+| Gemini CLI | `kwangmyong hook gemini` |
+| Cursor | `kwangmyong hook cursor` |
+| GitHub Copilot | `kwangmyong hook copilot` |
+| Windsurf, Kiro, Devin | `kwangmyong hook windsurf`, `kiro`, `devin` |
 
-`kwangmyong plan .` writes the `filter-repo` inputs and a checklist to a temp directory outside the repository:
-
-```text
-$ kwangmyong plan .
-4 commit(s) from fee9bcc2ac41 would be rewritten, 0 tag(s) move
-```
-
-## Hooks
-
-```text
-kwangmyong hook pre-commit
-kwangmyong hook pre-push
-kwangmyong hook claude      # Claude Code PreToolUse
-```
-
-The Claude Code hook exits `2`, so the agent gets the reason back instead of the command running. Here it is on the tool call for a `gh pr create` with a session link in the body:
+It checks `git commit`, `git push`, `gh` bodies and body files, file writes into the repository and GitHub MCP writes, and exits `2` to block. The agent gets the reason back, masked:
 
 ```text
-$ kwangmyong hook claude < tool-call.json
-kwangmyong: this command would publish your identity (1 finding(s)):
-  generic.agent-session-url  command gh:3  ht…[509ace00]
-Use ~/ or repo-relative paths, your public handle instead of a real name, the GitHub noreply address as the commit email, and drop agent session links.
-$ echo $?
-2
+✗ TRANSMISSION BLOCKED. kwangmyong stopped this command: it would hand out intel on you.
+
+[HIGH] command gh:3
+  3 │ ht…[bf572e0c]'
+    │ ^^^^^^^^^^^^^ your agent's session link
+
+fix ▸ use ~/ or repo-relative paths, your public handle instead of a real name,
+      the GitHub noreply address as the commit email, and no agent session links.
 ```
 
-Not covered yet: wikis, Actions logs, Discussions.
+## CI
+
+```yaml
+- uses: kanywst/kwangmyong@v0
+  with:
+    identity: ${{ secrets.KWANGMYONG_IDENTITY }}
+    sarif: kwangmyong.sarif
+```
+
+The identity comes from a secret as TOML. The Action checks the release binary against its signed checksums, and the SARIF is masked no matter what.
+
+## Not covered yet
+
+Wikis, Actions logs, Discussions.
+
+Source and issues: <https://github.com/kanywst/kwangmyong>
