@@ -13,6 +13,8 @@ cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/a
 date: '2026-09-16T10:45:49Z'
 ---
 
+> **Update (2026-11-08):** `mandatum` has since been archived at v0.2.0 and is no longer developed. The code and the [specification](https://github.com/kanywst/mandatum/blob/main/docs/spec/delegation-assertion.md) stay readable, and the open questions below are still worth arguing with, but nothing here will be fixed or extended.
+
 ## Introduction
 
 Almost every AI agent acting for a person does it by inheriting a credential: a service account, an API key, a shared token, the user's own session.
@@ -21,7 +23,7 @@ Three things break the moment you do that. Two surveys put a rough number on the
 
 So I built `mandatum`.
 
-Repo: [https://github.com/kanywst/mandatum](https://github.com/kanywst/mandatum)
+Repo (archived): [https://github.com/kanywst/mandatum](https://github.com/kanywst/mandatum)
 
 ---
 
