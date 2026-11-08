@@ -13,6 +13,8 @@ id: 3389902
 date: '2026-03-23T15:07:01Z'
 ---
 
+> **Update (2026-11-08):** the guest book moved out of my profile README into [0-draft/guestbook](https://github.com/0-draft/guestbook) on 2026-10-02 and is now retired: nobody but me ever signed it. The repository is frozen and will be archived, so new entries no longer do anything; everything below still describes how it worked.
+
 How do you use your GitHub Profile README?
 
 There are so many approaches out there—listing your skill set, showcasing GitHub Stats badges, or dropping in a snake animation that eats your contribution graph.

@@ -17,11 +17,11 @@ id: 4856990
 
 README games are an old GitHub trick: a link opens an issue, a workflow reads it, and the README redraws. Chess and tic-tac-toe have been done many times. I wanted one where the game itself had something to say, so I built a blackjack table that tells you, after every click, exactly what that decision was worth.
 
-**[Play it here](https://github.com/0-draft/blackjack#blackjack).** Nothing to install, no account beyond the GitHub one you already have.
+**[Play it here](https://github.com/0-draft/casino#blackjack).** Nothing to install, no account beyond the GitHub one you already have.
 
 ## Links
 
-- **Table:** [github.com/0-draft/blackjack](https://github.com/0-draft/blackjack#blackjack)
+- **Table:** [github.com/0-draft/casino](https://github.com/0-draft/casino#blackjack)
 - **Source:** `scripts/blackjack.py` (the game) and `scripts/bjmath.py` (the calculator) in the same repo
 
 ## How a hand is played
@@ -87,4 +87,4 @@ Six decks, dealer stands on soft 17, double after split, late surrender, blackja
 
 ## Conclusion
 
-It started life in my profile README and now has [its own repo](https://github.com/0-draft/blackjack#blackjack). So far every hand on it is mine, which is the part I would like to change: go deal one. A click opens a prefilled issue, Submit plays it, and the closing comment tells you what your decision was worth.
+It started life in my profile README and now lives in [0-draft/casino](https://github.com/0-draft/casino#blackjack), next to a baccarat table. So far every hand on it is mine, which is the part I would like to change: go deal one. A click opens a prefilled issue, Submit plays it, and the closing comment tells you what your decision was worth.

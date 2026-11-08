@@ -14,6 +14,8 @@ date: '2026-08-13T11:18:30Z'
 ---
 
 > **Update (2026-10-02):** the board has moved out of my profile README into its own repository, [0-draft/shogi](https://github.com/0-draft/shogi). Everything below still describes how it works; only the address changed.
+>
+> **Update (2026-11-08):** the board is retired. In the months it was up, nobody but me played a move, so the repository is frozen and will be archived; the code stays readable at [0-draft/shogi](https://github.com/0-draft/shogi), but new moves no longer do anything.
 
 ## Introduction
 
