@@ -2,11 +2,11 @@
 
 # Article index
 
-121 article(s) in this repository, 109 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+123 article(s) in this repository, 111 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
-### ShowDev (21)
+### ShowDev (23)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
@@ -15,6 +15,7 @@
 | A Blackjack Table That Lives in a README, Dealt by GitHub Actions | `showdev`, `python`, `githubactions`, `gamedev` | draft |  | [src](./articles/blackjack-readme-table.md) |
 | [brtc (Brute-force Cost): A CLI Tool to Convert Password Strength into "Time to Crack and a Real USD Invoice"](https://dev.to/kanywst/brtc-a-cli-tool-to-convert-password-strength-into-time-to-crack-and-a-real-usd-invoice-24k9) | `security`, `go`, `cli`, `showdev` | 2026-03-08 | 1👍 | [src](./articles/brtc-password-cracking-cost.md) |
 | [I built chainscope: reading supply chain attacks across 6 surfaces, one slide at a time](https://dev.to/kanywst/i-built-chainscope-reading-supply-chain-attacks-across-6-surfaces-one-slide-at-a-time-28mc) | `security`, `supplychain`, `showdev` | 2026-04-29 | 0👍 | [src](./articles/chainscope-supply-chain-six-surfaces.md) |
+| [What Coding Agents Leave in Public Git Repos](https://dev.to/kanywst/what-coding-agents-leave-in-public-git-repos-nm1) | `ai`, `git`, `privacy`, `security` | 2026-11-04 | 2👍 | [src](./articles/coding-agents-leave-in-public-repos.md) |
 | [Galick: I built the ultimate Load Testing tool (Go + Starlark)](https://dev.to/kanywst/galick-i-built-the-ultimate-load-testing-tool-go-starlark-ipc) | `showdev`, `go`, `performance`, `testing` | 2026-01-20 | 1👍 · 3💬 | [src](./articles/galick-load-testing.md) |
 | [gmk(Git Mark): Stop Typing Git URLs](https://dev.to/kanywst/gmk-stop-typing-git-urls-a7) | `showdev`, `rust`, `cli`, `git` | 2026-01-16 | 0👍 | [src](./articles/gmk.md) |
 | [GitHub Profile: A "Guest Book" Anyone Can Sign](https://dev.to/kanywst/github-profile-a-guest-book-anyone-can-sign-2) | `showdev`, `github`, `python`, `automation` | 2026-03-23 | 1👍 · 1💬 | [src](./articles/guestbook-github-profile.md) |
@@ -24,6 +25,7 @@
 | [Introducing Omega: SPIFFE Workload Identity + AuthZEN Authorization in a Single Binary](https://dev.to/kanywst/introducing-omega-spiffe-workload-identity-authzen-authorization-in-a-single-binary-48j0) | `spiffe`, `authzen`, `security`, `opensource` | 2026-05-01 | 1👍 · 1💬 | [src](./articles/introducing-omega.md) |
 | [Introducing Zopa: a 60 KB authorization engine for proxy-wasm, written in Zig](https://dev.to/kanywst/introducing-zopa-a-60-kb-authorization-engine-for-proxy-wasm-written-in-zig-1l66) | `wasm`, `authorization`, `zig`, `opensource` | 2026-05-10 | 0👍 | [src](./articles/introducing-zopa.md) |
 | [IssueHub: Helping Beginners Find Their First OSS Contribution Opportunities](https://dev.to/kanywst/issuehub-helping-beginners-find-their-first-oss-contribution-opportunities-2g7k) | `showdev`, `oss`, `nextjs`, `typescript` | 2026-01-18 | 2👍 | [src](./articles/issuehub.md) |
+| [Secret Scanners Look for Credentials. I Wanted One That Looks for Me.](https://dev.to/kanywst/secret-scanners-look-for-credentials-i-wanted-one-that-looks-for-me-5adj) | `showdev`, `git`, `privacy`, `security` | 2026-11-04 | 0👍 | [src](./articles/kwangmyong.md) |
 | [Rapg: TUI-based Secret Manager](https://dev.to/kanywst/rapg-tui-based-secret-manager-4d7p) | `showdev`, `cli`, `go`, `security` | 2026-01-20 | 2👍 | [src](./articles/rapg-secure-tui-secret-manager.md) |
 | [Let's Play Shogi: I Turned My GitHub Profile README Into a Playable Board](https://dev.to/kanywst/lets-play-shogi-i-turned-my-github-profile-readme-into-a-playable-board-333c) | `showdev`, `github`, `python`, `automation` | 2026-08-13 | 0👍 | [src](./articles/shogi-on-github-profile.md) |
 | [Stardust: The dashboard that transforms GitHub trends from "search" to "monitoring"](https://dev.to/kanywst/stardust-the-dashboard-that-transforms-github-trends-from-search-to-monitoring-5732) | `showdev`, `react`, `typescript`, `github` | 2026-02-01 | 1👍 | [src](./articles/stardust-deep-dive.md) |
