@@ -1,6 +1,6 @@
 ---
 title: 'identity-deep-dive: A Daily, Scored Radar for OAuth WG, WIMSE, and OpenID Specs'
-published: false
+published: true
 description: 'Following OAuth WG, WIMSE, and the OpenID Foundation by hand means checking Datatracker, mailing lists, and dozens of GitHub repos. identity-deep-dive collects all of it every day, scores each draft and repo with an explainable rubric, and publishes the ranked result as a static site.'
 tags:
   - showdev
