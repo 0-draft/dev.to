@@ -20,6 +20,8 @@ Two weeks later I added a second backend that speaks Zed's Agent Client Protocol
 - Source: <https://github.com/kanywst/a2acode>
 - Install: `uvx a2acode serve` (PyPI), or `ghcr.io/kanywst/a2acode`
 
+![a2acode with the offline echo backend: one call completes, a second asks to run sudo reboot and pauses in input-required with a reply command that carries --request](./assets/a2acode/demo.gif)
+
 If ACP and A2A are new to you, I mapped them out in [Mapping MCP, A2A, and ACP](https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha). This post skips that.
 
 ## Picking the agent
