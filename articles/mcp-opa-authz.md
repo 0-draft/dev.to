@@ -29,7 +29,7 @@ I wanted the agent to stop reading policies and start running them. mcp-opa-auth
 
 `evaluate_policy` needs nothing external. The rest need `AUTHZEN_PDP_URL`. A local [opa-authzen-plugin](https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81) on `:8181` works as that PDP.
 
-![Four situations: the policy says false, the policy has no opinion, the PDP response has no decision, the PDP returns 401. Through opa eval or a bool decode, all four look like a deny. Through mcp-opa-authz they come back as defined false, undefined, and two distinct errors](./assets/mcp-opa-authz/diagrams/01-four-answers.png)
+![Four situations: the policy says false, the policy has no opinion, the PDP response has no decision, the PDP returns 401. Through opa eval or a bool decode, all four look like a deny. Through mcp-opa-authz they come back as defined false, undefined, and two distinct errors](./assets/mcp-opa-authz/diagrams/01-four-answers.png?v=a16e99b6)
 
 ## Why not just give the agent `opa eval`
 

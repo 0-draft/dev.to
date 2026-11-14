@@ -69,7 +69,7 @@ Exit code `2`. I cut the `why:` line under each finding to keep this short; the 
 
 The verdict hangs on Simon Willison's lethal trifecta: private data, untrusted content, an outbound channel. Any two are usually fine. All three in one skill means a web page someone else wrote gets to decide what happens to your `.env`. The scanner reports what a skill can reach, not whether it is malware. That is a guess it doesn't make.
 
-![The lethal trifecta as found in examples/evil-skill: private data (printenv piped to base64, cat ~/.claude/settings.json), untrusted content (curl piped to bash, reading issue and PR bodies), outbound channel (curl -d to a telemetry host). Below, the three verdicts: LOOKS PLAIN exit 0, REVIEW exit 1, STOP exit 2](./assets/trust-me-bro/diagrams/01-trifecta.png)
+![The lethal trifecta as found in examples/evil-skill: private data (printenv piped to base64, cat ~/.claude/settings.json), untrusted content (curl piped to bash, reading issue and PR bodies), outbound channel (curl -d to a telemetry host). Below, the three verdicts: LOOKS PLAIN exit 0, REVIEW exit 1, STOP exit 2](./assets/trust-me-bro/diagrams/01-trifecta.png?v=04d7799a)
 
 A skill that only *describes* `~/.ssh` doesn't tick the private-data leg. Fenced and inline code count; a sentence naming a path does not. Injection wording is the exception: a skill is instructions, so "ignore all previous instructions" counts in prose too.
 
