@@ -1,9 +1,15 @@
 ---
-title: "Signing What Was in the Context Window: draft-durga-wimse-ctx-isolation and Its Self-Reported Taint"
+title: 'Signing What Was in the Context Window: draft-durga-wimse-ctx-isolation and Its Self-Reported Taint'
 published: true
-description: "An individual IETF draft wants every AI agent tool call to carry a signed Context Taint Attestation, and wants MCP servers to refuse tainted state-changing calls. I read the five pages, decoded the example, built a verifier, and found where the trust actually sits."
-tags: ["ai", "security", "mcp", "identity"]
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-ctx-isolation-taint-attestation/cover.png?v=536bf14e"
+description: 'An individual IETF draft wants every AI agent tool call to carry a signed Context Taint Attestation, and wants MCP servers to refuse tainted state-changing calls. I read the five pages, decoded the example, built a verifier, and found where the trust actually sits.'
+tags:
+  - ai
+  - security
+  - mcp
+  - identity
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-ctx-isolation-taint-attestation/cover.png?v=536bf14e'
+id: 5038220
+date: '2026-11-14T22:29:07Z'
 ---
 
 The example object in Section 3 of draft-durga-wimse-ctx-isolation-00 has five SHA-256 values in it. I hashed short strings until they matched. `parent_trace_ref` is `sha256("test")`. `system_prompt_digest` is `sha256("4")`. `step_up_receipt_hash` is `sha256("2")`. The `kid` is `sha256("test1")`. And `data_plane_merkle_root`, the field that is supposed to commit to everything the agent had read, is `sha256("")`: the hash of an empty context, sitting next to `"taint_lattice_level": "UNTRUSTED_INGESTED"`.

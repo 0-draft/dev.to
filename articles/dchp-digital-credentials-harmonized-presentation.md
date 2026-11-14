@@ -1,9 +1,15 @@
 ---
-title: "DCHP: One CBOR Request for mdoc and SD-JWT VC, In Person and Online"
+title: 'DCHP: One CBOR Request for mdoc and SD-JWT VC, In Person and Online'
 published: true
-description: "OpenID and ISO SC17 WG10 are writing one request/response protocol to replace the split between ISO 18013-5 and OpenID4VP. The CDDL, the transcript that binds it together, and why the key for dc_api_origin decides your KB-JWT nonce today."
-tags: ["identity", "security", "openid", "cbor"]
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/dchp-digital-credentials-harmonized-presentation/cover.png?v=165d26e7"
+description: 'OpenID and ISO SC17 WG10 are writing one request/response protocol to replace the split between ISO 18013-5 and OpenID4VP. The CDDL, the transcript that binds it together, and why the key for dc_api_origin decides your KB-JWT nonce today.'
+tags:
+  - identity
+  - security
+  - openid
+  - cbor
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/dchp-digital-credentials-harmonized-presentation/cover.png?v=165d26e7'
+id: 5038221
+date: '2026-11-14T22:29:08Z'
 ---
 
 A wallet that holds a mobile driving licence today speaks two protocols for the same credential. At a shop counter it answers an ISO/IEC 18013-5 `DeviceRequest` over BLE. On a website it answers an OpenID4VP Authorization Request, through the browser's Digital Credentials API. Different request languages, different session binding, different response containers.
