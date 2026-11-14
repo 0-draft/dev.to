@@ -68,7 +68,7 @@ jobs:
           git commit -m "chore: auto-publish scheduled articles"
           for attempt in 1 2 3; do
             if git push; then
-              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              echo "before=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "Push rejected (attempt ${attempt}); rebasing onto origin/${GITHUB_REF_NAME}."
@@ -79,11 +79,12 @@ jobs:
           exit 1
 
       # The push above uses GITHUB_TOKEN, which never triggers publish.yml's
-      # push event; workflow_dispatch is the exception GitHub allows. With no
-      # "before" SHA, scope=changed diffs HEAD^..HEAD, which is the commit above.
-      # The run queues on the shared concurrency group until this job ends.
+      # push event; workflow_dispatch is the exception GitHub allows. The run
+      # queues on the shared concurrency group and may start after other commits
+      # land, so it diffs from the scheduler commit's parent rather than HEAD^.
       - name: Dispatch the publish run
-        if: steps.push.outputs.pushed == 'true'
+        if: steps.push.outputs.before != ''
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run publish.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f scope=changed
+          BEFORE: ${{ steps.push.outputs.before }}
+        run: gh workflow run publish.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f scope=changed -f before="$BEFORE"
