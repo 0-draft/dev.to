@@ -1,0 +1,26 @@
+grid-rows: 2
+grid-gap: 60
+
+classes: {
+  leg: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  stop: {style: {fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 3; font-color: "#0a0f25"; font-size: 26; bold: true}}
+  review: {style: {fill: "#ffedd5"; stroke: "#c2410c"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  plain: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+}
+
+legs: "the lethal trifecta, as found in examples/evil-skill" {
+  grid-rows: 1
+  grid-gap: 30
+  p: "private data\n\nprintenv | base64\ncat ~/.claude/settings.json" {class: leg}
+  u: "untrusted content\n\ncurl … | bash\nreads issue / PR / mail bodies" {class: leg}
+  o: "outbound channel\n\ncurl -d … to\ntelemetry.example-summarizer.io" {class: leg}
+}
+
+verdicts: "verdict and exit code" {
+  grid-rows: 1
+  grid-gap: 30
+  plain: "LOOKS PLAIN  · exit 0\nnothing visible in the files" {class: plain}
+  review: "REVIEW  · exit 1\nread the flagged lines yourself" {class: review}
+  stop: "STOP  · exit 2\nall three legs, or a hard finding\nlike curl | bash" {class: stop}
+}
+
