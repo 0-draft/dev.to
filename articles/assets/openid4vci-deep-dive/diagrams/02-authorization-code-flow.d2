@@ -1,0 +1,26 @@
+shape: sequence_diagram
+
+B: "Browser\n(End-User)" {
+  style: {fill: "#FEF7E0"; stroke: "#B45309"; stroke-width: 2; font-color: "#0a0f25"}
+}
+W: "Wallet" {
+  style: {fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25"}
+}
+AS: "Authorization Server\n/par /authorize /token" {
+  style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"}
+}
+CI: "Credential Issuer\n/credential" {
+  style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"}
+}
+
+CI -> W: "1. Credential Offer (optional)\ngrants.authorization_code {issuer_state}"
+W -> CI: "2. GET /.well-known/openid-credential-issuer"
+W -> AS: "3. POST /par (optional)\nresponse_type=code&code_challenge=...\n&authorization_details=[{type: openid_credential,\n  credential_configuration_id, locations?}]\n  or scope=UniversityDegree\n&issuer_state=... (MUST echo if offered)"
+AS -> W: "4. {request_uri, expires_in}" {style.stroke-dash: 3}
+W -> B: "5. 302 to /authorize?client_id&request_uri"
+B -> AS: "6. GET /authorize\nlogin, consent, maybe an OpenID4VP presentation"
+AS -> B: "7. 302 redirect_uri?code=..." {style.stroke-dash: 3}
+B -> W: "8. code"
+W -> AS: "9. POST /token\ngrant_type=authorization_code&code&code_verifier"
+AS -> W: "10. access_token\n+ authorization_details[].credential_identifiers\n  (REQUIRED if authorization_details was used)" {style.stroke-dash: 3}
+W -> CI: "11. POST /credential {credential_identifier, proofs}\n(same as pre-authorized steps 7-10)"

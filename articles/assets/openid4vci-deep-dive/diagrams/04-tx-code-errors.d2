@@ -1,0 +1,42 @@
+direction: right
+classes: {
+  h: {style: {fill: "#1A73E8"; stroke: "#0a0f25"; font-color: "#ffffff"; bold: true; font-size: 20}; width: 340; height: 95}
+  r: {style: {fill: "#E8F0FE"; stroke: "#0a0f25"; font-color: "#0a0f25"; bold: true; font-size: 19}; width: 340; height: 125}
+  same: {style: {fill: "#F1F3F4"; stroke: "#0a0f25"; font-color: "#0a0f25"; font-size: 19}; width: 340; height: 125}
+  amb: {style: {fill: "#FEF7E0"; stroke: "#0a0f25"; font-color: "#0a0f25"; font-size: 19}; width: 340; height: 125}
+  new: {style: {fill: "#E6F4EA"; stroke: "#0a0f25"; font-color: "#0a0f25"; font-size: 19}; width: 340; height: 125}
+}
+grid: {
+  grid-rows: 5
+  grid-columns: 4
+  grid-gap: 0
+  label: ""
+  style: {fill: transparent; stroke: transparent}
+
+
+
+  h0: "Token Request with\npre-authorized_code" {class: h}
+  h1: "1.0 Final\n(Sept 2025)" {class: h}
+  h2: "1.0 errata draft -19" {class: h}
+  h3: "1.1 draft -01" {class: h}
+
+  r1: "tx_code wrong,\ncode still valid" {class: r}
+  a1: "invalid_grant\n(6.3)" {class: same}
+  b1: "6.3 still says invalid_grant;\nnew 13.6.3 says SHOULD return\n'an error indicating the\nTransaction Code is invalid'" {class: amb}
+  c1: "invalid_tx_code\n(7.3, 14.6.3)" {class: new}
+
+  r2: "too many wrong\ntx_code attempts" {class: r}
+  a2: "no attempt limit\nin the text" {class: amb}
+  b2: "SHOULD cap attempts,\ninvalidate the code,\nthen invalid_grant\n(13.6.3)" {class: new}
+  c2: "same as errata:\ncap, invalidate,\ninvalid_grant" {class: new}
+
+  r3: "code expired\nor invalidated" {class: r}
+  a3: "invalid_grant" {class: same}
+  b3: "invalid_grant" {class: same}
+  c3: "invalid_grant" {class: same}
+
+  r4: "tx_code missing\nor not expected" {class: r}
+  a4: "invalid_request" {class: same}
+  b4: "invalid_request" {class: same}
+  c4: "invalid_request" {class: same}
+}

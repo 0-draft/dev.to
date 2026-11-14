@@ -1,0 +1,20 @@
+direction: down
+classes: {
+  wallet: {style: {fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  issuer: {style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  blob: {style: {fill: "#FEF7E0"; stroke: "#B45309"; stroke-width: 2; font-color: "#0a0f25"; font-size: 20}}
+}
+
+C: "Wallet Client Instance\n(phone)\nholds WSK (signing key)\nand Wallet Encryption Key" {class: wallet}
+S: "Wallet Server\n(Wallet Provider backend)\nsees: ids, status, its own risk signals\ncannot read: client payloads, credentials" {class: wallet}
+I: "Issuer Server\n/verification/initiate | supplement | status | cancel\n/credential/provision | get | metadata | status | manage\n/event/notify" {class: issuer}
+
+P: "Client Encrypted Payload (origin WALLET_CLIENT)\nJWE (HPKE, to Issuer Encryption Key)\n  └ JWS signed with WSK\n      aud = JWK thumbprint of the encryption key\n      body = Verification Data, key proofs" {class: blob}
+R: "Credentials\nJWE to the Wallet Encryption Key" {class: blob}
+
+C -> S: "out of scope\n(provider's own channel)"
+S <-> I: "mTLS on every endpoint\nApi-Version header, x-request-id,\nProblem Details errors"
+C -> P: "builds" {style.stroke-dash: 3}
+P -> I: "relayed unread\nby the Wallet Server" {style.stroke-dash: 3}
+I -> R: "returns" {style.stroke-dash: 3}
+R -> C: "relayed unread" {style.stroke-dash: 3}

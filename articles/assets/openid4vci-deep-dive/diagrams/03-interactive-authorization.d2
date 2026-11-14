@@ -1,0 +1,20 @@
+shape: sequence_diagram
+
+W: "Wallet\n(app, no browser)" {
+  style: {fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25"}
+}
+ACE: "Authorization Server\nauthorization_challenge_endpoint\n(also the OpenID4VP Verifier)" {
+  style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"}
+}
+TOK: "Authorization Server\n/token" {
+  style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"}
+}
+
+W -> ACE: "1. POST /authorize-challenge\nOAuth-Client-Attestation + -PoP headers\nresponse_type=code&client_id&code_challenge\n&authorization_details=[openid_credential ...]\n&interaction_types_supported=\n  urn:openid:dcp:ia:openid4vp_presentation,\n  urn:openid:dcp:ia:auth_via_web"
+ACE -> W: "2. 403 Forbidden\n{error: insufficient_authorization,\n interaction_type_required: ...openid4vp_presentation,\n auth_session: wxroVrBY...,\n openid4vp_request: {dcql_query, nonce,\n   response_mode: ia_post | ia_post.jwt}}" {style.stroke-dash: 3}
+W -> W: "3. check expected_origins (if present)\n= Origin of the challenge endpoint;\nbuild VP, bind it to the challenge endpoint\n(per format; see #812)"
+W -> ACE: "4. POST /authorize-challenge\nauth_session=wxroVrBY...  (most recent one)\n&openid4vp_response={vp_token: ...}"
+ACE -> ACE: "5. VP nonce == nonce bound to auth_session?\nauth_session bound to this DPoP key?"
+ACE -> W: "6. 200 {authorization_code}\n(or another 403 round)" {style.stroke-dash: 3}
+W -> TOK: "7. POST /token\ngrant_type=authorization_code&code&code_verifier"
+TOK -> W: "8. access_token -> Credential Endpoint as in 1.0" {style.stroke-dash: 3}

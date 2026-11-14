@@ -1,0 +1,25 @@
+shape: sequence_diagram
+
+U: "End-User\n(phone + SMS)" {
+  style: {fill: "#FEF7E0"; stroke: "#B45309"; stroke-width: 2; font-color: "#0a0f25"}
+}
+W: "Wallet" {
+  style: {fill: "#E8F0FE"; stroke: "#1A73E8"; stroke-width: 2; font-color: "#0a0f25"}
+}
+AS: "Authorization Server\n/token" {
+  style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"}
+}
+CI: "Credential Issuer\n/nonce /credential" {
+  style: {fill: "#E6F4EA"; stroke: "#34A853"; stroke-width: 2; font-color: "#0a0f25"}
+}
+
+CI -> W: "1. Credential Offer (QR)\nopenid-credential-offer://?credential_offer=\n{credential_issuer, credential_configuration_ids,\n grants.pre-authorized_code {pre-authorized_code, tx_code{}}}"
+CI -> U: "2. tx_code over a second channel\n(SMS, email). Not in the QR."
+W -> CI: "3. GET /.well-known/openid-credential-issuer\n-> authorization_servers, credential_endpoint,\n   nonce_endpoint, credential_configurations_supported"
+U -> W: "4. types 493536"
+W -> AS: "5. POST /token\ngrant_type=urn:ietf:params:oauth:grant-type:pre-authorized_code\n&pre-authorized_code=...&tx_code=493536\n(client auth OPTIONAL)"
+AS -> W: "6. 200 access_token\n+ authorization_details[].credential_identifiers" {style.stroke-dash: 3}
+W -> CI: "7. POST /nonce (no access token)"
+CI -> W: "8. {c_nonce}  Cache-Control: no-store" {style.stroke-dash: 3}
+W -> CI: "9. POST /credential  Bearer\n{credential_identifier,\n proofs.jwt[ {aud: issuer, nonce: c_nonce} ]}"
+CI -> W: "10a. 200 {credentials[ {credential} ]}\n10b. 202 Accepted {transaction_id, interval}\n     -> POST /deferred_credential {transaction_id}" {style.stroke-dash: 3}
