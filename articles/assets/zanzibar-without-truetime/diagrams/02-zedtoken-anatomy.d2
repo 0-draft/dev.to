@@ -1,0 +1,35 @@
+grid-columns: 1
+grid-gap: 40
+
+classes: {
+  wire: { style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 22; font: mono } }
+  field: { style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 22 } }
+  meaning: { style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 22 } }
+  note: { style: { fill: "#F1F3F4"; stroke: "#5F6368"; font-color: "#0a0f25"; font-size: 20; stroke-dash: 4 } }
+}
+
+row: "" {
+  grid-rows: 1
+  grid-gap: 40
+  style.opacity: 0
+pg: "PostgreSQL: written_at of the removal (run.sh step 4)" {
+  grid-columns: 1
+  grid-gap: 24
+  t: "GiQKGENNc0dJTW9HS09pRC84eWxxb0wwR0E9PRIINzMzNjBjODY=" { class: wire }
+  d: "base64 -> DecodedZedToken, field 3 (v1)\n\nrevision (1) = \"CMsGIMoGKOiD/8ylqoL0GA==\"\ndatastore_unique_id_prefix (2) = \"73360c86\"\nschema_hash (3) = absent" { class: field }
+  r: "revision: base64 again -> PostgresRevision\n\nxmin (1) = 843\nrelative_xmax (2) = 0, omitted, so xmax = 843\nrelative_xips (3) = []\noptional_txid (4) = 842\noptional_timestamp (5) = 1794694700802753000 ns" { class: field }
+  m: "pg_snapshot 843:843:\nevery xid < 843 is visible, so the removal (xid 842) is in it.\nrelation_tuple_transaction row: 842 | 842:842: | 22:18:20.802753\nSpiceDB adds the writer's own xid (markComplete) -> 843:843:" { class: meaning }
+}
+
+cr: "CockroachDB: written_at of write y (run-crdb.sh)" {
+  grid-columns: 1
+  grid-gap: 24
+  t: "GioKHjE3OTQ2OTQ3Njk0NDUxMDE4NTQuMDAwMDAwMDAwMBIIYjM1NjEwZmM=" { class: wire }
+  d: "base64 -> DecodedZedToken, field 3 (v1)\n\nrevision (1) = \"1794694769445101854.0000000000\"\ndatastore_unique_id_prefix (2) = \"b35610fc\"" { class: field }
+  m: "HLC: wall-clock nanoseconds . logical counter\n= crdb_internal_mvcc_timestamp of the overlap row 'key'\nread back with AS OF SYSTEM TIME" { class: meaning }
+}
+
+}
+
+n: "Neither is a clock reading you can compare across datastores.\nA prefix that does not match this datastore: treated as fully_consistent by default\n(--mismatch-zed-token-behavior=full-consistency)." { class: note }
+

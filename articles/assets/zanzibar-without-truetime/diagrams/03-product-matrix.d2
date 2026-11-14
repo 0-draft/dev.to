@@ -1,0 +1,54 @@
+grid-rows: 10
+grid-columns: 5
+grid-gap: 0
+
+c0_0: "Product on datastore" { width: 520; height: 150; style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c0_1: "Commit order from" { width: 520; height: 150; style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c0_2: "Token" { width: 520; height: 150; style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c0_3: "Read at least as fresh as token" { width: 520; height: 150; style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c0_4: "Gap left open" { width: 520; height: 150; style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c1_0: "Zanzibar paper\non Spanner" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c1_1: "TrueTime +\ncommit wait" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c1_2: "zookie" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c1_3: "any replica,\nwaits if T is ahead" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c1_4: "none (paid in\nwrite latency)" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c2_0: "SpiceDB on\nCloud Spanner" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c2_1: "TrueTime;\noverlap skipped" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c2_2: "ZedToken" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c2_3: "Spanner\nsnapshot read" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c2_4: "none" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c3_0: "SpiceDB on\nCockroachDB" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c3_1: "HLC + overlap row\n(static by default)" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c3_2: "ZedToken" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c3_3: "AS OF SYSTEM TIME" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c3_4: "fully_consistent is not\nread-after-write;\ninsecure strategy" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c4_0: "SpiceDB on\nPostgreSQL" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c4_1: "one primary:\nxid + pg_snapshot" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c4_2: "ZedToken" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c4_3: "replica if it has the\nrevision, else primary" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c4_4: "none with a token;\nminimize_latency:\nup to the 5 s quantum" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c5_0: "SpiceDB on\nMySQL" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c5_1: "one primary:\nAUTO_INCREMENT id" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c5_2: "ZedToken" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c5_3: "same, with\ntwo round trips" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c5_4: "no load balancer\nin front of replicas" { width: 520; height: 150; style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c6_0: "Permify on\nPostgreSQL" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c6_1: "one primary:\nXID8 + snapshot" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c6_2: "Snap Token" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c6_3: "snapshot carried\nin the token" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c6_4: "read path not\ntraced here" { width: 520; height: 150; style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c7_0: "OpenFGA" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c7_1: "not exposed" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c7_2: "none" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c7_3: "HIGHER_CONSISTENCY:\nskip cache, primary" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c7_4: "no per-write\nlower bound" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c8_0: "Ory Keto" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c8_1: "not exposed" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c8_2: "snaptoken field:\n\"not implemented\"" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c8_3: "not available" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c8_4: "everything" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c9_0: "Warrant (OSS)" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: true } }
+c9_1: "not exposed" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c9_2: "Warrant-Token:\nonly \"latest\"" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c9_3: "latest -> primary" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
+c9_4: "no token returned" { width: 520; height: 150; style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 24; bold: false } }
