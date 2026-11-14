@@ -3,7 +3,7 @@ title: "Signing What Was in the Context Window: draft-durga-wimse-ctx-isolation 
 published: true
 description: "An individual IETF draft wants every AI agent tool call to carry a signed Context Taint Attestation, and wants MCP servers to refuse tainted state-changing calls. I read the five pages, decoded the example, built a verifier, and found where the trust actually sits."
 tags: ["ai", "security", "mcp", "identity"]
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-ctx-isolation-taint-attestation/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-ctx-isolation-taint-attestation/cover.png?v=536bf14e"
 ---
 
 The example object in Section 3 of draft-durga-wimse-ctx-isolation-00 has five SHA-256 values in it. I hashed short strings until they matched. `parent_trace_ref` is `sha256("test")`. `system_prompt_digest` is `sha256("4")`. `step_up_receipt_hash` is `sha256("2")`. The `kid` is `sha256("test1")`. And `data_plane_merkle_root`, the field that is supposed to commit to everything the agent had read, is `sha256("")`: the hash of an empty context, sitting next to `"taint_lattice_level": "UNTRUSTED_INGESTED"`.
@@ -48,7 +48,7 @@ Here is the Context Taint Attestation (CTA) from Section 3, verbatim:
 
 The interesting question for each field is not what it means but whether any rule reads it. Most don't:
 
-![Field-by-field anatomy of the CTA: field name, the decoded example value, and which MUST rule in Sections 4 and 5 reads it. Only taint level, effect class, receipt hash, iat/exp and the signature are read by a rule; cta_version, invocation_id, parent_trace_ref, system_prompt_digest and the Merkle root are defined but no rule checks them](./assets/wimse-ctx-isolation-taint-attestation/diagrams/02-anatomy.png)
+![Field-by-field anatomy of the CTA: field name, the decoded example value, and which MUST rule in Sections 4 and 5 reads it. Only taint level, effect class, receipt hash, iat/exp and the signature are read by a rule; cta_version, invocation_id, parent_trace_ref, system_prompt_digest and the Merkle root are defined but no rule checks them](./assets/wimse-ctx-isolation-taint-attestation/diagrams/02-anatomy.png?v=df9f79f4)
 
 `parent_trace_ref` presumably points into the companion draft's trace records, but neither draft says so, and the companion calls its own link field `parent_record_hash`.
 
@@ -87,7 +87,7 @@ Section 5 adds: JCS before Ed25519 signing and verification, and fail closed wit
 
 Put together, with everything the draft does not define marked:
 
-![Sequence: untrusted mail enters the agent runtime, rule 1 raises the taint level, rule 3 builds the Merkle root, an optional step-up exchange with a policy engine or human (dashed red, no message or receipt format defined), the runtime signs the CTA and sends tools/call with _meta.ctxIsolation, the relying party applies Section 5 checks and rule 2, and either returns ERR_TAINTED_CONTROL_PLANE (no HTTP or JSON-RPC mapping defined) or releases the side effect](./assets/wimse-ctx-isolation-taint-attestation/diagrams/01-flow.png)
+![Sequence: untrusted mail enters the agent runtime, rule 1 raises the taint level, rule 3 builds the Merkle root, an optional step-up exchange with a policy engine or human (dashed red, no message or receipt format defined), the runtime signs the CTA and sends tools/call with _meta.ctxIsolation, the relying party applies Section 5 checks and rule 2, and either returns ERR_TAINTED_CONTROL_PLANE (no HTTP or JSON-RPC mapping defined) or releases the side effect](./assets/wimse-ctx-isolation-taint-attestation/diagrams/01-flow.png?v=d6f139e6)
 
 Notice which box holds the signing key. Section 3 has the runtime emit the CTA and names no other signer. The thing that decides the taint level is the thing that signs it.
 
@@ -138,7 +138,7 @@ This matters less than it looks, because the relying party never has the chunks,
 
 `READ_ONLY` and `NETWORK_EGRESS` are my names; the draft defines neither, which is the point. The full matrix:
 
-![Decision table for rule 2 without a step-up receipt: rows are taint levels TRUSTED_ONLY, MIXED_TAINT, UNTRUSTED_INGESTED, QUARANTINED and a lying runtime that claims TRUSTED_ONLY; columns are STATE_MUTATING, PRIVILEGED_ACTUATE and any other effect class. Tainted mutating and privileged calls are rejected; every other effect class is allowed at every taint level, including a GET to an attacker URL; the lying runtime row is allowed everywhere because its signature is valid](./assets/wimse-ctx-isolation-taint-attestation/diagrams/03-decision.png)
+![Decision table for rule 2 without a step-up receipt: rows are taint levels TRUSTED_ONLY, MIXED_TAINT, UNTRUSTED_INGESTED, QUARANTINED and a lying runtime that claims TRUSTED_ONLY; columns are STATE_MUTATING, PRIVILEGED_ACTUATE and any other effect class. Tainted mutating and privileged calls are rejected; every other effect class is allowed at every taint level, including a GET to an attacker URL; the lying runtime row is allowed everywhere because its signature is valid](./assets/wimse-ctx-isolation-taint-attestation/diagrams/03-decision.png?v=8d456576)
 
 Two cells bother me.
 

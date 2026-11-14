@@ -1,10 +1,16 @@
 ---
-title: "WIMSE HTTP Signatures Deep Dive: Proof of Possession That Survives the Load Balancer"
+title: 'WIMSE HTTP Signatures Deep Dive: Proof of Possession That Survives the Load Balancer'
 published: true
-description: "draft-ietf-wimse-http-signature profiles RFC 9421 so a workload signs each request with the key in its WIT. What is covered, why @authority is not, how wimse-aud, wimse-sign-response and wimse-req-nonce work, and what a real verifier rejects."
-tags: ["security", "identity", "microservices", "cryptography"]
+description: 'draft-ietf-wimse-http-signature profiles RFC 9421 so a workload signs each request with the key in its WIT. What is covered, why @authority is not, how wimse-aud, wimse-sign-response and wimse-req-nonce work, and what a real verifier rejects.'
+tags:
+  - security
+  - identity
+  - microservices
+  - cryptography
 series: Workload Identity
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-http-signature-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-http-signature-deep-dive/cover.png?v=752f9590'
+id: 5038204
+date: '2026-11-14T22:24:28Z'
 ---
 
 The first thing I noticed in draft-ietf-wimse-http-signature is a component it leaves out. The profile signs the method, the path, the query, the body digest and the token, but not `@authority`. A spec whose whole job is binding a request to its recipient does not sign the recipient's host name.
@@ -33,7 +39,7 @@ So the text is close to final. The -08 changes turned several loose points into 
 
 WIMSE has two application-layer options that both carry a WIT. The WPT draft is the DPoP-style one: a separate JWT proof in a header. This draft instead uses HTTP Message Signatures ([RFC 9421](https://www.rfc-editor.org/rfc/rfc9421)): the caller signs the HTTP message itself with the private key whose public half sits in the WIT's `cnf.jwk`. The server can sign the response the same way with its own WIT. Appendix C of the draft gives response signing as one of the reasons to pick this option over WPT.
 
-![Request and response flow through a TLS-terminating load balancer](./assets/wimse-http-signature-deep-dive/diagrams/01-request-response-flow.png)
+![Request and response flow through a TLS-terminating load balancer](./assets/wimse-http-signature-deep-dive/diagrams/01-request-response-flow.png?v=ca4ccca6)
 
 The order on the server side is fixed by Section 3. The WIT is validated first, before the signature is touched, because the verification key comes out of the WIT. The message "is not processed further before it has been fully validated". Any failure, WIT or signature, returns the same 400.
 
@@ -55,7 +61,7 @@ Don't copy `nonce="abcd1111"`. -08 requires a CSPRNG nonce with at least 64 bits
 
 Here is every field in the request, with the values from a request I signed with wimsey:
 
-![Field-by-field anatomy of a WIMSE Signature-Input](./assets/wimse-http-signature-deep-dive/diagrams/02-signature-input-anatomy.png)
+![Field-by-field anatomy of a WIMSE Signature-Input](./assets/wimse-http-signature-deep-dive/diagrams/02-signature-input-anatomy.png?v=a872a5e8)
 
 Points that are easy to get wrong:
 
@@ -109,7 +115,7 @@ The WIT lives an hour (`exp - iat = 3600`) and the signature five minutes. Secti
 
 Then I verified that one signature with `wimsey httpsig verify`, changing one thing each time:
 
-![What wimsey accepted and rejected](./assets/wimse-http-signature-deep-dive/diagrams/03-what-breaks.png)
+![What wimsey accepted and rejected](./assets/wimse-http-signature-deep-dive/diagrams/03-what-breaks.png?v=79041f68)
 
 ```bash
 # SI / SG hold the Signature-Input and Signature values from above.

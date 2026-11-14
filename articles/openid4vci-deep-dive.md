@@ -3,7 +3,7 @@ title: "OpenID4VCI Deep Dive: 1.0 Final, the Errata, Interactive Authorization i
 published: true
 description: "OpenID for Verifiable Credential Issuance 1.0 went Final in September 2025. The repo now carries three more texts that disagree on the wire: a 1.0 errata draft, a 1.1 draft with browserless Interactive Authorization, and a new Server-to-Server API. Both grant flows with real message names, and what changes after Final."
 tags: ["openid", "oauth", "identity", "security"]
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/openid4vci-deep-dive/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/openid4vci-deep-dive/cover.png?v=b4e9ff29"
 ---
 
 In OpenID4VCI 1.0 Final, a Wallet that sends the wrong PIN gets `invalid_grant`. A Wallet whose Pre-Authorized Code has expired also gets `invalid_grant`. The Wallet can't tell "ask the user to type it again" from "this offer is dead", and the Final text puts no limit on how many PINs an attacker may try against one code.
@@ -33,7 +33,7 @@ Everything format-specific (SD-JWT VC, mdoc, the W3C VCDM variants) is pushed in
 
 The issuer has already identified the user through its own process (a bank login, a counter visit), so the Wallet never sees an Authorization Endpoint. It gets a code in a QR and trades it for a token.
 
-![Pre-Authorized Code Flow: Credential Offer QR, tx_code by SMS, metadata fetch, Token Request with pre-authorized_code and tx_code, nonce, Credential Request with jwt proofs, 200 or 202](./assets/openid4vci-deep-dive/diagrams/01-pre-authorized-code-flow.png)
+![Pre-Authorized Code Flow: Credential Offer QR, tx_code by SMS, metadata fetch, Token Request with pre-authorized_code and tx_code, nonce, Credential Request with jwt proofs, 200 or 202](./assets/openid4vci-deep-dive/diagrams/01-pre-authorized-code-flow.png?v=6539fc3d)
 
 The offer (Section 4.1.1). In a QR it is usually by reference (`credential_offer_uri`), because the by-value JSON doesn't fit; the two parameters MUST NOT appear together:
 
@@ -74,7 +74,7 @@ That gives you the security model. The spec says it plainly in Section 13.6.1: t
 
 This one is ordinary OAuth with PKCE, with two OpenID4VCI-specific parameters.
 
-![Authorization Code Flow: optional offer with issuer_state, metadata, PAR with authorization_details of type openid_credential, browser /authorize, code, Token Request, credential_identifiers, Credential Request](./assets/openid4vci-deep-dive/diagrams/02-authorization-code-flow.png)
+![Authorization Code Flow: optional offer with issuer_state, metadata, PAR with authorization_details of type openid_credential, browser /authorize, code, Token Request, credential_identifiers, Credential Request](./assets/openid4vci-deep-dive/diagrams/02-authorization-code-flow.png?v=298a2ebb)
 
 The Wallet asks for credentials either by `scope` (taken from the `scope` field of the configuration in `credential_configurations_supported`) or with RAR:
 
@@ -177,7 +177,7 @@ The rule used to be there. PR #527 rewrote the sentence to insert the well-known
 
 Transaction Code Guessing is what the opening was about. Here is how the error behaviour now differs across the three 1.x texts:
 
-![Decision table of Token Error responses for pre-authorized_code: wrong tx_code, too many attempts, expired code, missing tx_code, across 1.0 Final, errata -19 and 1.1 -01](./assets/openid4vci-deep-dive/diagrams/04-tx-code-errors.png)
+![Decision table of Token Error responses for pre-authorized_code: wrong tx_code, too many attempts, expired code, missing tx_code, across 1.0 Final, errata -19 and 1.1 -01](./assets/openid4vci-deep-dive/diagrams/04-tx-code-errors.png?v=8bc4f7b0)
 
 The new section says the AS SHOULD cap failed `tx_code` attempts per Pre-Authorized Code, invalidate the code once the cap is hit, treat `tx_code` as single-use, and return `invalid_grant` for a dead code. For a wrong code on a live grant, the errata text says the AS SHOULD return "an error indicating that the provided Transaction Code is invalid". It doesn't name one. Section 6.3 of the same errata draft still lists the wrong-`tx_code` case under `invalid_grant`, and an errata can't add an error code to a Final. The same PR (#686) gave 1.1 a real one, `invalid_tx_code` (1.1 Section 7.3). So a 1.0 Wallet still can't tell the two cases apart from the error code alone, and a 1.1 Wallet can.
 
@@ -185,7 +185,7 @@ The new section says the AS SHOULD cap failed `tx_code` attempts per Pre-Authori
 
 This is the main reason 1.1 exists. Some issuers want to see another credential before issuing: "present your PID, then I'll issue your mDL". In 1.0 that means a browser round trip in which the AS acts as an OpenID4VP Verifier, and the Wallet ends up presenting to a web page in another app. 1.1 Section 6 lets the Wallet do it natively, as a profile of [OAuth 2.0 for First-Party Applications](https://datatracker.ietf.org/doc/draft-ietf-oauth-first-party-apps/) (FPA, pinned at draft -04).
 
-![Interactive Authorization: POST to the authorization challenge endpoint with interaction_types_supported, 403 insufficient_authorization with auth_session and openid4vp_request, presentation, second POST with auth_session and openid4vp_response, 200 authorization_code, Token Request](./assets/openid4vci-deep-dive/diagrams/03-interactive-authorization.png)
+![Interactive Authorization: POST to the authorization challenge endpoint with interaction_types_supported, 403 insufficient_authorization with auth_session and openid4vp_request, presentation, second POST with auth_session and openid4vp_response, 200 authorization_code, Token Request](./assets/openid4vci-deep-dive/diagrams/03-interactive-authorization.png?v=6ec019e7)
 
 The AS advertises `authorization_challenge_endpoint` in its metadata (that's the FPA name), and can set `require_interactive_authorization: true` if it accepts nothing else (1.1 Section 13.3). The Wallet's first request is a normal authorization request sent as a POST, plus `interaction_types_supported`, a comma-separated list of URNs:
 
@@ -240,7 +240,7 @@ A 1.0 Wallet ignores the new response fields, since unknown parameters MUST be i
 
 The s2s draft solves a different problem. Some Wallet Providers run a backend and would rather it talk to the issuer than have every phone do so: phones are hard to update, have bad connectivity, and are a less trusted place to run issuance logic (s2s Section 4). The catch is that the backend shouldn't see the user's identity data or the credentials.
 
-![s2s: Wallet Client builds a JWE-wrapped JWS with its Wallet Signing Key, Wallet Server relays it unread over mTLS to the Issuer Server, credentials come back encrypted to the Wallet Encryption Key](./assets/openid4vci-deep-dive/diagrams/05-s2s-visibility.png)
+![s2s: Wallet Client builds a JWE-wrapped JWS with its Wallet Signing Key, Wallet Server relays it unread over mTLS to the Issuer Server, credentials come back encrypted to the Wallet Encryption Key](./assets/openid4vci-deep-dive/diagrams/05-s2s-visibility.png?v=9ceacce5)
 
 It isn't OAuth at all. The Wallet Server and Issuer Server authenticate with mTLS on every endpoint (RFC 8705), send `Api-Version` with semantic versions and `Sunset` for retirement, require `x-request-id` for idempotency, and return RFC 9457 Problem Details. Anything that comes from the phone is a Client Encrypted Payload: a JWS signed with the Wallet Signing Key (WSK), wrapped in an HPKE JWE to the issuer. The inner `aud` is the JWK thumbprint of the encryption key, so a payload can't be re-wrapped to another recipient (s2s Section 5.5.2). The issuer encrypts credentials to the Wallet Encryption Key. The Wallet Server forwards ciphertext in both directions and adds its own risk signals as Verification Data.
 

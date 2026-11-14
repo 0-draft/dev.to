@@ -1,10 +1,16 @@
 ---
-title: "Zanzibar Implementations Compared (Late 2026): SpiceDB, OpenFGA, Permify, Keto, Topaz, Warrant"
+title: 'Zanzibar Implementations Compared (Late 2026): SpiceDB, OpenFGA, Permify, Keto, Topaz, Warrant'
 published: true
-description: "Six open-source projects say they are modelled on Google Zanzibar. I loaded the same model into two of them and read the protos of the rest. They differ on the consistency token, reverse lookup, conditions, storage and who still ships releases."
-tags: ["authorization", "security", "architecture", "opensource"]
+description: 'Six open-source projects say they are modelled on Google Zanzibar. I loaded the same model into two of them and read the protos of the rest. They differ on the consistency token, reverse lookup, conditions, storage and who still ships releases.'
+tags:
+  - authorization
+  - security
+  - architecture
+  - opensource
 series: Authorization
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-implementations-compared-2026/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-implementations-compared-2026/cover.png?v=54ffced2'
+id: 5038208
+date: '2026-11-14T22:24:58Z'
 ---
 
 I wrote the same docs-and-folders model for SpiceDB and OpenFGA, loaded both, and wrote the same four tuples. SpiceDB answered the write with a token. OpenFGA answered with `{}`.
@@ -15,7 +21,7 @@ The paper itself, tuples, rewrites, Leopard and the 10 ms story are in my [Googl
 
 ## Who still ships
 
-![Per-project lanes from first release to the latest release, with license changes, CNCF milestones, the Warrant and Permify acquisitions and Aserto's wind-down](./assets/zanzibar-implementations-compared-2026/diagrams/01-timeline.png)
+![Per-project lanes from first release to the latest release, with license changes, CNCF milestones, the Warrant and Permify acquisitions and Aserto's wind-down](./assets/zanzibar-implementations-compared-2026/diagrams/01-timeline.png?v=bb91896b)
 
 `gh api repos/<org>/<repo>/releases/latest` on 2026-11-15:
 
@@ -134,7 +140,7 @@ document:readme#owner@user:anne
 document:plan#viewer@user:chen[in_office]
 ```
 
-![Grid of the five steps of run.sh with SpiceDB's and OpenFGA's actual responses side by side, colored by whether each server could answer the question](./assets/zanzibar-implementations-compared-2026/diagrams/02-tokens.png)
+![Grid of the five steps of run.sh with SpiceDB's and OpenFGA's actual responses side by side, colored by whether each server could answer the question](./assets/zanzibar-implementations-compared-2026/diagrams/02-tokens.png?v=9b699341)
 
 The interesting rows are 1, 4 and 5.
 
@@ -191,7 +197,7 @@ Permify does conditions differently: an `attribute` stored on the entity and a `
 
 Check walks out from one object. A list page asks the reverse, with filtering, sorting and pagination that only your database can do. The paper does not ship this API: Expand returns a tree, and Leopard is an internal index for flattening nested groups, not a listing endpoint. Every project had to decide what to offer here, and the answer decides your list endpoints more than the schema language does.
 
-![Decision flow for a permission-aware list page: lookup-then-filter when the accessible set is small, query-then-bulk-check when the user sees a high share of candidates, and a Watch-fed index otherwise, with each project's API for each approach](./assets/zanzibar-implementations-compared-2026/diagrams/03-listing.png)
+![Decision flow for a permission-aware list page: lookup-then-filter when the accessible set is small, query-then-bulk-check when the user sees a high share of candidates, and a Watch-fed index otherwise, with each project's API for each approach](./assets/zanzibar-implementations-compared-2026/diagrams/03-listing.png?v=33051241)
 
 The limits in the first diamond are the vendors' own:
 

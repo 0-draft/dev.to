@@ -1,10 +1,16 @@
 ---
-title: "SD-JWT VC Deep Dive: vct, Issuer Keys, Type Metadata, and the URLs a Credential Makes You Fetch"
+title: 'SD-JWT VC Deep Dive: vct, Issuer Keys, Type Metadata, and the URLs a Credential Makes You Fetch'
 published: true
-description: "draft-ietf-oauth-sd-jwt-vc-26 turns RFC 9901 SD-JWT into a credential format. What it adds on the wire, how a verifier picks the Issuer key, why a credential is also a list of URLs, and what changed during IESG review."
-tags: ["oauth", "security", "identity", "jwt"]
+description: 'draft-ietf-oauth-sd-jwt-vc-26 turns RFC 9901 SD-JWT into a credential format. What it adds on the wire, how a verifier picks the Issuer key, why a credential is also a list of URLs, and what changed during IESG review.'
+tags:
+  - oauth
+  - security
+  - identity
+  - jwt
 series: OAuth
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/sd-jwt-vc-deep-dive/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/sd-jwt-vc-deep-dive/cover.png?v=ebf61197'
+id: 5038207
+date: '2026-11-14T22:24:57Z'
 ---
 
 I started reading SD-JWT VC as a token format and finished reading it as an HTTP client spec. A received credential carries an `iss` URL, a `vct` URL, and through Type Metadata an open-ended chain of `extends` URLs plus logos, background images and SVG templates. The verifier is expected to fetch some of those. Whoever built the credential chose every one of those URLs, and with the metadata mechanism the first fetch happens before the signature can even be checked.
@@ -29,7 +35,7 @@ RFC 9901 tells you how to hide a claim behind a salted digest and how a Holder p
 
 Here is what goes over the wire. I generated it with the script in [`assets/sd-jwt-vc-deep-dive/`](https://github.com/0-draft/dev.to/tree/main/articles/assets/sd-jwt-vc-deep-dive) (`run.sh`, standard library plus `cryptography`, no network):
 
-![Anatomy of an SD-JWT VC presentation: Issuer-signed JWT with header, never-disclosable claims and digests; Disclosures the Holder chose; KB-JWT with aud, nonce and sd_hash](./assets/sd-jwt-vc-deep-dive/diagrams/01-anatomy.png)
+![Anatomy of an SD-JWT VC presentation: Issuer-signed JWT with header, never-disclosable claims and digests; Disclosures the Holder chose; KB-JWT with aud, nonce and sd_hash](./assets/sd-jwt-vc-deep-dive/diagrams/01-anatomy.png?v=f862ecde)
 
 ```json
 {"alg": "ES256", "typ": "dc+sd-jwt", "kid": "pid-2026"}
@@ -140,7 +146,7 @@ This was the sharpest open question in my -23 notes. Section 2.5 said `iss` need
 
 > The recipient's policy determines which mechanism applies to an Issuer; the SD-JWT VC does not. [...] A recipient MUST NOT treat inputs of other mechanisms as identifying the Issuer unless its policy binds them to that identity
 
-![Decision table: Verifier policy rows (metadata, x5c, x5c with iss binding, header-driven) against credential contents columns (HTTPS iss only, x5c only, both) with the resulting Issuer identity or rejection](./assets/sd-jwt-vc-deep-dive/diagrams/03-key-policy.png)
+![Decision table: Verifier policy rows (metadata, x5c, x5c with iss binding, header-driven) against credential contents columns (HTTPS iss only, x5c only, both) with the resulting Issuer identity or rejection](./assets/sd-jwt-vc-deep-dive/diagrams/03-key-policy.png?v=f3fc402e)
 
 The bottom row is the bug this prevents. I built it: an attacker holds any leaf certificate under a CA the Verifier accepts for `x5c`, puts `iss: https://pid.example/issuer` in the payload, and signs with its own key.
 
@@ -155,7 +161,7 @@ The naive verifier lets the header pick the mechanism, so the signature checks o
 
 ## A credential is a list of URLs
 
-![What one credential can make a verifier GET: well-known metadata, jwks_uri, Type Metadata, each extends parent, and rendering resources, with the checks that apply to every hop](./assets/sd-jwt-vc-deep-dive/diagrams/02-fetch-graph.png)
+![What one credential can make a verifier GET: well-known metadata, jwks_uri, Type Metadata, each extends parent, and rendering resources, with the checks that apply to every hop](./assets/sd-jwt-vc-deep-dive/diagrams/02-fetch-graph.png?v=516172ea)
 
 Section 3 was added in -19 and applies one set of rules to every retrieval: Issuer metadata, `jwks_uri`, Type Metadata, `extends` parents, logos, background images, SVG templates.
 

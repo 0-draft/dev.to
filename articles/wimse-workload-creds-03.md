@@ -1,10 +1,16 @@
 ---
-title: "WIMSE Workload Credentials -03: The WIT Finally Gets a Validation Procedure"
+title: 'WIMSE Workload Credentials -03: The WIT Finally Gets a Validation Procedure'
 published: true
-description: "draft-ietf-wimse-workload-creds-03 adds a six-step WIT validation checklist, a MUST on the audience of proofs of possession, and binds trust domains to preconfigured anchors with no iss-based key discovery. A field-by-field read of the WIT, what changed from -02, and a validator run against the spec's own example."
-tags: ["security", "identity", "jwt", "microservices"]
+description: 'draft-ietf-wimse-workload-creds-03 adds a six-step WIT validation checklist, a MUST on the audience of proofs of possession, and binds trust domains to preconfigured anchors with no iss-based key discovery. A field-by-field read of the WIT, what changed from -02, and a validator run against the spec''s own example.'
+tags:
+  - security
+  - identity
+  - jwt
+  - microservices
 series: Workload Identity
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-workload-creds-03/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wimse-workload-creds-03/cover.png?v=28032401'
+id: 5038209
+date: '2026-11-14T22:25:28Z'
 ---
 
 Revision -03 of [draft-ietf-wimse-workload-creds](https://datatracker.ietf.org/doc/draft-ietf-wimse-workload-creds/03/) came out on 30 October 2026, and the first thing I did was write a validator for its new Section 5.1.3, "Validating the WIT", and feed it the draft's own example token.
@@ -47,7 +53,7 @@ Here is the example from Section 5.1 decoded. The header is `{"alg":"ES256","kid
 }
 ```
 
-![Table of every WIT field in the -03 example: the value, the rule in -03 with its section, and whether -03 changed it. sub drives trust anchor selection; iss, jti and cnf.jwk.alg changed; exp is still missing from the 5.1.3 checklist](./assets/wimse-workload-creds-03/diagrams/01-wit-anatomy.png)
+![Table of every WIT field in the -03 example: the value, the rule in -03 with its section, and whether -03 changed it. sub drives trust anchor selection; iss, jti and cnf.jwk.alg changed; exp is still missing from the 5.1.3 checklist](./assets/wimse-workload-creds-03/diagrams/01-wit-anatomy.png?v=2aac70f8)
 
 Three fields matter more than the rest.
 
@@ -61,7 +67,7 @@ Three fields matter more than the rest.
 
 Appendix A.1 lists 23 changes. Most are editorial. These seven change code:
 
-![-02 vs -03 comparison table: key discovery, anchor scoping, knowing who you called, proof audience, revocation, 401 handling, and the example algorithm, with the code change each implies](./assets/wimse-workload-creds-03/diagrams/03-02-vs-03.png)
+![-02 vs -03 comparison table: key discovery, anchor scoping, knowing who you called, proof audience, revocation, 401 handling, and the example algorithm, with the code change each implies](./assets/wimse-workload-creds-03/diagrams/03-02-vs-03.png?v=c7e39e8b)
 
 ### Trust anchors: no more iss-based discovery
 
@@ -90,7 +96,7 @@ Issue #290 was blunt: "The creds draft seems to me missing guidance for validati
 
 Before any of that, the whole thing "follows RFC 7515 and the JWT best practices in [rfc8725bis]". That sentence is the one carrying `exp`. It isn't in the list, but Section 5.1 makes `exp` mandatory, Section 9.3.1 says "The WIT MUST have a limited lifetime", and Section 5.3 names "an expired validity time window" as a validation failure. You have to enforce it. The checklist won't remind you.
 
-![WIT validation flow: six numbered checks from Section 5.1.3, each with a 400 rejection branch, then the checks the list omits (exp, iss mismatch), then the proof-of-possession layer with the audience check from trusted configuration, then authorization on the full identifier](./assets/wimse-workload-creds-03/diagrams/02-validation-flow.png)
+![WIT validation flow: six numbered checks from Section 5.1.3, each with a 400 rejection branch, then the checks the list omits (exp, iss mismatch), then the proof-of-possession layer with the audience check from trusted configuration, then authorization on the full identifier](./assets/wimse-workload-creds-03/diagrams/02-validation-flow.png?v=d73438d0)
 
 The bottom half of that flow isn't in Section 5.1.3, and -03 is explicit about why it's needed. New Section 9.2:
 

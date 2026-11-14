@@ -3,7 +3,7 @@ title: "DCHP: One CBOR Request for mdoc and SD-JWT VC, In Person and Online"
 published: true
 description: "OpenID and ISO SC17 WG10 are writing one request/response protocol to replace the split between ISO 18013-5 and OpenID4VP. The CDDL, the transcript that binds it together, and why the key for dc_api_origin decides your KB-JWT nonce today."
 tags: ["identity", "security", "openid", "cbor"]
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/dchp-digital-credentials-harmonized-presentation/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/dchp-digital-credentials-harmonized-presentation/cover.png?v=165d26e7"
 ---
 
 A wallet that holds a mobile driving licence today speaks two protocols for the same credential. At a shop counter it answers an ISO/IEC 18013-5 `DeviceRequest` over BLE. On a website it answers an OpenID4VP Authorization Request, through the browser's Digital Credentials API. Different request languages, different session binding, different response containers.
@@ -34,7 +34,7 @@ One more thing before the CDDL. Every message is a CBOR map with small integer k
 
 ## The flow
 
-![DCHP flow: the verifier builds RequestPayload, ReaderTransactionTranscript and optional reader_auth; sends CredentialRequest; the wallet rebuilds the transcript, selects credentials, builds a WalletTransactionTranscript per credential, binds it into DeviceAuth or the KB-JWT nonce, HPKE-encrypts the envelope when there is no session encryption, and returns CredentialResponse. Red boxes are steps the spec leaves open.](./assets/dchp-digital-credentials-harmonized-presentation/diagrams/01-flow.png)
+![DCHP flow: the verifier builds RequestPayload, ReaderTransactionTranscript and optional reader_auth; sends CredentialRequest; the wallet rebuilds the transcript, selects credentials, builds a WalletTransactionTranscript per credential, binds it into DeviceAuth or the KB-JWT nonce, HPKE-encrypts the envelope when there is no session encryption, and returns CredentialResponse. Red boxes are steps the spec leaves open.](./assets/dchp-digital-credentials-harmonized-presentation/diagrams/01-flow.png?v=83f1d643)
 
 Red boxes are where the text is incomplete or contradicts itself. That is three of the nine steps.
 
@@ -155,7 +155,7 @@ WalletTransactionTranscript = {
 
 The problem is that `main` has two numberings for it:
 
-![ChannelBinding integer keys in the prose table versus the CDDL at 4ddd238, and after open PR #76. Keys 1-4 agree; nfcv2_handover is missing from the CDDL, which shifts oidc4vp_request_uri, oidc4vp_client_id and dc_api_origin down by one. PR #76 aligns these to the prose. The transmission fields (ble_gatt vs ble_uuid, ble_l2cap uint vs map, keys 12-15 only in the CDDL) still differ after PR #76.](./assets/dchp-digital-credentials-harmonized-presentation/diagrams/03-channelbinding-keys.png)
+![ChannelBinding integer keys in the prose table versus the CDDL at 4ddd238, and after open PR #76. Keys 1-4 agree; nfcv2_handover is missing from the CDDL, which shifts oidc4vp_request_uri, oidc4vp_client_id and dc_api_origin down by one. PR #76 aligns these to the prose. The transmission fields (ble_gatt vs ble_uuid, ble_l2cap uint vs map, keys 12-15 only in the CDDL) still differ after PR #76.](./assets/dchp-digital-credentials-harmonized-presentation/diagrams/03-channelbinding-keys.png?v=49813138)
 
 Issue [#75](https://github.com/openid/dchp/issues/75) reports the engagement mismatch, and open PR [#76](https://github.com/openid/dchp/pull/76) renumbers the CDDL to the prose (adding `cce_handover` at 5 and renaming `oidc4vp_*` to `openid4vp_*`). Neither touches the transmission rows. In the prose, key 10 is `ble_gatt` and key 11 is a bare `uint` PSM. In the CDDL, key 10 is `ble_uuid` and key 11 is a map `{1 uuid, 2 psm}`, and keys 12 to 15 exist only in the CDDL. For an in-person BLE L2CAP session, the two documents still produce different bytes after #76.
 
