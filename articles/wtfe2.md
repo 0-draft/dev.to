@@ -1,7 +1,7 @@
 ---
 title: 'Lettering Programming Comics in Japanese, Only Where the License Allows It'
 published: true
-description: 'wtfe2 erases the English lettering from xkcd, TurnOff.us and Abstruse Goose strips and sets Japanese in its place. Seven other comic sites only get a link, because their terms don''t allow it, and a CI check keeps it that way.'
+description: 'wtfe2 erases the English lettering from xkcd, TurnOff.us, Browserling, Bonkers World and Abstruse Goose strips and sets Japanese in its place. Sites whose terms don''t allow that get a retelling and a link, and a CI check keeps it that way.'
 tags:
   - showdev
   - astro
@@ -24,24 +24,26 @@ Most of those strips can't legally be redrawn. So the site has two kinds of entr
 
 *"git submodules adoption flow" by Daniel Stori, [turnoff.us](https://turnoff.us/geek/git-submodules/), [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Right: Japanese adaptation by wtfe2, same license. The comic images in this article are under their creators' licenses, not this article's.*
 
-## Ten sites, three licenses that allow it
+## Twelve sites, five that allow it
 
 | Site | License | On wtfe2 |
 | --- | --- | --- |
-| xkcd | CC BY-NC 2.5 | 6 strips lettered |
-| TurnOff.us | CC BY-NC-SA 4.0 | 3 strips lettered |
+| xkcd | CC BY-NC 2.5 | 21 strips lettered |
+| Browserling | CC BY-NC 4.0 | 6 strips lettered |
+| TurnOff.us | CC BY-NC-SA 4.0 | 4 strips lettered |
+| Bonkers World | CC BY-NC-ND 3.0, translations allowed with credit | 2 strips lettered |
 | Abstruse Goose | CC BY-NC 3.0 US | 2 strips lettered |
-| CommitStrip | non-commercial use with link and credit | linked |
-| SMBC | no reuse terms published | linked |
-| Existential Comics | no reuse terms published | linked |
-| MonkeyUser | all rights reserved | linked |
-| The Daily WTF | copyright Inedo Publishing | linked |
-| The Oatmeal | copyright Matthew Inman | linked |
-| PHD Comics | reprints by permission only | linked |
+| CommitStrip | non-commercial use with link and credit | 2 strips shown as published, Japanese subtitles |
+| SMBC | no reuse terms published | retold, linked |
+| Existential Comics | no reuse terms published | retold, linked |
+| MonkeyUser | all rights reserved | retold, linked |
+| The Daily WTF | copyright Inedo Publishing | retold, linked |
+| The Oatmeal | copyright Matthew Inman | retold, linked |
+| PHD Comics | reprints by permission only | retold, linked |
 
-Only a Creative Commons license that allows adaptation gets lettered. "No terms published" is not permission, so SMBC and Existential Comics get a description, picks and a link.
+A strip gets lettered only if its license allows adaptation, or the site explicitly allows translation (Bonkers World is ND, but its about page says translating with credit is fine). "No terms published" is not permission, so SMBC and Existential Comics get the same treatment as the all-rights-reserved sites: the strip retold panel by panel in my own words, and a link.
 
-CommitStrip was the one I had to read twice. Its about page says you can use the strips for any non-commercial purpose, including illustrating a blog post, "as long as you aren't just duplicating our content for the sake of it". That is permission to use a strip. Redrawing its lettering is something else, so it stays linked like the rest.
+CommitStrip was the one I had to read twice. Its about page says you can use the strips for any non-commercial purpose, including illustrating a blog post, "as long as you aren't just duplicating our content for the sake of it". That is permission to show a strip. Redrawing its lettering is something else. So its two strips appear exactly as published, with the Japanese underneath as subtitles.
 
 Abstruse Goose's own site went offline in 2023. A community archive on GitHub kept the strips and the license they were published under, so the comic pages credit the archive and name the original address as plain text.
 
@@ -49,14 +51,16 @@ Where a linked site publishes terms, the page quotes them verbatim, next to the 
 
 ## The rule is a CI check
 
-`src/data/sites.json` gives each site a `tier` (`translated` or `linked`) and a `terms.kind`. `scripts/validate-data.ts` refuses a translated site whose terms are not CC, refuses a comic whose license label differs from its site's, and refuses any image in `public/comics/` that no comic entry uses.
+`src/data/sites.json` gives each site a `tier` (`translated` or `linked`) and a `terms.kind`. `scripts/validate-data.ts` refuses a translated site whose terms don't allow adaptation or translation, a comic whose license label differs from its site's, a shown strip from a site whose terms don't allow showing it, and any image in `public/comics/` or `public/strips/` that nothing uses.
 
 To see it fire, I flipped CommitStrip to `translated` and dropped one of its strips into `public/comics/`:
 
 ```text
 $ node scripts/validate-data.ts
-2 problem(s):
-  - sites/commitstrip: only CC-licensed sites may be adapted
+4 problem(s):
+  - sites/commitstrip: only sites that allow adaptation or translation may be adapted
+  - explainers/commitstrip-a-very-comprehensive-and-precise-spec.json: commitstrip is adapted, so its strips belong in comics/, not explainers/
+  - explainers/commitstrip-west-side-project-story.json: commitstrip is adapted, so its strips belong in comics/, not explainers/
   - public/comics/commitstrip-spec.jpg: image is not used by any comic entry
 ```
 
@@ -64,7 +68,7 @@ On the real data:
 
 ```text
 $ node scripts/validate-data.ts
-ok: 11 comics, 10 sites
+ok: 35 comics, 12 explainers, 12 sites
 ```
 
 ## Erasing lettering without erasing the drawing
