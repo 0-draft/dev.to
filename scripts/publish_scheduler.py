@@ -101,6 +101,19 @@ def main(dry_run=False):
                 fm_text,
                 flags=re.MULTILINE | re.IGNORECASE,
             )
+            # Drop the schedule date. dev.to reads `date` as published_at and
+            # refuses to publish a draft whose published_at is more than 15
+            # minutes in the past (422; Article#correct_published_at? in
+            # https://github.com/forem/forem/blob/432861123a99c551d13792fc4e7f7831444dfeae/app/models/article.rb#L1823-L1832),
+            # which the hourly cron and the publish queue routinely exceed.
+            # Without it, dev.to stamps the publish time and devto-cli writes
+            # that back into `date` (updateLocalArticle in lib/article.js). The
+            # scheduled time stays in the history of this flip commit.
+            new_fm_text = "\n".join(
+                line
+                for line in new_fm_text.split("\n")
+                if not re.match(r"date:(\s|$)", line)
+            )
 
             # Reconstruct content
             # Only replace the first occurrence of the frontmatter block

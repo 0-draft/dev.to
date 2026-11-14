@@ -9,7 +9,6 @@ tags:
   - identity
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/identity-deep-dive-radar/cover.png?v=49664009'
-date: '2026-11-14T00:00:00Z'
 id: 4869711
 ---
 
