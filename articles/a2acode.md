@@ -69,6 +69,8 @@ turn 1: done
 
 On the A2A side, the reasoning is a `thinking` artifact, separate from the answer. The plan is a `plan` artifact that gets replaced as steps move. The diff is its own named artifact, and each tool call and its outcome arrive as `working` status updates. A caller can tell "the tests failed" apart from "the agent said the tests failed".
 
+![What an ACP agent sends and what the A2A caller gets for each: thought chunks become a thinking artifact, plans a plan artifact, tool calls a working status plus a diff artifact, permission requests and terminal/create both become input-required, message chunks the answer](./assets/a2acode/diagrams/01-mapping.png)
+
 All of that mapping lives in `executor.py`. Backends emit a fixed set of events and never import the A2A SDK, and the executor never imports an agent SDK. The ACP backend, the Claude SDK backend and an offline `echo` backend all go through the same mapping.
 
 ## Permission prompts go to the caller

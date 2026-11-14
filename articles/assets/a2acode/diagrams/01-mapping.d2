@@ -1,0 +1,37 @@
+direction: right
+
+classes: {
+  acp: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"}}
+  mid: {style: {fill: "#ede9fe"; stroke: "#6d28d9"; stroke-width: 2; font-color: "#0a0f25"}}
+  a2a: {style: {fill: "#dbeafe"; stroke: "#1d4ed8"; stroke-width: 2; font-color: "#0a0f25"}}
+  gate: {style: {fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25"}}
+}
+
+title: "ACP agent says  →  A2A caller gets  (executor.py, same mapping for every backend)" {
+  near: top-center
+  shape: text
+  style.font-size: 28
+}
+
+thought: "agent_thought_chunk" {class: acp}
+plan: "plan" {class: acp}
+tool: "tool_call(_update)\n+ diff content" {class: acp}
+perm: "session/request_permission" {class: acp}
+term: "terminal/create" {class: acp}
+msg: "agent_message_chunk" {class: acp}
+
+
+thinking: "artifact: thinking" {class: a2a}
+planart: "artifact: plan\nreplaced as steps move" {class: a2a}
+status: "status: working\n· Write calc.py ✓ / ✗" {class: a2a}
+diff: "artifact: calc.py\nunified diff" {class: a2a}
+ir: "status: input-required\nanswer must carry --request id" {class: gate}
+answer: "artifact: answer" {class: a2a}
+
+thought -> thinking
+plan -> planart
+tool -> status
+tool -> diff
+perm -> ir
+term -> ir: "same gate"
+msg -> answer
