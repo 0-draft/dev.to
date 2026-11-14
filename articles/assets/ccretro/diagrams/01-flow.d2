@@ -1,0 +1,23 @@
+direction: down
+
+classes: {
+  file: {shape: page; style: {fill: "#f1f5f9"; stroke: "#475569"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  gone: {shape: page; style: {fill: "#f1f5f9"; stroke: "#94a3b8"; stroke-width: 2; stroke-dash: 5; font-color: "#64748b"; font-size: 22}}
+  step: {style: {fill: "#dbeafe"; stroke: "#1d4ed8"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  llm: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  out: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+}
+
+t: "~/.claude/projects/**/*.jsonl\ndeleted after cleanupPeriodDays (30)" {class: gone}
+a: "archive.json\nper-transcript summaries\nkept after the transcript is gone" {class: file}
+d: "digest\ntotals · vs previous period\nrepeated prompts · EXISTING SETUP\nPREVIOUS SUGGESTIONS" {class: step}
+c: "your claude -p\nno tools · no MCP\n--no-session-persistence" {class: llm}
+p: "report page\n(local HTML)" {class: out}
+l: "last-insight.json\nthis month's suggestions" {class: file}
+
+t -> a: "summarize"
+a -> d
+d -> c
+c -> p
+c -> l
+l -> d: "next month" {style.stroke-dash: 4}
