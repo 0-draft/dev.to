@@ -1,0 +1,66 @@
+direction: down
+
+legend: {
+  grid-rows: 1
+  grid-columns: 3
+  grid-gap: 20
+  l1: "read by a MUST rule" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  l2: "defined, but no rule reads it" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  l3: "contradicts or is missing" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+}
+
+cta: "Context Taint Attestation (Section 3), example values decoded" {
+  grid-rows: 12
+  grid-columns: 3
+  grid-gap: 0
+
+  h1: "field" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+  h2: "value in the -00 example" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+  h3: "who checks it" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+
+  a1: "cta_version" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  a2: "\"1.0\"" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  a3: "nobody: no version negotiation" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  b1: "invocation_id" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  b2: "urn:uuid:7f9c2b10-..." {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  b3: "nobody: no replay cache required" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  c1: "parent_trace_ref" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  c2: "sha256(\"test\")" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  c3: "nobody: companion draft calls it parent_record_hash" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  d1: "system_prompt_digest" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  d2: "sha256(\"4\")" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  d3: "nobody" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  e1: "data_plane_merkle_root" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+  e2: "sha256(\"\") = empty context" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  e3: "rule 3 says how to build it, rule 2 never reads it" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  f1: "taint_lattice_level" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  f2: "UNTRUSTED_INGESTED" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  f3: "rule 2 (set by the runtime itself)" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+
+  g1: "tool_effect_class" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  g2: "STATE_MUTATING" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  g3: "rule 2 (only 2 values ever named)" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+
+  i1: "step_up_receipt_hash" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  i2: "sha256(\"2\")" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  i3: "rule 2, but the receipt has no format" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+
+  j1: "iat / exp" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  j2: "1793404800 / +60 s" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  j3: "Sec 5 skew > 60 s (field not named)" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+
+  k1: "signature.alg / kid" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  k2: "Ed25519 / sha256(\"test1\")" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  k3: "Sec 5, but no key distribution or kid rule" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+
+  m1: "signature.sig" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  m2: "base64url(Ed25519(JCS(payload)))" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  m3: "Sec 5; Abstract says COSE_Sign1 instead" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+}
+
+legend -> cta {style.opacity: 0}

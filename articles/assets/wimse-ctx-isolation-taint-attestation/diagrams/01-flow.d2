@@ -1,0 +1,28 @@
+shape: sequence_diagram
+
+src: "Mail / web / RAG\n(untrusted origin)" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+rt: "Agent runtime\n(emits the signed CTA)" {style.fill: "#dbeafe"; style.font-color: "#0a0f25"}
+pdp: "Policy engine\nor human" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+rp: "Relying party\n(MCP server / gateway)" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+
+src -> rt: "email body enters the context window"
+rt -> rt: "rule 1: TRUSTED_ONLY -> UNTRUSTED_INGESTED\n(sticky until a 'context-reset boundary', undefined)"
+rt -> rt: "rule 3: data_plane_merkle_root over\nJCS chunks (tree shape undefined)"
+
+step-up: "optional: tainted + STATE_MUTATING" {
+  rt -> pdp: "approval request (no message defined)" {style.stroke-dash: 4; style.stroke: "#dc2626"}
+  pdp -> rt: "receipt (format undefined)\nAgent-Step-Up-Receipt header registered" {style.stroke-dash: 4; style.stroke: "#dc2626"}
+}
+
+rt -> rt: "sign: base64url(Ed25519(JCS(payload)))"
+rt -> rp: "tools/call + _meta.ctxIsolation\nor HTTP Agent-Ctx-Isolation header"
+
+rp -> rp: "Sec 5: sig, skew > 60 s, digest mismatch,\nmissing binding -> fail closed + rejection receipt"
+rp -> rp: "rule 2: effect in {STATE_MUTATING, PRIVILEGED_ACTUATE}\nand taint != TRUSTED_ONLY and no valid receipt?"
+
+reject: "yes" {
+  rp -> rt: "ERR_TAINTED_CONTROL_PLANE\n(no HTTP / JSON-RPC mapping)" {style.stroke: "#dc2626"}
+}
+allow: "no" {
+  rp -> rp: "release side effect"
+}

