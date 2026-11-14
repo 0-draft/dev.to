@@ -1,9 +1,15 @@
 ---
-title: "OpenID4VCI Deep Dive: 1.0 Final, the Errata, Interactive Authorization in 1.1, and Server-to-Server"
+title: 'OpenID4VCI Deep Dive: 1.0 Final, the Errata, Interactive Authorization in 1.1, and Server-to-Server'
 published: true
-description: "OpenID for Verifiable Credential Issuance 1.0 went Final in September 2025. The repo now carries three more texts that disagree on the wire: a 1.0 errata draft, a 1.1 draft with browserless Interactive Authorization, and a new Server-to-Server API. Both grant flows with real message names, and what changes after Final."
-tags: ["openid", "oauth", "identity", "security"]
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/openid4vci-deep-dive/cover.png?v=b4e9ff29"
+description: 'OpenID for Verifiable Credential Issuance 1.0 went Final in September 2025. The repo now carries three more texts that disagree on the wire: a 1.0 errata draft, a 1.1 draft with browserless Interactive Authorization, and a new Server-to-Server API. Both grant flows with real message names, and what changes after Final.'
+tags:
+  - openid
+  - oauth
+  - identity
+  - security
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/openid4vci-deep-dive/cover.png?v=b4e9ff29'
+id: 5038227
+date: '2026-11-14T22:31:48Z'
 ---
 
 In OpenID4VCI 1.0 Final, a Wallet that sends the wrong PIN gets `invalid_grant`. A Wallet whose Pre-Authorized Code has expired also gets `invalid_grant`. The Wallet can't tell "ask the user to type it again" from "this offer is dead", and the Final text puts no limit on how many PINs an attacker may try against one code.
