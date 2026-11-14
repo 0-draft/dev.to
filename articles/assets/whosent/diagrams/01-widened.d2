@@ -1,0 +1,31 @@
+classes: {
+  hop: {style: {fill: "#e0e7ff"; stroke: "#4338ca"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24; bold: true}}
+  keep: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  drop: {style: {fill: "#f1f5f9"; stroke: "#94a3b8"; stroke-width: 2; stroke-dash: 4; font-color: "#64748b"; font-size: 22}}
+  bad: {style: {fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 3; font-color: "#0a0f25"; font-size: 22; bold: true}}
+  none: {style: {fill: transparent; stroke: transparent; font-color: "#94a3b8"; font-size: 20}}
+}
+
+grid-rows: 4
+grid-columns: 4
+grid-gap: 22
+
+h0: "" {class: none}
+h1: "token 0\nalice → chat-ui" {class: hop}
+h2: "token 1\nchat-ui → planner-agent" {class: hop}
+h3: "token 2\nplanner → research-agent" {class: hop}
+
+r1: "files:read" {class: none}
+a1: "files:read" {class: keep}
+b1: "files:read" {class: keep}
+c1: "files:read" {class: keep}
+
+r2: "calendar:read" {class: none}
+a2: "calendar:read" {class: keep}
+b2: "calendar:read" {class: keep}
+c2: "dropped" {class: drop}
+
+r3: "files:write" {class: none}
+a3: "files:write" {class: keep}
+b3: "dropped" {class: drop}
+c3: "files:write  ✗ J8\nback from nowhere" {class: bad}

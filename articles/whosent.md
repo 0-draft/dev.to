@@ -61,6 +61,8 @@ How authority narrows
       = kept  ~ narrowed  - dropped  + added  ✗ widened (violation)
 ```
 
+![Scopes per token in the jwt-bundle-widened chain: files:read survives all three hops, calendar:read is dropped at the last hop, files:write is dropped at token 1 and reappears in token 2, which fails rule J8](./assets/whosent/diagrams/01-widened.png)
+
 Every signature is fine. The planner dropped `files:write`, and the research agent's token has it back. `check` evaluates every rule on every link instead of stopping at the first failure, so a chain with three faults shows all three.
 
 Note the bracket on that finding. RFC 8693 does not define how to check a bundle of exchanged tokens against each other, so J7 to J10 are my rules, and the output says so.
