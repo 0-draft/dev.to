@@ -1,0 +1,59 @@
+direction: down
+
+title: "Anatomy of the -03 example WIT (Figure 2): field / rule / what -03 did" {
+  shape: text
+  near: top-center
+  style: { font-size: 28; bold: true }
+}
+
+wit: "" {
+  grid-rows: 13
+  grid-columns: 3
+  grid-gap: 6
+  style: { fill: "#1b1f3a"; stroke: "#8a8fb3" }
+  c0_0: "field (value in Figure 2)" { width: 420; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c0_1: "rule in -03 (section)" { width: 470; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c0_2: "-02 -> -03" { width: 400; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c1_0: "JOSE header" { width: 420; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c1_1: " " { width: 470; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25" } }
+  c1_2: " " { width: 400; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25" } }
+  c2_0: "alg  \"ES256\"" { width: 420; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25"; font: mono } }
+  c2_1: "MUST: asymmetric JWS alg, never none (5.1)" { width: 470; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c2_2: "unchanged" { width: 400; style: { fill: "#ffffff"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c3_0: "kid  \"June 5\"" { width: 420; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25"; font: mono } }
+  c3_1: "picks the key inside the trust domain's\nanchor set; absent = policy decides (3)" { width: 470; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c3_2: "unchanged" { width: 400; style: { fill: "#ffffff"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c4_0: "typ  \"wit+jwt\"" { width: 420; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25"; font: mono } }
+  c4_1: "MUST; now an explicit 5.1.3 check" { width: 470; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c4_2: "cites rfc8725bis, not RFC 8725" { width: 400; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c5_0: "JWT claims" { width: 420; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c5_1: " " { width: 470; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25" } }
+  c5_2: " " { width: 400; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25" } }
+  c6_0: "iss  (absent)" { width: 420; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25"; font: mono } }
+  c6_1: "RECOMMENDED, optional; for audit only.\nvalidators need not use it (5.1.2)" { width: 470; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c6_2: "-02 let iss be an https URL for\njwks_uri discovery. removed (#411)" { width: 400; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c7_0: "sub  \"wimse://example.com/\n       specific-workload\"" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25"; font: mono } }
+  c7_1: "MUST: exactly one Workload Identifier.\nits authority = trust domain = anchor set" { width: 470; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c7_2: "MUST validate ONLY against\nthis domain's anchors (#370)" { width: 400; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c8_0: "exp  1745512510" { width: 420; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25"; font: mono } }
+  c8_1: "MUST (5.1, 9.3.1); hours, not days" { width: 470; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c8_2: "still not in the 5.1.3 list" { width: 400; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c9_0: "jti  \"x-_1CTL2cca3CSE4cwb_l\"" { width: 420; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25"; font: mono } }
+  c9_1: "OPTIONAL ... unless you run a status\nlist or jti deny-list, then MUST (9.3.1)" { width: 470; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c9_2: "new conditional MUST (#269)" { width: 400; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c10_0: "cnf.jwk  {kty OKP, crv Ed25519, x}" { width: 420; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25"; font: mono } }
+  c10_1: "MUST: workload public key (RFC 7800)" { width: 470; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c10_2: "unchanged" { width: 400; style: { fill: "#ffffff"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c11_0: "cnf.jwk.alg  \"Ed25519\"" { width: 420; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25"; font: mono } }
+  c11_1: "MUST: the PoP is signed with exactly\nthis alg; no none / HMAC / encryption" { width: 470; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c11_2: "example was \"EdDSA\" in -02\n(RFC 9864 deprecates it)" { width: 400; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c12_0: "iat, anything else" { width: 420; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25"; font: mono } }
+  c12_1: "ignore what you don't understand;\nprivate names NOT RECOMMENDED (5.1.2)" { width: 470; style: { fill: "#E8F0FE"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+  c12_2: "unchanged" { width: 400; style: { fill: "#ffffff"; stroke: "#4285F4"; font-color: "#0a0f25" } }
+}
+
+legend: "green = drives validation | amber = changed in -03 | blue = same as -02" {
+  shape: text
+  near: bottom-center
+  style: { font-size: 20; font-color: "#c9cde8" }
+}

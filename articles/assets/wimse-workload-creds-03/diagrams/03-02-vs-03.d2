@@ -1,0 +1,46 @@
+direction: down
+
+t: "draft-ietf-wimse-workload-creds -02 vs -03 (30 Oct 2026)" {
+  shape: text
+  near: top-center
+  style: { font-size: 28; bold: true }
+}
+
+g: "" {
+  grid-rows: 8
+  grid-columns: 4
+  grid-gap: 6
+  style: { fill: "#1b1f3a"; stroke: "#8a8fb3" }
+  c0_0: "topic\n(section in -03)" { width: 260; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c0_1: "-02 said" { width: 380; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c0_2: "-03 says" { width: 420; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c0_3: "what changes\nin your code" { width: 330; style: { fill: "#ffffff"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c1_0: "Where WIT keys\ncome from (3, 5.1.2)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c1_1: "anchors per trust domain, BUT iss\nMAY be an https URL for jwks_uri\ndiscovery (RFC 8414), if configured\nout of band" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c1_2: "anchors per trust domain, period.\niss is audit metadata. RFC 8414\ndropped from references (#411)" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c1_3: "delete the iss -> metadata\n-> jwks_uri code path" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c2_0: "Which anchors may\nvalidate it (3)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c2_1: "bind each trust domain to\nauthorized issuers + anchors" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c2_2: "MUST validate ONLY against the\nanchors bound to the trust domain\nin the identifier (#370: shared roots)" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c2_3: "one anchor set per domain;\nnever try 'any trusted root'" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c3_0: "Knowing who\nyou called (1.2)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c3_1: "implementations MUST expose an\naccess-path -> identifier\nmapping (callbacks)" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c3_2: "three conditions; client checks\nserver cert per RFC 9525;\ncallee checks the PoP audience" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c3_3: "caller config: expected callee ID\ncallee config: own audience values" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c4_0: "Audience of\nthe proof (5.2)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c4_1: "(no section)" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c4_2: "MUST refer to the recipient, from\ntrusted config, not Host. Mechanics\nlive in wpt / http-signature" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c4_3: "compare aud / wimse-aud to\nconfig, not to the request" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c5_0: "Revocation\n(9.3.1, 9.4.1)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c5_1: "lifetime is the main control;\njti OPTIONAL" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c5_2: "does not rely on revocation. MAY run\nstatus list or jti deny-list; then\njti MUST be in every WIT" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c5_3: "issuer: always emit jti if\nanyone may deny-list" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c6_0: "Error status (5.3)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c6_1: "401 NOT RECOMMENDED" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c6_2: "401 only if a WWW-Authenticate\nmechanism exists (WPT defines\none; #402)" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c6_3: "400 by default;\n401 + WWW-Authenticate: WPT ok" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+  c7_0: "Example\ncnf.jwk.alg (5.1)" { width: 260; style: { fill: "#c9cde8"; stroke: "#8a8fb3"; font-color: "#0a0f25"; bold: true } }
+  c7_1: "\"EdDSA\"" { width: 380; style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25" } }
+  c7_2: "\"Ed25519\" (RFC 9864).\nEdDSA still passes the alg rule" { width: 420; style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25" } }
+  c7_3: "accept both until your\nissuers migrate" { width: 330; style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25" } }
+}
