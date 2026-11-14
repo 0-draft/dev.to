@@ -1,10 +1,15 @@
 ---
 title: I Already Had a VHS Tape for Every README GIF. matinee Turns It Into a Narrated Video.
 published: false
-description: "My CLI repos each record their README GIF from a VHS .tape. matinee runs the same tape and renders a chaptered, narrated, captioned video in 16:9 and 9:16, with no timestamps written by hand."
-tags: ["showdev", "cli", "terminal", "video"]
+description: 'My CLI repos each record their README GIF from a VHS .tape. matinee runs the same tape and renders a chaptered, narrated, captioned video in 16:9 and 9:16, with no timestamps written by hand.'
+tags:
+  - showdev
+  - cli
+  - terminal
+  - video
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/matinee/cover.png?v=836278fc"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/matinee/cover.png?v=836278fc'
+id: 5038073
 ---
 
 Most of my CLI repos record their README GIF with [VHS](https://github.com/charmbracelet/vhs). The `.tape` is already in the repo, it already knows every keystroke, and it already has comments like `# 3. Search` above each step.

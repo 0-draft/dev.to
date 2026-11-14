@@ -1,10 +1,15 @@
 ---
-title: "Lettering Programming Comics in Japanese, Only Where the License Allows It"
+title: 'Lettering Programming Comics in Japanese, Only Where the License Allows It'
 published: false
-description: "wtfe2 erases the English lettering from xkcd, TurnOff.us and Abstruse Goose strips and sets Japanese in its place. Seven other comic sites only get a link, because their terms don't allow it, and a CI check keeps it that way."
-tags: ["showdev", "astro", "opensource", "japanese"]
+description: 'wtfe2 erases the English lettering from xkcd, TurnOff.us and Abstruse Goose strips and sets Japanese in its place. Seven other comic sites only get a link, because their terms don''t allow it, and a CI check keeps it that way.'
+tags:
+  - showdev
+  - astro
+  - opensource
+  - japanese
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe2/cover.png?v=ddf1db1f"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe2/cover.png?v=ddf1db1f'
+id: 5038078
 ---
 
 Every "funny programming comics" list I have seen is a wall of English links. I wanted to hand some of those strips to people who don't read English, lettered the way a translated manga is: English taken out of the art, Japanese drawn in.

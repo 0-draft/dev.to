@@ -1,10 +1,15 @@
 ---
-title: "whosent: A TUI That Shows Who Sent the Agent"
+title: 'whosent: A TUI That Shows Who Sent the Agent'
 published: false
-description: "A request arrives from research-agent. whosent opens the delegation chain behind it (JWT act, Biscuit, UCAN or macaroons), traces it back to the human, and points at the hop where authority grew."
-tags: ["showdev", "go", "security", "oauth"]
+description: 'A request arrives from research-agent. whosent opens the delegation chain behind it (JWT act, Biscuit, UCAN or macaroons), traces it back to the human, and points at the hop where authority grew.'
+tags:
+  - showdev
+  - go
+  - security
+  - oauth
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/whosent/cover.png?v=d1daa355"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/whosent/cover.png?v=d1daa355'
+id: 5038077
 ---
 
 A request shows up from `research-agent`. The token says Alice. Between Alice and that agent there was a chat UI and a planner, three token exchanges, and the scope should have shrunk at each one. Decoding the JWT and squinting at nested `act` claims does not tell me whether it did.
