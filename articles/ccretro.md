@@ -71,7 +71,7 @@ Each run saves its suggestions to `~/.cache/ccretro/last-insight.json`. The next
 
 I seeded the fixture with three old suggestions: make a skill for "run the tests and fix whatever fails", add a Stop hook for em dashes, add CLAUDE.md to `src/blog`. The digest above shows why the first one is interesting: `run-tests` exists and gets called, and the prompt was still typed 26 times. The skill was made and the habit didn't change. That's the case a single `/insights` run can't see.
 
-Without a logged-in `claude`, or with `--no-ai`, you still get every number and rule-based suggestions, but no follow-up section. The rules are blunter. On the fixture they proposed turning "run the tests and fix wh" into a skill, because they look at repeated prompts and not at which skills already exist.
+Without a logged-in `claude`, or with `--no-ai`, you still get every number and rule-based suggestions, but no follow-up section. The rules are blunter. While writing this, I found they proposed turning "run the tests and fix wh" into a skill on the fixture, next to the existing `run-tests`. [#5](https://github.com/0-draft/ccretro/pull/5) fixed that: a repeated prompt that an existing skill or command name already covers is skipped, and titles are cut on a word boundary.
 
 ## Share mode
 
