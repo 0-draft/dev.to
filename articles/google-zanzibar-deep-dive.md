@@ -390,8 +390,8 @@ The paper landed in 2019 and immediately spawned a cluster of projects:
 
 | Project              | By           | Notes                                                                                                             |
 | :------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------- |
-| **SpiceDB**          | AuthZed      | The most faithful OSS implementation. Founded by former Zanzibar team members. Uses its own schema language (Zed) |
-| **OpenFGA**          | Okta / Auth0 | Zanzibar-inspired ReBAC engine. CNCF incubating (2024). Integrated into the Auth0 ecosystem                       |
+| **SpiceDB**          | AuthZed      | The most faithful OSS implementation, down to zookies (ZedTokens). Uses its own schema language (Zed) |
+| **OpenFGA**          | Okta / Auth0 | Zanzibar-inspired ReBAC engine. CNCF incubating (2025). Integrated into the Auth0 ecosystem                       |
 | **Ory Keto**         | Ory          | Zanzibar-based authorization service, part of Ory's auth stack                                                    |
 | **Google Cloud IAM** | Google       | Explicitly built on top of Zanzibar (stated in the paper itself)                                                  |
 
