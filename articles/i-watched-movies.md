@@ -18,6 +18,8 @@ I keep a diary of every film I watch: score, where it streams, a one-line impres
 - Source: <https://github.com/kanywst/i-watched-movies>
 - Live: <https://kanywst.github.io/i-watched-movies/>
 
+![The site's Top view: 76 rated films, a 7.6 average, tabs for Watched, In Progress, Watchlist, Seen, Dropped, History and Stats, and the three highest rated films with Kingsman: The Secret Service at 8.9 in the middle](./assets/i-watched-movies/home.png)
+
 ## One file per film
 
 Every entry is `movies/<slug>.md`. This is the current top of the diary, trimmed (the cover URL and EN/JA summaries are cut):
@@ -91,6 +93,8 @@ action=update
 It found the existing file by title, merged, and wrote nothing new because the rank was already 32. The repo has 672 issues now. When I file a batch, they run in parallel, and a merge that loses the race to `main` retries up to five times with backoff.
 
 ## The Stats page argues with me
+
+![The Stats page: genres and countries, each with count, average and a bar for the delta against the 7.6 baseline. Crime and Mystery sit at +0.3, Japan at -0.3](./assets/i-watched-movies/stats.png)
 
 The Stats tab compares genre, country and era averages against my personal average. From the current data:
 
