@@ -1,10 +1,15 @@
 ---
-title: "aws-credentials: STS and SigV4 as a Site You Can Click Through"
+title: 'aws-credentials: STS and SigV4 as a Site You Can Click Through'
 published: false
-description: "An interactive, bilingual site on where AWS temporary credentials come from and how requests are signed with them. The SigV4 signer runs in the browser and reproduces AWS's published examples byte for byte, which is how it found one AWS doesn't."
-tags: ["showdev", "aws", "security", "iam"]
+description: 'An interactive, bilingual site on where AWS temporary credentials come from and how requests are signed with them. The SigV4 signer runs in the browser and reproduces AWS''s published examples byte for byte, which is how it found one AWS doesn''t.'
+tags:
+  - showdev
+  - aws
+  - security
+  - iam
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-credentials/cover.png?v=6d24329a"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-credentials/cover.png?v=6d24329a'
+id: 5038091
 ---
 
 I already wrote an [AWS STS Deep Dive](https://dev.to/kanywst/aws-sts-deep-dive-19ha) and an [AWS SigV4 and SigV4A Deep Dive](https://dev.to/kanywst/aws-sigv4-and-sigv4a-deep-dive-12li). Some of it doesn't fit in prose. "Where does a call to `sts.amazonaws.com` get served?" depends on five inputs, and a paragraph can only walk one combination at a time. So I turned it into a site where you set the inputs and it draws the answer.

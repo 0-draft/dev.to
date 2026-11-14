@@ -1,10 +1,15 @@
 ---
-title: prpr, a Terminal List of Every Open GitHub Pull Request I Can See
+title: 'prpr, a Terminal List of Every Open GitHub Pull Request I Can See'
 published: false
-description: My open pull requests live under my own account, an org, and other people's projects. prpr puts all of them on one screen, opens one with enter, and waves goodbye when it merges.
-tags: ["showdev", "github", "go", "tui"]
+description: 'My open pull requests live under my own account, an org, and other people''s projects. prpr puts all of them on one screen, opens one with enter, and waves goodbye when it merges.'
+tags:
+  - showdev
+  - github
+  - go
+  - tui
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/prpr/cover.png?v=c3fc7ae2"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/prpr/cover.png?v=c3fc7ae2'
+id: 5038092
 ---
 
 My open pull requests are spread out: my own repositories, the `0-draft` org, and upstream projects I send patches to. Review requests come from all three. GitHub's pulls page shows what I opened or was asked to review, but not everything open in the orgs I belong to, so checking meant a handful of tabs.

@@ -1,10 +1,15 @@
 ---
-title: "howbad: What a Prompt-Injected Coding Agent Could Do With the Credentials on Your Machine"
+title: 'howbad: What a Prompt-Injected Coding Agent Could Do With the Credentials on Your Machine'
 published: false
-description: "Claude Code, Codex and Cursor run as you, so a hijacked agent gets every credential your shell can reach. howbad finds them and asks each provider, read-only, what they can actually do."
-tags: ["showdev", "security", "ai", "go"]
+description: 'Claude Code, Codex and Cursor run as you, so a hijacked agent gets every credential your shell can reach. howbad finds them and asks each provider, read-only, what they can actually do.'
+tags:
+  - showdev
+  - security
+  - ai
+  - go
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/howbad/cover.png?v=b924e809"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/howbad/cover.png?v=b924e809'
+id: 5038090
 ---
 
 Claude Code, Codex and Cursor run as me. A prompt injection in a README or an issue comment doesn't need a sandbox escape. It gets whatever my shell gets: the `gh` token, the npm token that publishes packages, the AWS profile from this morning, the Slack token pasted into an MCP config.
