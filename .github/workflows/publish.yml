@@ -22,6 +22,10 @@ on:
         description: 'Adopt existing dev.to articles by title instead of creating new ones'
         type: boolean
         default: false
+      before:
+        description: 'With scope=changed, diff from this commit to the tip instead of the tip parent'
+        type: string
+        default: ''
 
 # Both this workflow and Schedule Publisher commit to main. Sharing one
 # concurrency group keeps their pushes from racing into a non-fast-forward.
@@ -62,7 +66,7 @@ jobs:
         env:
           SCOPE: ${{ inputs.scope }}
           EVENT: ${{ github.event_name }}
-          BEFORE: ${{ github.event.before }}
+          BEFORE: ${{ inputs.before || github.event.before }}
           AFTER: ${{ github.sha }}
         run: |
           set -euo pipefail
