@@ -13,6 +13,9 @@ on:
 
 permissions:
   contents: write
+  # A push made with GITHUB_TOKEN does not start other workflows, so the
+  # publish run has to be dispatched explicitly (see the last step).
+  actions: write
 
 # Shares a group with "Publish to dev.to" so the two never push to main at once.
 concurrency:
@@ -48,6 +51,7 @@ jobs:
           fi
 
       - name: Commit and push if changed
+        id: push
         if: inputs.dry_run != true
         run: |
           set -euo pipefail
@@ -61,10 +65,10 @@ jobs:
             exit 0
           fi
 
-          # Deliberately no [skip ci]: this commit is what triggers publish.yml.
           git commit -m "chore: auto-publish scheduled articles"
           for attempt in 1 2 3; do
             if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "Push rejected (attempt ${attempt}); rebasing onto origin/${GITHUB_REF_NAME}."
@@ -73,3 +77,13 @@ jobs:
           done
           echo "::error::Could not push the scheduled-publish commit after 3 attempts."
           exit 1
+
+      # The push above uses GITHUB_TOKEN, which never triggers publish.yml's
+      # push event; workflow_dispatch is the exception GitHub allows. With no
+      # "before" SHA, scope=changed diffs HEAD^..HEAD, which is the commit above.
+      # The run queues on the shared concurrency group until this job ends.
+      - name: Dispatch the publish run
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f scope=changed
