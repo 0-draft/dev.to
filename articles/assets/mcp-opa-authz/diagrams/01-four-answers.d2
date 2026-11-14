@@ -1,0 +1,32 @@
+classes: {
+  h: {style: {fill: "#1e293b"; stroke: "#94a3b8"; font-color: "#f8fafc"; bold: true; font-size: 26}}
+  case: {style: {fill: "#f1f5f9"; stroke: "#475569"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+  ng: {style: {fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+  ok: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+  warn: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+  err: {style: {fill: "#ede9fe"; stroke: "#6d28d9"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+}
+
+grid-rows: 5
+grid-columns: 3
+grid-gap: 24
+
+h1: "What happened" {class: h; width: 460}
+h2: "opa eval / bool" {class: h; width: 380}
+h3: "mcp-opa-authz" {class: h; width: 460}
+
+c1: "policy says false\n(default allow := false)" {class: case}
+n1: "false\nlooks like a deny" {class: ng}
+t1: "defined: true\nvalue: false" {class: ok}
+
+c2: "policy has no opinion\n(no default, rule fails)" {class: case}
+n2: "{}\nlooks like a deny" {class: ng}
+t2: "defined: false\nvalue: null" {class: warn}
+
+c3: "PDP response has\nno `decision`" {class: case}
+n3: "false\nlooks like a deny" {class: ng}
+t3: "isError: true\nAuthZEN requires `decision`" {class: err}
+
+c4: "PDP returns 401\n(our token is wrong)" {class: case}
+n4: "false\nlooks like a deny" {class: ng}
+t4: "isError: true\n401 is not a deny" {class: err}
