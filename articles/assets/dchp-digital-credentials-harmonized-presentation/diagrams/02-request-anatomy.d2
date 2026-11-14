@@ -1,0 +1,45 @@
+grid-rows: 2
+grid-columns: 2
+grid-gap: 50
+classes: {
+  k: { style: { fill: "#D2E3FC"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 20 } }
+  m: { style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25"; font-size: 20 } }
+  s: { style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25"; font-size: 20 } }
+  e: { style: { fill: "#F3E8FD"; stroke: "#9334E6"; font-color: "#0a0f25"; font-size: 20 } }
+}
+
+rp: "RequestPayload (400 bytes)" {
+  grid-rows: 4
+  grid-columns: 1
+  k1: "1 ScenarioSets\n-> right" { class: k }
+  k2: "2 CredentialQueries\n-> bottom row" { class: k }
+  k3: "3 encryption_context\n{1 COSE_Key, 2 nonce, 3 [alg]}" { class: k }
+  k4: "4 additional_encryption_contexts\n(absent here)" { class: k }
+}
+
+sc: "ScenarioSets[1]" {
+  grid-rows: 3
+  grid-columns: 1
+  a: "1 mandatory: true" { class: s }
+  b: "2 combinations: [[1], [2]]\nOR of ANDs: CredentialRef 1 alone,\nor CredentialRef 2 alone" { class: s }
+  c: "3 purpose_id: [\"org.example.purposes\", 1]" { class: s }
+}
+
+q1: "CredentialQueries[1]" {
+  grid-rows: 4
+  grid-columns: 1
+  a: "1 credential_format: \"mso_mdoc\"" { class: m }
+  b: "2 credential_types: [\"org.iso.18013.5.1.mDL\"]" { class: m }
+  c: "3 elements_dict\n1: [\"org.iso.18013.5.1\", \"family_name\"]\n2: [\"org.iso.18013.5.1\", \"age_over_18\"]\n3: [\"org.iso.18013.5.1\", \"birth_date\"]\n(each with 3 intent_to_retain: false)" { class: m }
+  d: "4 requested_elements: [ [[1]], [[2],[3]] ]\n= family_name AND (age_over_18 OR birth_date)" { class: e }
+}
+
+q2: "CredentialQueries[2]" {
+  grid-rows: 4
+  grid-columns: 1
+  a: "1 credential_format: \"dc+sd-jwt\"" { class: m }
+  b: "2 credential_types:\n[\"https://credentials.example.com/identity_credential\"]" { class: m }
+  c: "3 elements_dict\n1: [\"age_equal_or_over\", \"18\"]\n(path semantics: issue #52)" { class: m }
+  d: "5 general_extensions\n{4 support_no_cryptographic_binding: false}" { class: e }
+}
+

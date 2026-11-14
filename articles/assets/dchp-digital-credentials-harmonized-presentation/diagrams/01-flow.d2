@@ -1,0 +1,35 @@
+grid-columns: 1
+grid-gap: 40
+classes: {
+  v: { style: { fill: "#D2E3FC"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 20 } }
+  w: { style: { fill: "#E6F4EA"; stroke: "#34A853"; font-color: "#0a0f25"; font-size: 20 } }
+  open: { style: { fill: "#FCE8E6"; stroke: "#D93025"; font-color: "#0a0f25"; font-size: 20 } }
+  msg: { style: { fill: "#FEF7E0"; stroke: "#F9AB00"; font-color: "#0a0f25"; font-size: 24; bold: true; stroke-width: 3 } }
+}
+
+verifier: "Verifier (reader): build the request" {
+  grid-rows: 1
+  grid-columns: 3
+  grid-gap: 30
+  p: "1. RequestPayload\n{1 ScenarioSets, 2 CredentialQueries,\n3 encryption_context?,\n4 additional_encryption_contexts?}\npayload = bstr, deterministic CBOR" { class: v; width: 620 }
+  rt: "2. ReaderTransactionTranscript\n{1 request_hash = SHA-256(payload bytes),\n2 ChannelBinding}\nnever sent, built locally" { class: v; width: 620 }
+  ra: "3. reader_auth? = COSE_Sign\ndetached payload: payload bytes + ReaderTT\nhow the reader key travels: open PR #65" { class: open; width: 620 }
+}
+
+req: "--> CredentialRequest {1 payload, 2 reader_auth?}   over QR/NFC + BLE, OpenID4VP, or the DC API  -->" { class: msg; width: 1920 }
+
+wallet: "Wallet: answer it" {
+  grid-rows: 2
+  grid-columns: 3
+  grid-gap: 30
+  vr: "4. rebuild ChannelBinding from its own\nview of the channel, SHA-256 the payload\nbytes as received, verify reader_auth" { class: w; width: 620 }
+  sel: "5. credential_types[n] -> n queries\npick ONE combination per ScenarioSet\nwalk requested_elements (AND / OR / AND)" { class: w; width: 620 }
+  wt: "6. per credential: WalletTransactionTranscript\n= {1 request_hash, 2 ChannelBinding,\n3 encryption_context = query's encryption_ref}" { class: w; width: 620 }
+  bind: "7. bind it into the credential\nmso_mdoc: inside SessionTranscript -> DeviceAuth\ndc+sd-jwt: KB-JWT nonce = SHA-256(WalletTT)\nexact mapping, nonce encoding, aud: issue #10" { class: open; width: 620 }
+  enc: "8. no session-layer encryption (DC API, scheme)?\nHPKE each Envelope -> COSE_Encrypt\nHPKE info: WalletTT (table) or ReaderTT (list)?" { class: open; width: 620 }
+  pad: "Envelope = {1 credentials: CredentialRef -> CredentialItem,\n2 scenarios: ScenarioRef -> [CredentialRef]}\n(open PR #77: credentials becomes an array\nwith 3 query_refs)" { class: w; width: 620 }
+}
+
+resp: "<-- CredentialResponse {1 unencrypted Envelope?, 2 [COSE_Encrypt]?}  <--" { class: msg; width: 1920 }
+
+check: "9. Verifier: decrypt, map each CredentialRef back to its query, check the chosen combination,\nverify DeviceAuth / KB-JWT against the transcript it built itself in step 2 (+ encryption_ref)" { class: v; width: 1920 }
