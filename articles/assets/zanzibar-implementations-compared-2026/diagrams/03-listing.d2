@@ -1,0 +1,53 @@
+direction: down
+vars: {d2-config: {layout-engine: elk}}
+classes: {
+  q: {shape: diamond; style: {fill: "#fff59d"; stroke: "#f57f17"; font-color: "#0a0f25"}}
+  start: {style: {fill: "#e1bee7"; stroke: "#6a1b9a"; font-color: "#0a0f25"; bold: true}}
+  a: {style: {fill: "#c8e6c9"; stroke: "#2e7d32"; font-color: "#0a0f25"; font: mono}}
+  b: {style: {fill: "#bbdefb"; stroke: "#0d47a1"; font-color: "#0a0f25"; font: mono}}
+  c: {style: {fill: "#ffe0b2"; stroke: "#e65100"; font-color: "#0a0f25"; font: mono}}
+}
+title: |md
+  # "Which docs can Anne see?": pick the approach, then the API
+  limits are each project's own docs; "none" = no such call in the project's .proto / routes
+| {near: top-center}
+
+start: "list page:\nfilter + sort + paginate\nover docs Anne can see" {class: start}
+q1: "accessible set small?\nSpiceDB: trouble past 10k\nOpenFGA: 3s / 1000 default" {class: q}
+q2: "does Anne see a\nlarge share of the\ncandidate rows?\n(no = the Google\nDrive case)" {class: q}
+
+A: |md
+  **A. lookup, then WHERE id IN (...)**
+
+  - SpiceDB: LookupResources (streamed, cursor)
+  - OpenFGA: ListObjects / StreamedListObjects
+  - Permify: LookupEntity / LookupEntityStream
+  - Topaz: GetGraph with object_id omitted
+  - Warrant: /v2/query "select ... where ..."
+  - Keto: none (Expand returns a tree)
+| {class: a}
+
+B: |md
+  **B. DB page, bulk check, repeat**
+
+  - SpiceDB: CheckBulkPermissions, one ZedToken per page
+  - OpenFGA: BatchCheck
+  - Permify: BulkCheck
+  - Keto: BatchCheck
+  - Topaz: Checks
+| {class: b}
+
+C: |md
+  **C. your own index, fed by a change stream**
+
+  - SpiceDB: Watch, resumable from a ZedToken; or AuthZed Materialize (Dedicated only)
+  - OpenFGA: ReadChanges, polled with a continuation token
+  - Permify: Watch (stream)
+  - Keto, Topaz, Warrant: no stream, so dual-write
+| {class: c}
+
+start -> q1
+q1 -> A: yes
+q1 -> q2: no
+q2 -> B: yes
+q2 -> C: no

@@ -1,0 +1,19 @@
+definition user {}
+
+caveat in_office(ip ipaddress) {
+  ip.in_cidr("10.20.0.0/16")
+}
+
+definition folder {
+  relation owner: user
+  relation viewer: user
+  permission view = viewer + owner
+}
+
+definition document {
+  relation parent: folder
+  relation owner: user
+  relation viewer: user | user with in_office
+  permission edit = owner
+  permission view = viewer + edit + parent->view
+}

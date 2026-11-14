@@ -1,0 +1,65 @@
+classes: {
+  launch: {style: {fill: "#b9f6ca"; stroke: "#1b5e20"; font-color: "#0a0f25"; border-radius: 6}}
+  owner: {style: {fill: "#ffcdd2"; stroke: "#b71c1c"; font-color: "#0a0f25"; border-radius: 6}}
+  gov: {style: {fill: "#bbdefb"; stroke: "#0d47a1"; font-color: "#0a0f25"; border-radius: 6}}
+  now: {style: {fill: "#fff59d"; stroke: "#f57f17"; font-color: "#0a0f25"; border-radius: 6}}
+}
+title: |md
+  # Six Zanzibar-style projects, first release to 2026-11-15
+  green: first release · blue: license / governance · red: owner change or wind-down · yellow: latest release
+| {near: top-center}
+
+lanes: "" {
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 16
+  style.fill: transparent
+  style.stroke: transparent
+
+  spicedb: "SpiceDB (AuthZed)" {
+    grid-rows: 1
+    grid-gap: 24
+    a: "first release\n2021-09-30" {class: launch}
+    b: "Apache-2.0 throughout" {class: gov}
+    c: "v1.57.1\n2026-11-10" {class: now}
+  }
+  openfga: "OpenFGA (CNCF, Okta core maintainer)" {
+    grid-rows: 2
+    grid-columns: 3
+    grid-gap: 24
+    a: "first release\n2022-06-10" {class: launch}
+    b: "CNCF sandbox\n2022-09" {class: gov}
+    c: "CNCF Incubating\n2025-10-28" {class: gov}
+    d: "v1.22.1\n2026-10-28" {class: now}
+  }
+  permify: "Permify (FusionAuth)" {
+    grid-rows: 2
+    grid-columns: 3
+    grid-gap: 24
+    a: "first release\n2022-08-03" {class: launch}
+    b: "LICENSE back to\nApache-2.0\n2023-02-14" {class: gov}
+    c: "LICENSE to\nAGPL-3.0\n2025-05-12" {class: gov}
+    d: "FusionAuth\nacquires\n2025-11-20" {class: owner}
+    e: "v1.7.6\n2026-11-05" {class: now}
+  }
+  keto: "Ory Keto (Ory)" {
+    grid-rows: 1
+    grid-gap: 24
+    a: "Zanzibar rewrite\nv0.6.0-alpha.1\n2021-04-07" {class: launch}
+    b: "v26.2.0\n2026-03-20\n(nothing since)" {class: now}
+  }
+  topaz: "Topaz (ex-Aserto maintainers)" {
+    grid-rows: 1
+    grid-gap: 24
+    a: "first release\n2022-10-25" {class: launch}
+    b: "Aserto winds down\nSaaS off 2025-05-31\n(post 2025-04-27)" {class: owner}
+    c: "v0.33.28\n2026-11-14" {class: now}
+  }
+  warrant: "Warrant (WorkOS)" {
+    grid-rows: 1
+    grid-gap: 24
+    a: "first release\n2023-02-23" {class: launch}
+    b: "WorkOS acquires\n(X post 2024-04-23)" {class: owner}
+    c: "v1.15.1\n2024-06-10\nlast release" {class: owner}
+  }
+}

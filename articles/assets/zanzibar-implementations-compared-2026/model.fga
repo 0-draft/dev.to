@@ -1,0 +1,20 @@
+model
+  schema 1.1
+
+type user
+
+type folder
+  relations
+    define owner: [user]
+    define viewer: [user] or owner
+
+type document
+  relations
+    define parent: [folder]
+    define owner: [user]
+    define editor: owner
+    define viewer: [user, user with in_office] or editor or viewer from parent
+
+condition in_office(ip: ipaddress) {
+  ip.in_cidr("10.20.0.0/16")
+}

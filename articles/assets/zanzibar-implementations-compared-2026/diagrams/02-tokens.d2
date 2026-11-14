@@ -1,0 +1,43 @@
+classes: {
+  h: {style: {fill: "#37474f"; stroke: "#90a4ae"; font-color: "#ffffff"; bold: true}}
+  step: {style: {fill: "#e0e0e0"; stroke: "#616161"; font-color: "#0a0f25"; bold: true}}
+  ok: {style: {fill: "#c8e6c9"; stroke: "#2e7d32"; font-color: "#0a0f25"; font: mono}}
+  no: {style: {fill: "#ffcdd2"; stroke: "#c62828"; font-color: "#0a0f25"; font: mono}}
+  mid: {style: {fill: "#fff9c4"; stroke: "#f9a825"; font-color: "#0a0f25"; font: mono}}
+}
+title: |md
+  # One script, two servers: what comes back
+  real responses from run.sh · SpiceDB v1.57.1 · OpenFGA v1.22.1 · in-memory datastores · 2026-11-15
+| {near: top-center}
+
+t: "" {
+  grid-rows: 6
+  grid-columns: 3
+  grid-gap: 0
+  style.fill: transparent
+  style.stroke: transparent
+
+  h0: "" {class: h}
+  h1: "SpiceDB" {class: h}
+  h2: "OpenFGA" {class: h}
+
+  s1: "1. write 4 tuples\n(beto in folder:eng,\nreadme in folder:eng,\nanne owns readme,\nchen views plan with in_office)" {class: step}
+  a1: "WriteRelationships\n→ writtenAt.token = T1\n  \"Gh8KEzE3OTQ2...\"" {class: ok}
+  b1: "POST /stores/{id}/write\n→ {}\n  nothing to carry" {class: no}
+
+  s2: "2. reverse lookups" {class: step}
+  a2: "LookupResources  → readme\nLookupSubjects   → anne, beto" {class: ok}
+  b2: "list-objects → [\"document:readme\"]\nlist-users   → [anne, beto]\n(3s / 1000 results by default)" {class: ok}
+
+  s3: "3. delete beto from folder:eng,\nthen check beto → readme" {class: step}
+  a3: "fullyConsistent\n→ PERMISSIONSHIP_NO_PERMISSION" {class: ok}
+  b3: "check\n→ {\"allowed\": false}" {class: ok}
+
+  s4: "4. check again\n\"as of my first write\"" {class: step}
+  a4: "atExactSnapshot: T1\n→ PERMISSIONSHIP_HAS_PERMISSION\n(the graph as it was at T1)" {class: ok}
+  b4: "no request field for it:\nMINIMIZE_LATENCY or\nHIGHER_CONSISTENCY only" {class: no}
+
+  s5: "5. chen → plan,\ncondition context missing" {class: step}
+  a5: "→ PERMISSIONSHIP_CONDITIONAL_PERMISSION\n  missingRequiredContext: [\"ip\"]" {class: mid}
+  b5: "→ validation_error: tuple\n  'document:plan#viewer@user:chen' is\n  missing context parameters '[ip]'" {class: mid}
+}
