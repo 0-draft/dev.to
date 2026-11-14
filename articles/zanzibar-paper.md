@@ -1,10 +1,15 @@
 ---
-title: The Zanzibar Paper, Side by Side With Eight Translations
+title: 'The Zanzibar Paper, Side by Side With Eight Translations'
 published: false
-description: "A static site that puts the USENIX ATC '19 Zanzibar paper next to Japanese, Chinese, Korean, Spanish, French, German and Portuguese translations, one paragraph per row, with a validator that rejects a translation that changes a tuple or drops a paragraph."
-tags: ["showdev", "authorization", "translation", "astro"]
+description: 'A static site that puts the USENIX ATC ''19 Zanzibar paper next to Japanese, Chinese, Korean, Spanish, French, German and Portuguese translations, one paragraph per row, with a validator that rejects a translation that changes a tuple or drops a paragraph.'
+tags:
+  - showdev
+  - authorization
+  - translation
+  - astro
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-paper/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-paper/cover.png?v=b028b44e'
+id: 5038067
 ---
 
 A machine-translated PDF of the Zanzibar paper reads fine until you hit the sentence about zookies or userset rewrites. Then you need what the authors actually wrote, and the translation doesn't tell you which English sentence it came from.
@@ -14,7 +19,7 @@ So I put the two next to each other.
 - Source: <https://github.com/0-draft/zanzibar-paper>
 - Live: <https://0-draft.github.io/zanzibar-paper/>
 
-![The Japanese reading page: section list on the left, the original English paragraph and its Japanese translation in two columns on the same row](./assets/zanzibar-paper/reading-ja.png)
+![The Japanese reading page: section list on the left, the original English paragraph and its Japanese translation in two columns on the same row](./assets/zanzibar-paper/reading-ja.png?v=65573062)
 
 ## One row per paragraph
 

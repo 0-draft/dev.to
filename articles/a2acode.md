@@ -1,10 +1,15 @@
 ---
-title: "a2claude Is Now a2acode: Any ACP Coding Agent Behind A2A"
+title: 'a2claude Is Now a2acode: Any ACP Coding Agent Behind A2A'
 published: false
-description: "I renamed my Claude Code A2A server two weeks after shipping it, because Claude Code had become a launch command. a2acode now fronts Claude Code, Codex or Gemini CLI over ACP and keeps tool calls, diffs and permission prompts on the A2A side."
-tags: ["showdev", "ai", "agents", "python"]
+description: 'I renamed my Claude Code A2A server two weeks after shipping it, because Claude Code had become a launch command. a2acode now fronts Claude Code, Codex or Gemini CLI over ACP and keeps tool calls, diffs and permission prompts on the A2A side.'
+tags:
+  - showdev
+  - ai
+  - agents
+  - python
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2acode/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2acode/cover.png?v=89532012'
+id: 5038047
 ---
 
 In June I shipped [a2claude](https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6), which put Claude Code behind A2A so another agent could hand it coding work. It drove Claude through the Claude Agent SDK.

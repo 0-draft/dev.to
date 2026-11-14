@@ -4,7 +4,7 @@ published: false
 description: "A skill folder now runs on Claude Code, Codex, Cursor, Copilot and Gemini CLI, and nothing in the format is signed. trust-me-bro is a one-file, no-dependency scanner that reads a skill, plugin or MCP config before you install it."
 tags: ["showdev", "security", "ai", "mcp"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/trust-me-bro/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/trust-me-bro/cover.png?v=1f705115"
 ---
 
 One skill folder now runs on Claude Code, Codex, Copilot, Cursor and Gemini CLI. The format is a directory with a `SKILL.md` and two required frontmatter fields. No signing, no attestation, no review step. Agent Plugins 1.0 says outright that publisher identity and signatures are out of scope.

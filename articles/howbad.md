@@ -4,7 +4,7 @@ published: false
 description: "Claude Code, Codex and Cursor run as you, so a hijacked agent gets every credential your shell can reach. howbad finds them and asks each provider, read-only, what they can actually do."
 tags: ["showdev", "security", "ai", "go"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/howbad/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/howbad/cover.png?v=b924e809"
 ---
 
 Claude Code, Codex and Cursor run as me. A prompt injection in a README or an issue comment doesn't need a sandbox escape. It gets whatever my shell gets: the `gh` token, the npm token that publishes packages, the AWS profile from this morning, the Slack token pasted into an MCP config.
@@ -14,7 +14,7 @@ I knew roughly what was on my laptop. I didn't know what any of it could do. "Th
 - Source: <https://github.com/kanywst/howbad>
 - Install: `brew install kanywst/tap/howbad` or `go install github.com/kanywst/howbad@latest`
 
-![howbad prints a ranked list of what a hijacked agent could do with the credentials on a fake machine](./assets/howbad/demo.gif)
+![howbad prints a ranked list of what a hijacked agent could do with the credentials on a fake machine](./assets/howbad/demo.gif?v=73f1a097)
 
 ## The report
 

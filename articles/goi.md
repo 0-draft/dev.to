@@ -8,7 +8,8 @@ tags:
   - astro
   - webdev
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/goi/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/goi/cover.png?v=c8996d13'
+id: 5038055
 ---
 
 There is a layer of Japanese that most people recognize and almost nobody says: 関の山, 日下開山, 痘痕も靨. You read them, you get the gist, you never reach for them. And the gist is often wrong.
@@ -18,13 +19,13 @@ goi is a glossary of those words. 68 of them right now, each on its own page wit
 - Source: <https://github.com/0-draft/goi>
 - Site: <https://0-draft.github.io/goi/> (English) and <https://0-draft.github.io/goi/ja/> (Japanese)
 
-![The goi top page: the word of the day, 板に付く, above an index in kana order that can be filtered by Sumo, The stage, Buddhism, History, Trade and money, Body and mind, Animals, Everyday life, or Often misunderstood](./assets/goi/index.png)
+![The goi top page: the word of the day, 板に付く, above an index in kana order that can be filtered by Sumo, The stage, Buddhism, History, Trade and money, Body and mind, Animals, Everyday life, or Often misunderstood](./assets/goi/index.png?v=bd4831fc)
 
 ## Guess first
 
 A word page doesn't show the meaning. It shows two options and waits.
 
-![The page for 日下開山: the headword drawn in a character grid, the reading ひのしたかいさん, and two options, "never, ever" and "peerless champion"](./assets/goi/word.png)
+![The page for 日下開山: the headword drawn in a character grid, the reading ひのしたかいさん, and two options, "never, ever" and "peerless champion"](./assets/goi/word.png?v=1eecf8f1)
 
 For most words the wrong option is another entry's gloss, picked by a seed from the word's id so it stays the same between builds. Your answer is kept in `localStorage`, so the page opens already answered next time. "Just show me" skips the question.
 

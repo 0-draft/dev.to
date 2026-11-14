@@ -1,10 +1,15 @@
 ---
-title: "Why Hackers Don't Get Caught: A Sourced Visual Explainer, Layer by Layer"
+title: 'Why Hackers Don''t Get Caught: A Sourced Visual Explainer, Layer by Layer'
 published: false
-description: "A bilingual site that shows what each observer on the path can read, why so many named attackers are never arrested, and which layer gave way in 31 documented cases. Every claim has a source."
-tags: ["showdev", "security", "privacy", "tor"]
+description: 'A bilingual site that shows what each observer on the path can read, why so many named attackers are never arrested, and which layer gave way in 31 documented cases. Every claim has a source.'
+tags:
+  - showdev
+  - security
+  - privacy
+  - tor
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/why-hackers-dont-get-caught/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/why-hackers-dont-get-caught/cover.png?v=c7e398ff'
+id: 5038058
 ---
 
 In February I wrote [Anonymity Technology: The 5 Layers of Defense](https://dev.to/kanywst/anonymity-technology-the-5-layers-of-defense-1ad9). It treated "not getting caught" as a technical problem: hold every layer, make no mistakes.
@@ -14,13 +19,13 @@ When I went back to the court filings to build this site, two things looked diff
 - Source: <https://github.com/0-draft/why-hackers-dont-get-caught>
 - Site: <https://0-draft.github.io/why-hackers-dont-get-caught/> (English, and Japanese at `/ja/`)
 
-![Three endings: never identified, identified but out of reach, and caught](./assets/why-hackers-dont-get-caught/endings.png)
+![Three endings: never identified, identified but out of reach, and caught](./assets/why-hackers-dont-get-caught/endings.png?v=5fdb18b8)
 
 ## Who can see what
 
 The home page opens with one figure. Pick a route (direct, VPN, Tor, VPN then Tor, Tor while logged in) and pick observers on it. The record below shows which fields each one can read: sender address, destination, content, timing, account. A black bar is hidden, a highlighter is readable, magenta points at the person.
 
-![The who-can-see-what figure with Tor selected and the guard and exit relays chosen as observers: linkable by timing](./assets/why-hackers-dont-get-caught/vantage.png)
+![The who-can-see-what figure with Tor selected and the guard and exit relays chosen as observers: linkable by timing](./assets/why-hackers-dont-get-caught/vantage.png?v=487bb8c3)
 
 The verdict comes from a small model in `src/lib/vantage.ts`. "Identified" means one observer sees both who and what. "Linkable by timing" means one holds the sender, another holds the destination, and both see timing. I ran it directly with Node against the cloned repo:
 
@@ -56,13 +61,13 @@ The people in the essay who did end up in an American court mostly travelled. Se
 
 31 documented cases, sorted onto one bar per layer by where investigators got through first:
 
-![31 case files sorted by the layer that gave way first: money 8, network 6, infrastructure 6, identity 5, behavior 3, device 1, attribution 1, people 1](./assets/why-hackers-dont-get-caught/cases.png)
+![31 case files sorted by the layer that gave way first: money 8, network 6, infrastructure 6, identity 5, behavior 3, device 1, attribution 1, people 1](./assets/why-hackers-dont-get-caught/cases.png?v=d324280b)
 
 Money is the biggest bar. Most of those are coins that eventually reached an exchange account in someone's own name. Each line opens to a background, the mechanism, the outcome, and the sources. Nine of the 31 carry a "disputed" block, where the public accounts disagree or the key detail comes from a researcher's blog rather than a filing.
 
 The timeline is the figure I keep going back to. It puts the slip and the arrest on one axis:
 
-![Timeline of when each slip happened and when the person was arrested or charged](./assets/why-hackers-dont-get-caught/timeline.png)
+![Timeline of when each slip happened and when the person was arrested or charged](./assets/why-hackers-dont-get-caught/timeline.png?v=04dde98e)
 
 Vyacheslav Penchukov announced his daughter's birth, with her name and birth weight, in a crew chat in July 2009. The FBI later got those logs from the crew's chat server in Brooklyn. He was arrested in Geneva in October 2022. The reused email addresses that named Mikhail Matveev were nearly 14 years old by the time he was charged.
 

@@ -1,10 +1,15 @@
 ---
-title: "AWS Connectivity: Every Road From Your Network Into AWS, on One Map"
+title: 'AWS Connectivity: Every Road From Your Network Into AWS, on One Map'
 published: false
-description: "A bilingual explainer site that puts VPN, Direct Connect, SD-WAN, the AWS hubs, PrivateLink and hybrid DNS on one road map, with labs that run the documented rules: route selection per hub, quotas as you scale, Tokyo prices, MTU."
-tags: ["showdev", "aws", "networking", "cloud"]
+description: 'A bilingual explainer site that puts VPN, Direct Connect, SD-WAN, the AWS hubs, PrivateLink and hybrid DNS on one road map, with labs that run the documented rules: route selection per hub, quotas as you scale, Tokyo prices, MTU.'
+tags:
+  - showdev
+  - aws
+  - networking
+  - cloud
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-connectivity/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-connectivity/cover.png?v=113d0034'
+id: 5038049
 ---
 
 Every AWS networking page I read was correct and covered one service. Site-to-Site VPN on one page, Transit Gateway on another, Cloud WAN on a third. None of them answered the question I actually had: with this office, these VPCs and this budget, which road do the packets take, and what does AWS do when there are two?
@@ -15,7 +20,7 @@ So I drew all the roads on one map and made each one drivable.
 - Site: <https://0-draft.github.io/aws-connectivity/> ([日本語](https://0-draft.github.io/aws-connectivity/?lang=ja))
 - Direct Connect deep dive: <https://0-draft.github.io/aws-connectivity/direct-connect/>
 
-![The AWS Connectivity map: every road from your network into AWS, here stepping a packet over Site-to-Site VPN, with a note that ESP wrapping drops the inner MTU to 1446](./assets/aws-connectivity/map.png)
+![The AWS Connectivity map: every road from your network into AWS, here stepping a packet over Site-to-Site VPN, with a note that ESP wrapping drops the inner MTU to 1446](./assets/aws-connectivity/map.png?v=03d30f65)
 
 The map at the top carries the internet, VPN, Direct Connect, SD-WAN, people (Client VPN and friends), PrivateLink, hybrid DNS and Outposts. Pick a road and step a packet along it, hop by hop. Below that are 18 exits, one per topic. Each lab asks you to predict what AWS will do before it shows you.
 
@@ -25,7 +30,7 @@ This used to be two sites, `on-ramp` (the map) and `cross-connect` (Direct Conne
 
 This is the lab I built the site for. You advertise the same prefix over Direct Connect and a BGP VPN, then switch the hub that receives them.
 
-![The path selection lab on Cloud WAN: DX advertises 10.0.0.0/16 with AS_PATH 3, VPN 1 advertises the same /16 with AS_PATH 1, and the ladder shows DX knocked out at "Shortest AS_PATH", so the result is VPN 1](./assets/aws-connectivity/path-selection.png)
+![The path selection lab on Cloud WAN: DX advertises 10.0.0.0/16 with AS_PATH 3, VPN 1 advertises the same /16 with AS_PATH 1, and the ladder shows DX knocked out at "Shortest AS_PATH", so the result is VPN 1](./assets/aws-connectivity/path-selection.png?v=b784d311)
 
 The ladder is a pure function, `decide(hub, dst, adverts)` in `src/features/routing/engine.ts`, encoded from each hub's documented evaluation order. I ran it directly against two scenarios:
 

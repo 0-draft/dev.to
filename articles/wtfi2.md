@@ -4,7 +4,7 @@ published: false
 description: "Full bars, browser says offline. wtfi probes every hop from your Wi-Fi link to DNS in parallel, draws the path, and names the first break and what to do about it."
 tags: ["showdev", "rust", "networking", "cli"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfi2/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfi2/cover.png?v=8638b633"
 ---
 
 The Wi-Fi icon shows full bars. The browser says "Offline". Then I am in a terminal running `ping` and `traceroute`, trying to line the answers up in my head.
@@ -15,7 +15,7 @@ My first attempt at fixing that was [`wtfi`](https://github.com/kanywst/wtfi), a
 - Install: `brew install kanywst/tap/wtfi2` or `cargo install wtfi2` (the command is `wtfi`)
 - Runs on macOS and Linux, no sudo
 
-![wtfi -w: the live dashboard catching a DNS-only outage and its recovery](./assets/wtfi2/demo.gif)
+![wtfi -w: the live dashboard catching a DNS-only outage and its recovery](./assets/wtfi2/demo.gif?v=3044c8f7)
 
 ## One line, then the evidence
 
@@ -39,13 +39,13 @@ A cause line follows, then the fix and how it was measured:
 
 Every verdict carries that `evidence` line and a confidence. One dropped packet and a five-probe burst should not read the same. `wtfi -v` shows the metrics behind each hop:
 
-![wtfi -v: every hop healthy, each with its metrics and the method behind them](./assets/wtfi2/report.png)
+![wtfi -v: every hop healthy, each with its metrics and the method behind them](./assets/wtfi2/report.png?v=90369dc2)
 
 ## "Your ISP is down" needs a hop number
 
 When the gateway answers and nothing past it does, wtfi adds an `Uplink` node and runs a bounded ICMP TTL sweep. A healthy run never pays for it. Where the replies stop decides the verdict: at the first step outside the house it blames the modem, ONU or WAN cable; deeper in, it blames the provider and names the last address that answered so you have something to quote on the support call.
 
-![wtfi on an ISP outage: the trace dies past hop 2, inside the provider's network](./assets/wtfi2/uplink.png)
+![wtfi on an ISP outage: the trace dies past hop 2, inside the provider's network](./assets/wtfi2/uplink.png?v=c726c299)
 
 If a full-tunnel VPN owns the default route, the same trace went through the tunnel, and the verdict says so instead of sending you to your ISP.
 

@@ -4,7 +4,7 @@ published: false
 description: "wtfe2 erases the English lettering from xkcd, TurnOff.us and Abstruse Goose strips and sets Japanese in its place. Seven other comic sites only get a link, because their terms don't allow it, and a CI check keeps it that way."
 tags: ["showdev", "astro", "opensource", "japanese"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe2/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe2/cover.png?v=ddf1db1f"
 ---
 
 Every "funny programming comics" list I have seen is a wall of English links. I wanted to hand some of those strips to people who don't read English, lettered the way a translated manga is: English taken out of the art, Japanese drawn in.
@@ -14,7 +14,7 @@ Most of those strips can't legally be redrawn. So the site has two kinds of entr
 - Source: <https://github.com/0-draft/wtfe2>
 - Site: <https://0-draft.github.io/wtfe2/> (Japanese at `/ja/`)
 
-![TurnOff.us "git submodules adoption flow": the original on the left, the Japanese edition on the right](./assets/wtfe2/compare-git-submodules.png)
+![TurnOff.us "git submodules adoption flow": the original on the left, the Japanese edition on the right](./assets/wtfe2/compare-git-submodules.png?v=5d6a3a15)
 
 *"git submodules adoption flow" by Daniel Stori, [turnoff.us](https://turnoff.us/geek/git-submodules/), [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Right: Japanese adaptation by wtfe2, same license. The comic images in this article are under their creators' licenses, not this article's.*
 
@@ -80,7 +80,7 @@ Filling the box with white would also cut the flowchart diamond the text sits in
 
 The plate for the submodules strip. Every diamond, arrow and border survived, and so did the artist's signature, because it sits outside every box:
 
-![The clean plate of the git submodules strip: the flowchart with all text removed, the Daniel Stori signature still in the corner](./assets/wtfe2/plate-git-submodules.png)
+![The clean plate of the git submodules strip: the flowchart with all text removed, the Daniel Stori signature still in the corner](./assets/wtfe2/plate-git-submodules.png?v=8d8b5ade)
 
 *Plate derived from "git submodules adoption flow" by Daniel Stori, [turnoff.us](https://turnoff.us/geek/git-submodules/), [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).*
 

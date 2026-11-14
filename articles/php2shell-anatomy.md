@@ -1,10 +1,15 @@
 ---
 title: I Put Up a php2shell Page Before PHP's Fix Landed. There Is No Exploit on It.
 published: false
-description: "php2shell-anatomy is a one-page defender's brief for CVE-2026-109618 and CVE-2026-109619: fixed versions per branch and per distro, an exposure check, the timeline, and what to do if you can't update yet."
-tags: ["showdev", "php", "security", "webdev"]
+description: 'php2shell-anatomy is a one-page defender''s brief for CVE-2026-109618 and CVE-2026-109619: fixed versions per branch and per distro, an exposure check, the timeline, and what to do if you can''t update yet.'
+tags:
+  - showdev
+  - php
+  - security
+  - webdev
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/php2shell-anatomy/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/php2shell-anatomy/cover.png?v=cd20555e'
+id: 5038057
 ---
 
 On 2026-10-20 php.net announced a critical security release for the next day at 14:00 UTC. Two bugs, both CVSS v4.0 9.2, unauthenticated RCE.
@@ -14,7 +19,7 @@ The people I wanted to reach were not going to read two long GitHub advisories. 
 - Source: <https://github.com/0-draft/php2shell-anatomy>
 - Live: <https://0-draft.github.io/php2shell-anatomy/> (English, with a Japanese toggle)
 
-![The top of php2shell-anatomy: both CVE IDs, CVSS v4.0 9.2, and the patch status bar showing fixed 2026-10-21 and CISA KEV 2026-10-26](./assets/php2shell-anatomy/hero.png)
+![The top of php2shell-anatomy: both CVE IDs, CVSS v4.0 9.2, and the patch status bar showing fixed 2026-10-21 and CISA KEV 2026-10-26](./assets/php2shell-anatomy/hero.png?v=6b9b10d4)
 
 ## It was a countdown first
 
@@ -35,11 +40,11 @@ Everything time-dependent on the page keys off that, including which verdict the
 
 The table I would want at 2 a.m.: fixed version per branch, then what your distro actually ships, because backported packages don't carry upstream version numbers. Ubuntu 24.04's fix is `8.3.6-0ubuntu0.24.04.13`, not 8.3.36.
 
-![Fixed versions per PHP branch (8.5.12, 8.4.27, 8.3.36, 8.2.35, nothing for 8.1 and older), then fixed packages for Debian, Ubuntu, AlmaLinux, RHEL, Alpine and the Docker php images](./assets/php2shell-anatomy/blast.png)
+![Fixed versions per PHP branch (8.5.12, 8.4.27, 8.3.36, 8.2.35, nothing for 8.1 and older), then fixed packages for Debian, Ubuntu, AlmaLinux, RHEL, Alpine and the Docker php images](./assets/php2shell-anatomy/blast.png?v=d8fb076f)
 
 The exposure check is two questions, your branch and whether something at the edge filters multipart POSTs. It's an orientation, not a scanner. Pick an EOL branch and it doesn't soften anything:
 
-![The exposure check with "8.1 or older" and "no" selected: CRITICAL, no patch is coming, take a vendor backport if there is one, then upgrade to 8.3+](./assets/php2shell-anatomy/exposure-eol.png)
+![The exposure check with "8.1 or older" and "no" selected: CRITICAL, no patch is coming, take a vendor backport if there is one, then upgrade to 8.3+](./assets/php2shell-anatomy/exposure-eol.png?v=d93b9f48)
 
 The rest: the mechanism in plain words, the timeline (leak, release, KEV on 10-26, the follow-up CVE-2026-115560 on 10-23), and a defense list that starts with "patch" and ends with "check the forgotten box". There's also a myth callout for `disable_functions`, which does nothing here. This is a memory-safety bug in the engine, not a shell function being called.
 

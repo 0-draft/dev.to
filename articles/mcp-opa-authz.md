@@ -1,9 +1,14 @@
 ---
-title: "mcp-opa-authz: Authorization Answers for Coding Agents, from the Policy Instead of a Guess"
+title: 'mcp-opa-authz: Authorization Answers for Coding Agents, from the Policy Instead of a Guess'
 published: false
-description: "An MCP server that evaluates Rego in-process through OPA, or asks an AuthZEN 1.0 PDP. It keeps undefined apart from false and a broken PDP apart from a deny, and it compiles http.send out of model-written policies."
-tags: ["showdev", "mcp", "opa", "authorization"]
+description: 'An MCP server that evaluates Rego in-process through OPA, or asks an AuthZEN 1.0 PDP. It keeps undefined apart from false and a broken PDP apart from a deny, and it compiles http.send out of model-written policies.'
+tags:
+  - showdev
+  - mcp
+  - opa
+  - authorization
 series: ShowDev
+id: 5038054
 ---
 
 Paste a Rego policy into a chat, ask whether bob may delete `doc-1`, and the model reads the policy and answers. The answer sounds right and nothing checked it. If the decision really comes from a PDP in production, the model can't see it at all.

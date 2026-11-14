@@ -1,5 +1,5 @@
 ---
-title: I Log Every Movie I Watch as a Markdown File, Filed Through GitHub Issues
+title: 'I Log Every Movie I Watch as a Markdown File, Filed Through GitHub Issues'
 published: false
 description: 'i-watched-movies is my film diary: one markdown file per movie, an issue form that turns into an auto-merged PR, and a Stats page that checks whether my own taste is predictable. Mostly it is not.'
 tags:
@@ -8,7 +8,8 @@ tags:
   - githubactions
   - movies
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/i-watched-movies/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/i-watched-movies/cover.png?v=65875a23'
+id: 5038052
 ---
 
 I keep a diary of every film I watch: score, where it streams, a one-line impression. It lives in a git repo as markdown, and a small React site reads it.

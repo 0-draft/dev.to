@@ -1,10 +1,15 @@
 ---
-title: "wtfi3: Who Is Talking to Whom on My WiFi"
+title: 'wtfi3: Who Is Talking to Whom on My WiFi'
 published: false
-description: "A single Go binary that turns packets on a network you run into a live map of devices, the services and trackers they reach, DNS lookups and bandwidth. Metadata only: TLS is never decrypted."
-tags: ["showdev", "go", "networking", "privacy"]
+description: 'A single Go binary that turns packets on a network you run into a live map of devices, the services and trackers they reach, DNS lookups and bandwidth. Metadata only: TLS is never decrypted.'
+tags:
+  - showdev
+  - go
+  - networking
+  - privacy
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfi3/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfi3/cover.png?v=0968b54c'
+id: 5038065
 ---
 
 A router's admin page lists the devices on the network and stops there. I wanted the other half: who each one is talking to. Wireshark answers that, but I wanted something I could leave open in a tab.
@@ -14,7 +19,7 @@ wtfi3 is one Go binary. Point it at an interface, open `http://localhost:8080`, 
 - Source: <https://github.com/kanywst/wtfi3>
 - Install: `brew install kanywst/tap/wtfi3` or `go build -o wtfi3 ./cmd/wtfi3` (needs libpcap)
 
-![wtfi3 Simple view: a one-sentence summary, a live map from devices to services and trackers, a throughput graph, an activity feed, and a card per device](./assets/wtfi3/simple.png)
+![wtfi3 Simple view: a one-sentence summary, a live map from devices to services and trackers, a throughput graph, an activity feed, and a card per device](./assets/wtfi3/simple.png?v=c8539caa)
 
 All screenshots here come from `make demo`, which serves the dashboard on synthetic household traffic. None of it is my network.
 
@@ -76,7 +81,7 @@ Each device card gets a tracker badge: green for 0, amber for 1 to 4, red for 5 
 
 The Detailed view drops the interpretation and shows the tables:
 
-![wtfi3 Detailed view: devices with vendor and MAC, DNS lookups, and top flows with the SNI hostname](./assets/wtfi3/detailed.png)
+![wtfi3 Detailed view: devices with vendor and MAC, DNS lookups, and top flows with the SNI hostname](./assets/wtfi3/detailed.png?v=d4d0723c)
 
 ## Seeing other devices
 

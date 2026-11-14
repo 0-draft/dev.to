@@ -4,7 +4,7 @@ published: false
 description: "An interactive, bilingual site on where AWS temporary credentials come from and how requests are signed with them. The SigV4 signer runs in the browser and reproduces AWS's published examples byte for byte, which is how it found one AWS doesn't."
 tags: ["showdev", "aws", "security", "iam"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-credentials/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-credentials/cover.png?v=6d24329a"
 ---
 
 I already wrote an [AWS STS Deep Dive](https://dev.to/kanywst/aws-sts-deep-dive-19ha) and an [AWS SigV4 and SigV4A Deep Dive](https://dev.to/kanywst/aws-sigv4-and-sigv4a-deep-dive-12li). Some of it doesn't fit in prose. "Where does a call to `sts.amazonaws.com` get served?" depends on five inputs, and a paragraph can only walk one combination at a time. So I turned it into a site where you set the inputs and it draws the answer.
@@ -12,7 +12,7 @@ I already wrote an [AWS STS Deep Dive](https://dev.to/kanywst/aws-sts-deep-dive-
 - Source: <https://github.com/0-draft/aws-credentials>
 - Site: <https://0-draft.github.io/aws-credentials/> ([日本語](https://0-draft.github.io/aws-credentials/?lang=ja))
 
-![The hero: pick who is asking STS for credentials and it prints their credential pass with an expiry countdown](./assets/aws-credentials/hero.png)
+![The hero: pick who is asking STS for credentials and it prints their credential pass with an expiry countdown](./assets/aws-credentials/hero.png?v=320e0ecc)
 
 Eleven chapters: why temporary keys, endpoints, all 11 STS APIs, credential paths (EC2, Lambda, ECS, IRSA, Pod Identity, Roles Anywhere, GitHub Actions, Identity Center, SAML, AssumeRoot and more), signing, sessions, trust policies, logs and limits, errors, a timeline and a glossary. Everything is in English and Japanese.
 
@@ -20,7 +20,7 @@ Eleven chapters: why temporary keys, endpoints, all 11 STS APIs, credential path
 
 Since 2025-04-18, a global endpoint call is served in the caller's own Region, but only if the caller is in a Region enabled by default and the name was resolved by Amazon DNS in a VPC. Anything else still goes to `us-east-1`. And even when it is served locally, CloudTrail still logs it in `us-east-1` and `aws:RequestedRegion` is still `us-east-1`.
 
-![The request router: EC2 in eu-north-1 calling sts.amazonaws.com through Amazon DNS, served in eu-north-1, logged in us-east-1](./assets/aws-credentials/router.png)
+![The request router: EC2 in eu-north-1 calling sts.amazonaws.com through Amazon DNS, served in eu-north-1, logged in us-east-1](./assets/aws-credentials/router.png?v=08309d0a)
 
 So a Region-deny SCP that doesn't allow `us-east-1` denies the call, even though nothing ever went to Virginia. Switch the caller to a laptop in Tokyo, or the resolver to public DNS, and the line moves to `us-east-1`.
 
@@ -28,7 +28,7 @@ So a Region-deny SCP that doesn't allow `us-east-1` denies the call, even though
 
 The Signing chapter computes SigV4 with WebCrypto and SigV4a with `@noble/curves`, showing the canonical request, the string to sign, the four-step key derivation and the signature. The "break it" panel recomputes on every keystroke, so changing one byte of one header flips the result to `✗ SignatureDoesNotMatch: AWS would reject this`.
 
-![The SigV4 lab: request on the wire, canonical request, string to sign, kDate to kSigning, and the final signature](./assets/aws-credentials/signer.png)
+![The SigV4 lab: request on the wire, canonical request, string to sign, kDate to kSigning, and the final signature](./assets/aws-credentials/signer.png?v=44f45ce8)
 
 The numbers on that screen are real. A separate Python signer, fed the same canonical request, gets the same hash and signature:
 
@@ -62,7 +62,7 @@ $ npx vitest run
 
 The Errors chapter matches the message you paste against known STS failures, in the browser. Role chaining over one hour has no error code of its own, so it is easy to misread as a permissions problem:
 
-![The error decoder on a role-chaining ValidationError: what you see, why it happens, what to do](./assets/aws-credentials/errors.png)
+![The error decoder on a role-chaining ValidationError: what you see, why it happens, what to do](./assets/aws-credentials/errors.png?v=41f340c1)
 
 ## Keeping it current
 

@@ -1,10 +1,15 @@
 ---
-title: "wtfe: Claims About Engineering Culture by Country, Each One Sourced and Rated"
+title: 'wtfe: Claims About Engineering Culture by Country, Each One Sourced and Rated'
 published: false
-description: "A bilingual site about how software engineers in 14 countries and regions tend to work. Every claim cites a public source and carries a label for how much that source can carry."
-tags: ["showdev", "career", "culture", "astro"]
+description: A bilingual site about how software engineers in 14 countries and regions tend to work. Every claim cites a public source and carries a label for how much that source can carry.
+tags:
+  - showdev
+  - career
+  - culture
+  - astro
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe/cover.png?v=4d9e66d8'
+id: 5038063
 ---
 
 "Japanese engineers avoid direct feedback." Follow that line back and you usually land on a summary of Erin Meyer's book, written by a language school or a training company.
@@ -30,7 +35,7 @@ A claim whose newest source is older than 2016 also gets a "dated" mark. That is
 
 Here is Japan's feedback and code review section:
 
-![Japan's feedback section on wtfe: three claims labeled THIN with dashed rules, and one WELL ATTESTED claim about Hacobell and Future labelling review comments must, imo and nits, with its two sources expanded](./assets/wtfe/jp-feedback.png)
+![Japan's feedback section on wtfe: three claims labeled THIN with dashed rules, and one WELL ATTESTED claim about Hacobell and Future labelling review comments must, imo and nits, with its two sources expanded](./assets/wtfe/jp-feedback.png?v=9e171cdd)
 
 The stereotype is there, as `jp-feedback-1`, and it is thin: both sources are a language school's blog and a book review. The only well-attested claim in the section is that two Japanese companies, Hacobell and Future, publish review rules that tag each comment with how strong it is (`must`, `imo`, `nits`). That is a company describing its own practice, so it gets the top label.
 
@@ -98,7 +103,7 @@ Japan's individualism went from 46 to 62, which is noted on the Japan page, sinc
 
 Compare pages take an ordered pair. `jp-vs-de` reads Germany from Japan and sorts by the largest gap:
 
-![Hofstede rulers on the jp-vs-de compare page: Germany scores 43 points lower than Japan on long-term orientation, 29 lower on motivation towards achievement, 27 lower on uncertainty avoidance, 19 lower on power distance, 17 higher on individualism, and 2 lower on indulgence](./assets/wtfe/compare-hofstede.png)
+![Hofstede rulers on the jp-vs-de compare page: Germany scores 43 points lower than Japan on long-term orientation, 29 lower on motivation towards achievement, 27 lower on uncertainty avoidance, 19 lower on power distance, 17 higher on individualism, and 2 lower on indulgence](./assets/wtfe/compare-hofstede.png?v=3190d6ae)
 
 ## What it is not
 

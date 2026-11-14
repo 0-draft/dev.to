@@ -4,7 +4,7 @@ published: false
 description: "My CLI repos each record their README GIF from a VHS .tape. matinee runs the same tape and renders a chaptered, narrated, captioned video in 16:9 and 9:16, with no timestamps written by hand."
 tags: ["showdev", "cli", "terminal", "video"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/matinee/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/matinee/cover.png?v=836278fc"
 ---
 
 Most of my CLI repos record their README GIF with [VHS](https://github.com/charmbracelet/vhs). The `.tape` is already in the repo, it already knows every keystroke, and it already has comments like `# 3. Search` above each step.
@@ -14,7 +14,7 @@ A GIF has no sound and no chapters, and it is unreadable on a phone. I wanted a 
 - Source: <https://github.com/kanywst/matinee>
 - Stack: VHS, ffmpeg, macOS `say` / piper / VOICEVOX, whisper.cpp, [Remotion](https://www.remotion.dev). All local, no API key.
 
-![matinee's 16:9 cut of the y509 demo: a chapter chip at the top, the terminal in the middle, word-by-word captions at the bottom](./assets/matinee/demo.gif)
+![matinee's 16:9 cut of the y509 demo: a chapter chip at the top, the terminal in the middle, word-by-word captions at the bottom](./assets/matinee/demo.gif?v=4e5e9872)
 
 That is the [y509](https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-for-viewing-and-analyzing-x509-certificate-chains-5fn6) tape, unchanged. The chip in the corner, the timings and the captions all came out of the pipeline. The README has the version with sound.
 
@@ -104,9 +104,9 @@ $ make narrate PROJECT=hello
 
 `make render` then writes both cuts. Same frame, 16:9 and 9:16:
 
-![The hello project at 16:9: chip "02/02 Say goodbye", the terminal, and the caption "Narration comes from this file, and the" with the current word highlighted](./assets/matinee/hello-16x9.png)
+![The hello project at 16:9: chip "02/02 Say goodbye", the terminal, and the caption "Narration comes from this file, and the" with the current word highlighted](./assets/matinee/hello-16x9.png?v=82b344a9)
 
-![The same frame at 9:16, with the terminal card centred and the caption wrapped to two lines](./assets/matinee/hello-9x16.png)
+![The same frame at 9:16, with the terminal card centred and the caption wrapped to two lines](./assets/matinee/hello-9x16.png?v=24313b12)
 
 I skipped `make captions` because it needs a whisper model I didn't download, so these frames use the transcription checked into the repo.
 

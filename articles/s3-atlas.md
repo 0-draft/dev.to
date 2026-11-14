@@ -1,10 +1,15 @@
 ---
-title: S3 Atlas, Everything I Know About Amazon S3 on One Site
+title: 'S3 Atlas, Everything I Know About Amazon S3 on One Site'
 published: false
 description: 'An EN/JA site with 18 research chapters on Amazon S3, a cost calculator that prices one workload across every S3 class and 21 other services, 134 CLI recipes and 309 API operations.'
-tags: ["showdev", "aws", "s3", "storage"]
+tags:
+  - showdev
+  - aws
+  - s3
+  - storage
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/s3-atlas/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/s3-atlas/cover.png?v=ea55a2e4'
+id: 5038064
 ---
 
 I wrote an [S3 deep dive](https://dev.to/kanywst/aws-s3-deep-dive-17f3) earlier this year. It was one article, and it kept growing questions it couldn't hold: what does this workload cost in Glacier Instant Retrieval versus R2, which `aws s3` commands delete things, who actually left S3 and why. So I kept going until it was a site.
@@ -12,7 +17,7 @@ I wrote an [S3 deep dive](https://dev.to/kanywst/aws-s3-deep-dive-17f3) earlier 
 - Source: <https://github.com/0-draft/s3-atlas>
 - Live: <https://0-draft.github.io/s3-atlas/>
 
-![S3 Atlas home page: the storage classes stacked as a water column, Express One Zone at the surface and Glacier Deep Archive at the bottom, with $/GB-month for each](./assets/s3-atlas/hero.png)
+![S3 Atlas home page: the storage classes stacked as a water column, Express One Zone at the surface and Glacier Deep Archive at the bottom, with $/GB-month for each](./assets/s3-atlas/hero.png?v=95a1e6b0)
 
 ## Two halves, one source of truth
 
@@ -34,7 +39,7 @@ The header toggle switches every page, chapter and dataset to Japanese.
 
 ## The calculator
 
-![Cost calculator with the 10 TB media library preset: Wasabi $82, Hetzner $98, Storj $108, Backblaze B2 $122, Cloudflare R2 $159 at the top, each bar split into storage, requests, retrieval and egress](./assets/s3-atlas/calculator.png)
+![Cost calculator with the 10 TB media library preset: Wasabi $82, Hetzner $98, Storj $108, Backblaze B2 $122, Cloudflare R2 $159 at the top, each bar split into storage, requests, retrieval and egress](./assets/s3-atlas/calculator.png?v=93b3c2ee)
 
 It ignores free tiers for every provider so the comparison stays even. What it does not ignore is per-object overhead, which is where S3 class choice usually goes wrong. IA and Glacier Instant Retrieval bill anything under 128 KB as 128 KB. Glacier Flexible Retrieval and Deep Archive add 32 KB at the class price plus 8 KB at the Standard price for every object.
 

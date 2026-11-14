@@ -1,10 +1,15 @@
 ---
-title: "ccretro: A Monthly Claude Code Retro That Checks Last Month's Suggestions"
+title: 'ccretro: A Monthly Claude Code Retro That Checks Last Month''s Suggestions'
 published: false
-description: "ccretro reads your local Claude Code transcripts, compares the period with the one before, and on the next run checks whether last month's suggestions happened. A /ccretro skill turns them into skills, hooks and CLAUDE.md lines."
-tags: ["showdev", "ai", "claude", "productivity"]
+description: 'ccretro reads your local Claude Code transcripts, compares the period with the one before, and on the next run checks whether last month''s suggestions happened. A /ccretro skill turns them into skills, hooks and CLAUDE.md lines.'
+tags:
+  - showdev
+  - ai
+  - claude
+  - productivity
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/ccretro/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/ccretro/cover.png?v=05078138'
+id: 5038051
 ---
 
 `/insights` gives me a list of things to change. A month later it gives me another list. Nothing tells me whether I did anything about the first one, and Claude Code deletes transcripts older than `cleanupPeriodDays` (30 by default), so a quarter is out of reach anyway.
@@ -14,7 +19,7 @@ ccretro is a local web page that compares a period with the one before it, remem
 - Source: <https://github.com/0-draft/ccretro>
 - Run: `npx --allow-git=root github:0-draft/ccretro` (Node 20+, no runtime dependencies; npm 12 needs `--allow-git=root`)
 
-![The top of a ccretro report: headline, KPI row with change against the previous 30 days, and a daily prompts chart](./assets/ccretro/report.png)
+![The top of a ccretro report: headline, KPI row with change against the previous 30 days, and a daily prompts chart](./assets/ccretro/report.png?v=3e9f7726)
 
 That page, and every number below, comes from a synthetic `~/.claude`: 91 generated transcripts for a made-up developer with three projects. Not my history.
 

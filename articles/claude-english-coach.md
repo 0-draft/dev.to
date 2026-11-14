@@ -4,7 +4,7 @@ published: false
 description: 'claude-english-coach is a template repo: a CLAUDE.md that makes Claude point at your English mistakes without fixing them, plus Markdown files where every mistake and new word gets logged for quizzes.'
 tags: ["showdev", "claude", "english", "learning"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/claude-english-coach/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/claude-english-coach/cover.png?v=e7ae9036"
 ---
 
 I write issues and PRs in English most days, and Claude is open in the same terminal. Ask it to fix a sentence and it rewrites the whole paragraph. The text gets better. My English doesn't.
@@ -74,7 +74,7 @@ Each rule in `CLAUDE.md` names the paper it comes from, and `docs/research-ja.md
 
 The Markdown loop needs a session of writing. For short daily practice there is `app/rounds.html`: one HTML file, made to run as a Claude artifact. Opened in a plain browser it works too and saves to `localStorage`. The UI is in Japanese.
 
-![English Rounds, opened outside claude.ai: today's minutes against a 45-minute plan, the three blocks Review, Listen and Speak, and a 66-day habit grid](./assets/claude-english-coach/rounds.png)
+![English Rounds, opened outside claude.ai: today's minutes against a 45-minute plan, the three blocks Review, Listen and Speak, and a 66-day habit grid](./assets/claude-english-coach/rounds.png?v=69045367)
 
 - **Review**: spaced repetition with [ts-fsrs](https://github.com/open-spaced-repetition/ts-fsrs) 5.4.2. Every card makes you type the English.
 - **Listen**: dictation one sentence at a time. Missed words become cards. Playback speed adjusts to keep you at 80-90% of words right.

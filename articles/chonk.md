@@ -2,9 +2,14 @@
 title: Disk Viewers Show Sizes. I Wanted One That Says Who Put the Bytes There.
 published: false
 description: 'An 81G file on my Mac was a VM disk whose guest used 3.6G. No disk viewer told me that, and docker system prune would not have freed it. chonk groups every byte by owner and reclaims with that owner''s own command.'
-tags: ["showdev", "go", "macos", "cli"]
+tags:
+  - showdev
+  - go
+  - macos
+  - cli
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/chonk/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/chonk/cover.png?v=6318e3a0'
+id: 5038048
 ---
 
 My Mac was out of space, and the biggest single file was `~/Library/Application Support/rancher-desktop/lima/0/diffdisk`: 81G. That is Rancher Desktop's VM disk. Inside the VM, Docker used 3.4G and the filesystem 3.6G. The other 77G was space the guest had already freed and never handed back to macOS.
@@ -18,7 +23,7 @@ So I wrote chonk. It groups every byte by who put it there, says why it exists, 
 - Source: <https://github.com/kanywst/chonk>
 - Install: `brew install --cask kanywst/tap/chonk` or `go install github.com/kanywst/chonk/cmd/chonk@latest`
 
-![chonk's terminal UI on a canned machine: owners grouped by kind, a Rancher Desktop VM with 77G trapped, and the fstrim confirmation](./assets/chonk/demo.gif)
+![chonk's terminal UI on a canned machine: owners grouped by kind, a Rancher Desktop VM with 77G trapped, and the fstrim confirmation](./assets/chonk/demo.gif?v=b7d4cdf5)
 
 The recording runs on a canned machine (`CHONK_DEMO=1`), so none of it is a real disk.
 

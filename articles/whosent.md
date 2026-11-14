@@ -4,7 +4,7 @@ published: false
 description: "A request arrives from research-agent. whosent opens the delegation chain behind it (JWT act, Biscuit, UCAN or macaroons), traces it back to the human, and points at the hop where authority grew."
 tags: ["showdev", "go", "security", "oauth"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/whosent/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/whosent/cover.png?v=d1daa355"
 ---
 
 A request shows up from `research-agent`. The token says Alice. Between Alice and that agent there was a chat UI and a planner, three token exchanges, and the scope should have shrunk at each one. Decoding the JWT and squinting at nested `act` claims does not tell me whether it did.
@@ -14,7 +14,7 @@ I wrote [y509](https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-fo
 - Source: <https://github.com/kanywst/whosent>
 - Install: `brew install --cask kanywst/tap/whosent` or `go install github.com/kanywst/whosent/cmd/whosent@latest`
 
-![whosent walking a JWT bundle that breaks at the last exchange, asking whether the last token may write files, then scrubbing the clock on a Biscuit token](./assets/whosent/demo.gif)
+![whosent walking a JWT bundle that breaks at the last exchange, asking whether the last token may write files, then scrubbing the clock on a Biscuit token](./assets/whosent/demo.gif?v=9919135f)
 
 ## Scope from nowhere
 

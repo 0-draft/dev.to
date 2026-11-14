@@ -4,7 +4,7 @@ published: false
 description: My open pull requests live under my own account, an org, and other people's projects. prpr puts all of them on one screen, opens one with enter, and waves goodbye when it merges.
 tags: ["showdev", "github", "go", "tui"]
 series: ShowDev
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/prpr/cover.png"
+cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/prpr/cover.png?v=c3fc7ae2"
 ---
 
 My open pull requests are spread out: my own repositories, the `0-draft` org, and upstream projects I send patches to. Review requests come from all three. GitHub's pulls page shows what I opened or was asked to review, but not everything open in the orgs I belong to, so checking meant a handful of tabs.
@@ -14,7 +14,7 @@ prpr is one terminal screen with all of it. Enter opens the pull request in the 
 - Source: <https://github.com/kanywst/prpr>
 - Install: `brew install kanywst/tap/prpr`, `scoop install prpr` (bucket `kanywst/scoop-bucket`), or `go install github.com/kanywst/prpr@latest`
 
-![prpr walking through the list, opening the detail pane, filtering, switching tabs, and showing a merge banner](./assets/prpr/demo.gif)
+![prpr walking through the list, opening the detail pane, filtering, switching tabs, and showing a merge banner](./assets/prpr/demo.gif?v=12699baf)
 
 The recording runs `prpr --demo`, which serves a fixed fixture list instead of GitHub, so nobody's real account ends up in a GIF.
 
