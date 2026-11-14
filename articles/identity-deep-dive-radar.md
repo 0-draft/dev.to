@@ -9,13 +9,13 @@ tags:
   - identity
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/identity-deep-dive-radar/cover.png?v=49664009'
-date: '2026-11-13T00:00:00Z'
+date: '2026-11-14T00:00:00Z'
 id: 4869711
 ---
 
 ## Introduction
 
-If you work on identity, the specs move under you. An OAuth WG draft goes to the IESG, a WIMSE draft gets a new revision, an OpenID repo switches a protocol's JSON properties to snake_case. Each of those is a signal that "now is the time to read this", but the signals are spread across IETF Datatracker, the mail archive, and about ninety GitHub repositories (66 under `openid`, 21 under `oauth-wg`, and 6 under `ietf-wg-wimse` in the 2026-11-14 run).
+If you work on identity, the specs move under you. An OAuth WG draft goes to the IESG, a WIMSE draft gets a new revision, the OpenID4VCI repo [switches a document's JSON properties to snake_case](https://github.com/openid/OpenID4VCI/pull/809). Each of those is a signal that "now is the time to read this", but the signals are spread across IETF Datatracker, the mail archive, and about ninety GitHub repositories (66 under `openid`, 21 under `oauth-wg`, and 6 under `ietf-wg-wimse` in the 2026-11-14 run).
 
 I kept missing them, so I built **[identity-deep-dive](https://github.com/0-draft/identity-deep-dive)**. It collects those sources every six hours, explains what changed, and keeps a map of where each spec stands and who documents support for it. The result is a static site at **[0-draft.github.io/identity-deep-dive](https://0-draft.github.io/identity-deep-dive/)**, in English and Japanese.
 
@@ -35,7 +35,7 @@ I kept missing them, so I built **[identity-deep-dive](https://github.com/0-draf
 
 ## What the site shows
 
-- **This week:** three to five changes worth five minutes, most important first, each with why it matters. In the 2026-11-14 run the top one was RFC 10070, which tightens the audience rules for JWT client assertions and assertion grants.
+- **This week:** three to five changes worth five minutes, most important first, each with why it matters. In the 2026-11-14 run the top one was [RFC 10070](https://www.rfc-editor.org/rfc/rfc10070), which tightens the audience rules for JWT client assertions and assertion grants.
 - **Where the specs stand:** the IETF drafts the tracks follow, grouped by Datatracker state, from individual draft through WG last call, the IESG and the RFC Editor queue.
 - **Topics:** how the drafts and repositories group, for example "workload credentials and proof of possession" or "agent delegation and attenuation".
 - **Per-track pages:** the daily and weekly reports, and an explanation for each new revision, thread or PR.
@@ -97,7 +97,7 @@ If the weights feel wrong for your interests, you change the YAML, not the score
 
 ## A spec map where every claim has a source
 
-The [spec map](https://0-draft.github.io/identity-deep-dive/map/) covers 62 OAuth, OpenID, workload identity and credential specs in 11 layers, from grants and flows to security events. Each card says where the spec stands and how it relates to the others: what it builds on, profiles, extends or replaces. Of the 62, 25 are RFCs, 11 are OpenID Final specifications, one comes from another body, and the rest are IETF drafts at various stages.
+As of 2026-11-14, the [spec map](https://0-draft.github.io/identity-deep-dive/map/) covers 62 OAuth, OpenID, workload identity and credential specs in 11 layers, from grants and flows to security events. Each card says where the spec stands and how it relates to the others: what it builds on, profiles, extends or replaces. Of the 62, 25 are RFCs, 11 are OpenID Final specifications, one comes from another body, and the rest are IETF drafts at various stages.
 
 The part I care about most is the "documented support" list. A vendor or project is listed only when its own documentation, or a standards body's page naming it, says it supports the spec. Each of the 211 claims stores the official URL and an exact phrase from that page. A weekly job with no model in it fetches every page and checks that the phrase is still there. If it is gone, the site says "not re-verified since" with the date instead of quietly showing stale support. Experimental, alpha and beta support is counted separately as preview.
 
@@ -109,7 +109,7 @@ Most specs on the map also have an explainer: when you reach for it, the problem
 
 The ranking feeds deep dives. Once a week a job takes the top candidate in each track that has no deep dive yet, has Claude draft one from the source text (context, spec notes, an interop checklist and a hands-on log), and opens it as a draft pull request. Nothing lands until a person has checked it against the primary sources.
 
-Reading that closely pays off. The [WIMSE HTTP signature deep dive](https://0-draft.github.io/identity-deep-dive/ietf-wimse/deep-dives/draft-ietf-wimse-http-signature/) records that `draft-ietf-wimse-http-signature-08` tells recipients to validate the workload identity token "as specified in Section 5.1.4" of the workload credentials draft, which has no Section 5.1.4 in either -02 or -03. Validation is Section 5.1.3 in -03. There are nine deep dives so far, including OAuth 2.1, SD-JWT VC, Client ID Metadata Documents and OpenID4VCI. If WIMSE itself is new to you, I wrote a [WIMSE deep dive](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) earlier.
+Reading that closely pays off. The [WIMSE HTTP signature deep dive](https://0-draft.github.io/identity-deep-dive/ietf-wimse/deep-dives/draft-ietf-wimse-http-signature/) records that [draft-ietf-wimse-http-signature-08](https://www.ietf.org/archive/id/draft-ietf-wimse-http-signature-08.txt) (Sections 3 and 3.6) tells recipients to validate the workload identity token "as specified in Section 5.1.4" of the workload credentials draft. Neither [-02](https://www.ietf.org/archive/id/draft-ietf-wimse-workload-creds-02.txt) nor [-03](https://www.ietf.org/archive/id/draft-ietf-wimse-workload-creds-03.txt) of that draft has a Section 5.1.4. In -03, WIT validation is Section 5.1.3. As of 2026-11-14 there are nine deep dives, including OAuth 2.1, SD-JWT VC, Client ID Metadata Documents and OpenID4VCI. If WIMSE itself is new to you, I wrote a [WIMSE deep dive](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) earlier.
 
 ## Conclusion
 
