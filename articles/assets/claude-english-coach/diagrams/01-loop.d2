@@ -1,0 +1,24 @@
+direction: right
+
+classes: {
+  you: {style: {fill: "#dbeafe"; stroke: "#1d4ed8"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+  claude: {style: {fill: "#fef3c7"; stroke: "#b45309"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+  file: {shape: page; style: {fill: "#f1f5f9"; stroke: "#475569"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24}}
+}
+
+w: "you write\nin English" {class: you}
+m: "Claude marks\nwhere + what kind\nno corrected sentence" {class: claude}
+r: "you fix it\n(two tries)" {class: you}
+show: "still wrong:\nClaude shows the\ncorrection + rule" {class: claude}
+logs: "logged" {
+  grid-rows: 3
+  grid-gap: 16
+  j: "journal/MM-DD.md\nfixed by you / needed the answer" {class: file}
+  p: "phrases.md\nrepeat mistake: Count +1" {class: file}
+  f: "## Focus\ntop-count categories\ndecide what gets\nfull feedback next week" {class: file}
+}
+
+w -> m -> r
+r -> logs: "fixed"
+r -> show
+show -> logs
