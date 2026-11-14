@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe/cover.png?v=4d9e66d8'
 id: 5038063
+date: '2026-11-14T21:50:56Z'
 ---
 
 "Japanese engineers avoid direct feedback." Follow that line back and you usually land on a summary of Erin Meyer's book, written by a language school or a training company.

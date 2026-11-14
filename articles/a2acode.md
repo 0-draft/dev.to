@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/a2acode/cover.png?v=89532012'
 id: 5038047
+date: '2026-11-14T21:50:23Z'
 ---
 
 In June I shipped [a2claude](https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6), which put Claude Code behind A2A so another agent could hand it coding work. It drove Claude through the Claude Agent SDK.

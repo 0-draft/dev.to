@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-credentials/cover.png?v=6d24329a'
 id: 5038091
+date: '2026-11-14T21:50:24Z'
 ---
 
 I already wrote an [AWS STS Deep Dive](https://dev.to/kanywst/aws-sts-deep-dive-19ha) and an [AWS SigV4 and SigV4A Deep Dive](https://dev.to/kanywst/aws-sigv4-and-sigv4a-deep-dive-12li). Some of it doesn't fit in prose. "Where does a call to `sts.amazonaws.com` get served?" depends on five inputs, and a paragraph can only walk one combination at a time. So I turned it into a site where you set the inputs and it draws the answer.

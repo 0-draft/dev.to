@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/aws-connectivity/cover.png?v=113d0034'
 id: 5038049
+date: '2026-11-14T21:50:22Z'
 ---
 
 Every AWS networking page I read was correct and covered one service. Site-to-Site VPN on one page, Transit Gateway on another, Cloud WAN on a third. None of them answered the question I actually had: with this office, these VPCs and this budget, which road do the packets take, and what does AWS do when there are two?

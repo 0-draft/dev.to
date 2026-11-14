@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/ccretro/cover.png?v=05078138'
 id: 5038051
+date: '2026-11-14T21:50:21Z'
 ---
 
 `/insights` gives me a list of things to change. A month later it gives me another list. Nothing tells me whether I did anything about the first one, and Claude Code deletes transcripts older than `cleanupPeriodDays` (30 by default), so a quarter is out of reach anyway.

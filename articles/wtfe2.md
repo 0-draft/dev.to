@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfe2/cover.png?v=ddf1db1f'
 id: 5038078
+date: '2026-11-14T21:50:56Z'
 ---
 
 Every "funny programming comics" list I have seen is a wall of English links. I wanted to hand some of those strips to people who don't read English, lettered the way a translated manga is: English taken out of the art, Japanese drawn in.

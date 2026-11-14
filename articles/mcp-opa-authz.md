@@ -9,6 +9,7 @@ tags:
   - authorization
 series: ShowDev
 id: 5038054
+date: '2026-11-14T21:50:27Z'
 ---
 
 Paste a Rego policy into a chat, ask whether bob may delete `doc-1`, and the model reads the policy and answers. The answer sounds right and nothing checked it. If the decision really comes from a PDP in production, the model can't see it at all.

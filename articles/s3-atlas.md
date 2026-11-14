@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/s3-atlas/cover.png?v=ea55a2e4'
 id: 5038064
+date: '2026-11-14T21:50:30Z'
 ---
 
 I wrote an [S3 deep dive](https://dev.to/kanywst/aws-s3-deep-dive-17f3) earlier this year. It was one article, and it kept growing questions it couldn't hold: what does this workload cost in Glacier Instant Retrieval versus R2, which `aws s3` commands delete things, who actually left S3 and why. So I kept going until it was a site.

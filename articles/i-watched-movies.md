@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/i-watched-movies/cover.png?v=65875a23'
 id: 5038052
+date: '2026-11-14T21:50:28Z'
 ---
 
 I keep a diary of every film I watch: score, where it streams, a one-line impression. It lives in a git repo as markdown, and a small React site reads it.

@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/matinee/cover.png?v=836278fc'
 id: 5038073
+date: '2026-11-14T21:50:36Z'
 ---
 
 Most of my CLI repos record their README GIF with [VHS](https://github.com/charmbracelet/vhs). The `.tape` is already in the repo, it already knows every keystroke, and it already has comments like `# 3. Search` above each step.

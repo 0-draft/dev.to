@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/goi/cover.png?v=c8996d13'
 id: 5038055
+date: '2026-11-14T21:50:29Z'
 ---
 
 There is a layer of Japanese that most people recognize and almost nobody says: 関の山, 日下開山, 痘痕も靨. You read them, you get the gist, you never reach for them. And the gist is often wrong.

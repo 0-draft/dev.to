@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-paper/cover.png?v=b028b44e'
 id: 5038067
+date: '2026-11-14T21:50:52Z'
 ---
 
 A machine-translated PDF of the Zanzibar paper reads fine until you hit the sentence about zookies or userset rewrites. Then you need what the authors actually wrote, and the translation doesn't tell you which English sentence it came from.

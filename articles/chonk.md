@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/chonk/cover.png?v=6318e3a0'
 id: 5038048
+date: '2026-11-14T21:50:32Z'
 ---
 
 My Mac was out of space, and the biggest single file was `~/Library/Application Support/rancher-desktop/lima/0/diffdisk`: 81G. That is Rancher Desktop's VM disk. Inside the VM, Docker used 3.4G and the filesystem 3.6G. The other 77G was space the guest had already freed and never handed back to macOS.

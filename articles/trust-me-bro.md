@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/trust-me-bro/cover.png?v=1f705115'
 id: 5038082
+date: '2026-11-14T21:50:31Z'
 ---
 
 One skill folder now runs on Claude Code, Codex, Copilot, Cursor and Gemini CLI. The format is a directory with a `SKILL.md` and two required frontmatter fields. No signing, no attestation, no review step. Agent Plugins 1.0 says outright that publisher identity and signatures are out of scope.

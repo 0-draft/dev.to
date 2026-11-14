@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/whosent/cover.png?v=d1daa355'
 id: 5038077
+date: '2026-11-14T21:50:35Z'
 ---
 
 A request shows up from `research-agent`. The token says Alice. Between Alice and that agent there was a chat UI and a planner, three token exchanges, and the scope should have shrunk at each one. Decoding the JWT and squinting at nested `act` claims does not tell me whether it did.

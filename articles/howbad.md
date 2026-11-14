@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/howbad/cover.png?v=b924e809'
 id: 5038090
+date: '2026-11-14T21:50:26Z'
 ---
 
 Claude Code, Codex and Cursor run as me. A prompt injection in a README or an issue comment doesn't need a sandbox escape. It gets whatever my shell gets: the `gh` token, the npm token that publishes packages, the AWS profile from this morning, the Slack token pasted into an MCP config.

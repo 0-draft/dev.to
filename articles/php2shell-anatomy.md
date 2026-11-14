@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/php2shell-anatomy/cover.png?v=cd20555e'
 id: 5038057
+date: '2026-11-14T21:50:33Z'
 ---
 
 On 2026-10-20 php.net announced a critical security release for the next day at 14:00 UTC. Two bugs, both CVSS v4.0 9.2, unauthenticated RCE.

@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/claude-english-coach/cover.png?v=e7ae9036'
 id: 5038074
+date: '2026-11-14T21:50:25Z'
 ---
 
 I write issues and PRs in English most days, and Claude is open in the same terminal. Ask it to fix a sentence and it rewrites the whole paragraph. The text gets better. My English doesn't.

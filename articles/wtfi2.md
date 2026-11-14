@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/wtfi2/cover.png?v=8638b633'
 id: 5038066
+date: '2026-11-14T21:50:53Z'
 ---
 
 The Wi-Fi icon shows full bars. The browser says "Offline". Then I am in a terminal running `ping` and `traceroute`, trying to line the answers up in my head.

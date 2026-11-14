@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/why-hackers-dont-get-caught/cover.png?v=c7e398ff'
 id: 5038058
+date: '2026-11-14T21:50:51Z'
 ---
 
 In February I wrote [Anonymity Technology: The 5 Layers of Defense](https://dev.to/kanywst/anonymity-technology-the-5-layers-of-defense-1ad9). It treated "not getting caught" as a technical problem: hold every layer, make no mistakes.

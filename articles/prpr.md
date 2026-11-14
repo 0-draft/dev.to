@@ -10,6 +10,7 @@ tags:
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/prpr/cover.png?v=c3fc7ae2'
 id: 5038092
+date: '2026-11-14T21:50:34Z'
 ---
 
 My open pull requests are spread out: my own repositories, the `0-draft` org, and upstream projects I send patches to. Review requests come from all three. GitHub's pulls page shows what I opened or was asked to review, but not everything open in the orgs I belong to, so checking meant a handful of tabs.
