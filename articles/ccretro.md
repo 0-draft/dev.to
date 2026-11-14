@@ -26,7 +26,7 @@ That page, and every number below, comes from a synthetic `~/.claude`: 91 genera
 
 ## What it counts
 
-![Data flow: Claude Code transcripts, deleted after 30 days, are summarized into archive.json, which outlives them. A digest with totals, the previous period, repeated prompts, existing setup and previous suggestions goes to your own claude -p with no tools. It writes the local report page and last-insight.json, which feeds the next month's digest](./assets/ccretro/diagrams/01-flow.png)
+![Data flow: Claude Code transcripts, deleted after 30 days, are summarized into archive.json, which outlives them. A digest with totals, the previous period, repeated prompts, existing setup and previous suggestions goes to your own claude -p with no tools. It writes the local report page and last-insight.json, which feeds the next month's digest](./assets/ccretro/diagrams/01-flow.png?v=269f832d)
 
 It reads `~/.claude/projects/**/*.jsonl` and reduces each transcript to a summary (counts, plus the first 400 characters of each prompt). Summaries go into `~/.local/share/ccretro/archive.json`. When Claude Code deletes the transcript, the summary stays, so `-d 90` or `-d 0` still covers it on later runs.
 

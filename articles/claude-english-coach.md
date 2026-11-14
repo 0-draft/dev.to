@@ -42,7 +42,7 @@ Native language: **Japanese** (change this line to your own language)
 
 ## The loop
 
-![The loop: you write in English, Claude marks where the error is and what kind without giving the sentence, you get two tries to fix it, and if it is still wrong Claude shows the correction and rule. Either way it is logged to the journal, to phrases.md with a count, and the top categories become next week's Focus](./assets/claude-english-coach/diagrams/01-loop.png)
+![The loop: you write in English, Claude marks where the error is and what kind without giving the sentence, you get two tries to fix it, and if it is still wrong Claude shows the correction and rule. Either way it is logged to the journal, to phrases.md with a count, and the top categories become next week's Focus](./assets/claude-english-coach/diagrams/01-loop.png?v=f5e9fa4e)
 
 **1. Write something in English.** A chat message, a diary entry, a draft PR description.
 
