@@ -13,6 +13,13 @@ indicate if changes were made.
 Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
 Summary: https://creativecommons.org/licenses/by/4.0/
 
+Exception: third-party images. Some files under `assets/` are other people's
+work (for example comic strips, screenshots of other projects, or logos). They
+stay under their creators' own licenses, which may be more restrictive than
+CC BY 4.0 (CC BY-NC, for instance). The article that uses each one names the
+creator, the source and the license next to it. Those files are not covered by
+the CC BY 4.0 grant above.
+
 Code samples embedded in the articles may be used under the MIT license in
 the repository root, at your option.
 
