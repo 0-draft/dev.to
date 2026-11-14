@@ -92,7 +92,7 @@ On a switched network your machine only receives its own unicast plus broadcast 
 sudo ./wtfi3 -i en0 -spoof -i-own-this-network
 ```
 
-`-spoof` alone refuses to run. With both flags it ARP-scans the subnet every 30 seconds, poisons each target and the gateway every 2 seconds, turns on IP forwarding, and on exit sends the real MACs back three times to restore the caches. The forwarding toggle is `sysctl -w net.inet.ip.forwarding`, the macOS name.
+`-spoof` alone refuses to run. With both flags it ARP-scans the subnet every 30 seconds, poisons each target and the gateway every 2 seconds, turns on IP forwarding, and on exit sends the real MACs back three times to restore the caches. Forwarding goes through `net.inet.ip.forwarding` on macOS and `/proc/sys/net/ipv4/ip_forward` on Linux, and goes back to whatever it was before. The gateway is the default route on the interface you capture on, not just the first default route the host has.
 
 A relayed packet crosses the capture interface twice (target to me, me to gateway), so in spoof mode only the leg addressed to my MAC is counted. Otherwise every byte would show up double.
 
