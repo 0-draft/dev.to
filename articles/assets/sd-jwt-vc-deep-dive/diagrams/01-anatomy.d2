@@ -1,0 +1,36 @@
+direction: right
+
+classes: {
+  hard: { style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 20 } }
+  soft: { style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 20 } }
+  hdr: { style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 20 } }
+  kb: { style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 20 } }
+}
+
+wire: "What the Verifier receives:  <Issuer-signed JWT>~<Disclosure>~<Disclosure>~<KB-JWT>" {
+  grid-rows: 1
+  grid-gap: 40
+
+  jwt: "1. Issuer-signed JWT" {
+    grid-columns: 1
+    grid-gap: 16
+    header: "JOSE header\n\nalg: ES256\ntyp: dc+sd-jwt   (MUST, 2.2.1)\nkid: pid-2026   (look up in jwks)\nx5c: [...]   (only if policy uses x5c)" { class: hdr }
+    fixed: "Never in a Disclosure (2.2.2.3)\n\niss    nbf    exp    cnf\nvct    vct#integrity\naka_vcts    status\n\nVerifier always sees these" { class: hard }
+    hidden: "_sd: [digest, digest, digest]\nnationalities: [{\"...\": d0}, {\"...\": d1}]\n_sd_alg: sha-256\n\nsub, iat and every other claim\nMAY sit behind a digest" { class: soft }
+  }
+
+  disc: "2. Disclosures the Holder chose" {
+    grid-columns: 1
+    grid-gap: 16
+    d1: "[salt, \"age_equal_or_over\", {\"18\": true}]\n\nsha-256(base64url) must equal\none of the _sd digests" { class: soft }
+    d2: "[salt, \"FR\"]\n\narray element: its digest is d1,\nso it is nationalities[1]" { class: soft }
+    d3: "not sent:\ngiven_name, birthdate, nationalities[0]\n\nVerifier still knows index 0 exists" { class: soft; style.stroke-dash: 4 }
+  }
+
+  kbjwt: "3. KB-JWT (if Key Binding is required)" {
+    grid-columns: 1
+    grid-gap: 16
+    kh: "typ: kb+jwt\nsigned by the key in cnf" { class: kb }
+    kp: "aud: https://verifier.example\nnonce: n-0S6_WzA2Mj\niat\nsd_hash: sha-256 over\n  <JWT>~<Disc>~<Disc>~" { class: kb }
+  }
+}

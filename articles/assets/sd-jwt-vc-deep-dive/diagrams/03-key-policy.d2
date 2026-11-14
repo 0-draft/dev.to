@@ -1,0 +1,37 @@
+classes: {
+  h: { style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 22; bold: true } }
+  ok: { style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 20 } }
+  no: { style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 20 } }
+  warn: { style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 20 } }
+}
+
+t: "Who is the Issuer? Verifier policy (rows) x what the credential carries (columns), Sections 2.5 and 7.3 of -26" {
+  grid-rows: 5
+  grid-columns: 4
+  grid-gap: 14
+
+  h0: "Verifier policy\nfor this Issuer" { class: h }
+  h1: "HTTPS iss only" { class: h }
+  h2: "x5c only" { class: h }
+  h3: "HTTPS iss + x5c" { class: h }
+
+  r1: "JWT VC Issuer Metadata" { class: h }
+  r1a: "keys from /.well-known/jwt-vc-issuer\nIssuer = iss" { class: ok }
+  r1b: "REJECT\nno permitted mechanism" { class: no }
+  r1c: "metadata keys only\nIssuer = iss\nx5c is ignored and\ndoes not identify anyone" { class: ok }
+
+  r2: "Inline x5c,\nanchors A, B" { class: h }
+  r2a: "REJECT\nno x5c to validate" { class: no }
+  r2b: "chain to A or B (RFC 5280)\nIssuer = end-entity subject" { class: ok }
+  r2c: "Issuer = end-entity subject\niss is NOT authenticated\nMAY reject unbound iss" { class: warn }
+
+  r3: "x5c + iss bound\nby SAN or mapping" { class: h }
+  r3a: "REJECT\nno x5c to validate" { class: no }
+  r3b: "Issuer = end-entity subject" { class: ok }
+  r3c: "chain valid AND binding\nverified: Issuer = iss" { class: ok }
+
+  r4: "\"the header has x5c,\nso use x5c\"" { class: no }
+  r4a: "uses metadata" { class: warn }
+  r4b: "uses x5c" { class: warn }
+  r4c: "attacker with ANY cert under\na permitted anchor signs as\nany iss: forbidden by 7.3 MUST" { class: no }
+}

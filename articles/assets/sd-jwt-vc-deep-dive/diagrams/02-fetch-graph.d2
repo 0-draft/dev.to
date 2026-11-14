@@ -1,0 +1,38 @@
+direction: down
+grid-columns: 2
+grid-rows: 1
+grid-gap: 80
+
+classes: {
+  cred: { style: { fill: "#E8F0FE"; stroke: "#1A73E8"; font-color: "#0a0f25"; font-size: 22 } }
+  doc: { style: { fill: "#E6F4EA"; stroke: "#188038"; font-color: "#0a0f25"; font-size: 22 } }
+  rule: { style: { fill: "#FDE2E1"; stroke: "#C5221F"; font-color: "#0a0f25"; font-size: 22 } }
+  res: { style: { fill: "#FEF7E0"; stroke: "#E37400"; font-color: "#0a0f25"; font-size: 22 } }
+}
+
+flow: "What one credential can make you GET" {
+  direction: down
+  c: "Received SD-JWT VC\n(attacker-controlled input)\n\niss: https://pid.example/issuer\nvct: https://types.example/pid/v1\nvct#integrity: sha256-..." { class: cred }
+
+  wk: "GET /.well-known/jwt-vc-issuer/issuer\nHost: pid.example\n\n{ issuer, jwks | jwks_uri }\nissuer MUST equal iss (4.3)" { class: doc }
+  jwks: "GET jwks_uri\n\nJWK Set (RFC 7517)\npick key by kid" { class: doc }
+
+  tm: "GET https://types.example/pid/v1\n\nType Metadata\nvct MUST equal the reference (5.3)\nhash MUST match vct#integrity (6)" { class: doc }
+  parent: "GET extends\n\nparent Type Metadata\nvct == extends value\nhash == extends#integrity\ncycle => reject (7.4)" { class: doc }
+  more: "... parent's extends ...\n\nno depth limit in -26" { class: doc; style.stroke-dash: 4 }
+
+  r: "rendering: logo uri, background_image uri,\nsvg_templates uri (each may carry uri#integrity)\n\nhttps: or data: (3)" { class: res }
+
+
+  c -> wk: "policy says\nmetadata for this iss"
+  wk -> jwks: "if jwks_uri"
+  c -> tm: "if Type Metadata\nis processed"
+  tm -> parent: "extends"
+  parent -> more: "extends"
+  tm -> r: "display[].rendering"
+  parent -> r
+
+}
+
+guard: "Every arrow on the left, and every redirect target:\n\n1. https only, redirects to http refused\n2. resolve the host, refuse non-global addresses\n   (loopback, link-local, private-use, internal names)\n3. bounded redirects, bounded time, bounded size\n4. 4xx/5xx content never used as the document\n5. validate the format before parsing further\n\nSections 3 and 7.1" { class: rule }
+
