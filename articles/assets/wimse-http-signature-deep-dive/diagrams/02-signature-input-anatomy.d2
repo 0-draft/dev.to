@@ -1,0 +1,72 @@
+direction: down
+classes: {
+  h: { style: { fill: "#c4b5fd"; font-color: "#0a0f25"; bold: true; font-size: 22 } }
+  k: { style: { fill: "#e0e7ff"; font-color: "#0a0f25"; font-size: 20 } }
+  c: { style: { fill: "#fef3c7"; font-color: "#0a0f25"; font-size: 20 } }
+  p: { style: { fill: "#dcfce7"; font-color: "#0a0f25"; font-size: 20 } }
+  x: { style: { fill: "#fecaca"; font-color: "#0a0f25"; font-size: 20 } }
+}
+t: "Signature-Input: wimse=( ... );params   (request, -08 Section 3)" {
+  grid-rows: 14
+  grid-columns: 3
+  grid-gap: 6
+  h1: "item" { class: h }
+  h2: "value in the request I signed with wimsey" { class: h }
+  h3: "what it pins / what goes wrong without it" { class: h }
+
+  r1a: "@method  @path  @query" { class: c }
+  r1b: "POST  /orders  ?flavor=vanilla" { class: c }
+  r1c: "proxy cannot reroute /orders to /refunds\n@query is \"?\" when there is no query" { class: c }
+
+  r2a: "content-type\ncontent-digest" { class: c }
+  r2b: "application/json\nsha-256=:w2krU/tW...:" { class: c }
+  r2c: "body swap: receiver MUST recompute the\ndigest from the bytes it got (RFC 9530)" { class: c }
+
+  r3a: "workload-identity-token" { class: c }
+  r3b: "eyJ0eXAiOiJ3aXQrand0Ii..." { class: c }
+  r3c: "the WIT itself is covered, so it\ncannot be swapped for another one" { class: c }
+
+  r4a: "authorization, txn-token" { class: c }
+  r4b: "(absent here)" { class: c }
+  r4c: "MUST be covered whenever present" { class: c }
+
+  r5a: "@authority" { class: x }
+  r5b: "NOT covered" { class: x }
+  r5c: "LBs rewrite Host; CONNECT is the only\nexception (covers @method + @authority)" { class: x }
+
+  r6a: "created / expires" { class: p }
+  r6b: "1794693733 / +300" { class: p }
+  r6c: "\"on the order of minutes\";\noutside the window MUST be rejected" { class: p }
+
+  r7a: "nonce" { class: p }
+  r7b: "\"b07a6d06c25627ea5b2d82539553a606\"" { class: p }
+  r7c: "CSPRNG, >= 64 bits (96 recommended);\nreplay cache is optional, per node" { class: p }
+
+  r8a: "tag" { class: p }
+  r8b: "\"wimse-workload-to-workload\"" { class: p }
+  r8c: "how the verifier finds THE signature;\ntwo with this tag = reject; never by label" { class: p }
+
+  r9a: "wimse-aud  (request only)" { class: p }
+  r9b: "\"https://svcb.example.com/orders\"" { class: p }
+  r9c: "Simple String Comparison vs config;\n.../orders/ or :443 do NOT match" { class: p }
+
+  r10a: "wimse-sign-response  (request, optional)" { class: p }
+  r10b: "bare param = Boolean true" { class: p }
+  r10c: "server MUST sign or return an error;\nclient MUST reject an unsigned reply" { class: p }
+
+  r11a: "wimse-req-nonce  (response only)" { class: p }
+  r11b: "= request nonce" { class: p }
+  r11c: "binds the response to this request" { class: p }
+
+  r12a: "keyid" { class: x }
+  r12b: "MUST NOT be used" { class: x }
+  r12c: "key comes from the WIT cnf.jwk" { class: x }
+
+  r13a: "alg" { class: x }
+  r13b: "MUST NOT be used" { class: x }
+  r13c: "algorithm comes from cnf.jwk.alg;\nverifier checks it against local policy" { class: x }
+
+  r14a: "label (\"wimse\", \"sig1\")" { class: k }
+  r14b: "anything" { class: k }
+  r14c: "meaningless to a WIMSE verifier" { class: k }
+}

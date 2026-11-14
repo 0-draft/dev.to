@@ -1,0 +1,47 @@
+direction: down
+classes: {
+  h: { style: { fill: "#c4b5fd"; font-color: "#0a0f25"; bold: true; font-size: 22 } }
+  n: { style: { fill: "#e0e7ff"; font-color: "#0a0f25"; font-size: 20 } }
+  ok: { style: { fill: "#dcfce7"; font-color: "#0a0f25"; font-size: 20; bold: true } }
+  ng: { style: { fill: "#fecaca"; font-color: "#0a0f25"; font-size: 20; bold: true } }
+}
+t: "One signed POST /orders, verified by wimsey 0.10.1 with one thing changed each time" {
+  grid-rows: 9
+  grid-columns: 3
+  grid-gap: 6
+  h1: "what changed between signer and verifier" { class: h }
+  h2: "what wimsey said" { class: h }
+  h3: "which rule caught it" { class: h }
+
+  a1: "nothing" { class: n }
+  a2: "accepted, sub = wimse://example.org/svcA" { class: ok }
+  a3: "-" { class: n }
+
+  b1: "LB rewrote authority to svcb.internal:8443" { class: n }
+  b2: "accepted" { class: ok }
+  b3: "@authority is not covered (Section 3)" { class: n }
+
+  c1: "same rewrite, but I signed with --cover ...@authority..." { class: n }
+  c2: "signature verification failed" { class: ng }
+  c3: "why the profile leaves @authority out" { class: n }
+
+  d1: "verifier configured with .../orders/ (trailing slash)" { class: n }
+  d2: "audience mismatch" { class: ng }
+  d3: "wimse-aud: Simple String Comparison (3.2)" { class: n }
+
+  e1: "path /orders -> /refunds" { class: n }
+  e2: "signature verification failed" { class: ng }
+  e3: "@path is covered" { class: n }
+
+  f1: "body swapped, Content-Digest header left as signed" { class: n }
+  f2: "content-digest does not match the body" { class: ng }
+  f3: "receiver recomputes the digest; the signature itself is still valid" { class: n }
+
+  g1: "verified 60 s after expires" { class: n }
+  g2: "signature has expired" { class: ng }
+  g3: "validity window MUST be enforced" { class: n }
+
+  i1: "signed response checked against another request's nonce" { class: n }
+  i2: "RequestNonceMismatch" { class: ng }
+  i3: "wimse-req-nonce (3.4)" { class: n }
+}

@@ -1,0 +1,24 @@
+shape: sequence_diagram
+
+A: "svcA (client)\nholds WIT-A + key A"
+LB: "TLS-terminating LB\nrewrites Host, adds X-Forwarded-For"
+B: "svcB (server)\nholds WIT-B + key B"
+
+A -> A: "pick nonce N1 (CSPRNG, >= 64 bits)\nsign @method @path @query + headers\nparams: created expires nonce=N1 tag wimse-aud wimse-sign-response"
+A -> LB: "POST /orders?flavor=vanilla\nHost: svcb.example.com\nWorkload-Identity-Token: WIT-A\nSignature-Input / Signature"
+LB -> B: "same request over a new TLS session\nHost: svcb.internal:8443  (not covered, still verifies)"
+B -> B: "1. validate WIT-A (issuer key, exp)\n2. find the signature with tag=wimse-workload-to-workload\n3. verify with WIT-A cnf.jwk, window, nonce\n4. wimse-aud == configured string, byte for byte\n5. recompute Content-Digest from the body"
+outcome: "outcome" {
+  fail: "any check fails" {
+    B -> A: "400  wimse-signature-invalid  (never says which check failed)" { style.stroke-dash: 3 }
+  }
+  ok: "passes, and response signing is required" {
+    B -> B: "sign @status @method;req @path;req @query;req + headers\nparams: nonce=N2 wimse-req-nonce=N1 (no wimse-aud)"
+    B -> LB: "200 + Workload-Identity-Token: WIT-B + Signature" { style.stroke-dash: 3 }
+    LB -> A: "forwarded response" { style.stroke-dash: 3 }
+    A -> A: "verify with WIT-B key\nwimse-req-nonce == N1, else reject\nno Signature at all: reject (it asked)"
+  }
+  cannot_sign: "required, but the server cannot sign" {
+    B -> A: "streamed body: 400 wimse-signed-response-unavailable\nno signing support: 501 wimse-signed-response-unsupported" { style.stroke-dash: 3 }
+  }
+}
