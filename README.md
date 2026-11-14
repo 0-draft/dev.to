@@ -29,7 +29,7 @@ Most reacted: [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-86
 
 ---
 
-Pushing to `main` triggers `.github/workflows/publish.yml`, which validates the changed `articles/*.md` and syncs them to dev.to in a single `@sinedied/devto-cli` batch. Set `published: true` in the frontmatter when an article is ready, or leave `published: false` with a future `date:` (UTC) and let the hourly `schedule.yml` cron flip it once the scheduled time arrives.
+Pushing to `main` triggers `.github/workflows/publish.yml`, which validates the changed `articles/*.md` and syncs them to dev.to in a single `@sinedied/devto-cli` batch. Set `published: true` in the frontmatter when an article is ready, or leave `published: false` with a future `date:` (UTC) and let the hourly `schedule.yml` cron flip it once the scheduled time arrives. The flip also deletes `date:`, because dev.to refuses to publish a draft whose `date` is more than 15 minutes old; dev.to stamps the actual publish time and the metadata writeback below restores `date`.
 
 <table>
 <tr>
