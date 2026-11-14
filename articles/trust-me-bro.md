@@ -1,6 +1,6 @@
 ---
 title: 'trust-me-bro: Reading an Agent Skill Before It Reads Your .env'
-published: false
+published: true
 description: 'A skill folder now runs on Claude Code, Codex, Cursor, Copilot and Gemini CLI, and nothing in the format is signed. trust-me-bro is a one-file, no-dependency scanner that reads a skill, plugin or MCP config before you install it.'
 tags:
   - showdev

@@ -1,6 +1,6 @@
 ---
 title: 'wtfi3: Who Is Talking to Whom on My WiFi'
-published: false
+published: true
 description: 'A single Go binary that turns packets on a network you run into a live map of devices, the services and trackers they reach, DNS lookups and bandwidth. Metadata only: TLS is never decrypted.'
 tags:
   - showdev

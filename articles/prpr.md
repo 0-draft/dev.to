@@ -1,6 +1,6 @@
 ---
 title: 'prpr, a Terminal List of Every Open GitHub Pull Request I Can See'
-published: false
+published: true
 description: 'My open pull requests live under my own account, an org, and other people''s projects. prpr puts all of them on one screen, opens one with enter, and waves goodbye when it merges.'
 tags:
   - showdev

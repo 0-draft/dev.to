@@ -1,6 +1,6 @@
 ---
 title: 'whosent: A TUI That Shows Who Sent the Agent'
-published: false
+published: true
 description: 'A request arrives from research-agent. whosent opens the delegation chain behind it (JWT act, Biscuit, UCAN or macaroons), traces it back to the human, and points at the hop where authority grew.'
 tags:
   - showdev

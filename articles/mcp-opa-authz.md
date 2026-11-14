@@ -1,6 +1,6 @@
 ---
 title: 'mcp-opa-authz: Authorization Answers for Coding Agents, from the Policy Instead of a Guess'
-published: false
+published: true
 description: 'An MCP server that evaluates Rego in-process through OPA, or asks an AuthZEN 1.0 PDP. It keeps undefined apart from false and a broken PDP apart from a deny, and it compiles http.send out of model-written policies.'
 tags:
   - showdev

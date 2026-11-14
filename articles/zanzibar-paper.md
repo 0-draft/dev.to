@@ -1,6 +1,6 @@
 ---
 title: 'The Zanzibar Paper, Side by Side With Eight Translations'
-published: false
+published: true
 description: 'A static site that puts the USENIX ATC ''19 Zanzibar paper next to Japanese, Chinese, Korean, Spanish, French, German and Portuguese translations, one paragraph per row, with a validator that rejects a translation that changes a tuple or drops a paragraph.'
 tags:
   - showdev

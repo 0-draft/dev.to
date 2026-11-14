@@ -1,6 +1,6 @@
 ---
 title: 'a2claude Is Now a2acode: Any ACP Coding Agent Behind A2A'
-published: false
+published: true
 description: 'I renamed my Claude Code A2A server two weeks after shipping it, because Claude Code had become a launch command. a2acode now fronts Claude Code, Codex or Gemini CLI over ACP and keeps tool calls, diffs and permission prompts on the A2A side.'
 tags:
   - showdev

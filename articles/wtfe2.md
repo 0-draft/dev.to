@@ -1,6 +1,6 @@
 ---
 title: 'Lettering Programming Comics in Japanese, Only Where the License Allows It'
-published: false
+published: true
 description: 'wtfe2 erases the English lettering from xkcd, TurnOff.us and Abstruse Goose strips and sets Japanese in its place. Seven other comic sites only get a link, because their terms don''t allow it, and a CI check keeps it that way.'
 tags:
   - showdev

@@ -1,6 +1,6 @@
 ---
 title: 'S3 Atlas, Everything I Know About Amazon S3 on One Site'
-published: false
+published: true
 description: 'An EN/JA site with 18 research chapters on Amazon S3, a cost calculator that prices one workload across every S3 class and 21 other services, 134 CLI recipes and 309 API operations.'
 tags:
   - showdev

@@ -1,6 +1,6 @@
 ---
 title: 'I Log Every Movie I Watch as a Markdown File, Filed Through GitHub Issues'
-published: false
+published: true
 description: 'i-watched-movies is my film diary: one markdown file per movie, an issue form that turns into an auto-merged PR, and a Stats page that checks whether my own taste is predictable. Mostly it is not.'
 tags:
   - showdev

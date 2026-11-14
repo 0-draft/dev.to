@@ -1,6 +1,6 @@
 ---
 title: 'ccretro: A Monthly Claude Code Retro That Checks Last Month''s Suggestions'
-published: false
+published: true
 description: 'ccretro reads your local Claude Code transcripts, compares the period with the one before, and on the next run checks whether last month''s suggestions happened. A /ccretro skill turns them into skills, hooks and CLAUDE.md lines.'
 tags:
   - showdev

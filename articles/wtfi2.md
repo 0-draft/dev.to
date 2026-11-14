@@ -1,6 +1,6 @@
 ---
 title: 'wtfi2: Find the Hop Where Your Wi-Fi Connection Actually Dies'
-published: false
+published: true
 description: 'Full bars, browser says offline. wtfi probes every hop from your Wi-Fi link to DNS in parallel, draws the path, and names the first break and what to do about it.'
 tags:
   - showdev

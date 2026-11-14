@@ -1,6 +1,6 @@
 ---
 title: I Already Had a VHS Tape for Every README GIF. matinee Turns It Into a Narrated Video.
-published: false
+published: true
 description: 'My CLI repos each record their README GIF from a VHS .tape. matinee runs the same tape and renders a chaptered, narrated, captioned video in 16:9 and 9:16, with no timestamps written by hand.'
 tags:
   - showdev

@@ -1,6 +1,6 @@
 ---
 title: 'aws-credentials: STS and SigV4 as a Site You Can Click Through'
-published: false
+published: true
 description: 'An interactive, bilingual site on where AWS temporary credentials come from and how requests are signed with them. The SigV4 signer runs in the browser and reproduces AWS''s published examples byte for byte, which is how it found one AWS doesn''t.'
 tags:
   - showdev

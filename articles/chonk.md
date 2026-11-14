@@ -1,6 +1,6 @@
 ---
 title: Disk Viewers Show Sizes. I Wanted One That Says Who Put the Bytes There.
-published: false
+published: true
 description: 'An 81G file on my Mac was a VM disk whose guest used 3.6G. No disk viewer told me that, and docker system prune would not have freed it. chonk groups every byte by owner and reclaims with that owner''s own command.'
 tags:
   - showdev

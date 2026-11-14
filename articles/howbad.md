@@ -1,6 +1,6 @@
 ---
 title: 'howbad: What a Prompt-Injected Coding Agent Could Do With the Credentials on Your Machine'
-published: false
+published: true
 description: 'Claude Code, Codex and Cursor run as you, so a hijacked agent gets every credential your shell can reach. howbad finds them and asks each provider, read-only, what they can actually do.'
 tags:
   - showdev

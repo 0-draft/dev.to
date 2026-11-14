@@ -1,6 +1,6 @@
 ---
 title: I Put Up a php2shell Page Before PHP's Fix Landed. There Is No Exploit on It.
-published: false
+published: true
 description: 'php2shell-anatomy is a one-page defender''s brief for CVE-2026-109618 and CVE-2026-109619: fixed versions per branch and per distro, an exposure check, the timeline, and what to do if you can''t update yet.'
 tags:
   - showdev

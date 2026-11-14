@@ -1,6 +1,6 @@
 ---
 title: 'goi: Japanese Words People Know but Rarely Say, Each With Its Sources'
-published: false
+published: true
 description: 'A small bilingual glossary of Japanese idioms, proverbs and four-character compounds. Each word has a page with its meaning, origin, an example and the URLs it was checked against, and asks you to guess the meaning first.'
 tags:
   - showdev

@@ -1,6 +1,6 @@
 ---
 title: 'AWS Connectivity: Every Road From Your Network Into AWS, on One Map'
-published: false
+published: true
 description: 'A bilingual explainer site that puts VPN, Direct Connect, SD-WAN, the AWS hubs, PrivateLink and hybrid DNS on one road map, with labs that run the documented rules: route selection per hub, quotas as you scale, Tokyo prices, MTU.'
 tags:
   - showdev

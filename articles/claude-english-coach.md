@@ -1,6 +1,6 @@
 ---
 title: A Repo That Makes Claude Correct My English Instead of Writing It
-published: false
+published: true
 description: 'claude-english-coach is a template repo: a CLAUDE.md that makes Claude point at your English mistakes without fixing them, plus Markdown files where every mistake and new word gets logged for quizzes.'
 tags:
   - showdev
