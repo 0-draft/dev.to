@@ -1,10 +1,16 @@
 ---
-title: "Zookies Without TrueTime: How SpiceDB, OpenFGA and the Rest Order Their Writes"
+title: 'Zookies Without TrueTime: How SpiceDB, OpenFGA and the Rest Order Their Writes'
 published: true
-description: "The Zanzibar paper's answer to the new enemy problem leans on Spanner's TrueTime. Open-source implementations run on CockroachDB, PostgreSQL and MySQL. I decoded real ZedTokens, read the overlap-key SQL, and measured the window that minimize_latency leaves open."
-tags: ["authorization", "security", "database", "distributedsystems"]
+description: 'The Zanzibar paper''s answer to the new enemy problem leans on Spanner''s TrueTime. Open-source implementations run on CockroachDB, PostgreSQL and MySQL. I decoded real ZedTokens, read the overlap-key SQL, and measured the window that minimize_latency leaves open.'
+tags:
+  - authorization
+  - security
+  - database
+  - distributedsystems
 series: Authorization
-cover_image: "https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-without-truetime/cover.png"
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/zanzibar-without-truetime/cover.png?v=da1a23be'
+id: 5038216
+date: '2026-11-14T22:27:00Z'
 ---
 
 I removed a user from a folder in SpiceDB, got the write acknowledged, and asked SpiceDB whether that user could still read a document in the folder. It said yes. For up to 4.9 seconds.
@@ -40,7 +46,7 @@ AuthZed reproduced the new enemy problem on exactly that gap in 2021 ([The One C
 
 The fix is to make the keys overlap. AuthZed found "we needed both transactions to write to the same key in order for Cockroach to assign the timestamps properly". A shared read was not enough.
 
-![Two sequence diagrams. Left, with the insecure overlap strategy: node 1, whose clock is 250 ms fast, commits the removal at 10.250; node 2 later commits the move at 10.100, and a check at 10.100 sees the move without the removal and allows Chen. Right, with the static strategy: both writes also upsert the same row in the transactions table, the write-write conflict pushes the second commit to 10.251, and the check at 10.251 denies Chen.](./assets/zanzibar-without-truetime/diagrams/01-crdb-skew.png)
+![Two sequence diagrams. Left, with the insecure overlap strategy: node 1, whose clock is 250 ms fast, commits the removal at 10.250; node 2 later commits the move at 10.100, and a check at 10.100 sees the move without the removal and allows Chen. Right, with the static strategy: both writes also upsert the same row in the transactions table, the write-write conflict pushes the second commit to 10.251, and the check at 10.251 denies Chen.](./assets/zanzibar-without-truetime/diagrams/01-crdb-skew.png?v=c87c8ddd)
 
 The timestamps in the diagram are illustrative. The mechanism is not. Here is the statement SpiceDB v1.57.1 runs at the end of every write transaction on CockroachDB ([`crdb/readwrite.go`](https://github.com/authzed/spicedb/blob/v1.57.1/internal/datastore/crdb/readwrite.go), [`crdb/crdb.go`](https://github.com/authzed/spicedb/blob/v1.57.1/internal/datastore/crdb/crdb.go)):
 
@@ -138,7 +144,7 @@ $ psql -c 'SELECT xid, snapshot, timestamp FROM relation_tuple_transaction ORDER
 842|842:842:|2026-11-14 22:18:20.802753
 ```
 
-![Anatomy of two real ZedTokens. PostgreSQL: base64 decodes to DecodedZedToken field 3 with a revision string and an 8-character datastore id prefix; the revision decodes again to PostgresRevision with xmin 843, xmax 843, no in-progress xids, txid 842 and a nanosecond timestamp, meaning snapshot 843:843: in which the removal xid 842 is visible. CockroachDB: the revision is an HLC decimal, 1794694769445101854.0000000000, equal to the overlap row's MVCC timestamp. A token whose prefix does not match the datastore is treated as fully consistent by default.](./assets/zanzibar-without-truetime/diagrams/02-zedtoken-anatomy.png)
+![Anatomy of two real ZedTokens. PostgreSQL: base64 decodes to DecodedZedToken field 3 with a revision string and an 8-character datastore id prefix; the revision decodes again to PostgresRevision with xmin 843, xmax 843, no in-progress xids, txid 842 and a nanosecond timestamp, meaning snapshot 843:843: in which the removal xid 842 is visible. CockroachDB: the revision is an HLC decimal, 1794694769445101854.0000000000, equal to the overlap row's MVCC timestamp. A token whose prefix does not match the datastore is treated as fully consistent by default.](./assets/zanzibar-without-truetime/diagrams/02-zedtoken-anatomy.png?v=509f220a)
 
 The field numbers come from SpiceDB's [`impl.proto`](https://github.com/authzed/spicedb/blob/v1.57.1/proto/internal/impl/v1/impl.proto) (`DecodedZedToken.v1 = 3`: `revision`, `datastore_unique_id_prefix`, `schema_hash`) and [`pgrevision.proto`](https://github.com/authzed/spicedb/blob/v1.57.1/proto/internal/impl/v1/pgrevision.proto) (`xmin`, `relative_xmax`, `relative_xips`, `optional_txid`, `optional_timestamp`). PostgreSQL recorded the removal's own snapshot as `842:842:`, taken while 842 was still running. SpiceDB calls `snapshot.markComplete(842)` on it, which gives `843:843:`: every xid below 843 is visible. That is property 1 in PostgreSQL's vocabulary. Any snapshot that contains the removal also contains everything that committed before it, because that is what a `pg_snapshot` is.
 
@@ -225,7 +231,7 @@ Ory Keto has `snaptoken` and `latest` fields in its v1alpha2 Check API, each mar
 
 Warrant reads a `Warrant-Token` header, and the only value it acts on is `latest` ([`wookie.go`](https://github.com/warrant-dev/warrant/blob/main/pkg/wookie/wookie.go)), which routes the read to the primary. The open-source server never hands one out.
 
-![Matrix of nine product and datastore combinations against where commit order comes from, what token is returned, how a read at least as fresh as the token is served, and what gap remains. Spanner-backed rows and SpiceDB on PostgreSQL leave no gap with a token; CockroachDB depends on the overlap strategy; OpenFGA, Ory Keto and Warrant expose no per-write token.](./assets/zanzibar-without-truetime/diagrams/03-product-matrix.png)
+![Matrix of nine product and datastore combinations against where commit order comes from, what token is returned, how a read at least as fresh as the token is served, and what gap remains. Spanner-backed rows and SpiceDB on PostgreSQL leave no gap with a token; CockroachDB depends on the overlap strategy; OpenFGA, Ory Keto and Warrant expose no per-write token.](./assets/zanzibar-without-truetime/diagrams/03-product-matrix.png?v=70e2ea46)
 
 ## What I would check before trusting one of these
 
