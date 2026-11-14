@@ -19,6 +19,8 @@ My Mac was out of space, and the biggest single file was `~/Library/Application 
 
 Same machine: a 54G `podman-machine-default-arm64.raw` that took 16G on disk because it is sparse. Tools that add up file lengths reported 54.
 
+![Two disk images. Rancher Desktop diffdisk: 81G on the Mac, 3.6G used inside the VM, 77G freed in the VM but still held by the Mac. Podman raw image: 54G long, 16G actually on disk, 38G of sparse holes](./assets/chonk/diagrams/01-trapped.png)
+
 So I wrote chonk. It groups every byte by who put it there, says why it exists, and gets it back with that owner's own command.
 
 - Source: <https://github.com/kanywst/chonk>

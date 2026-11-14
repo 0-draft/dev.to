@@ -1,0 +1,23 @@
+classes: {
+  used: {style: {fill: "#dcfce7"; stroke: "#16a34a"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+  trap: {style: {fill: "#fee2e2"; stroke: "#dc2626"; stroke-width: 2; font-color: "#0a0f25"; font-size: 24; bold: true}}
+  hole: {style: {fill: "#f1f5f9"; stroke: "#94a3b8"; stroke-width: 2; stroke-dash: 4; font-color: "#475569"; font-size: 22}}
+  alloc: {style: {fill: "#dbeafe"; stroke: "#1d4ed8"; stroke-width: 2; font-color: "#0a0f25"; font-size: 22}}
+}
+
+grid-rows: 2
+grid-gap: 50
+
+rancher: "Rancher Desktop diffdisk: 81G on the Mac" {
+  grid-columns: 2
+  grid-gap: 0
+  u: "3.6G\nused in VM" {class: used; width: 160; height: 130}
+  t: "77G freed inside the VM, still held by the Mac\nprune: no change · fstrim in the guest: back" {class: trap; width: 1460; height: 130}
+}
+
+podman: "podman-machine-default-arm64.raw: length 54G" {
+  grid-columns: 2
+  grid-gap: 0
+  a: "16G actually on disk" {class: alloc; width: 420; height: 130}
+  h: "38G of holes that length-based tools count" {class: hole; width: 1200; height: 130}
+}
