@@ -1,6 +1,6 @@
 ---
 title: 'A Blackjack Table That Lives in a README, Dealt by GitHub Actions'
-published: false
+published: true
 description: 'Every decision is a GitHub issue, the dealer is a workflow, and the table is the README. Each click is priced exactly from the cards left in the shoe, and the dealer''s hole card does not exist until it is turned over.'
 tags:
   - showdev
@@ -9,7 +9,6 @@ tags:
   - gamedev
 series: ShowDev
 cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/blackjack-readme-table/cover.png?v=2d9369f0'
-date: '2026-11-15T00:00:00Z'
 id: 4856990
 ---
 
