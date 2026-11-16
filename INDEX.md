@@ -2,39 +2,61 @@
 
 # Article index
 
-123 article(s) in this repository, 111 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
+153 article(s) in this repository, 143 published to [dev.to/kanywst](https://dev.to/kanywst), across 26 series.
 
 ## Series
 
-### ShowDev (23)
+### ShowDev (45)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
+| [a2claude Is Now a2acode: Any ACP Coding Agent Behind A2A](https://dev.to/kanywst/a2claude-is-now-a2acode-any-acp-coding-agent-behind-a2a-29ie) | `showdev`, `ai`, `agents`, `python` | 2026-11-14 | 0👍 | [src](./articles/a2acode.md) |
 | [a2claude: Turn Claude Code Into a Server Other AI Agents Can Call](https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6) | `showdev`, `ai`, `agents`, `python` | 2026-06-14 | 0👍 | [src](./articles/a2claude-claude-code-as-a2a-agent.md) |
 | [I Made Four Authorization Engines Answer the Same Questions](https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96) | `showdev`, `authorization`, `security`, `webassembly` | 2026-09-12 | 1👍 · 1💬 | [src](./articles/authz-playground.md) |
-| A Blackjack Table That Lives in a README, Dealt by GitHub Actions | `showdev`, `python`, `githubactions`, `gamedev` | draft |  | [src](./articles/blackjack-readme-table.md) |
+| [AWS Connectivity: Every Road From Your Network Into AWS, on One Map](https://dev.to/kanywst/aws-connectivity-every-road-from-your-network-into-aws-on-one-map-12dc) | `showdev`, `aws`, `networking`, `cloud` | 2026-11-14 | 0👍 | [src](./articles/aws-connectivity.md) |
+| [aws-credentials: STS and SigV4 as a Site You Can Click Through](https://dev.to/kanywst/aws-credentials-sts-and-sigv4-as-a-site-you-can-click-through-5e20) | `showdev`, `aws`, `security`, `iam` | 2026-11-14 | 0👍 | [src](./articles/aws-credentials.md) |
+| [A Blackjack Table That Lives in a README, Dealt by GitHub Actions](https://dev.to/kanywst/a-blackjack-table-that-lives-in-a-readme-dealt-by-github-actions-5g63) | `showdev`, `python`, `githubactions`, `gamedev` | 2026-11-15 | 0👍 | [src](./articles/blackjack-readme-table.md) |
 | [brtc (Brute-force Cost): A CLI Tool to Convert Password Strength into "Time to Crack and a Real USD Invoice"](https://dev.to/kanywst/brtc-a-cli-tool-to-convert-password-strength-into-time-to-crack-and-a-real-usd-invoice-24k9) | `security`, `go`, `cli`, `showdev` | 2026-03-08 | 1👍 | [src](./articles/brtc-password-cracking-cost.md) |
+| [ccretro: A Monthly Claude Code Retro That Checks Last Month's Suggestions](https://dev.to/kanywst/ccretro-a-monthly-claude-code-retro-that-checks-last-months-suggestions-27gd) | `showdev`, `ai`, `claude`, `productivity` | 2026-11-14 | 0👍 | [src](./articles/ccretro.md) |
 | [I built chainscope: reading supply chain attacks across 6 surfaces, one slide at a time](https://dev.to/kanywst/i-built-chainscope-reading-supply-chain-attacks-across-6-surfaces-one-slide-at-a-time-28mc) | `security`, `supplychain`, `showdev` | 2026-04-29 | 0👍 | [src](./articles/chainscope-supply-chain-six-surfaces.md) |
+| [Disk Viewers Show Sizes. I Wanted One That Says Who Put the Bytes There.](https://dev.to/kanywst/disk-viewers-show-sizes-i-wanted-one-that-says-who-put-the-bytes-there-318h) | `showdev`, `go`, `macos`, `cli` | 2026-11-14 | 0👍 · 1💬 | [src](./articles/chonk.md) |
+| [A Repo That Makes Claude Correct My English Instead of Writing It](https://dev.to/kanywst/a-repo-that-makes-claude-correct-my-english-instead-of-writing-it-2g9m) | `showdev`, `claude`, `english`, `learning` | 2026-11-14 | 0👍 | [src](./articles/claude-english-coach.md) |
 | [What Coding Agents Leave in Public Git Repos](https://dev.to/kanywst/what-coding-agents-leave-in-public-git-repos-nm1) | `ai`, `git`, `privacy`, `security` | 2026-11-04 | 2👍 | [src](./articles/coding-agents-leave-in-public-repos.md) |
 | [Galick: I built the ultimate Load Testing tool (Go + Starlark)](https://dev.to/kanywst/galick-i-built-the-ultimate-load-testing-tool-go-starlark-ipc) | `showdev`, `go`, `performance`, `testing` | 2026-01-20 | 1👍 · 3💬 | [src](./articles/galick-load-testing.md) |
 | [gmk(Git Mark): Stop Typing Git URLs](https://dev.to/kanywst/gmk-stop-typing-git-urls-a7) | `showdev`, `rust`, `cli`, `git` | 2026-01-16 | 0👍 | [src](./articles/gmk.md) |
+| [goi: Japanese Words People Know but Rarely Say, Each With Its Sources](https://dev.to/kanywst/goi-japanese-words-people-know-but-rarely-say-each-with-its-sources-10on) | `showdev`, `japanese`, `astro`, `webdev` | 2026-11-14 | 0👍 | [src](./articles/goi.md) |
 | [GitHub Profile: A "Guest Book" Anyone Can Sign](https://dev.to/kanywst/github-profile-a-guest-book-anyone-can-sign-2) | `showdev`, `github`, `python`, `automation` | 2026-03-23 | 1👍 · 1💬 | [src](./articles/guestbook-github-profile.md) |
 | [Hacker Heuristics: Mental Shortcuts for Surviving a World Without 'Correct' Answers](https://dev.to/kanywst/hacker-heuristics-mental-shortcuts-for-surviving-a-world-without-correct-answers-4725) | `engineering`, `design`, `architecture`, `showdev` | 2026-02-15 | 1👍 | [src](./articles/heuristics.md) |
+| [howbad: What a Prompt-Injected Coding Agent Could Do With the Credentials on Your Machine](https://dev.to/kanywst/howbad-what-a-prompt-injected-coding-agent-could-do-with-the-credentials-on-your-machine-49pd) | `showdev`, `security`, `ai`, `go` | 2026-11-14 | 0👍 | [src](./articles/howbad.md) |
 | [I Just Wanted a Login Form: The "Swamp" of Complexity in the Modern Auth Ecosystem](https://dev.to/kanywst/i-just-wanted-a-login-form-the-swamp-of-complexity-in-the-modern-auth-ecosystem-23pm) | `showdev`, `authentication`, `authorization`, `security` | 2026-03-01 | 3👍 · 1💬 | [src](./articles/i-just-wanted-a-login-form.md) |
-| identity-deep-dive: A Daily, Scored Radar for OAuth WG, WIMSE, and OpenID Specs | `showdev`, `oauth`, `security`, `identity` | draft |  | [src](./articles/identity-deep-dive-radar.md) |
+| [I Log Every Movie I Watch as a Markdown File, Filed Through GitHub Issues](https://dev.to/kanywst/i-log-every-movie-i-watch-as-a-markdown-file-filed-through-github-issues-2o54) | `showdev`, `react`, `githubactions`, `movies` | 2026-11-14 | 0👍 | [src](./articles/i-watched-movies.md) |
+| [identity-deep-dive: A Weekly Briefing and a Sourced Spec Map for OAuth, WIMSE, and OpenID](https://dev.to/kanywst/identity-deep-dive-a-weekly-briefing-and-a-sourced-spec-map-for-oauth-wimse-and-openid-2hj8) | `showdev`, `oauth`, `security`, `identity` | 2026-11-14 | 0👍 | [src](./articles/identity-deep-dive-radar.md) |
 | [Introducing Omega: SPIFFE Workload Identity + AuthZEN Authorization in a Single Binary](https://dev.to/kanywst/introducing-omega-spiffe-workload-identity-authzen-authorization-in-a-single-binary-48j0) | `spiffe`, `authzen`, `security`, `opensource` | 2026-05-01 | 1👍 · 1💬 | [src](./articles/introducing-omega.md) |
 | [Introducing Zopa: a 60 KB authorization engine for proxy-wasm, written in Zig](https://dev.to/kanywst/introducing-zopa-a-60-kb-authorization-engine-for-proxy-wasm-written-in-zig-1l66) | `wasm`, `authorization`, `zig`, `opensource` | 2026-05-10 | 0👍 | [src](./articles/introducing-zopa.md) |
 | [IssueHub: Helping Beginners Find Their First OSS Contribution Opportunities](https://dev.to/kanywst/issuehub-helping-beginners-find-their-first-oss-contribution-opportunities-2g7k) | `showdev`, `oss`, `nextjs`, `typescript` | 2026-01-18 | 2👍 | [src](./articles/issuehub.md) |
 | [Secret Scanners Look for Credentials. I Wanted One That Looks for Me.](https://dev.to/kanywst/secret-scanners-look-for-credentials-i-wanted-one-that-looks-for-me-5adj) | `showdev`, `git`, `privacy`, `security` | 2026-11-04 | 0👍 | [src](./articles/kwangmyong.md) |
+| [I Already Had a VHS Tape for Every README GIF. matinee Turns It Into a Narrated Video.](https://dev.to/kanywst/i-already-had-a-vhs-tape-for-every-readme-gif-matinee-turns-it-into-a-narrated-video-2k06) | `showdev`, `cli`, `terminal`, `video` | 2026-11-14 | 1👍 · 1💬 | [src](./articles/matinee.md) |
+| [mcp-opa-authz: Authorization Answers for Coding Agents, from the Policy Instead of a Guess](https://dev.to/kanywst/mcp-opa-authz-authorization-answers-for-coding-agents-from-the-policy-instead-of-a-guess-318l) | `showdev`, `mcp`, `opa`, `authorization` | 2026-11-14 | 0👍 · 1💬 | [src](./articles/mcp-opa-authz.md) |
+| [I Put Up a php2shell Page Before PHP's Fix Landed. There Is No Exploit on It.](https://dev.to/kanywst/i-put-up-a-php2shell-page-before-phps-fix-landed-there-is-no-exploit-on-it-11bn) | `showdev`, `php`, `security`, `webdev` | 2026-11-14 | 0👍 | [src](./articles/php2shell-anatomy.md) |
+| [prpr, a Terminal List of Every Open GitHub Pull Request I Can See](https://dev.to/kanywst/prpr-a-terminal-list-of-every-open-github-pull-request-i-can-see-3a2g) | `showdev`, `github`, `go`, `tui` | 2026-11-14 | 0👍 | [src](./articles/prpr.md) |
 | [Rapg: TUI-based Secret Manager](https://dev.to/kanywst/rapg-tui-based-secret-manager-4d7p) | `showdev`, `cli`, `go`, `security` | 2026-01-20 | 2👍 | [src](./articles/rapg-secure-tui-secret-manager.md) |
+| [S3 Atlas, Everything I Know About Amazon S3 on One Site](https://dev.to/kanywst/s3-atlas-everything-i-know-about-amazon-s3-on-one-site-3efn) | `showdev`, `aws`, `s3`, `storage` | 2026-11-14 | 0👍 | [src](./articles/s3-atlas.md) |
 | [Let's Play Shogi: I Turned My GitHub Profile README Into a Playable Board](https://dev.to/kanywst/lets-play-shogi-i-turned-my-github-profile-readme-into-a-playable-board-333c) | `showdev`, `github`, `python`, `automation` | 2026-08-13 | 0👍 | [src](./articles/shogi-on-github-profile.md) |
 | [Stardust: The dashboard that transforms GitHub trends from "search" to "monitoring"](https://dev.to/kanywst/stardust-the-dashboard-that-transforms-github-trends-from-search-to-monitoring-5732) | `showdev`, `react`, `typescript`, `github` | 2026-02-01 | 1👍 | [src](./articles/stardust-deep-dive.md) |
 | [The Birth of Websites: A Visual Journey through IT History](https://dev.to/kanywst/the-birth-of-websites-a-visual-journey-through-it-history-444f) | `showdev`, `vue`, `webdev`, `history` | 2026-01-09 | 0👍 | [src](./articles/the-birth-of-websites.md) |
+| [trust-me-bro: Reading an Agent Skill Before It Reads Your .env](https://dev.to/kanywst/trust-me-bro-reading-an-agent-skill-before-it-reads-your-env-329d) | `showdev`, `security`, `ai`, `mcp` | 2026-11-14 | 0👍 | [src](./articles/trust-me-bro.md) |
 | [Velo: A Cross-Platform Network Speed Monitor Built with Go & Wails](https://dev.to/kanywst/velo-a-cross-platform-network-speed-monitor-built-with-go-wails-3g3p) | `showdev`, `wails`, `golang`, `vue` | 2026-01-10 | 0👍 | [src](./articles/velo.md) |
 | [Ransomware in Japan: 61 of 92 Known Entry Points in 2025 Were VPN Appliances](https://dev.to/kanywst/ransomware-in-japan-61-of-92-known-entry-points-in-2025-were-vpn-appliances-49gn) | `showdev`, `security`, `ransomware`, `vpn` | 2026-10-27 | 0👍 | [src](./articles/vpn-is-the-door.md) |
+| [whosent: A TUI That Shows Who Sent the Agent](https://dev.to/kanywst/whosent-a-tui-that-shows-who-sent-the-agent-1899) | `showdev`, `go`, `security`, `oauth` | 2026-11-14 | 0👍 | [src](./articles/whosent.md) |
+| [Why Hackers Don't Get Caught: A Sourced Visual Explainer, Layer by Layer](https://dev.to/kanywst/why-hackers-dont-get-caught-a-sourced-visual-explainer-layer-by-layer-b1k) | `showdev`, `security`, `privacy`, `tor` | 2026-11-14 | 0👍 | [src](./articles/why-hackers-dont-get-caught.md) |
+| [wtfe: Claims About Engineering Culture by Country, Each One Sourced and Rated](https://dev.to/kanywst/wtfe-claims-about-engineering-culture-by-country-each-one-sourced-and-rated-1c5d) | `showdev`, `career`, `culture`, `astro` | 2026-11-14 | 0👍 | [src](./articles/wtfe.md) |
+| [Lettering Programming Comics in Japanese, Only Where the License Allows It](https://dev.to/kanywst/lettering-programming-comics-in-japanese-only-where-the-license-allows-it-4bp0) | `showdev`, `astro`, `opensource`, `japanese` | 2026-11-14 | 0👍 | [src](./articles/wtfe2.md) |
+| [wtfi2: Find the Hop Where Your Wi-Fi Connection Actually Dies](https://dev.to/kanywst/wtfi2-find-the-hop-where-your-wi-fi-connection-actually-dies-1bif) | `showdev`, `rust`, `networking`, `cli` | 2026-11-14 | 0👍 | [src](./articles/wtfi2.md) |
+| [wtfi3: Who Is Talking to Whom on My WiFi](https://dev.to/kanywst/wtfi3-who-is-talking-to-whom-on-my-wifi-3ofe) | `showdev`, `go`, `networking`, `privacy` | 2026-11-14 | 0👍 | [src](./articles/wtfi3.md) |
 | [y509: A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains](https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-for-viewing-and-analyzing-x509-certificate-chains-5fn6) | `showdev`, `golang`, `cli`, `security` | 2026-01-09 | 2👍 | [src](./articles/y509.md) |
+| [The Zanzibar Paper, Side by Side With Eight Translations](https://dev.to/kanywst/the-zanzibar-paper-side-by-side-with-eight-translations-34f8) | `showdev`, `authorization`, `translation`, `astro` | 2026-11-14 | 0👍 | [src](./articles/zanzibar-paper.md) |
 
-### Authorization (11)
+### Authorization (13)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
@@ -49,8 +71,10 @@
 | [RBAC vs ABAC vs ReBAC: How to Choose and Implement Access Control Models](https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3i2d) | `authorization`, `security`, `architecture`, `iam` | 2026-03-29 | 2👍 · 2💬 | [src](./articles/rbac-abac-rebac-access-control-deep-dive.md) |
 | Rego に and と or が入った: 値を返さない演算子という設計判断と、実測1.88倍の短絡評価 | `opa`, `rego`, `authorization`, `policy` | draft |  | [src](./articles/rego-and-or-keywords.md) |
 | [Why I Built awesome-authorization: Mapping the World of Auth Engines onto a Single Page](https://dev.to/kanywst/why-i-built-awesome-authorization-mapping-the-world-of-auth-engines-onto-a-single-page-4mof) | `authorization`, `security`, `opensource`, `showdev` | 2026-04-18 | 0👍 | [src](./articles/why-i-created-awesome-authorization.md) |
+| [Zanzibar Implementations Compared (Late 2026): SpiceDB, OpenFGA, Permify, Keto, Topaz, Warrant](https://dev.to/kanywst/zanzibar-implementations-compared-late-2026-spicedb-openfga-permify-keto-topaz-warrant-43nf) | `authorization`, `security`, `architecture`, `opensource` | 2026-11-14 | 0👍 | [src](./articles/zanzibar-implementations-compared-2026.md) |
+| [Zookies Without TrueTime: How SpiceDB, OpenFGA and the Rest Order Their Writes](https://dev.to/kanywst/zookies-without-truetime-how-spicedb-openfga-and-the-rest-order-their-writes-1m0o) | `authorization`, `security`, `database`, `distributedsystems` | 2026-11-14 | 0👍 | [src](./articles/zanzibar-without-truetime.md) |
 
-### OAuth (11)
+### OAuth (12)
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
@@ -65,6 +89,7 @@
 | [RFC 7636 Deep Dive: How PKCE Kills Authorization Code Interception Attacks](https://dev.to/kanywst/rfc-7636-deep-dive-how-pkce-kills-authorization-code-interception-attacks-91i) | `oauth`, `security`, `authentication`, `pkce` | 2026-04-12 | 0👍 | [src](./articles/rfc7636-pkce-deep-dive.md) |
 | [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) | `oauth`, `oidc`, `security`, `microservices` | 2026-03-03 | 13👍 | [src](./articles/rfc8693-token-exchange-deep-dive.md) |
 | [RFC 8705 Deep Dive: Turning Access Tokens into "Unstealable Tokens" with mTLS](https://dev.to/kanywst/rfc-8705-deep-dive-turning-access-tokens-into-unstealable-tokens-with-mtls-406) | `oauth`, `security`, `tls`, `api` | 2026-02-26 | 4👍 · 1💬 | [src](./articles/rfc8705-mtls-deep-dive.md) |
+| [SD-JWT VC Deep Dive: vct, Issuer Keys, Type Metadata, and the URLs a Credential Makes You Fetch](https://dev.to/kanywst/sd-jwt-vc-deep-dive-vct-issuer-keys-type-metadata-and-the-urls-a-credential-makes-you-fetch-3igm) | `oauth`, `security`, `identity`, `jwt` | 2026-11-14 | 0👍 | [src](./articles/sd-jwt-vc-deep-dive.md) |
 
 ### AI Agent Identity (10)
 
@@ -108,6 +133,17 @@
 | [SLSA Provenance Hands-on: Generate with GitHub Actions, Verify with slsa-verifier](https://dev.to/kanywst/slsa-provenance-hands-on-generate-with-github-actions-verify-with-slsa-verifier-56ka) | `security`, `supplychain`, `slsa`, `sigstore` | 2026-04-29 | 0👍 | [src](./articles/slsa-provenance-hands-on.md) |
 | [SLSA Deep Dive: Securing the Supply Chain Using Verifiable Levels](https://dev.to/kanywst/slsa-deep-dive-securing-the-supply-chain-using-verifiable-levels-klk) | `security`, `supplychain`, `slsa`, `openssf` | 2026-04-26 | 1👍 · 1💬 | [src](./articles/slsa-supply-chain-levels-deep-dive.md) |
 
+### Workload Identity (6)
+
+| Article | Tags | Published | Engagement | Source |
+| --- | --- | --- | --- | --- |
+| [JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential](https://dev.to/kanywst/jwt-access-token-vs-x509-deep-dive-how-to-choose-what-you-present-as-a-credential-34ij) | `security`, `authentication`, `jwt`, `tls` | 2026-06-15 | 0👍 | [src](./articles/jwt-vs-x509-credential.md) |
+| [SPIFFE Compliance Deep Dive](https://dev.to/kanywst/spiffe-compliance-deep-dive-5e29) | `spiffe`, `identity`, `security`, `workloadidentity` | 2026-05-31 | 0👍 | [src](./articles/spiffe-compliance-deep-dive.md) |
+| [SPIFFE/SPIRE Deep Dive](https://dev.to/kanywst/spiffespire-deep-dive-a5p) | `spiffe`, `spire`, `security`, `kubernetes` | 2026-02-14 | 2👍 | [src](./articles/spiffe-spire-deep-dive.md) |
+| [WIMSE (Workload Identity in Multi System Environments) Deep Dive: Standardizing Identity Authentication for Microservices](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) | `security`, `microservices`, `oauth`, `identity` | 2026-03-24 | 3👍 | [src](./articles/wimse-deep-dive.md) |
+| [WIMSE HTTP Signatures Deep Dive: Proof of Possession That Survives the Load Balancer](https://dev.to/kanywst/wimse-http-signatures-deep-dive-proof-of-possession-that-survives-the-load-balancer-1176) | `security`, `identity`, `microservices`, `cryptography` | 2026-11-14 | 0👍 | [src](./articles/wimse-http-signature-deep-dive.md) |
+| [WIMSE Workload Credentials -03: The WIT Finally Gets a Validation Procedure](https://dev.to/kanywst/wimse-workload-credentials-03-the-wit-finally-gets-a-validation-procedure-5dg6) | `security`, `identity`, `jwt`, `microservices` | 2026-11-14 | 0👍 | [src](./articles/wimse-workload-creds-03.md) |
+
 ### Linux Kernel (5)
 
 | Article | Tags | Published | Engagement | Source |
@@ -135,15 +171,6 @@
 | [xDS Deep Dive: Dissecting the "Nervous System" of the Service Mesh](https://dev.to/kanywst/xds-deep-dive-dissecting-the-nervous-system-of-the-service-mesh-3m5i) | `envoy`, `servicemesh`, `kubernetes`, `istio` | 2026-04-20 | 0👍 | [src](./articles/xds-deep-dive.md) |
 | [What xDS Actually Ships: Your Control Plane Sends protobuf, Not YAML](https://dev.to/kanywst/what-xds-actually-ships-your-control-plane-sends-protobuf-not-yaml-2oje) | `envoy`, `istio`, `kubernetes`, `grpc` | 2026-06-09 | 0👍 | [src](./articles/xds-protobuf-deep-dive.md) |
 | [xDS Deep Dive, Part 2: Designing What You Ship Over the Universal Data Plane API](https://dev.to/kanywst/xds-deep-dive-part-2-designing-what-you-ship-over-the-universal-data-plane-api-3hef) | `envoy`, `servicemesh`, `kubernetes`, `grpc` | 2026-06-07 | 0👍 | [src](./articles/xds-universal-data-plane-deep-dive.md) |
-
-### Workload Identity (4)
-
-| Article | Tags | Published | Engagement | Source |
-| --- | --- | --- | --- | --- |
-| [JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential](https://dev.to/kanywst/jwt-access-token-vs-x509-deep-dive-how-to-choose-what-you-present-as-a-credential-34ij) | `security`, `authentication`, `jwt`, `tls` | 2026-06-15 | 0👍 | [src](./articles/jwt-vs-x509-credential.md) |
-| [SPIFFE Compliance Deep Dive](https://dev.to/kanywst/spiffe-compliance-deep-dive-5e29) | `spiffe`, `identity`, `security`, `workloadidentity` | 2026-05-31 | 0👍 | [src](./articles/spiffe-compliance-deep-dive.md) |
-| [SPIFFE/SPIRE Deep Dive](https://dev.to/kanywst/spiffespire-deep-dive-a5p) | `spiffe`, `spire`, `security`, `kubernetes` | 2026-02-14 | 2👍 | [src](./articles/spiffe-spire-deep-dive.md) |
-| [WIMSE (Workload Identity in Multi System Environments) Deep Dive: Standardizing Identity Authentication for Microservices](https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12) | `security`, `microservices`, `oauth`, `identity` | 2026-03-24 | 3👍 | [src](./articles/wimse-deep-dive.md) |
 
 ### Concurrency (3)
 
@@ -262,4 +289,7 @@
 
 | Article | Tags | Published | Engagement | Source |
 | --- | --- | --- | --- | --- |
+| [DCHP: One CBOR Request for mdoc and SD-JWT VC, In Person and Online](https://dev.to/kanywst/dchp-one-cbor-request-for-mdoc-and-sd-jwt-vc-in-person-and-online-2lc1) | `identity`, `security`, `openid`, `cbor` | 2026-11-14 | 0👍 | [src](./articles/dchp-digital-credentials-harmonized-presentation.md) |
 | [Hello World: Managing Dev.to Articles with GitOps](https://dev.to/kanywst/hello-world-managing-devto-articles-with-gitops-5594) | `productivity`, `github`, `automation`, `gitops` | 2026-01-08 | 1👍 · 4💬 | [src](./articles/hello-world-gitops.md) |
+| [OpenID4VCI Deep Dive: 1.0 Final, the Errata, Interactive Authorization in 1.1, and Server-to-Server](https://dev.to/kanywst/openid4vci-deep-dive-10-final-the-errata-interactive-authorization-in-11-and-server-to-server-19p4) | `openid`, `oauth`, `identity`, `security` | 2026-11-14 | 0👍 | [src](./articles/openid4vci-deep-dive.md) |
+| [Signing What Was in the Context Window: draft-durga-wimse-ctx-isolation and Its Self-Reported Taint](https://dev.to/kanywst/signing-what-was-in-the-context-window-draft-durga-wimse-ctx-isolation-and-its-self-reported-taint-5fif) | `ai`, `security`, `mcp`, `identity` | 2026-11-14 | 0👍 | [src](./articles/wimse-ctx-isolation-taint-attestation.md) |

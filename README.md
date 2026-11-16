@@ -17,7 +17,7 @@ Source for the articles auto-published under [`0-draft/dev.to`](https://github.c
 
 <!-- stats:start -->
 
-**123** articles (12 unpublished) · **111** live on dev.to · **164** reactions · **29** comments
+**153** articles (10 unpublished) · **143** live on dev.to · **165** reactions · **32** comments
 
 Most reacted: [RFC 8693 Deep Dive: Token Exchange](https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i) (13 reactions)
 
