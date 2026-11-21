@@ -8,7 +8,9 @@ tags:
   - architecture
   - security
 series: ShowDev
-cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/how-chat-apps-work/cover.png'
+cover_image: 'https://raw.githubusercontent.com/0-draft/dev.to/refs/heads/main/articles/assets/how-chat-apps-work/cover.png?v=e41713a7'
+id: 5089043
+date: '2026-11-21T15:35:06Z'
 ---
 
 You tap send. Under a second later the message is on someone else's phone, and a little after that yours says Read. I wanted a page that shows everything that happens in between, frame by frame, so I built one.
@@ -16,7 +18,7 @@ You tap send. Under a second later the message is on someone else's phone, and a
 - Source: <https://github.com/0-draft/how-chat-apps-work>
 - Site: <https://0-draft.github.io/how-chat-apps-work/> (Japanese at `/ja/`)
 
-![The "From send to read" sequence diagram at step 6: the messaging service pushes EVENT seq=1042 to B's phone](./assets/how-chat-apps-work/screenshot.png)
+![The "From send to read" sequence diagram at step 6: the messaging service pushes EVENT seq=1042 to B's phone](./assets/how-chat-apps-work/screenshot.png?v=d5e32ec2)
 
 ## The protocol is made up, the apps are not
 
